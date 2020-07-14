@@ -1,0 +1,20 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: lining-nums;
+  -moz-font-feature-settings: 'lnum' 1;
+  -moz-font-feature-settings: 'lnum=1';
+  -ms-font-feature-settings: 'lnum' 1;
+  -o-font-feature-settings: 'lnum' 1;
+  -webkit-font-feature-settings: 'lnum' 1;
+  font-feature-settings: 'lnum' 1;
+  font-size: 10px;
+  background: #ccc;
+}
