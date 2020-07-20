@@ -16,7 +16,7 @@ export const MenuIcon: React.FC = () => (
     <g
       id="Prancheta_4"
       data-name="Prancheta – 4"
-      clip-path="url(#clip-Prancheta_4)"
+      clipPath="url(#clip-Prancheta_4)"
     >
       <g id="Grupo_150" data-name="Grupo 150" transform="translate(-38 -63)">
         <rect
