@@ -1,9 +1,6 @@
-import React from 'react'
-
-export const MenuIcon: React.FC = () => (
-  <svg
+<svg
     xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
     width="69"
     height="58"
     viewBox="0 0 69 58"
@@ -16,7 +13,7 @@ export const MenuIcon: React.FC = () => (
     <g
       id="Prancheta_4"
       data-name="Prancheta – 4"
-      clipPath="url(#clip-Prancheta_4)"
+      clip-path="url(#clip-Prancheta_4)"
     >
       <g id="Grupo_150" data-name="Grupo 150" transform="translate(-38 -63)">
         <rect
@@ -46,4 +43,3 @@ export const MenuIcon: React.FC = () => (
       </g>
     </g>
   </svg>
-)

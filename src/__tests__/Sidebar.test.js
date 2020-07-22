@@ -1,26 +1,49 @@
 import React from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
-import { act } from 'react-dom/test-utils'
+import { render } from '@testing-library/react'
 import Sidebar from '../components/misc/Sidebar'
+import { BrowserRouter } from 'react-router-dom'
 
-let container = null
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
+const user = {
+  image: 'https://randomuser.me/api/portraits/men/51.jpg',
+  name: 'John Doe',
+  email: 'johndoe@gmail.com'
+}
 
-afterEach(() => {
-  // cleanup on exiting
-  unmountComponentAtNode(container)
-  container.remove()
-  container = null
-})
+describe('Sidebar', () => {
+  it('matches snapshot', () => {
+    const { container } = render(
+      <BrowserRouter>
+        <Sidebar user={user} />
+      </BrowserRouter>
+    )
 
-it('matches snapshot', () => {
-  act(() => {
-    render(<Sidebar />, container)
+    expect(container).toMatchSnapshot()
   })
 
-  expect(container.innerHTML).toMatchSnapshot()
+  it('shows a user', () => {
+    const { getByText, getByAltText } = render(
+      <BrowserRouter>
+        <Sidebar user={user} />
+      </BrowserRouter>
+    )
+
+    expect(getByAltText('John Doe')).toBeInTheDocument()
+    expect(getByText('John Doe')).toBeInTheDocument()
+    expect(getByText('johndoe@gmail.com')).toBeInTheDocument()
+  })
+
+  it('has all links', () => {
+    const { getByText } = render(
+      <BrowserRouter>
+        <Sidebar user={user} />
+      </BrowserRouter>
+    )
+
+    expect(getByText('Home')).toBeInTheDocument()
+    expect(getByText('Notes')).toBeInTheDocument()
+    expect(getByText('Tasks')).toBeInTheDocument()
+    expect(getByText('Habits')).toBeInTheDocument()
+    expect(getByText('Expenses')).toBeInTheDocument()
+    expect(getByText('Settings')).toBeInTheDocument()
+  })
 })
