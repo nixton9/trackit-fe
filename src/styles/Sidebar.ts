@@ -34,7 +34,6 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   z-index: 11;
   overflow: hidden;
   svg {
-    fill: ${props => props.theme.mainBlue};
     .svg-fill {
       fill: ${props => props.theme.mainBlue};
     }

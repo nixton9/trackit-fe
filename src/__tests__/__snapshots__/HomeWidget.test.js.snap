@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeWidget matches snapshot 1`] = `
+<div>
+  <a
+    href="/notes"
+  >
+    <div
+      class="sc-AxjAm cjhfIZ"
+      type="Notes"
+    >
+      <div
+        class="sc-AxirZ faeQuU"
+      >
+        <h3
+          class="sc-AxiKw fHpdZG"
+        >
+          Notes
+        </h3>
+        <span
+          class="sc-AxhCb fikpvB"
+        >
+          <svg>
+            notes.svg
+          </svg>
+        </span>
+      </div>
+      <div
+        class="sc-AxhUy bqGvht"
+      >
+        <h2
+          class="sc-AxgMl enJSgo"
+        >
+          32
+        </h2>
+        <p
+          class="sc-AxheI jctFSf"
+        >
+          created
+        </p>
+      </div>
+      <span
+        class="sc-Axmtr gXbpHN"
+      >
+        <svg>
+          plus.svg
+        </svg>
+      </span>
+    </div>
+  </a>
+</div>
+`;

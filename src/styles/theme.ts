@@ -13,7 +13,8 @@ const theme = {
   fontSemiBold: 600,
   fontBold: 700,
   fontExtraBold: 800,
-  borderRadius: '20px',
+  mainBorderRadius: '20px',
+  bigBorderRadius: '30px',
   white: '#fff',
   black: '#262626',
   darkerBlue: '#202442',
@@ -21,6 +22,10 @@ const theme = {
   greyishBlue: '#576389',
   mainGradient:
     'linear-gradient(137deg, #2d325a 0%, #3d447e 73%, #3d447e 78%);',
+  blueGradient: `linear-gradient(210deg, #08b0fd 0%, #81d1f5 100%);`,
+  purpleGradient: `linear-gradient(210deg, #8925fd 0%, #be88fa 100%);`,
+  pinkGradient: `linear-gradient(210deg, #fd0853 0%, #ef91ae 100%);`,
+  greenGradient: `linear-gradient(210deg, #1db74d 0%, #5dffba 100%);`,
   categories: {
     red: '#F44336',
     pink: '#E91E63',
