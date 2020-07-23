@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, getByLabelText } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import HomeWidget, { HomeWidgetTypes } from '../components/misc/HomeWidget'
 import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { BrowserRouter } from 'react-router-dom'
@@ -22,7 +22,7 @@ describe('HomeWidget', () => {
   })
 
   it('has all content', () => {
-    const { getByText, getByAltText } = render(
+    const { getByText } = render(
       <BrowserRouter>
         <HomeWidget
           type={HomeWidgetTypes.Notes}
