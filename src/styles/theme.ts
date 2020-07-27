@@ -20,6 +20,7 @@ const theme = {
   darkerBlue: '#202442',
   mainBlue: '#6268F1',
   greyishBlue: '#576389',
+  surfacesBlue: '#2d325a',
   mainGradient:
     'linear-gradient(137deg, #2d325a 0%, #3d447e 73%, #3d447e 78%);',
   blueGradient: `linear-gradient(210deg, #08b0fd 0%, #81d1f5 100%);`,

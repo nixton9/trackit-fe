@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-AxjAm dubjZh"
+  >
+    <svg>
+      glass.svg
+    </svg>
+    <form>
+      <input
+        class="sc-AxirZ dcWDhY"
+        placeholder="Search for a note, task, habit or expense"
+        type="text"
+        value=""
+      />
+    </form>
+  </div>
+  <div
+    class="sc-AxiKw bUCRFN"
+  />
+</div>
+`;

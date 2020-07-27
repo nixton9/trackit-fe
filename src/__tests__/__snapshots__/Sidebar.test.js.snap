@@ -3,33 +3,33 @@
 exports[`Sidebar matches snapshot 1`] = `
 <div>
   <div
-    class="sc-AxjAm QAHQh"
+    class="sc-AxjAm TSmKt"
   >
     <svg>
       menu.svg
     </svg>
   </div>
   <div
-    class="sc-AxirZ chsxyg"
+    class="sc-AxirZ kqsiuK"
   >
     <div
       class="sc-AxhCb rOoA"
     >
       <img
         alt="John Doe"
-        class="sc-AxhUy klfdIu"
+        class="sc-AxhUy eOkOto"
         src="https://randomuser.me/api/portraits/men/51.jpg"
       />
       <div
         class="sc-AxgMl dePzLj"
       >
         <h3
-          class="sc-AxheI CLA-dz"
+          class="sc-AxheI dZBOtC"
         >
           John Doe
         </h3>
         <p
-          class="sc-Axmtr gxIFWf"
+          class="sc-Axmtr gUQeAe"
         >
           johndoe@gmail.com
         </p>
@@ -45,7 +45,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/"
         >
           <div
-            class="sc-fzozJi iZYjXY"
+            class="sc-fzozJi gBYUMg"
           >
             <svg>
               home.svg
@@ -57,7 +57,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/notes"
         >
           <div
-            class="sc-fzozJi iZYjXY"
+            class="sc-fzozJi gBYUMg"
           >
             <svg>
               notes.svg
@@ -69,7 +69,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/tasks"
         >
           <div
-            class="sc-fzozJi iZYjXY"
+            class="sc-fzozJi gBYUMg"
           >
             <svg>
               tasks.svg
@@ -81,7 +81,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/habits"
         >
           <div
-            class="sc-fzozJi iZYjXY"
+            class="sc-fzozJi gBYUMg"
           >
             <svg>
               habits.svg
@@ -93,7 +93,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/expenses"
         >
           <div
-            class="sc-fzozJi iZYjXY"
+            class="sc-fzozJi gBYUMg"
           >
             <svg>
               expenses.svg
@@ -107,7 +107,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/settings"
         >
           <div
-            class="sc-fzozJi iZYjXY settings"
+            class="sc-fzozJi gBYUMg settings"
           >
             <svg>
               settings.svg

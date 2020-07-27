@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74 71">
+  <defs>
+    <clipPath id="clip-Prancheta_9">
+      <rect width="74" height="71"/>
+    </clipPath>
+  </defs>
+  <g id="Prancheta_9" data-name="Prancheta – 9" clip-path="url(#clip-Prancheta_9)">
+    <g id="Grupo_161" data-name="Grupo 161" transform="translate(-59.431 -148.63) rotate(42)">
+      <g id="Elipse_37" data-name="Elipse 37" transform="translate(161 51)" fill="none" stroke="#fff" stroke-width="6">
+        <circle cx="20.989" cy="20.989" r="20.989" stroke="none"/>
+        <circle cx="20.989" cy="20.989" r="17.989" fill="none"/>
+      </g>
+      <rect id="Retângulo_142" data-name="Retângulo 142" width="28.685" height="7" rx="3.5" transform="translate(199.839 68.365)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

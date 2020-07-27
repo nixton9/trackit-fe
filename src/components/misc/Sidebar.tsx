@@ -6,7 +6,7 @@ import { ReactComponent as TasksIcon } from '../../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../../assets/icons/habits.svg'
 import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
-import { Styled } from '../../styles/Sidebar'
+import { Styled } from '../../styles/Sidebar.styles'
 import { NavLink } from 'react-router-dom'
 
 interface SidebarProps {

@@ -1,18 +1,18 @@
 import styled from 'styled-components'
 
 type SidebarContainerProps = {
-  open: Boolean
+  open: boolean
 }
 
 const SidebarToggle = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 0.5rem;
-  left: 1.5rem;
+  top: 2rem;
+  left: 2rem;
   fill: ${props => props.theme.white};
 
   svg {
-    width: 2rem;
+    width: 3.2rem;
   }
 `
 
@@ -24,8 +24,8 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   display: flex;
   flex-direction: column;
   width: 65vw;
-  max-width: 24rem;
-  padding: 3rem 2rem;
+  max-width: 38rem;
+  padding: 4rem;
   background: ${props => props.theme.mainGradient};
   box-shadow: 23px 0 16px 0 rgba(0, 0, 0, 0.07);
   transform: ${props => (props.open ? 'translateX(0);' : 'translateX(-101%);')};
@@ -61,7 +61,7 @@ const SidebarUser = styled.div`
 
 const SidebarUser__Img = styled.img`
   border-radius: 50%;
-  width: 2.2rem;
+  width: 3.5rem;
   object-fit: contain;
 `
 
@@ -72,13 +72,13 @@ const SidebarUser__Info = styled.div`
 const SidebarUser__Info__Name = styled.h3`
   color: ${props => props.theme.white};
   font-weight: ${props => props.theme.fontRegular};
-  font-size: 0.9rem;
+  font-size: 1.5rem;
 `
 
 const SidebarUser__Info__Email = styled.p`
   color: ${props => props.theme.greyishBlue};
   font-weight: ${props => props.theme.fontSemiBold};
-  font-size: 0.6rem;
+  font-size: 1rem;
 `
 
 const SidebarNav = styled.nav`
@@ -86,15 +86,16 @@ const SidebarNav = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: ${props => props.theme.spacingS};
+  margin-top: ${props => props.theme.spacingM};
 `
 
 const SidebarNavItem = styled.div`
   display: flex;
   align-items: center;
   color: ${props => props.theme.white};
-  margin-bottom: ${props => props.theme.spacingS};
-  font-size: 1rem;
+  margin-bottom: ${props => props.theme.spacingM};
+  font-size: 1.7rem;
+  line-height: 2.5rem;
   font-weight: ${props => props.theme.fontRegular};
 
   &.settings {
@@ -102,8 +103,8 @@ const SidebarNavItem = styled.div`
   }
 
   svg {
-    width: 1.9rem;
-    margin-right: ${props => props.theme.spacingXXS};
+    width: 3rem;
+    margin-right: ${props => props.theme.spacingXS};
     fill: ${props => props.theme.mainBlue};
     .svg-fill {
       fill: ${props => props.theme.mainBlue};

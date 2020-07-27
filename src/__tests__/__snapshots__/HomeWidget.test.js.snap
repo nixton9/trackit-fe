@@ -6,19 +6,19 @@ exports[`HomeWidget matches snapshot 1`] = `
     href="/notes"
   >
     <div
-      class="sc-AxjAm cjhfIZ"
+      class="sc-AxjAm gJBtIG"
       type="Notes"
     >
       <div
         class="sc-AxirZ faeQuU"
       >
         <h3
-          class="sc-AxiKw fHpdZG"
+          class="sc-AxiKw iFzphh"
         >
           Notes
         </h3>
         <span
-          class="sc-AxhCb fikpvB"
+          class="sc-AxhCb eMhwpD"
         >
           <svg>
             notes.svg
@@ -26,21 +26,21 @@ exports[`HomeWidget matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-AxhUy bqGvht"
+        class="sc-AxhUy kdGTln"
       >
         <h2
-          class="sc-AxgMl enJSgo"
+          class="sc-AxgMl fzCZfy"
         >
           32
         </h2>
         <p
-          class="sc-AxheI jctFSf"
+          class="sc-AxheI jvnWOu"
         >
           created
         </p>
       </div>
       <span
-        class="sc-Axmtr gXbpHN"
+        class="sc-Axmtr ERpEm"
       >
         <svg>
           plus.svg

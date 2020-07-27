@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { HomeWidgetTypes } from '../components/misc/HomeWidget'
+import { ModuleTypes } from '../utils/ModuleTypes'
 import wave1 from '../assets/wave1.svg'
 import wave2 from '../assets/wave2.svg'
 import wave3 from '../assets/wave3.svg'
 import wave4 from '../assets/wave4.svg'
 
 type WidgetProps = {
-  type: HomeWidgetTypes
+  type: ModuleTypes
 }
 
 type WidgetInfo__ValueProps = {
@@ -17,15 +17,15 @@ const Widget = styled.div<WidgetProps>`
   position: relative;
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.bigBorderRadius};
-  width: 12rem;
-  height: 12.5rem;
-  padding: ${props => props.theme.spacingXXS};
+  width: 19.2rem;
+  height: 20rem;
+  padding: 1.8rem;
   background: ${props =>
-    props.type === HomeWidgetTypes.Notes
+    props.type === ModuleTypes.Notes
       ? `url(${wave1}), ${props.theme.blueGradient}`
-      : props.type === HomeWidgetTypes.Tasks
+      : props.type === ModuleTypes.Tasks
       ? `url(${wave2}), ${props.theme.purpleGradient}`
-      : props.type === HomeWidgetTypes.Habits
+      : props.type === ModuleTypes.Habits
       ? `url(${wave3}), ${props.theme.pinkGradient}`
       : `url(${wave4}), ${props.theme.greenGradient}`};
   background-size: cover;
@@ -50,11 +50,11 @@ const Widget = styled.div<WidgetProps>`
     opacity: 70%;
     border-radius: ${props => props.theme.mainBorderRadius};
     background: ${props =>
-      props.type === HomeWidgetTypes.Notes
+      props.type === ModuleTypes.Notes
         ? props.theme.blueGradient
-        : props.type === HomeWidgetTypes.Tasks
+        : props.type === ModuleTypes.Tasks
         ? props.theme.purpleGradient
-        : props.type === HomeWidgetTypes.Habits
+        : props.type === ModuleTypes.Habits
         ? props.theme.pinkGradient
         : props.theme.greenGradient};
     z-index: -1;
@@ -68,42 +68,43 @@ const WidgetHeader = styled.div`
 
 const WidgetHeader__Title = styled.h3`
   font-weight: ${props => props.theme.fontBold};
-  font-size: 1.25rem;
-  line-height: 1.4rem;
+  font-size: 2rem;
+  line-height: 2.2rem;
 `
 
 const WidgetHeader__Icon = styled.span`
   svg {
-    width: 2.2rem;
+    width: 3.5rem;
   }
 `
 
 const WidgetInfo = styled.div`
-  margin-top: ${props => props.theme.spacingXXS};
-  padding-left: 0.5rem;
+  margin-top: ${props => props.theme.spacingXS};
+  padding-left: ${props => props.theme.spacingXXS};
   overflow: hidden;
 `
 
 const WidgetInfo_Value = styled.h2<WidgetInfo__ValueProps>`
   font-weight: ${props => props.theme.fontExtraLight};
   font-size: ${props =>
-    props.length < 3 ? '4.8rem' : props.length < 4 ? '3.6rem' : '3rem'};
-  line-height: 4.5rem;
+    props.length < 3 ? '7.6rem' : props.length < 4 ? '5.7rem' : '4.8rem'};
+  line-height: ${props =>
+    props.length < 3 ? '7.2rem' : props.length < 4 ? '6rem' : '5.2rem'};
 `
 
 const WidgetInfo_Label = styled.p`
   font-weight: ${props => props.theme.fontRegular};
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   padding-left: 0.2rem;
 `
 
 const WidgetPlus = styled.span`
   position: absolute;
-  right: 0.7rem;
-  bottom: 0.5rem;
+  right: 1.1rem;
+  bottom: 1rem;
 
   svg {
-    width: 1.5rem;
+    width: 2.4rem;
   }
 `
 

@@ -1,5 +1,6 @@
 import React from 'react'
-import HomeWidget, { HomeWidgetTypes } from './misc/HomeWidget'
+import HomeWidget from './misc/HomeWidget'
+import { ModuleTypes } from '../utils/ModuleTypes'
 import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../assets/icons/habits.svg'
@@ -17,29 +18,29 @@ const Home: React.FC = () => {
       }}
     >
       <HomeWidget
-        type={HomeWidgetTypes.Notes}
+        type={ModuleTypes.Notes}
         value="32"
         label="created"
         url="/link"
         icon={<NotesIcon />}
       />
       <HomeWidget
-        type={HomeWidgetTypes.Tasks}
+        type={ModuleTypes.Tasks}
         value="7"
         label="for today"
         url="/link"
         icon={<TasksIcon />}
       />
       <HomeWidget
-        type={HomeWidgetTypes.Habits}
+        type={ModuleTypes.Habits}
         value="2"
         label="active"
         url="/link"
         icon={<HabitsIcon />}
       />
       <HomeWidget
-        type={HomeWidgetTypes.Expenses}
-        value="455"
+        type={ModuleTypes.Expenses}
+        value="454"
         label="this month"
         url="/link"
         icon={<ExpensesIcon />}

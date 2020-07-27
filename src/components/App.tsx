@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Home from './Home'
 import Login from './Login'
 import Sidebar from './misc/Sidebar'
+import Search from './misc/Search'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme'
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         {loggedIn ? (
           <>
             <Sidebar user={user} />
+            <Search />
             <Switch>
               <Route exact path="/">
                 <Home />

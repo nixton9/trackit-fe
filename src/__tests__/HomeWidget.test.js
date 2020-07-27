@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import HomeWidget, { HomeWidgetTypes } from '../components/misc/HomeWidget'
+import HomeWidget from '../components/misc/HomeWidget'
+import { ModuleTypes } from '../utils/ModuleTypes'
 import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -9,7 +10,7 @@ describe('HomeWidget', () => {
     const { container } = render(
       <BrowserRouter>
         <HomeWidget
-          type={HomeWidgetTypes.Notes}
+          type={ModuleTypes.Notes}
           value="32"
           label="created"
           url="/link"
@@ -25,7 +26,7 @@ describe('HomeWidget', () => {
     const { getByText } = render(
       <BrowserRouter>
         <HomeWidget
-          type={HomeWidgetTypes.Notes}
+          type={ModuleTypes.Notes}
           value="32"
           label="created"
           url="/link"
