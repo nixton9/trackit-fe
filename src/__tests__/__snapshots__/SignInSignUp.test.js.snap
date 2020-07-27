@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignIn matches snapshot 1`] = `
+<div>
+  <nav
+    class="sc-AxjAm icODTr"
+  >
+    <h1
+      class="sc-AxirZ bosuDb"
+    >
+      TrackIt
+    </h1>
+    <div
+      class="sc-AxiKw cmYvTE"
+    >
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Sign In
+      </a>
+      <a
+        href="/signup"
+      >
+        Sign Up
+      </a>
+    </div>
+  </nav>
+  <div
+    class="sc-AxhCb kwOwjE"
+  >
+    <h2
+      class="sc-AxhUy JNaYu"
+    >
+      Welcome back, 
+      <br />
+      <span>
+        sign in to continue
+      </span>
+    </h2>
+    <form
+      class="sc-AxgMl ixfOtu"
+    >
+      <div
+        class="sc-AxheI fnSDUS"
+      >
+        <input
+          placeholder="Email address"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-AxheI fnSDUS"
+      >
+        <div
+          class="input-wrapper"
+        >
+          <input
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <svg>
+            eye.svg
+          </svg>
+        </div>
+        <p>
+          Forgot password?
+        </p>
+      </div>
+      <button
+        class="sc-Axmtr lgMnpa"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`SignUp matches snapshot 1`] = `
+<div>
+  <nav
+    class="sc-AxjAm icODTr"
+  >
+    <h1
+      class="sc-AxirZ bosuDb"
+    >
+      TrackIt
+    </h1>
+    <div
+      class="sc-AxiKw cmYvTE"
+    >
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Sign In
+      </a>
+      <a
+        href="/signup"
+      >
+        Sign Up
+      </a>
+    </div>
+  </nav>
+  <div
+    class="sc-AxhCb kwOwjE"
+  >
+    <h2
+      class="sc-AxhUy JNaYu"
+    >
+      Hey there, 
+      <br />
+      <span>
+        sign up to continue
+      </span>
+    </h2>
+    <form
+      class="sc-AxgMl ixfOtu"
+    >
+      <div
+        class="sc-AxheI fnSDUS"
+      >
+        <input
+          placeholder="Name"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-AxheI fnSDUS"
+      >
+        <input
+          placeholder="Email address"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-AxheI fnSDUS"
+      >
+        <div
+          class="input-wrapper"
+        >
+          <input
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <svg>
+            eye.svg
+          </svg>
+        </div>
+      </div>
+      <button
+        class="sc-Axmtr lgMnpa"
+      >
+        Sign Up
+      </button>
+    </form>
+  </div>
+</div>
+`;

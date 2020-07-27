@@ -34,7 +34,6 @@ const SearchInput = styled.input<SearchProps>`
   padding: 0 3.8rem 0 2rem;
   font-size: 1.15rem;
   font-weight: ${props => props.theme.fontRegular};
-  font-family: 'Poppins', sans-serif;
   box-shadow: 11px 15px 16px 0 rgba(0, 0, 0, 0.07);
   transform-origin: right;
   transform: ${props => (props.open ? 'scaleX(1)' : 'scaleX(0)')};

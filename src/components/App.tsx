@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Home from './Home'
-import Login from './Login'
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 import Sidebar from './misc/Sidebar'
 import Search from './misc/Search'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -14,7 +15,7 @@ const user = {
 }
 
 const App: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   return (
     <Router>
@@ -30,7 +31,14 @@ const App: React.FC = () => {
             </Switch>
           </>
         ) : (
-          <Login />
+          <Switch>
+            <Route exact path="/">
+              <SignIn />
+            </Route>
+            <Route exact path="/signup">
+              <SignUp />
+            </Route>
+          </Switch>
         )}
       </ThemeProvider>
     </Router>

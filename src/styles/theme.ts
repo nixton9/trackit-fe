@@ -13,6 +13,7 @@ const theme = {
   fontSemiBold: 600,
   fontBold: 700,
   fontExtraBold: 800,
+  smallBorderRadius: '10px',
   mainBorderRadius: '20px',
   bigBorderRadius: '30px',
   white: '#fff',

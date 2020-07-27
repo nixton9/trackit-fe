@@ -10,7 +10,7 @@ exports[`Search matches snapshot 1`] = `
     </svg>
     <form>
       <input
-        class="sc-AxirZ dcWDhY"
+        class="sc-AxirZ ioKDud"
         placeholder="Search for a note, task, habit or expense"
         type="text"
         value=""
