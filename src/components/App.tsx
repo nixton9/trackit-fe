@@ -15,7 +15,7 @@ const user = {
 }
 
 const App: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
 
   return (
     <Router>

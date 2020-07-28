@@ -1,54 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useToggleElement } from '../../utils/useToggleElement'
 import { Styled } from '../../styles/Search.styles'
 import { ReactComponent as GlassIcon } from '../../assets/icons/glass.svg'
 
 const Search: React.FC = () => {
-  const [isInputOpen, setIsInputOpen] = useState(false)
   const [inputVal, setInputVal] = useState('')
-  const overlayEl = useRef<HTMLDivElement>(null)
+  const [open, setOpen, overlayEl] = useToggleElement()
 
   useEffect(() => {
-    const overlayCurr = overlayEl.current
-
-    overlayEl &&
-      overlayCurr &&
-      overlayCurr.addEventListener('click', () => {
-        setIsInputOpen(false)
-        setInputVal('')
-      })
-
-    return () => {
-      overlayEl &&
-        overlayCurr &&
-        overlayCurr.removeEventListener('click', () => {
-          setIsInputOpen(false)
-          setInputVal('')
-        })
-    }
-  }, [])
+    if (!open) setInputVal('')
+  }, [open])
 
   const handleIconClick = () => {
-    if (isInputOpen) {
+    if (open) {
       handleSubmit()
     } else {
-      setIsInputOpen(true)
+      setOpen(true)
     }
   }
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e && e.preventDefault()
     console.log(inputVal)
-    setIsInputOpen(false)
+    setOpen(false)
     setInputVal('')
   }
 
   return (
     <>
-      <Styled.SearchIcon open={isInputOpen}>
+      <Styled.SearchIcon open={open}>
         <GlassIcon onClick={handleIconClick} />
         <form onSubmit={handleSubmit}>
           <Styled.SearchInput
-            open={isInputOpen}
+            open={open}
             type="text"
             placeholder="Search for a note, task, habit or expense"
             value={inputVal}
@@ -56,7 +40,7 @@ const Search: React.FC = () => {
           />
         </form>
       </Styled.SearchIcon>
-      <Styled.SearchOverlay open={isInputOpen} ref={overlayEl} />
+      <Styled.SearchOverlay open={open} ref={overlayEl} />
     </>
   )
 }

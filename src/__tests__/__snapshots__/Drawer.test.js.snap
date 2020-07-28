@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-AxjAm bgluyb"
+  >
+    <h2
+      class="sc-AxiKw jzoYkp"
+    >
+      Settings
+    </h2>
+    <div
+      class="sc-AxhCb iGvJwE"
+    >
+      <div>
+        <h3>
+          First setting
+        </h3>
+        <p>
+          Dropdown
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-AxirZ gpexXZ"
+  />
+</div>
+`;

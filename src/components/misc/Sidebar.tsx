@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
+import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg'
 import { ReactComponent as HomeIcon } from '../../assets/icons/home.svg'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
@@ -18,22 +19,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ user }) => {
-  const [open, setOpen] = useState(false)
-  const overlayEl = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const overlayCurr = overlayEl.current
-
-    overlayEl &&
-      overlayCurr &&
-      overlayCurr.addEventListener('click', () => setOpen(false))
-
-    return () => {
-      overlayEl &&
-        overlayCurr &&
-        overlayCurr.removeEventListener('click', () => setOpen(false))
-    }
-  }, [])
+  const [open, setOpen, overlayEl] = useToggleElement()
 
   return (
     <>
