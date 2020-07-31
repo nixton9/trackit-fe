@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotesPage matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-fzoLsD gLVzFn"
+  >
+    <h1
+      class="sc-fzpans blxKjy"
+    >
+      Notes
+    </h1>
+    <div
+      class="sc-fzplWN kVuIUX"
+    >
+      <div
+        class="sc-fznyAO jTttdB"
+      >
+        <div
+          class="sc-fznKkj eWdQNk"
+        >
+          All
+          <svg>
+            chevron.svg
+          </svg>
+        </div>
+        <h3
+          class="sc-fznZeY eBWbzV"
+        >
+          5
+        </h3>
+      </div>
+      <div
+        class="sc-fzokOt ZaUkA"
+      >
+        <svg>
+          settings.svg
+        </svg>
+        <div
+          class="sc-AxjAm bgluyb"
+        >
+          <h2
+            class="sc-AxiKw jzoYkp"
+          >
+            Settings
+          </h2>
+          <div
+            class="sc-AxhCb iGvJwE"
+          >
+            <p>
+              Settings content here
+            </p>
+          </div>
+        </div>
+        <div
+          class="sc-AxirZ gpexXZ"
+        />
+      </div>
+    </div>
+    <section
+      class="sc-fzqBZW fdJGZy"
+    >
+      <a
+        href="/notes/1"
+      >
+        <article
+          class="sc-AxgMl ctLGla"
+        >
+          <div
+            class="sc-AxheI dcxLSd"
+          >
+            <div>
+              <h5
+                class="sc-Axmtr cjcDTI"
+              >
+                Lista de compras
+              </h5>
+              <p
+                class="sc-AxmLO jHEgVD"
+              >
+                20 July
+              </p>
+            </div>
+            <div
+              class="sc-fzozJi enNSzg"
+            >
+              <div
+                class="sc-AxhUy jKtFkG"
+                color="#F44336"
+              >
+                <span>
+                  Primary
+                </span>
+              </div>
+              <div
+                class="sc-AxhUy cecHzH"
+                color="#E91E63"
+              >
+                <span>
+                  Secondary
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+      <a
+        href="/notes/2"
+      >
+        <article
+          class="sc-AxgMl ctLGla"
+        >
+          <div
+            class="sc-AxheI dcxLSd"
+          >
+            <div>
+              <h5
+                class="sc-Axmtr cjcDTI"
+              >
+                Apontamentos aula
+              </h5>
+              <p
+                class="sc-AxmLO jHEgVD"
+              >
+                25 June
+              </p>
+            </div>
+            <div
+              class="sc-fzozJi enNSzg"
+            >
+              <div
+                class="sc-AxhUy bmJVrd"
+                color="#607D8B"
+              >
+                <span>
+                  Studies
+                </span>
+              </div>
+              <div
+                class="sc-AxhUy iZTwPf"
+                color="#00BCD4"
+              >
+                <span>
+                  School
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+      <a
+        href="/notes/3"
+      >
+        <article
+          class="sc-AxgMl ctLGla"
+        >
+          <div
+            class="sc-AxheI dcxLSd"
+          >
+            <div>
+              <h5
+                class="sc-Axmtr cjcDTI"
+              >
+                Random shit
+              </h5>
+              <p
+                class="sc-AxmLO jHEgVD"
+              >
+                15 July
+              </p>
+            </div>
+            <div
+              class="sc-fzozJi enNSzg"
+            >
+              <div
+                class="sc-AxhUy bMuWrA"
+                color="#3F51B5"
+              >
+                <span>
+                  Random
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+      <a
+        href="/notes/4"
+      >
+        <article
+          class="sc-AxgMl ctLGla"
+        >
+          <div
+            class="sc-AxheI dcxLSd"
+          >
+            <div>
+              <h5
+                class="sc-Axmtr cjcDTI"
+              >
+                Work shit
+              </h5>
+              <p
+                class="sc-AxmLO jHEgVD"
+              >
+                15 July
+              </p>
+            </div>
+            <div
+              class="sc-fzozJi enNSzg"
+            >
+              <div
+                class="sc-AxhUy NDibX"
+                color="#9C27B0"
+              >
+                <span>
+                  Work
+                </span>
+              </div>
+              <div
+                class="sc-AxhUy bTmBDv"
+                color="#FF9800"
+              >
+                <span>
+                  Coding
+                </span>
+              </div>
+              <div
+                class="sc-AxhUy KAbQL"
+                color="#4CAF50"
+              >
+                <span>
+                  Stuff
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+      <a
+        href="/notes/5"
+      >
+        <article
+          class="sc-AxgMl ctLGla"
+        >
+          <div
+            class="sc-AxheI dcxLSd"
+          >
+            <div>
+              <h5
+                class="sc-Axmtr cjcDTI"
+              >
+                Post 129
+              </h5>
+              <p
+                class="sc-AxmLO jHEgVD"
+              >
+                7 May
+              </p>
+            </div>
+            <div
+              class="sc-fzozJi enNSzg"
+            />
+          </div>
+        </article>
+      </a>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`SingleNote matches snapshot 1`] = `
+<div>
+  <article
+    class="sc-AxgMl ctLGla"
+  >
+    <div
+      class="sc-AxheI dcxLSd"
+    >
+      <div>
+        <h5
+          class="sc-Axmtr cjcDTI"
+        >
+          Lista de compras
+        </h5>
+        <p
+          class="sc-AxmLO jHEgVD"
+        >
+          20 July
+        </p>
+      </div>
+      <div
+        class="sc-fzozJi enNSzg"
+      >
+        <div
+          class="sc-AxhUy jKtFkG"
+          color="#F44336"
+        >
+          <span>
+            Primary
+          </span>
+        </div>
+        <div
+          class="sc-AxhUy cecHzH"
+          color="#E91E63"
+        >
+          <span>
+            Secondary
+          </span>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+`;
