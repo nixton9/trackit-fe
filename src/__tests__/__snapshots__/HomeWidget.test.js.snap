@@ -6,7 +6,7 @@ exports[`HomeWidget matches snapshot 1`] = `
     href="/notes"
   >
     <div
-      class="sc-AxjAm gJBtIG"
+      class="sc-AxjAm gJBtIG widget"
       type="Notes"
     >
       <div

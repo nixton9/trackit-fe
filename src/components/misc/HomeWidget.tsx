@@ -21,7 +21,7 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
 }) => {
   return (
     <Link to={`/${type.toLowerCase()}`}>
-      <Styled.Widget type={type}>
+      <Styled.Widget type={type} className="widget">
         <Styled.WidgetHeader>
           <Styled.WidgetHeader__Title>{type}</Styled.WidgetHeader__Title>
           <Styled.WidgetHeader__Icon>{icon}</Styled.WidgetHeader__Icon>
