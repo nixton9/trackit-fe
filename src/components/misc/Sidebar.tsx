@@ -42,27 +42,47 @@ const Sidebar: React.FC<SidebarProps> = ({ user }) => {
 
         <Styled.SidebarNav>
           <div>
-            <NavLink to="/" activeClassName="active">
+            <NavLink
+              to="/"
+              activeClassName="active"
+              onClick={() => setOpen(false)}
+            >
               <Styled.SidebarNavItem>
                 <HomeIcon /> Home
               </Styled.SidebarNavItem>
             </NavLink>
-            <NavLink to="/notes" activeClassName="active">
+            <NavLink
+              to="/notes"
+              activeClassName="active"
+              onClick={() => setOpen(false)}
+            >
               <Styled.SidebarNavItem>
                 <NotesIcon /> Notes
               </Styled.SidebarNavItem>
             </NavLink>
-            <NavLink to="/tasks" activeClassName="active">
+            <NavLink
+              to="/tasks"
+              activeClassName="active"
+              onClick={() => setOpen(false)}
+            >
               <Styled.SidebarNavItem>
                 <TasksIcon /> Tasks
               </Styled.SidebarNavItem>
             </NavLink>
-            <NavLink to="/habits" activeClassName="active">
+            <NavLink
+              to="/habits"
+              activeClassName="active"
+              onClick={() => setOpen(false)}
+            >
               <Styled.SidebarNavItem>
                 <HabitsIcon /> Habits
               </Styled.SidebarNavItem>
             </NavLink>
-            <NavLink to="/expenses" activeClassName="active">
+            <NavLink
+              to="/expenses"
+              activeClassName="active"
+              onClick={() => setOpen(false)}
+            >
               <Styled.SidebarNavItem>
                 <ExpensesIcon /> Expenses
               </Styled.SidebarNavItem>
@@ -70,7 +90,11 @@ const Sidebar: React.FC<SidebarProps> = ({ user }) => {
           </div>
 
           <div>
-            <NavLink to="/settings" activeClassName="active">
+            <NavLink
+              to="/settings"
+              activeClassName="active"
+              onClick={() => setOpen(false)}
+            >
               <Styled.SidebarNavItem className="settings">
                 <SettingsIcon /> Settings
               </Styled.SidebarNavItem>
