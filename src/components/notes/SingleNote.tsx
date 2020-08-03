@@ -1,6 +1,6 @@
 import React from 'react'
-import NoteTag from './NoteTag'
-import { Styled } from '../../styles/SingleNote'
+import Tag from './Tag'
+import { Styled } from '../../styles/SingleNote.styles'
 import { Note } from '../../utils/ModuleTypes'
 import moment from 'moment'
 
@@ -17,7 +17,7 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
         <Styled.SingleNoteTags>
           {tags &&
             tags.map(tag => (
-              <NoteTag key={tag.id} name={tag.name} color={tag.color} />
+              <Tag key={tag.id} id={tag.id} name={tag.name} color={tag.color} />
             ))}
         </Styled.SingleNoteTags>
       </Styled.SingleNoteFlex>

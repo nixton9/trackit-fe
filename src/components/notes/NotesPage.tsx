@@ -1,7 +1,7 @@
 import React from 'react'
 import NotesSettings from './NotesSettings'
 import SingleNote from './SingleNote'
-import { notes } from '../../assets/fakeData'
+import { notes, notesTags } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Note } from '../../utils/ModuleTypes'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
@@ -23,7 +23,7 @@ const NotesPage: React.FC = () => {
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
-          <NotesSettings />
+          <NotesSettings tags={notesTags} />
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 

@@ -5,6 +5,7 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Sidebar from './misc/Sidebar'
 import Search from './misc/Search'
+import { GlobalStyle } from '../styles/globalstyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme'
@@ -21,6 +22,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         {loggedIn ? (
           <>
             <Sidebar user={user} />

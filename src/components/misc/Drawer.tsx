@@ -2,7 +2,7 @@ import React, { ReactChildren, ReactElement, RefObject } from 'react'
 import { Styled } from '../../styles/Drawer.styles'
 
 type DrawerProps = {
-  children: ReactChildren | ReactElement
+  children: ReactChildren | ReactChildren[] | ReactElement | ReactElement[]
   title: string
   open: boolean
   overlayRef: RefObject<HTMLDivElement>

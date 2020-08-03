@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
-type NoteTagChipProps = {
+type TagChipProps = {
   color: string
 }
 
-const NoteTagChip = styled.div<NoteTagChipProps>`
+const TagChip = styled.div<TagChipProps>`
   background-color: ${props => props.color};
+  min-width: 5rem;
+  text-align: center;
   padding: 0.3rem 0.9rem;
   border-radius: ${props => props.theme.bigBorderRadius};
 
@@ -21,5 +23,5 @@ const NoteTagChip = styled.div<NoteTagChipProps>`
 `
 
 export const Styled = {
-  NoteTagChip
+  TagChip
 }

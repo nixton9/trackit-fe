@@ -44,3 +44,14 @@ export const notes = [
     content: 'asdasdad'
   }
 ]
+
+export const notesTags = [
+  { id: 1, name: 'Primary', color: '#F44336' },
+  { id: 2, name: 'Secondary', color: '#E91E63' },
+  { id: 3, name: 'Studies', color: '#607D8B' },
+  { id: 4, name: 'School', color: '#00BCD4' },
+  { id: 5, name: 'Random', color: '#3F51B5' },
+  { id: 6, name: 'Work', color: '#9C27B0' },
+  { id: 7, name: 'Coding', color: '#FF9800' },
+  { id: 8, name: 'Stuff', color: '#4CAF50' }
+]

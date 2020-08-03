@@ -3,21 +3,21 @@
 exports[`NotesPage matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fzoLsD gLVzFn"
+    class="sc-fznZeY rPRBP"
   >
     <h1
-      class="sc-fzpans blxKjy"
+      class="sc-fzokOt gEFtxJ"
     >
       Notes
     </h1>
     <div
-      class="sc-fzplWN kVuIUX"
+      class="sc-fzqBZW bqqVlM"
     >
       <div
-        class="sc-fznyAO jTttdB"
+        class="sc-fzqNJr gVufqP"
       >
         <div
-          class="sc-fznKkj eWdQNk"
+          class="sc-fzoyAV cwAuFN"
         >
           All
           <svg>
@@ -25,15 +25,17 @@ exports[`NotesPage matches snapshot 1`] = `
           </svg>
         </div>
         <h3
-          class="sc-fznZeY eBWbzV"
+          class="sc-fzoLag fSFvQg"
         >
           5
         </h3>
       </div>
       <div
-        class="sc-fzokOt ZaUkA"
+        class="sc-fzoXzr bMMYON"
       >
-        <svg>
+        <svg
+          class="settings-icon"
+        >
           settings.svg
         </svg>
         <div
@@ -47,9 +49,173 @@ exports[`NotesPage matches snapshot 1`] = `
           <div
             class="sc-AxhCb iGvJwE"
           >
-            <p>
-              Settings content here
-            </p>
+            <div
+              class="sc-AxgMl ibGeUx"
+            >
+              <label
+                class="sc-AxheI btNIfl"
+                for="sort-by"
+              >
+                Sort by
+              </label>
+              <div
+                class="sc-Axmtr iPljch"
+              >
+                <div
+                  class="MuiInputBase-root MuiInput-root"
+                >
+                  <div
+                    aria-haspopup="listbox"
+                    aria-labelledby="sort-by"
+                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                    id="sort-by"
+                    role="button"
+                    tabindex="0"
+                  >
+                    Date
+                  </div>
+                  <input
+                    aria-hidden="true"
+                    class="MuiSelect-nativeInput"
+                    tabindex="-1"
+                    value="date"
+                  />
+                  <svg
+                    class="MuiSelect-icon"
+                  >
+                    chevron.svg
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="sc-AxgMl ibGeUx"
+            >
+              <label
+                class="sc-AxheI btNIfl"
+                for="font-size"
+              >
+                Font size
+              </label>
+              <div
+                class="sc-Axmtr iPljch"
+              >
+                <div
+                  class="MuiInputBase-root MuiInput-root"
+                >
+                  <div
+                    aria-haspopup="listbox"
+                    aria-labelledby="font-size"
+                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                    id="font-size"
+                    role="button"
+                    tabindex="0"
+                  >
+                    Medium
+                  </div>
+                  <input
+                    aria-hidden="true"
+                    class="MuiSelect-nativeInput"
+                    tabindex="-1"
+                    value="medium"
+                  />
+                  <svg
+                    class="MuiSelect-icon"
+                  >
+                    chevron.svg
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="sc-AxgMl ibGeUx"
+            >
+              <label
+                class="sc-AxheI btNIfl"
+              >
+                Tags
+              </label>
+              <span
+                class="sc-fzozJi htjloa"
+              >
+                <svg>
+                  plus.svg
+                </svg>
+              </span>
+              <div
+                class="sc-Axmtr iPljch"
+              >
+                Click to edit
+              </div>
+              <div
+                class="sc-AxmLO jasIBP"
+              >
+                <div
+                  class="sc-AxhUy gNVqIy single-tag"
+                  color="#F44336"
+                >
+                  <span>
+                    Primary
+                  </span>
+                </div>
+                <div
+                  class="sc-AxhUy bOdUof single-tag"
+                  color="#E91E63"
+                >
+                  <span>
+                    Secondary
+                  </span>
+                </div>
+                <div
+                  class="sc-AxhUy iyFkZJ single-tag"
+                  color="#607D8B"
+                >
+                  <span>
+                    Studies
+                  </span>
+                </div>
+                <div
+                  class="sc-AxhUy kVXffT single-tag"
+                  color="#00BCD4"
+                >
+                  <span>
+                    School
+                  </span>
+                </div>
+                <div
+                  class="sc-AxhUy kdVsNk single-tag"
+                  color="#3F51B5"
+                >
+                  <span>
+                    Random
+                  </span>
+                </div>
+                <div
+                  class="sc-AxhUy bpFPFb single-tag"
+                  color="#9C27B0"
+                >
+                  <span>
+                    Work
+                  </span>
+                </div>
+                <div
+                  class="sc-AxhUy byplBL single-tag"
+                  color="#FF9800"
+                >
+                  <span>
+                    Coding
+                  </span>
+                </div>
+                <div
+                  class="sc-AxhUy gXfeNz single-tag"
+                  color="#4CAF50"
+                >
+                  <span>
+                    Stuff
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -58,34 +224,34 @@ exports[`NotesPage matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fzqBZW fdJGZy"
+      class="sc-fzpjYC fwhPAY"
     >
       <a
         href="/notes/1"
       >
         <article
-          class="sc-AxgMl ctLGla"
+          class="sc-fzoLsD fKiHzN"
         >
           <div
-            class="sc-AxheI dcxLSd"
+            class="sc-fzpans eVhIQM"
           >
             <div>
               <h5
-                class="sc-Axmtr cjcDTI"
+                class="sc-fzplWN ifFpiT"
               >
                 Lista de compras
               </h5>
               <p
-                class="sc-AxmLO jHEgVD"
+                class="sc-fznyAO eNAZql"
               >
                 20 July
               </p>
             </div>
             <div
-              class="sc-fzozJi enNSzg"
+              class="sc-fznKkj iOdcne"
             >
               <div
-                class="sc-AxhUy jKtFkG"
+                class="sc-AxhUy gNVqIy single-tag"
                 color="#F44336"
               >
                 <span>
@@ -93,7 +259,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy cecHzH"
+                class="sc-AxhUy bOdUof single-tag"
                 color="#E91E63"
               >
                 <span>
@@ -108,28 +274,28 @@ exports[`NotesPage matches snapshot 1`] = `
         href="/notes/2"
       >
         <article
-          class="sc-AxgMl ctLGla"
+          class="sc-fzoLsD fKiHzN"
         >
           <div
-            class="sc-AxheI dcxLSd"
+            class="sc-fzpans eVhIQM"
           >
             <div>
               <h5
-                class="sc-Axmtr cjcDTI"
+                class="sc-fzplWN ifFpiT"
               >
                 Apontamentos aula
               </h5>
               <p
-                class="sc-AxmLO jHEgVD"
+                class="sc-fznyAO eNAZql"
               >
                 25 June
               </p>
             </div>
             <div
-              class="sc-fzozJi enNSzg"
+              class="sc-fznKkj iOdcne"
             >
               <div
-                class="sc-AxhUy bmJVrd"
+                class="sc-AxhUy iyFkZJ single-tag"
                 color="#607D8B"
               >
                 <span>
@@ -137,7 +303,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy iZTwPf"
+                class="sc-AxhUy kVXffT single-tag"
                 color="#00BCD4"
               >
                 <span>
@@ -152,28 +318,28 @@ exports[`NotesPage matches snapshot 1`] = `
         href="/notes/3"
       >
         <article
-          class="sc-AxgMl ctLGla"
+          class="sc-fzoLsD fKiHzN"
         >
           <div
-            class="sc-AxheI dcxLSd"
+            class="sc-fzpans eVhIQM"
           >
             <div>
               <h5
-                class="sc-Axmtr cjcDTI"
+                class="sc-fzplWN ifFpiT"
               >
                 Random shit
               </h5>
               <p
-                class="sc-AxmLO jHEgVD"
+                class="sc-fznyAO eNAZql"
               >
                 15 July
               </p>
             </div>
             <div
-              class="sc-fzozJi enNSzg"
+              class="sc-fznKkj iOdcne"
             >
               <div
-                class="sc-AxhUy bMuWrA"
+                class="sc-AxhUy kdVsNk single-tag"
                 color="#3F51B5"
               >
                 <span>
@@ -188,28 +354,28 @@ exports[`NotesPage matches snapshot 1`] = `
         href="/notes/4"
       >
         <article
-          class="sc-AxgMl ctLGla"
+          class="sc-fzoLsD fKiHzN"
         >
           <div
-            class="sc-AxheI dcxLSd"
+            class="sc-fzpans eVhIQM"
           >
             <div>
               <h5
-                class="sc-Axmtr cjcDTI"
+                class="sc-fzplWN ifFpiT"
               >
                 Work shit
               </h5>
               <p
-                class="sc-AxmLO jHEgVD"
+                class="sc-fznyAO eNAZql"
               >
                 15 July
               </p>
             </div>
             <div
-              class="sc-fzozJi enNSzg"
+              class="sc-fznKkj iOdcne"
             >
               <div
-                class="sc-AxhUy NDibX"
+                class="sc-AxhUy bpFPFb single-tag"
                 color="#9C27B0"
               >
                 <span>
@@ -217,7 +383,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy bTmBDv"
+                class="sc-AxhUy byplBL single-tag"
                 color="#FF9800"
               >
                 <span>
@@ -225,7 +391,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy KAbQL"
+                class="sc-AxhUy gXfeNz single-tag"
                 color="#4CAF50"
               >
                 <span>
@@ -240,25 +406,25 @@ exports[`NotesPage matches snapshot 1`] = `
         href="/notes/5"
       >
         <article
-          class="sc-AxgMl ctLGla"
+          class="sc-fzoLsD fKiHzN"
         >
           <div
-            class="sc-AxheI dcxLSd"
+            class="sc-fzpans eVhIQM"
           >
             <div>
               <h5
-                class="sc-Axmtr cjcDTI"
+                class="sc-fzplWN ifFpiT"
               >
                 Post 129
               </h5>
               <p
-                class="sc-AxmLO jHEgVD"
+                class="sc-fznyAO eNAZql"
               >
                 7 May
               </p>
             </div>
             <div
-              class="sc-fzozJi enNSzg"
+              class="sc-fznKkj iOdcne"
             />
           </div>
         </article>
@@ -268,31 +434,224 @@ exports[`NotesPage matches snapshot 1`] = `
 </div>
 `;
 
+exports[`NotesSettings matches snashot 1`] = `
+<div>
+  <svg
+    class="settings-icon"
+  >
+    settings.svg
+  </svg>
+  <div
+    class="sc-AxjAm bgluyb"
+  >
+    <h2
+      class="sc-AxiKw jzoYkp"
+    >
+      Settings
+    </h2>
+    <div
+      class="sc-AxhCb iGvJwE"
+    >
+      <div
+        class="sc-AxgMl ibGeUx"
+      >
+        <label
+          class="sc-AxheI btNIfl"
+          for="sort-by"
+        >
+          Sort by
+        </label>
+        <div
+          class="sc-Axmtr iPljch"
+        >
+          <div
+            class="MuiInputBase-root MuiInput-root"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="sort-by"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="sort-by"
+              role="button"
+              tabindex="0"
+            >
+              Date
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="date"
+            />
+            <svg
+              class="MuiSelect-icon"
+            >
+              chevron.svg
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxgMl ibGeUx"
+      >
+        <label
+          class="sc-AxheI btNIfl"
+          for="font-size"
+        >
+          Font size
+        </label>
+        <div
+          class="sc-Axmtr iPljch"
+        >
+          <div
+            class="MuiInputBase-root MuiInput-root"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="font-size"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="font-size"
+              role="button"
+              tabindex="0"
+            >
+              Medium
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="medium"
+            />
+            <svg
+              class="MuiSelect-icon"
+            >
+              chevron.svg
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxgMl ibGeUx"
+      >
+        <label
+          class="sc-AxheI btNIfl"
+        >
+          Tags
+        </label>
+        <span
+          class="sc-fzozJi htjloa"
+        >
+          <svg>
+            plus.svg
+          </svg>
+        </span>
+        <div
+          class="sc-Axmtr iPljch"
+        >
+          Click to edit
+        </div>
+        <div
+          class="sc-AxmLO jasIBP"
+        >
+          <div
+            class="sc-AxhUy gNVqIy single-tag"
+            color="#F44336"
+          >
+            <span>
+              Primary
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy bOdUof single-tag"
+            color="#E91E63"
+          >
+            <span>
+              Secondary
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy iyFkZJ single-tag"
+            color="#607D8B"
+          >
+            <span>
+              Studies
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy kVXffT single-tag"
+            color="#00BCD4"
+          >
+            <span>
+              School
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy kdVsNk single-tag"
+            color="#3F51B5"
+          >
+            <span>
+              Random
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy bpFPFb single-tag"
+            color="#9C27B0"
+          >
+            <span>
+              Work
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy byplBL single-tag"
+            color="#FF9800"
+          >
+            <span>
+              Coding
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy gXfeNz single-tag"
+            color="#4CAF50"
+          >
+            <span>
+              Stuff
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-AxirZ gpexXZ"
+  />
+</div>
+`;
+
 exports[`SingleNote matches snapshot 1`] = `
 <div>
   <article
-    class="sc-AxgMl ctLGla"
+    class="sc-fzoLsD fKiHzN"
   >
     <div
-      class="sc-AxheI dcxLSd"
+      class="sc-fzpans eVhIQM"
     >
       <div>
         <h5
-          class="sc-Axmtr cjcDTI"
+          class="sc-fzplWN ifFpiT"
         >
           Lista de compras
         </h5>
         <p
-          class="sc-AxmLO jHEgVD"
+          class="sc-fznyAO eNAZql"
         >
           20 July
         </p>
       </div>
       <div
-        class="sc-fzozJi enNSzg"
+        class="sc-fznKkj iOdcne"
       >
         <div
-          class="sc-AxhUy jKtFkG"
+          class="sc-AxhUy gNVqIy single-tag"
           color="#F44336"
         >
           <span>
@@ -300,7 +659,7 @@ exports[`SingleNote matches snapshot 1`] = `
           </span>
         </div>
         <div
-          class="sc-AxhUy cecHzH"
+          class="sc-AxhUy bOdUof single-tag"
           color="#E91E63"
         >
           <span>

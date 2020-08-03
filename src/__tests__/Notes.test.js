@@ -2,7 +2,8 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import NotesPage from '../components/notes/NotesPage'
 import SingleNote from '../components/notes/SingleNote'
-import { notes } from '../assets/fakeData'
+import NotesSettings from '../components/notes/NotesSettings'
+import { notes, notesTags } from '../assets/fakeData'
 import { BrowserRouter } from 'react-router-dom'
 
 describe('NotesPage', () => {
@@ -55,5 +56,30 @@ describe('SingleNote', () => {
     expect(getByText('20 July')).toBeInTheDocument()
     expect(getByText('Primary')).toBeInTheDocument()
     expect(getByText('Secondary')).toBeInTheDocument()
+  })
+})
+
+describe('NotesSettings', () => {
+  it('matches snashot', () => {
+    const { container } = render(<NotesSettings tags={notesTags} />)
+
+    expect(container).toMatchSnapshot()
+  })
+
+  it('has all the fields', () => {
+    const { getByText } = render(<NotesSettings tags={notesTags} />)
+
+    expect(getByText('Sort by')).toBeInTheDocument()
+    expect(getByText('Font size')).toBeInTheDocument()
+    expect(getByText('Tags')).toBeInTheDocument()
+  })
+
+  it('shows tags', () => {
+    const { getByText } = render(<NotesSettings tags={notesTags} />)
+
+    expect(getByText('Primary')).toBeInTheDocument()
+    expect(getByText('Secondary')).toBeInTheDocument()
+    expect(getByText('Work')).toBeInTheDocument()
+    expect(getByText('Stuff')).toBeInTheDocument()
   })
 })

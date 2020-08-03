@@ -6,6 +6,7 @@ const theme = {
   spacingL: '9rem',
   spacingXL: '12rem',
   spacingXXL: '15rem',
+  fontFamily: '"Poppins", sans-serif',
   fontExtraLight: 200,
   fontLight: 300,
   fontRegular: 400,

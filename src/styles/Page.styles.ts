@@ -43,9 +43,8 @@ const PageHeader__View__Counter = styled.h3`
 `
 
 const PageHeader__Settings = styled.div`
-  cursor: pointer;
-
-  svg {
+  .settings-icon {
+    cursor: pointer;
     width: 2.9rem;
 
     .svg-fill {
