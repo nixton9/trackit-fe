@@ -6,7 +6,7 @@ import NotesSettings from '../components/notes/NotesSettings'
 import { notes, notesTags } from '../assets/fakeData'
 import { BrowserRouter } from 'react-router-dom'
 
-describe('NotesPage', () => {
+describe('Notes Page', () => {
   it('matches snapshot', () => {
     const { container } = render(
       <BrowserRouter>
@@ -31,12 +31,14 @@ describe('NotesPage', () => {
 describe('SingleNote', () => {
   it('matches snapshot', () => {
     const { container } = render(
-      <SingleNote
-        id={notes[0].id}
-        title={notes[0].title}
-        date={notes[0].date}
-        tags={notes[0].tags}
-      />
+      <BrowserRouter>
+        <SingleNote
+          id={notes[0].id}
+          title={notes[0].title}
+          date={notes[0].date}
+          tags={notes[0].tags}
+        />
+      </BrowserRouter>
     )
 
     expect(container).toMatchSnapshot()
@@ -44,16 +46,18 @@ describe('SingleNote', () => {
 
   it('has all the content of the note', () => {
     const { getByText } = render(
-      <SingleNote
-        id={notes[0].id}
-        title={notes[0].title}
-        date={notes[0].date}
-        tags={notes[0].tags}
-      />
+      <BrowserRouter>
+        <SingleNote
+          id={notes[0].id}
+          title={notes[0].title}
+          date={notes[0].date}
+          tags={notes[0].tags}
+        />
+      </BrowserRouter>
     )
 
     expect(getByText('Lista de compras')).toBeInTheDocument()
-    expect(getByText('20 July')).toBeInTheDocument()
+    expect(getByText('20 Jul')).toBeInTheDocument()
     expect(getByText('Primary')).toBeInTheDocument()
     expect(getByText('Secondary')).toBeInTheDocument()
   })

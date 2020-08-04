@@ -18,3 +18,17 @@ export type NoteTag = {
   name: string
   color: string
 }
+
+export type Task = {
+  id: string | number
+  title: string
+  date: string
+  done: boolean
+  category?: TaskCategory
+}
+
+export type TaskCategory = {
+  id: string | number
+  name: string
+  color: string
+}

@@ -39,7 +39,7 @@ const PageHeader__View__Counter = styled.h3`
   color: ${props => props.theme.mainBlue};
   font-size: 2.4rem;
   font-weight: ${props => props.theme.fontLight};
-  margin-left: ${props => props.theme.spacingXS};
+  margin-left: 2rem;
 `
 
 const PageHeader__Settings = styled.div`

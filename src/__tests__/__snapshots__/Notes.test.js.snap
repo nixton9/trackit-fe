@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotesPage matches snapshot 1`] = `
+exports[`Notes Page matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fznZeY rPRBP"
+    class="sc-fzqBZW aFvVh"
   >
     <h1
-      class="sc-fzokOt gEFtxJ"
+      class="sc-fzqNJr gBBheN"
     >
       Notes
     </h1>
     <div
-      class="sc-fzqBZW bqqVlM"
+      class="sc-fzoyAV caZJLz"
     >
       <div
-        class="sc-fzqNJr gVufqP"
+        class="sc-fzoLag bkLbgZ"
       >
         <div
-          class="sc-fzoyAV cwAuFN"
+          class="sc-fzoXzr izPQNH"
         >
           All
           <svg>
@@ -25,13 +25,13 @@ exports[`NotesPage matches snapshot 1`] = `
           </svg>
         </div>
         <h3
-          class="sc-fzoLag fSFvQg"
+          class="sc-fzpjYC iaMLia"
         >
           5
         </h3>
       </div>
       <div
-        class="sc-fzoXzr bMMYON"
+        class="sc-fznxsB iNwomV"
       >
         <svg
           class="settings-icon"
@@ -39,7 +39,7 @@ exports[`NotesPage matches snapshot 1`] = `
           settings.svg
         </svg>
         <div
-          class="sc-AxjAm bgluyb"
+          class="sc-AxjAm khxSQh"
         >
           <h2
             class="sc-AxiKw jzoYkp"
@@ -59,7 +59,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 Sort by
               </label>
               <div
-                class="sc-Axmtr iPljch"
+                class="sc-Axmtr dWIuPP"
               >
                 <div
                   class="MuiInputBase-root MuiInput-root"
@@ -98,7 +98,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 Font size
               </label>
               <div
-                class="sc-Axmtr iPljch"
+                class="sc-Axmtr dWIuPP"
               >
                 <div
                   class="MuiInputBase-root MuiInput-root"
@@ -135,23 +135,11 @@ exports[`NotesPage matches snapshot 1`] = `
               >
                 Tags
               </label>
-              <span
-                class="sc-fzozJi htjloa"
-              >
-                <svg>
-                  plus.svg
-                </svg>
-              </span>
               <div
-                class="sc-Axmtr iPljch"
-              >
-                Click to edit
-              </div>
-              <div
-                class="sc-AxmLO jasIBP"
+                class="sc-AxmLO fFgNoy"
               >
                 <div
-                  class="sc-AxhUy gNVqIy single-tag"
+                  class="sc-AxhUy kRHjcT single-tag"
                   color="#F44336"
                 >
                   <span>
@@ -159,7 +147,7 @@ exports[`NotesPage matches snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="sc-AxhUy bOdUof single-tag"
+                  class="sc-AxhUy gESsUG single-tag"
                   color="#E91E63"
                 >
                   <span>
@@ -167,7 +155,7 @@ exports[`NotesPage matches snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="sc-AxhUy iyFkZJ single-tag"
+                  class="sc-AxhUy hEWzsc single-tag"
                   color="#607D8B"
                 >
                   <span>
@@ -175,7 +163,7 @@ exports[`NotesPage matches snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="sc-AxhUy kVXffT single-tag"
+                  class="sc-AxhUy kIetSe single-tag"
                   color="#00BCD4"
                 >
                   <span>
@@ -183,7 +171,7 @@ exports[`NotesPage matches snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="sc-AxhUy kdVsNk single-tag"
+                  class="sc-AxhUy xeezF single-tag"
                   color="#3F51B5"
                 >
                   <span>
@@ -191,7 +179,7 @@ exports[`NotesPage matches snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="sc-AxhUy bpFPFb single-tag"
+                  class="sc-AxhUy ktyFwq single-tag"
                   color="#9C27B0"
                 >
                   <span>
@@ -199,7 +187,7 @@ exports[`NotesPage matches snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="sc-AxhUy byplBL single-tag"
+                  class="sc-AxhUy gdgqSe single-tag"
                   color="#FF9800"
                 >
                   <span>
@@ -207,13 +195,20 @@ exports[`NotesPage matches snapshot 1`] = `
                   </span>
                 </div>
                 <div
-                  class="sc-AxhUy gXfeNz single-tag"
+                  class="sc-AxhUy glbvAi single-tag"
                   color="#4CAF50"
                 >
                   <span>
                     Stuff
                   </span>
                 </div>
+                <span
+                  class="sc-fzpans eLxAbI"
+                >
+                  <svg>
+                    plus.svg
+                  </svg>
+                </span>
               </div>
             </div>
           </div>
@@ -224,34 +219,34 @@ exports[`NotesPage matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fzpjYC fwhPAY"
+      class="sc-fznJRM cBIMGX"
     >
-      <a
-        href="/notes/1"
+      <article
+        class="sc-fzplWN fBwfkr"
       >
-        <article
-          class="sc-fzoLsD fKiHzN"
+        <a
+          href="/notes/1"
         >
           <div
-            class="sc-fzpans eVhIQM"
+            class="sc-fznyAO hubYPh"
           >
             <div>
               <h5
-                class="sc-fzplWN ifFpiT"
+                class="sc-fznKkj cEaWPO"
               >
                 Lista de compras
               </h5>
               <p
-                class="sc-fznyAO eNAZql"
+                class="sc-fznZeY kCMyLg"
               >
-                20 July
+                20 Jul
               </p>
             </div>
             <div
-              class="sc-fznKkj iOdcne"
+              class="sc-fzokOt iRHCFN"
             >
               <div
-                class="sc-AxhUy gNVqIy single-tag"
+                class="sc-AxhUy kRHjcT single-tag"
                 color="#F44336"
               >
                 <span>
@@ -259,7 +254,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy bOdUof single-tag"
+                class="sc-AxhUy gESsUG single-tag"
                 color="#E91E63"
               >
                 <span>
@@ -268,34 +263,34 @@ exports[`NotesPage matches snapshot 1`] = `
               </div>
             </div>
           </div>
-        </article>
-      </a>
-      <a
-        href="/notes/2"
+        </a>
+      </article>
+      <article
+        class="sc-fzplWN fBwfkr"
       >
-        <article
-          class="sc-fzoLsD fKiHzN"
+        <a
+          href="/notes/2"
         >
           <div
-            class="sc-fzpans eVhIQM"
+            class="sc-fznyAO hubYPh"
           >
             <div>
               <h5
-                class="sc-fzplWN ifFpiT"
+                class="sc-fznKkj cEaWPO"
               >
                 Apontamentos aula
               </h5>
               <p
-                class="sc-fznyAO eNAZql"
+                class="sc-fznZeY kCMyLg"
               >
-                25 June
+                25 Jun
               </p>
             </div>
             <div
-              class="sc-fznKkj iOdcne"
+              class="sc-fzokOt iRHCFN"
             >
               <div
-                class="sc-AxhUy iyFkZJ single-tag"
+                class="sc-AxhUy hEWzsc single-tag"
                 color="#607D8B"
               >
                 <span>
@@ -303,7 +298,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy kVXffT single-tag"
+                class="sc-AxhUy kIetSe single-tag"
                 color="#00BCD4"
               >
                 <span>
@@ -312,34 +307,34 @@ exports[`NotesPage matches snapshot 1`] = `
               </div>
             </div>
           </div>
-        </article>
-      </a>
-      <a
-        href="/notes/3"
+        </a>
+      </article>
+      <article
+        class="sc-fzplWN fBwfkr"
       >
-        <article
-          class="sc-fzoLsD fKiHzN"
+        <a
+          href="/notes/3"
         >
           <div
-            class="sc-fzpans eVhIQM"
+            class="sc-fznyAO hubYPh"
           >
             <div>
               <h5
-                class="sc-fzplWN ifFpiT"
+                class="sc-fznKkj cEaWPO"
               >
                 Random shit
               </h5>
               <p
-                class="sc-fznyAO eNAZql"
+                class="sc-fznZeY kCMyLg"
               >
-                15 July
+                15 Jul
               </p>
             </div>
             <div
-              class="sc-fznKkj iOdcne"
+              class="sc-fzokOt iRHCFN"
             >
               <div
-                class="sc-AxhUy kdVsNk single-tag"
+                class="sc-AxhUy xeezF single-tag"
                 color="#3F51B5"
               >
                 <span>
@@ -348,34 +343,34 @@ exports[`NotesPage matches snapshot 1`] = `
               </div>
             </div>
           </div>
-        </article>
-      </a>
-      <a
-        href="/notes/4"
+        </a>
+      </article>
+      <article
+        class="sc-fzplWN fBwfkr"
       >
-        <article
-          class="sc-fzoLsD fKiHzN"
+        <a
+          href="/notes/4"
         >
           <div
-            class="sc-fzpans eVhIQM"
+            class="sc-fznyAO hubYPh"
           >
             <div>
               <h5
-                class="sc-fzplWN ifFpiT"
+                class="sc-fznKkj cEaWPO"
               >
                 Work shit
               </h5>
               <p
-                class="sc-fznyAO eNAZql"
+                class="sc-fznZeY kCMyLg"
               >
-                15 July
+                15 Jul
               </p>
             </div>
             <div
-              class="sc-fznKkj iOdcne"
+              class="sc-fzokOt iRHCFN"
             >
               <div
-                class="sc-AxhUy bpFPFb single-tag"
+                class="sc-AxhUy ktyFwq single-tag"
                 color="#9C27B0"
               >
                 <span>
@@ -383,7 +378,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy byplBL single-tag"
+                class="sc-AxhUy gdgqSe single-tag"
                 color="#FF9800"
               >
                 <span>
@@ -391,7 +386,7 @@ exports[`NotesPage matches snapshot 1`] = `
                 </span>
               </div>
               <div
-                class="sc-AxhUy gXfeNz single-tag"
+                class="sc-AxhUy glbvAi single-tag"
                 color="#4CAF50"
               >
                 <span>
@@ -400,35 +395,35 @@ exports[`NotesPage matches snapshot 1`] = `
               </div>
             </div>
           </div>
-        </article>
-      </a>
-      <a
-        href="/notes/5"
+        </a>
+      </article>
+      <article
+        class="sc-fzplWN fBwfkr"
       >
-        <article
-          class="sc-fzoLsD fKiHzN"
+        <a
+          href="/notes/5"
         >
           <div
-            class="sc-fzpans eVhIQM"
+            class="sc-fznyAO hubYPh"
           >
             <div>
               <h5
-                class="sc-fzplWN ifFpiT"
+                class="sc-fznKkj cEaWPO"
               >
                 Post 129
               </h5>
               <p
-                class="sc-fznyAO eNAZql"
+                class="sc-fznZeY kCMyLg"
               >
                 7 May
               </p>
             </div>
             <div
-              class="sc-fznKkj iOdcne"
+              class="sc-fzokOt iRHCFN"
             />
           </div>
-        </article>
-      </a>
+        </a>
+      </article>
     </section>
   </div>
 </div>
@@ -442,7 +437,7 @@ exports[`NotesSettings matches snashot 1`] = `
     settings.svg
   </svg>
   <div
-    class="sc-AxjAm bgluyb"
+    class="sc-AxjAm khxSQh"
   >
     <h2
       class="sc-AxiKw jzoYkp"
@@ -462,7 +457,7 @@ exports[`NotesSettings matches snashot 1`] = `
           Sort by
         </label>
         <div
-          class="sc-Axmtr iPljch"
+          class="sc-Axmtr dWIuPP"
         >
           <div
             class="MuiInputBase-root MuiInput-root"
@@ -501,7 +496,7 @@ exports[`NotesSettings matches snashot 1`] = `
           Font size
         </label>
         <div
-          class="sc-Axmtr iPljch"
+          class="sc-Axmtr dWIuPP"
         >
           <div
             class="MuiInputBase-root MuiInput-root"
@@ -538,23 +533,11 @@ exports[`NotesSettings matches snashot 1`] = `
         >
           Tags
         </label>
-        <span
-          class="sc-fzozJi htjloa"
-        >
-          <svg>
-            plus.svg
-          </svg>
-        </span>
         <div
-          class="sc-Axmtr iPljch"
-        >
-          Click to edit
-        </div>
-        <div
-          class="sc-AxmLO jasIBP"
+          class="sc-AxmLO fFgNoy"
         >
           <div
-            class="sc-AxhUy gNVqIy single-tag"
+            class="sc-AxhUy kRHjcT single-tag"
             color="#F44336"
           >
             <span>
@@ -562,7 +545,7 @@ exports[`NotesSettings matches snashot 1`] = `
             </span>
           </div>
           <div
-            class="sc-AxhUy bOdUof single-tag"
+            class="sc-AxhUy gESsUG single-tag"
             color="#E91E63"
           >
             <span>
@@ -570,7 +553,7 @@ exports[`NotesSettings matches snashot 1`] = `
             </span>
           </div>
           <div
-            class="sc-AxhUy iyFkZJ single-tag"
+            class="sc-AxhUy hEWzsc single-tag"
             color="#607D8B"
           >
             <span>
@@ -578,7 +561,7 @@ exports[`NotesSettings matches snashot 1`] = `
             </span>
           </div>
           <div
-            class="sc-AxhUy kVXffT single-tag"
+            class="sc-AxhUy kIetSe single-tag"
             color="#00BCD4"
           >
             <span>
@@ -586,7 +569,7 @@ exports[`NotesSettings matches snashot 1`] = `
             </span>
           </div>
           <div
-            class="sc-AxhUy kdVsNk single-tag"
+            class="sc-AxhUy xeezF single-tag"
             color="#3F51B5"
           >
             <span>
@@ -594,7 +577,7 @@ exports[`NotesSettings matches snashot 1`] = `
             </span>
           </div>
           <div
-            class="sc-AxhUy bpFPFb single-tag"
+            class="sc-AxhUy ktyFwq single-tag"
             color="#9C27B0"
           >
             <span>
@@ -602,7 +585,7 @@ exports[`NotesSettings matches snashot 1`] = `
             </span>
           </div>
           <div
-            class="sc-AxhUy byplBL single-tag"
+            class="sc-AxhUy gdgqSe single-tag"
             color="#FF9800"
           >
             <span>
@@ -610,13 +593,20 @@ exports[`NotesSettings matches snashot 1`] = `
             </span>
           </div>
           <div
-            class="sc-AxhUy gXfeNz single-tag"
+            class="sc-AxhUy glbvAi single-tag"
             color="#4CAF50"
           >
             <span>
               Stuff
             </span>
           </div>
+          <span
+            class="sc-fzpans eLxAbI"
+          >
+            <svg>
+              plus.svg
+            </svg>
+          </span>
         </div>
       </div>
     </div>
@@ -630,44 +620,48 @@ exports[`NotesSettings matches snashot 1`] = `
 exports[`SingleNote matches snapshot 1`] = `
 <div>
   <article
-    class="sc-fzoLsD fKiHzN"
+    class="sc-fzplWN fBwfkr"
   >
-    <div
-      class="sc-fzpans eVhIQM"
+    <a
+      href="/notes/1"
     >
-      <div>
-        <h5
-          class="sc-fzplWN ifFpiT"
-        >
-          Lista de compras
-        </h5>
-        <p
-          class="sc-fznyAO eNAZql"
-        >
-          20 July
-        </p>
-      </div>
       <div
-        class="sc-fznKkj iOdcne"
+        class="sc-fznyAO hubYPh"
       >
-        <div
-          class="sc-AxhUy gNVqIy single-tag"
-          color="#F44336"
-        >
-          <span>
-            Primary
-          </span>
+        <div>
+          <h5
+            class="sc-fznKkj cEaWPO"
+          >
+            Lista de compras
+          </h5>
+          <p
+            class="sc-fznZeY kCMyLg"
+          >
+            20 Jul
+          </p>
         </div>
         <div
-          class="sc-AxhUy bOdUof single-tag"
-          color="#E91E63"
+          class="sc-fzokOt iRHCFN"
         >
-          <span>
-            Secondary
-          </span>
+          <div
+            class="sc-AxhUy kRHjcT single-tag"
+            color="#F44336"
+          >
+            <span>
+              Primary
+            </span>
+          </div>
+          <div
+            class="sc-AxhUy gESsUG single-tag"
+            color="#E91E63"
+          >
+            <span>
+              Secondary
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   </article>
 </div>
 `;

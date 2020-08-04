@@ -10,10 +10,7 @@ const TagChip = styled.div<TagChipProps>`
   text-align: center;
   padding: 0.3rem 0.9rem;
   border-radius: ${props => props.theme.bigBorderRadius};
-
-  &:not(:last-of-type) {
-    margin-right: ${props => props.theme.spacingXS};
-  }
+  margin-right: ${props => props.theme.spacingXS};
 
   span {
     color: ${props => props.theme.white};

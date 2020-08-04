@@ -11,7 +11,7 @@ const DrawerContainer = styled.div<DrawerContainerProps>`
   right: 0;
   min-height: 20vh;
   max-height: 80vh;
-  padding: ${props => props.theme.spacingS};
+  padding: ${props => props.theme.spacingS} 4rem;
   background: ${props => props.theme.mainGradient};
   border-top-left-radius: ${props => props.theme.mainBorderRadius};
   border-top-right-radius: ${props => props.theme.mainBorderRadius};

@@ -33,7 +33,6 @@ const theme = {
     red: '#F44336',
     pink: '#E91E63',
     purple: '#9C27B0',
-    deepPurple: '#673AB7',
     indigo: '#3F51B5',
     blue: '#2196F3',
     blueGrey: '#607D8B',

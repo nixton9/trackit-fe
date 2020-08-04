@@ -4,6 +4,10 @@ const SingleNoteContainer = styled.article`
   width: 100%;
   padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
   border-top: 1px solid ${props => props.theme.greyishBlue};
+
+  &:last-child {
+    border-bottom: 1px solid ${props => props.theme.greyishBlue};
+  }
 `
 
 const SingleNoteFlex = styled.div`

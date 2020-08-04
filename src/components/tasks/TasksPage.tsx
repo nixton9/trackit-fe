@@ -1,39 +1,40 @@
 import React from 'react'
-import NotesSettings from './NotesSettings'
-import SingleNote from './SingleNote'
-import { notes, notesTags } from '../../assets/fakeData'
+import TasksSettings from './TasksSettings'
+import SingleTask from './SingleTask'
+import { tasks, tasksCategories } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
-import { Note } from '../../utils/ModuleTypes'
+import { Task } from '../../utils/ModuleTypes'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 
-const NotesPage: React.FC = () => {
+const TasksPage: React.FC = () => {
   return (
     <Styled.PageContainer>
-      <Styled.PageTitle>Notes</Styled.PageTitle>
+      <Styled.PageTitle>Tasks</Styled.PageTitle>
 
       <Styled.PageHeader>
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
-            All
+            Today
             <ChevronIcon />
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
-            {notes.length}
+            {tasks.length}
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
-          <NotesSettings tags={notesTags} />
+          <TasksSettings categories={tasksCategories} />
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {(notes as Note[]).map(note => (
-          <SingleNote
-            key={note.id}
-            id={note.id}
-            title={note.title}
-            date={note.date}
-            tags={note.tags}
+        {(tasks as Task[]).map(task => (
+          <SingleTask
+            key={task.id}
+            id={task.id}
+            title={task.title}
+            date={task.date}
+            done={task.done}
+            category={task.category}
           />
         ))}
       </Styled.PageContent>
@@ -41,4 +42,4 @@ const NotesPage: React.FC = () => {
   )
 }
 
-export default NotesPage
+export default TasksPage

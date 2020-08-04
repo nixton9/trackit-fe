@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import Drawer from '../misc/Drawer'
-import Tag from './Tag'
 import { SelectMenu } from '../misc/SelectMenu'
 import { Styled } from '../../styles/Settings.styles'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
-import { NoteTag } from '../../utils/ModuleTypes'
+import { TaskCategory } from '../../utils/ModuleTypes'
 
 const sortByOptions = [
   { val: 'date', label: 'Date' },
@@ -19,11 +18,11 @@ const fontSizeOptions = [
   { val: 'large', label: 'Large' }
 ]
 
-type NotesSettingsProps = {
-  tags: NoteTag[]
+type TaskSettingsProps = {
+  categories: TaskCategory[]
 }
 
-const NotesSettings: React.FC<NotesSettingsProps> = ({ tags }) => {
+const TaskSettings: React.FC<TaskSettingsProps> = ({ categories }) => {
   const [open, setOpen, overlayEl] = useToggleElement()
   const [sortBy, setSortBy] = useState('date')
   const [fontSize, setFontSize] = useState('medium')
@@ -68,25 +67,22 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({ tags }) => {
         </Styled.SettingsBlock>
 
         <Styled.SettingsBlock>
-          <Styled.SettingsBlock__Label>Tags</Styled.SettingsBlock__Label>
-          <Styled.SettingsBlock__Tags>
-            {tags &&
-              tags.map(tag => (
-                <Tag
-                  key={tag.id}
-                  id={tag.id}
-                  name={tag.name}
-                  color={tag.color}
-                />
+          <Styled.SettingsBlock__Label>Categories</Styled.SettingsBlock__Label>
+          <Styled.SettingsBlock__Categories>
+            {categories &&
+              categories.map(cat => (
+                <Styled.SettingsBlock__Category color={cat.color} key={cat.id}>
+                  {cat.name}
+                </Styled.SettingsBlock__Category>
               ))}
             <Styled.SettingsBlock__Icon>
               <PlusIcon />
             </Styled.SettingsBlock__Icon>
-          </Styled.SettingsBlock__Tags>
+          </Styled.SettingsBlock__Categories>
         </Styled.SettingsBlock>
       </Drawer>
     </>
   )
 }
 
-export default NotesSettings
+export default TaskSettings
