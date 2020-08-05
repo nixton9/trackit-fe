@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Home from './Home'
 import NotesPage from './notes/NotesPage'
 import TasksPage from './tasks/TasksPage'
+import ExpensesPage from './expenses/ExpensesPage'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Sidebar from './misc/Sidebar'
@@ -37,6 +38,9 @@ const App: React.FC = () => {
               </Route>
               <Route exact path="/tasks">
                 <TasksPage />
+              </Route>
+              <Route exact path="/expenses">
+                <ExpensesPage />
               </Route>
             </Switch>
           </>

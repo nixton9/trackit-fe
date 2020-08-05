@@ -32,3 +32,17 @@ export type TaskCategory = {
   name: string
   color: string
 }
+
+export type Expense = {
+  id: string | number
+  title: string
+  date: string
+  value: number
+  category: ExpenseCategory
+}
+
+export type ExpenseCategory = {
+  id: string | number
+  name: string
+  color: string
+}

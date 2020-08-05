@@ -1,75 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SingleTask matches snapshot 1`] = `
-<div>
-  <article
-    class="sc-fzpans gHCdfm"
-  >
-    <div
-      class="sc-fzplWN gwxuzL"
-    >
-      <div>
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <h5
-            class="sc-fznyAO drGMcz"
-          >
-            Ir às compras
-          </h5>
-          <h6
-            class="sc-fznZeY cjOYaZ"
-            color="#673AB7"
-          >
-            Waiting for
-          </h6>
-        </div>
-        <p
-          class="sc-fznKkj ihavmM"
-        >
-          20 Jul
-        </p>
-      </div>
-      <div
-        class="sc-fzokOt emMCxO"
-      />
-    </div>
-  </article>
-</div>
-`;
-
-exports[`Tasks Page matches snapshot 1`] = `
+exports[`Expenses Page matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fzqBZW aFvVh"
+    class="sc-fzokOt fujkLE"
   >
     <h1
-      class="sc-fzqNJr gBBheN"
+      class="sc-fzqBZW liUzGU"
     >
-      Tasks
+      Expenses
     </h1>
     <div
-      class="sc-fzoyAV caZJLz"
+      class="sc-fzqNJr GGXwJ"
     >
       <div
-        class="sc-fzoLag bkLbgZ"
+        class="sc-fzoyAV dEYEJJ"
       >
         <div
-          class="sc-fzoXzr izPQNH"
+          class="sc-fzoLag hMQzUV"
         >
-          Today
+          01 Aug
+           - 
+          31 Aug
           <svg>
             chevron.svg
           </svg>
         </div>
         <h3
-          class="sc-fzpjYC iaMLia"
+          class="sc-fzoXzr ddBcip"
         >
-          7
+          346.5
+          $
         </h3>
       </div>
       <div
-        class="sc-fznxsB iNwomV"
+        class="sc-fzpjYC ehHbxC"
       >
         <svg
           class="settings-icon"
@@ -92,9 +57,9 @@ exports[`Tasks Page matches snapshot 1`] = `
             >
               <label
                 class="sc-AxgMl fHkhzP"
-                for="sort-by"
+                for="currency"
               >
-                Sort by
+                Currency
               </label>
               <div
                 class="sc-AxheI hCWMTo"
@@ -104,19 +69,19 @@ exports[`Tasks Page matches snapshot 1`] = `
                 >
                   <div
                     aria-haspopup="listbox"
-                    aria-labelledby="sort-by"
+                    aria-labelledby="currency"
                     class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                    id="sort-by"
+                    id="currency"
                     role="button"
                     tabindex="0"
                   >
-                    Date
+                    Euro €
                   </div>
                   <input
                     aria-hidden="true"
                     class="MuiSelect-nativeInput"
                     tabindex="-1"
-                    value="date"
+                    value="euro"
                   />
                   <svg
                     class="MuiSelect-icon"
@@ -180,31 +145,37 @@ exports[`Tasks Page matches snapshot 1`] = `
                   class="sc-fzozJi ihgPmv"
                   color="#673AB7"
                 >
-                  Waiting for
+                  Transportes
                 </p>
                 <p
                   class="sc-fzozJi gqjDvs"
                   color="#FFC107"
                 >
-                  House
+                  Saúde
                 </p>
                 <p
                   class="sc-fzozJi fKpEFM"
                   color="#FF9800"
                 >
-                  Trackit
+                  Casa
                 </p>
                 <p
                   class="sc-fzozJi dNhvgN"
                   color="#9E9E9E"
                 >
-                  Stuff
+                  Vestuário
                 </p>
                 <p
                   class="sc-fzozJi tItWo"
                   color="#E91E63"
                 >
-                  Personal
+                  Educação
+                </p>
+                <p
+                  class="sc-fzozJi bTUfLY"
+                  color="#4CAF50"
+                >
+                  Lazer
                 </p>
                 <span
                   class="sc-fzoLsD bpeBKU"
@@ -223,227 +194,229 @@ exports[`Tasks Page matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fznJRM cBIMGX"
+      class="sc-fznxsB ekCFRb"
     >
-      <article
-        class="sc-fzpans gHCdfm"
+      <div
+        class="sc-fznJRM hrVNYF"
       >
-        <div
-          class="sc-fzplWN gwxuzL"
+        <h4
+          class="sc-fznWqX iThsLz"
         >
-          <div>
+          Yesterday
+        </h4>
+        <h4
+          class="sc-fzoiQi hPPUrB"
+        >
+          <article
+            class="sc-fzpans iUBLKk"
+          >
             <div
-              class="sc-fzplWN gwxuzL"
+              class="sc-fzplWN bcoWYt"
             >
               <h5
                 class="sc-fznyAO drGMcz"
               >
-                Ir às compras
+                Conta Hospital
               </h5>
               <h6
-                class="sc-fznZeY cjOYaZ"
-                color="#673AB7"
-              >
-                Waiting for
-              </h6>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              20 Jul
-            </p>
-          </div>
-          <div
-            class="sc-fzokOt emMCxO"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Dar de comer às gatas
-              </h5>
-              <h6
-                class="sc-fznZeY ekLkIy"
+                class="sc-fznKkj boiCmC"
                 color="#FFC107"
               >
-                House
+                Saúde
               </h6>
+              <p
+                class="sc-fznZeY kvxEPh"
+              >
+                57.75
+                $
+              </p>
             </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              03 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzokOt emMCxO"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
+          </article>
+        </h4>
+      </div>
+      <div
+        class="sc-fznJRM hrVNYF"
       >
-        <div
-          class="sc-fzplWN gwxuzL"
+        <h4
+          class="sc-fznWqX iThsLz"
         >
-          <div>
+          Today
+        </h4>
+        <h4
+          class="sc-fzoiQi hPPUrB"
+        >
+          <article
+            class="sc-fzpans iUBLKk"
+          >
             <div
-              class="sc-fzplWN gwxuzL"
+              class="sc-fzplWN bcoWYt"
             >
               <h5
                 class="sc-fznyAO drGMcz"
               >
-                Entregar trabalho
-              </h5>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              Yesterday
-            </p>
-          </div>
-          <div
-            class="sc-fzokOt emMCxO"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Fazer wireframe da App
+                Compras Continente
               </h5>
               <h6
-                class="sc-fznZeY gooBaK"
+                class="sc-fznKkj cCeimi"
                 color="#FF9800"
               >
-                Trackit
+                Casa
               </h6>
+              <p
+                class="sc-fznZeY kvxEPh"
+              >
+                57.75
+                $
+              </p>
             </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              Today
-            </p>
-          </div>
-          <div
-            class="sc-fzokOt emMCxO"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
+          </article>
+          <article
+            class="sc-fzpans iUBLKk"
+          >
             <div
-              class="sc-fzplWN gwxuzL"
+              class="sc-fzplWN bcoWYt"
             >
               <h5
                 class="sc-fznyAO drGMcz"
               >
-                Fazer design da App
+                Gasóleo
               </h5>
               <h6
-                class="sc-fznZeY gooBaK"
-                color="#FF9800"
+                class="sc-fznKkj jlOxGp"
+                color="#673AB7"
               >
-                Trackit
+                Transportes
               </h6>
+              <p
+                class="sc-fznZeY kvxEPh"
+              >
+                57.75
+                $
+              </p>
             </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              Tomorrow
-            </p>
-          </div>
-          <div
-            class="sc-fzokOt emMCxO"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
+          </article>
+        </h4>
+      </div>
+      <div
+        class="sc-fznJRM hrVNYF"
       >
-        <div
-          class="sc-fzplWN gwxuzL"
+        <h4
+          class="sc-fznWqX iThsLz"
         >
-          <div>
+          07 Aug
+        </h4>
+        <h4
+          class="sc-fzoiQi hPPUrB"
+        >
+          <article
+            class="sc-fzpans iUBLKk"
+          >
             <div
-              class="sc-fzplWN gwxuzL"
+              class="sc-fzplWN bcoWYt"
             >
               <h5
                 class="sc-fznyAO drGMcz"
               >
-                Estudar React
+                Compras Pull&Bear
               </h5>
+              <h6
+                class="sc-fznKkj eseEFz"
+                color="#9E9E9E"
+              >
+                Vestuário
+              </h6>
+              <p
+                class="sc-fznZeY kvxEPh"
+              >
+                57.75
+                $
+              </p>
             </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              07 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzokOt emMCxO"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
+          </article>
+        </h4>
+      </div>
+      <div
+        class="sc-fznJRM hrVNYF"
       >
-        <div
-          class="sc-fzplWN gwxuzL"
+        <h4
+          class="sc-fznWqX iThsLz"
         >
-          <div>
+          08 Aug
+        </h4>
+        <h4
+          class="sc-fzoiQi hPPUrB"
+        >
+          <article
+            class="sc-fzpans iUBLKk"
+          >
             <div
-              class="sc-fzplWN gwxuzL"
+              class="sc-fzplWN bcoWYt"
             >
               <h5
                 class="sc-fznyAO drGMcz"
               >
-                Esta não devia aparecer
+                Livro Amazon
               </h5>
+              <h6
+                class="sc-fznKkj jPYuXG"
+                color="#E91E63"
+              >
+                Educação
+              </h6>
+              <p
+                class="sc-fznZeY kvxEPh"
+              >
+                57.75
+                $
+              </p>
             </div>
-            <p
-              class="sc-fznKkj ihavmM"
+          </article>
+        </h4>
+      </div>
+      <div
+        class="sc-fznJRM hrVNYF"
+      >
+        <h4
+          class="sc-fznWqX iThsLz"
+        >
+          10 Aug
+        </h4>
+        <h4
+          class="sc-fzoiQi hPPUrB"
+        >
+          <article
+            class="sc-fzpans iUBLKk"
+          >
+            <div
+              class="sc-fzplWN bcoWYt"
             >
-              08 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzokOt emMCxO"
-          />
-        </div>
-      </article>
+              <h5
+                class="sc-fznyAO drGMcz"
+              >
+                Jogo XBOX
+              </h5>
+              <h6
+                class="sc-fznKkj gfRkGm"
+                color="#4CAF50"
+              >
+                Lazer
+              </h6>
+              <p
+                class="sc-fznZeY kvxEPh"
+              >
+                57.75
+                $
+              </p>
+            </div>
+          </article>
+        </h4>
+      </div>
     </section>
   </div>
 </div>
 `;
 
-exports[`TasksSettings matches snashot 1`] = `
+exports[`ExpensesSettings matches snashot 1`] = `
 <div>
   <svg
     class="settings-icon"
@@ -466,9 +439,9 @@ exports[`TasksSettings matches snashot 1`] = `
       >
         <label
           class="sc-AxgMl fHkhzP"
-          for="sort-by"
+          for="currency"
         >
-          Sort by
+          Currency
         </label>
         <div
           class="sc-AxheI hCWMTo"
@@ -478,19 +451,19 @@ exports[`TasksSettings matches snashot 1`] = `
           >
             <div
               aria-haspopup="listbox"
-              aria-labelledby="sort-by"
+              aria-labelledby="currency"
               class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-              id="sort-by"
+              id="currency"
               role="button"
               tabindex="0"
             >
-              Date
+              Euro €
             </div>
             <input
               aria-hidden="true"
               class="MuiSelect-nativeInput"
               tabindex="-1"
-              value="date"
+              value="euro"
             />
             <svg
               class="MuiSelect-icon"
@@ -550,6 +523,42 @@ exports[`TasksSettings matches snashot 1`] = `
         <div
           class="sc-AxmLO ceYEas"
         >
+          <p
+            class="sc-fzozJi ihgPmv"
+            color="#673AB7"
+          >
+            Transportes
+          </p>
+          <p
+            class="sc-fzozJi gqjDvs"
+            color="#FFC107"
+          >
+            Saúde
+          </p>
+          <p
+            class="sc-fzozJi fKpEFM"
+            color="#FF9800"
+          >
+            Casa
+          </p>
+          <p
+            class="sc-fzozJi dNhvgN"
+            color="#9E9E9E"
+          >
+            Vestuário
+          </p>
+          <p
+            class="sc-fzozJi tItWo"
+            color="#E91E63"
+          >
+            Educação
+          </p>
+          <p
+            class="sc-fzozJi bTUfLY"
+            color="#4CAF50"
+          >
+            Lazer
+          </p>
           <span
             class="sc-fzoLsD bpeBKU"
           >
@@ -564,5 +573,35 @@ exports[`TasksSettings matches snashot 1`] = `
   <div
     class="sc-AxirZ gpexXZ"
   />
+</div>
+`;
+
+exports[`SingleExpense matches snapshot 1`] = `
+<div>
+  <article
+    class="sc-fzpans iUBLKk"
+  >
+    <div
+      class="sc-fzplWN bcoWYt"
+    >
+      <h5
+        class="sc-fznyAO drGMcz"
+      >
+        Conta Hospital
+      </h5>
+      <h6
+        class="sc-fznKkj boiCmC"
+        color="#FFC107"
+      >
+        Saúde
+      </h6>
+      <p
+        class="sc-fznZeY kvxEPh"
+      >
+        57.75
+        $
+      </p>
+    </div>
+  </article>
 </div>
 `;

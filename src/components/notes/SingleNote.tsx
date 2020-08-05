@@ -1,9 +1,9 @@
 import React from 'react'
 import Tag from './Tag'
-import moment from 'moment'
 import { Styled } from '../../styles/SingleNote.styles'
 import { Note } from '../../utils/ModuleTypes'
 import { NavLink } from 'react-router-dom'
+import { displayDateString } from '../../utils/dateHelpers'
 
 const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
   return (
@@ -13,7 +13,7 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
           <div>
             <Styled.SingleNoteTitle>{title}</Styled.SingleNoteTitle>
             <Styled.SingleNoteDate>
-              {moment(date).format('D MMM')}
+              {displayDateString(date)}
             </Styled.SingleNoteDate>
           </div>
           <Styled.SingleNoteTags>

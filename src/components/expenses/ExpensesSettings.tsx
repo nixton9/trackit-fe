@@ -5,11 +5,11 @@ import { Styled } from '../../styles/Settings.styles'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
-import { TaskCategory } from '../../utils/ModuleTypes'
+import { ExpenseCategory } from '../../utils/ModuleTypes'
 
-const sortByOptions = [
-  { val: 'date', label: 'Date' },
-  { val: 'alphabetical', label: 'Alphabetical Order' }
+const currencyOptions = [
+  { val: 'euro', label: 'Euro €' },
+  { val: 'dollar', label: 'Dollar $' }
 ]
 
 const fontSizeOptions = [
@@ -18,17 +18,17 @@ const fontSizeOptions = [
   { val: 'large', label: 'Large' }
 ]
 
-type TasksSettingsProps = {
-  categories: TaskCategory[]
+type ExpensesSettingsProps = {
+  categories: ExpenseCategory[]
 }
 
-const TasksSettings: React.FC<TasksSettingsProps> = ({ categories }) => {
+const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ categories }) => {
   const [open, setOpen, overlayEl] = useToggleElement()
-  const [sortBy, setSortBy] = useState('date')
+  const [currency, setCurrency] = useState('euro')
   const [fontSize, setFontSize] = useState('medium')
 
-  const handleSortByChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-    setSortBy(e.target.value)
+  const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+    setCurrency(e.target.value)
 
   const handleFontSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setFontSize(e.target.value)
@@ -39,15 +39,15 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({ categories }) => {
 
       <Drawer title="Settings" open={open} overlayRef={overlayEl}>
         <Styled.SettingsBlock>
-          <Styled.SettingsBlock__Label htmlFor="sort-by">
-            Sort by
+          <Styled.SettingsBlock__Label htmlFor="currency">
+            Currency
           </Styled.SettingsBlock__Label>
           <Styled.SettingsBlock__Input>
             <SelectMenu
-              id="sort-by"
-              value={sortBy}
-              onChange={handleSortByChange}
-              options={sortByOptions}
+              id="currency"
+              value={currency}
+              onChange={handleCurrencyChange}
+              options={currencyOptions}
             />
           </Styled.SettingsBlock__Input>
         </Styled.SettingsBlock>
@@ -85,4 +85,4 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({ categories }) => {
   )
 }
 
-export default TasksSettings
+export default ExpensesSettings

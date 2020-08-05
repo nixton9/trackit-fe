@@ -1,7 +1,7 @@
 import React from 'react'
 import { Styled } from '../../styles/SingleTask.styles'
 import { Task } from '../../utils/ModuleTypes'
-import moment from 'moment'
+import { displayDateString } from '../../utils/dateHelpers'
 
 const SingleNote: React.FC<Task> = ({ id, title, date, done, category }) => {
   return (
@@ -17,7 +17,7 @@ const SingleNote: React.FC<Task> = ({ id, title, date, done, category }) => {
             )}
           </Styled.SingleTaskFlex>
           <Styled.SingleTaskDate>
-            {moment(date).format('D MMM')}
+            {displayDateString(date)}
           </Styled.SingleTaskDate>
         </div>
         <Styled.SingleTaskComplete />

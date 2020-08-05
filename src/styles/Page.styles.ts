@@ -59,6 +59,27 @@ const PageContent = styled.section`
   height: 75vh;
 `
 
+const PageContent__Day = styled.div`
+  width: 100%;
+  padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
+  border-top: 1px solid ${props => props.theme.greyishBlue};
+
+  &:last-child {
+    border-bottom: 1px solid ${props => props.theme.greyishBlue};
+  }
+`
+
+const PageContent__Day__Title = styled.h4`
+  color: ${props => props.theme.greyishBlue};
+  font-size: 1.5rem;
+  font-weight: ${props => props.theme.fontMedium};
+  margin-bottom: ${props => props.theme.spacingS};
+`
+
+const PageContent__Day__Expenses = styled.h4`
+  padding-left: ${props => props.theme.spacingXS};
+`
+
 export const Styled = {
   PageContainer,
   PageTitle,
@@ -67,5 +88,8 @@ export const Styled = {
   PageHeader__View__Dropdown,
   PageHeader__View__Counter,
   PageHeader__Settings,
-  PageContent
+  PageContent,
+  PageContent__Day,
+  PageContent__Day__Title,
+  PageContent__Day__Expenses
 }
