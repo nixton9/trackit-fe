@@ -1,28 +1,26 @@
 import React from 'react'
-import { Styled } from '../../styles/SingleTask.styles'
+import { Styled } from '../../styles/Single.styles'
 import { Task } from '../../utils/ModuleTypes'
 import { displayDateString } from '../../utils/dateHelpers'
 
 const SingleNote: React.FC<Task> = ({ id, title, date, done, category }) => {
   return (
-    <Styled.SingleTaskContainer>
-      <Styled.SingleTaskFlex>
+    <Styled.SingleContainer>
+      <Styled.SingleFlex>
         <div>
-          <Styled.SingleTaskFlex>
-            <Styled.SingleTaskTitle>{title}</Styled.SingleTaskTitle>
+          <Styled.SingleFlex>
+            <Styled.SingleTitle>{title}</Styled.SingleTitle>
             {category && (
-              <Styled.SingleTaskCategory color={category.color}>
+              <Styled.SingleCategory color={category.color}>
                 {category.name}
-              </Styled.SingleTaskCategory>
+              </Styled.SingleCategory>
             )}
-          </Styled.SingleTaskFlex>
-          <Styled.SingleTaskDate>
-            {displayDateString(date)}
-          </Styled.SingleTaskDate>
+          </Styled.SingleFlex>
+          <Styled.SingleDate>{displayDateString(date)}</Styled.SingleDate>
         </div>
-        <Styled.SingleTaskComplete />
-      </Styled.SingleTaskFlex>
-    </Styled.SingleTaskContainer>
+        <Styled.SingleTask__Complete />
+      </Styled.SingleFlex>
+    </Styled.SingleContainer>
   )
 }
 

@@ -31,7 +31,7 @@ exports[`SingleTask matches snapshot 1`] = `
         </p>
       </div>
       <div
-        class="sc-fzokOt emMCxO"
+        class="sc-fzoyAV lmwFFU"
       />
     </div>
   </article>
@@ -41,21 +41,21 @@ exports[`SingleTask matches snapshot 1`] = `
 exports[`Tasks Page matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fzqBZW aFvVh"
+    class="sc-fzoLag eydcJC"
   >
     <h1
-      class="sc-fzqNJr gBBheN"
+      class="sc-fzoXzr MtNNd"
     >
       Tasks
     </h1>
     <div
-      class="sc-fzoyAV caZJLz"
+      class="sc-fzpjYC gnMnem"
     >
       <div
-        class="sc-fzoLag bkLbgZ"
+        class="sc-fznxsB dsgAhn"
       >
         <div
-          class="sc-fzoXzr izPQNH"
+          class="sc-fznJRM dEkFjf"
         >
           Today
           <svg>
@@ -63,13 +63,13 @@ exports[`Tasks Page matches snapshot 1`] = `
           </svg>
         </div>
         <h3
-          class="sc-fzpjYC iaMLia"
+          class="sc-fznWqX GBHHC"
         >
           7
         </h3>
       </div>
       <div
-        class="sc-fznxsB iNwomV"
+        class="sc-fzoiQi dFUsJk"
       >
         <svg
           class="settings-icon"
@@ -223,7 +223,7 @@ exports[`Tasks Page matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fznJRM cBIMGX"
+      class="sc-fzqARJ elDNLU"
     >
       <article
         class="sc-fzpans gHCdfm"
@@ -254,7 +254,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="sc-fzokOt emMCxO"
+            class="sc-fzoyAV lmwFFU"
           />
         </div>
       </article>
@@ -287,7 +287,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="sc-fzokOt emMCxO"
+            class="sc-fzoyAV lmwFFU"
           />
         </div>
       </article>
@@ -314,7 +314,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="sc-fzokOt emMCxO"
+            class="sc-fzoyAV lmwFFU"
           />
         </div>
       </article>
@@ -347,7 +347,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="sc-fzokOt emMCxO"
+            class="sc-fzoyAV lmwFFU"
           />
         </div>
       </article>
@@ -380,7 +380,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="sc-fzokOt emMCxO"
+            class="sc-fzoyAV lmwFFU"
           />
         </div>
       </article>
@@ -407,7 +407,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="sc-fzokOt emMCxO"
+            class="sc-fzoyAV lmwFFU"
           />
         </div>
       </article>
@@ -434,7 +434,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             </p>
           </div>
           <div
-            class="sc-fzokOt emMCxO"
+            class="sc-fzoyAV lmwFFU"
           />
         </div>
       </article>

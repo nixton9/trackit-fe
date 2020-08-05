@@ -3,21 +3,21 @@
 exports[`Expenses Page matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fzokOt fujkLE"
+    class="sc-fzoLag eydcJC"
   >
     <h1
-      class="sc-fzqBZW liUzGU"
+      class="sc-fzoXzr MtNNd"
     >
       Expenses
     </h1>
     <div
-      class="sc-fzqNJr GGXwJ"
+      class="sc-fzpjYC gnMnem"
     >
       <div
-        class="sc-fzoyAV dEYEJJ"
+        class="sc-fznxsB dsgAhn"
       >
         <div
-          class="sc-fzoLag hMQzUV"
+          class="sc-fznJRM dEkFjf"
         >
           01 Aug
            - 
@@ -27,14 +27,14 @@ exports[`Expenses Page matches snapshot 1`] = `
           </svg>
         </div>
         <h3
-          class="sc-fzoXzr ddBcip"
+          class="sc-fznWqX GBHHC"
         >
           346.5
           $
         </h3>
       </div>
       <div
-        class="sc-fzpjYC ehHbxC"
+        class="sc-fzoiQi dFUsJk"
       >
         <svg
           class="settings-icon"
@@ -194,24 +194,24 @@ exports[`Expenses Page matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fznxsB ekCFRb"
+      class="sc-fzqARJ elDNLU"
     >
       <div
-        class="sc-fznJRM hrVNYF"
+        class="sc-fzqNqU dPyFOh"
       >
         <h4
-          class="sc-fznWqX iThsLz"
+          class="sc-fzoyTs MYaZa"
         >
           Yesterday
         </h4>
         <h4
-          class="sc-fzoiQi hPPUrB"
+          class="sc-fzoNJl gNjhoU"
         >
           <article
-            class="sc-fzpans iUBLKk"
+            class="sc-fzqBZW dBijkG"
           >
             <div
-              class="sc-fzplWN bcoWYt"
+              class="sc-fzplWN gwxuzL"
             >
               <h5
                 class="sc-fznyAO drGMcz"
@@ -219,13 +219,13 @@ exports[`Expenses Page matches snapshot 1`] = `
                 Conta Hospital
               </h5>
               <h6
-                class="sc-fznKkj boiCmC"
+                class="sc-fznZeY ekLkIy"
                 color="#FFC107"
               >
                 Saúde
               </h6>
               <p
-                class="sc-fznZeY kvxEPh"
+                class="sc-fzqNJr hKWXie"
               >
                 57.75
                 $
@@ -235,21 +235,21 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fznJRM hrVNYF"
+        class="sc-fzqNqU dPyFOh"
       >
         <h4
-          class="sc-fznWqX iThsLz"
+          class="sc-fzoyTs MYaZa"
         >
           Today
         </h4>
         <h4
-          class="sc-fzoiQi hPPUrB"
+          class="sc-fzoNJl gNjhoU"
         >
           <article
-            class="sc-fzpans iUBLKk"
+            class="sc-fzqBZW dBijkG"
           >
             <div
-              class="sc-fzplWN bcoWYt"
+              class="sc-fzplWN gwxuzL"
             >
               <h5
                 class="sc-fznyAO drGMcz"
@@ -257,13 +257,13 @@ exports[`Expenses Page matches snapshot 1`] = `
                 Compras Continente
               </h5>
               <h6
-                class="sc-fznKkj cCeimi"
+                class="sc-fznZeY gooBaK"
                 color="#FF9800"
               >
                 Casa
               </h6>
               <p
-                class="sc-fznZeY kvxEPh"
+                class="sc-fzqNJr hKWXie"
               >
                 57.75
                 $
@@ -271,10 +271,10 @@ exports[`Expenses Page matches snapshot 1`] = `
             </div>
           </article>
           <article
-            class="sc-fzpans iUBLKk"
+            class="sc-fzqBZW dBijkG"
           >
             <div
-              class="sc-fzplWN bcoWYt"
+              class="sc-fzplWN gwxuzL"
             >
               <h5
                 class="sc-fznyAO drGMcz"
@@ -282,13 +282,13 @@ exports[`Expenses Page matches snapshot 1`] = `
                 Gasóleo
               </h5>
               <h6
-                class="sc-fznKkj jlOxGp"
+                class="sc-fznZeY cjOYaZ"
                 color="#673AB7"
               >
                 Transportes
               </h6>
               <p
-                class="sc-fznZeY kvxEPh"
+                class="sc-fzqNJr hKWXie"
               >
                 57.75
                 $
@@ -298,21 +298,21 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fznJRM hrVNYF"
+        class="sc-fzqNqU dPyFOh"
       >
         <h4
-          class="sc-fznWqX iThsLz"
+          class="sc-fzoyTs MYaZa"
         >
           07 Aug
         </h4>
         <h4
-          class="sc-fzoiQi hPPUrB"
+          class="sc-fzoNJl gNjhoU"
         >
           <article
-            class="sc-fzpans iUBLKk"
+            class="sc-fzqBZW dBijkG"
           >
             <div
-              class="sc-fzplWN bcoWYt"
+              class="sc-fzplWN gwxuzL"
             >
               <h5
                 class="sc-fznyAO drGMcz"
@@ -320,13 +320,13 @@ exports[`Expenses Page matches snapshot 1`] = `
                 Compras Pull&Bear
               </h5>
               <h6
-                class="sc-fznKkj eseEFz"
+                class="sc-fznZeY kvbuor"
                 color="#9E9E9E"
               >
                 Vestuário
               </h6>
               <p
-                class="sc-fznZeY kvxEPh"
+                class="sc-fzqNJr hKWXie"
               >
                 57.75
                 $
@@ -336,21 +336,21 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fznJRM hrVNYF"
+        class="sc-fzqNqU dPyFOh"
       >
         <h4
-          class="sc-fznWqX iThsLz"
+          class="sc-fzoyTs MYaZa"
         >
           08 Aug
         </h4>
         <h4
-          class="sc-fzoiQi hPPUrB"
+          class="sc-fzoNJl gNjhoU"
         >
           <article
-            class="sc-fzpans iUBLKk"
+            class="sc-fzqBZW dBijkG"
           >
             <div
-              class="sc-fzplWN bcoWYt"
+              class="sc-fzplWN gwxuzL"
             >
               <h5
                 class="sc-fznyAO drGMcz"
@@ -358,13 +358,13 @@ exports[`Expenses Page matches snapshot 1`] = `
                 Livro Amazon
               </h5>
               <h6
-                class="sc-fznKkj jPYuXG"
+                class="sc-fznZeY kLrACO"
                 color="#E91E63"
               >
                 Educação
               </h6>
               <p
-                class="sc-fznZeY kvxEPh"
+                class="sc-fzqNJr hKWXie"
               >
                 57.75
                 $
@@ -374,21 +374,21 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fznJRM hrVNYF"
+        class="sc-fzqNqU dPyFOh"
       >
         <h4
-          class="sc-fznWqX iThsLz"
+          class="sc-fzoyTs MYaZa"
         >
           10 Aug
         </h4>
         <h4
-          class="sc-fzoiQi hPPUrB"
+          class="sc-fzoNJl gNjhoU"
         >
           <article
-            class="sc-fzpans iUBLKk"
+            class="sc-fzqBZW dBijkG"
           >
             <div
-              class="sc-fzplWN bcoWYt"
+              class="sc-fzplWN gwxuzL"
             >
               <h5
                 class="sc-fznyAO drGMcz"
@@ -396,13 +396,13 @@ exports[`Expenses Page matches snapshot 1`] = `
                 Jogo XBOX
               </h5>
               <h6
-                class="sc-fznKkj gfRkGm"
+                class="sc-fznZeY djbAQy"
                 color="#4CAF50"
               >
                 Lazer
               </h6>
               <p
-                class="sc-fznZeY kvxEPh"
+                class="sc-fzqNJr hKWXie"
               >
                 57.75
                 $
@@ -579,10 +579,10 @@ exports[`ExpensesSettings matches snashot 1`] = `
 exports[`SingleExpense matches snapshot 1`] = `
 <div>
   <article
-    class="sc-fzpans iUBLKk"
+    class="sc-fzqBZW dBijkG"
   >
     <div
-      class="sc-fzplWN bcoWYt"
+      class="sc-fzplWN gwxuzL"
     >
       <h5
         class="sc-fznyAO drGMcz"
@@ -590,13 +590,13 @@ exports[`SingleExpense matches snapshot 1`] = `
         Conta Hospital
       </h5>
       <h6
-        class="sc-fznKkj boiCmC"
+        class="sc-fznZeY ekLkIy"
         color="#FFC107"
       >
         Saúde
       </h6>
       <p
-        class="sc-fznZeY kvxEPh"
+        class="sc-fzqNJr hKWXie"
       >
         57.75
         $

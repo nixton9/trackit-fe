@@ -3,21 +3,21 @@
 exports[`Notes Page matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fzqBZW aFvVh"
+    class="sc-fzoXzr jphFpM"
   >
     <h1
-      class="sc-fzqNJr gBBheN"
+      class="sc-fzpjYC lnMTjC"
     >
       Notes
     </h1>
     <div
-      class="sc-fzoyAV caZJLz"
+      class="sc-fznxsB cvPTFV"
     >
       <div
-        class="sc-fzoLag bkLbgZ"
+        class="sc-fznJRM fUFvhP"
       >
         <div
-          class="sc-fzoXzr izPQNH"
+          class="sc-fznWqX dacUcA"
         >
           All
           <svg>
@@ -25,13 +25,13 @@ exports[`Notes Page matches snapshot 1`] = `
           </svg>
         </div>
         <h3
-          class="sc-fzpjYC iaMLia"
+          class="sc-fzoiQi bWwWLQ"
         >
           5
         </h3>
       </div>
       <div
-        class="sc-fznxsB iNwomV"
+        class="sc-fzqARJ irCVwi"
       >
         <svg
           class="settings-icon"
@@ -219,7 +219,7 @@ exports[`Notes Page matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fznJRM cBIMGX"
+      class="sc-fzqNqU cgxesj"
     >
       <article
         class="sc-fzplWN fBwfkr"
@@ -228,7 +228,7 @@ exports[`Notes Page matches snapshot 1`] = `
           href="/notes/1"
         >
           <div
-            class="sc-fznyAO hubYPh"
+            class="sc-fznyAO lkMwHr"
           >
             <div>
               <h5
@@ -243,7 +243,7 @@ exports[`Notes Page matches snapshot 1`] = `
               </p>
             </div>
             <div
-              class="sc-fzokOt iRHCFN"
+              class="sc-fzqBZW fqzjjU"
             >
               <div
                 class="sc-AxhUy kRHjcT single-tag"
@@ -272,7 +272,7 @@ exports[`Notes Page matches snapshot 1`] = `
           href="/notes/2"
         >
           <div
-            class="sc-fznyAO hubYPh"
+            class="sc-fznyAO lkMwHr"
           >
             <div>
               <h5
@@ -287,7 +287,7 @@ exports[`Notes Page matches snapshot 1`] = `
               </p>
             </div>
             <div
-              class="sc-fzokOt iRHCFN"
+              class="sc-fzqBZW fqzjjU"
             >
               <div
                 class="sc-AxhUy hEWzsc single-tag"
@@ -316,7 +316,7 @@ exports[`Notes Page matches snapshot 1`] = `
           href="/notes/3"
         >
           <div
-            class="sc-fznyAO hubYPh"
+            class="sc-fznyAO lkMwHr"
           >
             <div>
               <h5
@@ -331,7 +331,7 @@ exports[`Notes Page matches snapshot 1`] = `
               </p>
             </div>
             <div
-              class="sc-fzokOt iRHCFN"
+              class="sc-fzqBZW fqzjjU"
             >
               <div
                 class="sc-AxhUy xeezF single-tag"
@@ -352,7 +352,7 @@ exports[`Notes Page matches snapshot 1`] = `
           href="/notes/4"
         >
           <div
-            class="sc-fznyAO hubYPh"
+            class="sc-fznyAO lkMwHr"
           >
             <div>
               <h5
@@ -367,7 +367,7 @@ exports[`Notes Page matches snapshot 1`] = `
               </p>
             </div>
             <div
-              class="sc-fzokOt iRHCFN"
+              class="sc-fzqBZW fqzjjU"
             >
               <div
                 class="sc-AxhUy ktyFwq single-tag"
@@ -404,7 +404,7 @@ exports[`Notes Page matches snapshot 1`] = `
           href="/notes/5"
         >
           <div
-            class="sc-fznyAO hubYPh"
+            class="sc-fznyAO lkMwHr"
           >
             <div>
               <h5
@@ -419,7 +419,7 @@ exports[`Notes Page matches snapshot 1`] = `
               </p>
             </div>
             <div
-              class="sc-fzokOt iRHCFN"
+              class="sc-fzqBZW fqzjjU"
             />
           </div>
         </a>
@@ -626,7 +626,7 @@ exports[`SingleNote matches snapshot 1`] = `
       href="/notes/1"
     >
       <div
-        class="sc-fznyAO hubYPh"
+        class="sc-fznyAO lkMwHr"
       >
         <div>
           <h5
@@ -641,7 +641,7 @@ exports[`SingleNote matches snapshot 1`] = `
           </p>
         </div>
         <div
-          class="sc-fzokOt iRHCFN"
+          class="sc-fzqBZW fqzjjU"
         >
           <div
             class="sc-AxhUy kRHjcT single-tag"

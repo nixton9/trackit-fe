@@ -1,22 +1,20 @@
 import React from 'react'
 import Tag from './Tag'
-import { Styled } from '../../styles/SingleNote.styles'
+import { Styled } from '../../styles/Single.styles'
 import { Note } from '../../utils/ModuleTypes'
 import { NavLink } from 'react-router-dom'
 import { displayDateString } from '../../utils/dateHelpers'
 
 const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
   return (
-    <Styled.SingleNoteContainer>
+    <Styled.SingleContainer>
       <NavLink to={`notes/${id}`}>
-        <Styled.SingleNoteFlex>
+        <Styled.SingleFlex>
           <div>
-            <Styled.SingleNoteTitle>{title}</Styled.SingleNoteTitle>
-            <Styled.SingleNoteDate>
-              {displayDateString(date)}
-            </Styled.SingleNoteDate>
+            <Styled.SingleTitle>{title}</Styled.SingleTitle>
+            <Styled.SingleDate>{displayDateString(date)}</Styled.SingleDate>
           </div>
-          <Styled.SingleNoteTags>
+          <Styled.SingleNote__Tags>
             {tags &&
               tags.map(tag => (
                 <Tag
@@ -26,10 +24,10 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
                   color={tag.color}
                 />
               ))}
-          </Styled.SingleNoteTags>
-        </Styled.SingleNoteFlex>
+          </Styled.SingleNote__Tags>
+        </Styled.SingleFlex>
       </NavLink>
-    </Styled.SingleNoteContainer>
+    </Styled.SingleContainer>
   )
 }
 
