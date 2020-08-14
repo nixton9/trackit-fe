@@ -60,21 +60,21 @@ export const tasks = [
   {
     id: 1,
     title: 'Ir às compras',
-    date: '2020-07-20',
+    date: '2020-08-14',
     done: false,
     category: { id: 1, name: 'Waiting for', color: '#673AB7' }
   },
   {
     id: 2,
     title: 'Dar de comer às gatas',
-    date: '2020-08-03',
+    date: '2020-08-13',
     done: false,
     category: { id: 2, name: 'House', color: '#FFC107' }
   },
   {
     id: 3,
     title: 'Entregar trabalho',
-    date: '2020-08-04',
+    date: '2020-08-15',
     done: false
   },
   {

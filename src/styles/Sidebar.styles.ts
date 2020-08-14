@@ -31,7 +31,7 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   transform: ${props => (props.open ? 'translateX(0);' : 'translateX(-101%);')};
   will-change: transform;
   transition: transform 0.2s linear;
-  z-index: 11;
+  z-index: 111;
   overflow: hidden;
   svg {
     .svg-fill {

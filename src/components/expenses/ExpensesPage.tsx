@@ -1,16 +1,16 @@
 import React from 'react'
 import ExpensesSettings from './ExpensesSettings'
 import SingleExpense from './SingleExpense'
-import moment from 'moment'
 import { expenses, expensesCategories } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'
 import { displayDateString } from '../../utils/dateHelpers'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
+import { format, startOfMonth, endOfMonth } from 'date-fns'
 
 const ExpensesPage: React.FC = () => {
-  const startOfMonth = moment().startOf('month').format('DD MMM')
-  const endOfMonth = moment().endOf('month').format('DD MMM')
+  const monthStart = format(startOfMonth(new Date()), 'dd MMM')
+  const monthEnd = format(endOfMonth(new Date()), 'dd MMM')
   const totalExpensesVal = expenses.reduce((acc, obj) => acc + obj.value, 0)
   const expensesDays = Array.from(
     new Set(expenses.map(expense => expense.date))
@@ -22,7 +22,7 @@ const ExpensesPage: React.FC = () => {
       <Styled.PageHeader>
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
-            {startOfMonth} - {endOfMonth}
+            {monthStart} - {monthEnd}
             <ChevronIcon />
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>

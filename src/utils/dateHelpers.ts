@@ -1,25 +1,26 @@
-import moment from 'moment'
 import {
   subDays,
   parse,
   isEqual,
   isSaturday,
   isSunday,
-  isSameDay
+  isSameDay,
+  addDays,
+  format
 } from 'date-fns'
 import { Habit } from './ModuleTypes'
 
 export const parseDate = (date: string) => parse(date, 'yyyy-MM-dd', new Date())
 
 export const displayDateString = (date: string) => {
-  if (moment(date).isSame(moment(), 'day')) {
+  if (isSameDay(parseDate(date), new Date())) {
     return 'Today'
-  } else if (moment(date).isSame(moment().add(1, 'day'), 'day')) {
+  } else if (isSameDay(parseDate(date), addDays(new Date(), 1))) {
     return 'Tomorrow'
-  } else if (moment(date).isSame(moment().subtract(1, 'day'), 'day')) {
+  } else if (isSameDay(parseDate(date), subDays(new Date(), 1))) {
     return 'Yesterday'
   } else {
-    return moment(date).format('DD MMM')
+    return format(parseDate(date), 'dd MMM')
   }
 }
 
