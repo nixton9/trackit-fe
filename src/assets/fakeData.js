@@ -166,3 +166,38 @@ export const expensesCategories = [
   { id: 5, name: 'Educação', color: '#E91E63' },
   { id: 6, name: 'Lazer', color: '#4CAF50' }
 ]
+
+export const habits = [
+  {
+    id: 1,
+    title: 'Fazer exercício',
+    days: [
+      { date: '2020-07-29', done: true },
+      { date: '2020-07-30', done: true },
+      { date: '2020-08-06', done: true },
+      { date: '2020-08-07', done: true },
+      { date: '2020-08-08', done: true },
+      { date: '2020-08-09', done: false },
+      { date: '2020-08-10', done: true },
+      { date: '2020-08-11', done: true },
+      { date: '2020-08-12', done: true },
+      { date: '2020-08-13', done: true },
+      { date: '2020-08-14', done: true },
+      { date: '2020-08-15', done: true },
+      { date: '2020-08-16', done: true },
+      { date: '2020-10-09', done: true },
+      { date: '2020-10-01', done: false }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Fazer dieta',
+    days: [
+      { date: '2020-08-06', done: true },
+      { date: '2020-08-07', done: true },
+      { date: '2020-08-09', done: true },
+      { date: '2020-08-10', done: false },
+      { date: '2020-08-11', done: true }
+    ]
+  }
+]

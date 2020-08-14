@@ -3,6 +3,7 @@ import Home from './Home'
 import NotesPage from './notes/NotesPage'
 import TasksPage from './tasks/TasksPage'
 import ExpensesPage from './expenses/ExpensesPage'
+import HabitsPage from './habits/HabitsPage'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Sidebar from './misc/Sidebar'
@@ -41,6 +42,9 @@ const App: React.FC = () => {
               </Route>
               <Route exact path="/expenses">
                 <ExpensesPage />
+              </Route>
+              <Route exact path="/habits">
+                <HabitsPage />
               </Route>
             </Switch>
           </>

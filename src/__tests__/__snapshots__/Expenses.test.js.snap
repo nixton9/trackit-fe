@@ -27,7 +27,7 @@ exports[`Expenses Page matches snapshot 1`] = `
           </svg>
         </div>
         <h3
-          class="sc-fznWqX GBHHC"
+          class="sc-fznWqX jXPxyW"
         >
           346.5
           $
@@ -202,7 +202,7 @@ exports[`Expenses Page matches snapshot 1`] = `
         <h4
           class="sc-fzoyTs MYaZa"
         >
-          Yesterday
+          04 Aug
         </h4>
         <h4
           class="sc-fzoNJl gNjhoU"
@@ -240,7 +240,7 @@ exports[`Expenses Page matches snapshot 1`] = `
         <h4
           class="sc-fzoyTs MYaZa"
         >
-          Today
+          05 Aug
         </h4>
         <h4
           class="sc-fzoNJl gNjhoU"

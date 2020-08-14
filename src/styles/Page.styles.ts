@@ -40,6 +40,10 @@ const PageHeader__View__Counter = styled.h3`
   font-size: 2.4rem;
   font-weight: ${props => props.theme.fontLight};
   margin-left: 2rem;
+
+  &.smaller {
+    font-size: 1.9rem;
+  }
 `
 
 const PageHeader__Settings = styled.div`

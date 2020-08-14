@@ -63,7 +63,7 @@ exports[`Tasks Page matches snapshot 1`] = `
           </svg>
         </div>
         <h3
-          class="sc-fznWqX GBHHC"
+          class="sc-fznWqX jXPxyW"
         >
           7
         </h3>
@@ -310,7 +310,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             <p
               class="sc-fznKkj ihavmM"
             >
-              Yesterday
+              04 Aug
             </p>
           </div>
           <div
@@ -343,7 +343,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             <p
               class="sc-fznKkj ihavmM"
             >
-              Today
+              05 Aug
             </p>
           </div>
           <div
@@ -376,7 +376,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             <p
               class="sc-fznKkj ihavmM"
             >
-              Tomorrow
+              06 Aug
             </p>
           </div>
           <div

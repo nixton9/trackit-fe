@@ -46,3 +46,9 @@ export type ExpenseCategory = {
   name: string
   color: string
 }
+
+export type Habit = {
+  id: string | number
+  title: string
+  days: { date: string; done: boolean }[] | []
+}
