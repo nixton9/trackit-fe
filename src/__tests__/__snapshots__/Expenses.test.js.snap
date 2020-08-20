@@ -3,38 +3,72 @@
 exports[`Expenses Page matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fzoLag eydcJC"
+    class="sc-fzoXzr jphFpM"
   >
     <h1
-      class="sc-fzoXzr MtNNd"
+      class="sc-fzpjYC lnMTjC"
     >
       Expenses
     </h1>
     <div
-      class="sc-fzpjYC gnMnem"
+      class="sc-fznxsB cvPTFV"
     >
       <div
-        class="sc-fznxsB dsgAhn"
+        class="sc-fznJRM fUFvhP"
       >
         <div
-          class="sc-fznJRM dEkFjf"
+          class="sc-fznWqX cfsIUA"
         >
-          01 Aug
-           - 
-          31 Aug
+          <div
+            class="sc-fzoLag dgnBcS"
+          >
+            <div
+              class="react-datepicker-wrapper"
+            >
+              <div
+                class="react-datepicker__input-container"
+              >
+                <input
+                  class=""
+                  type="text"
+                  value="1 Aug"
+                />
+              </div>
+            </div>
+          </div>
+          <span>
+            -
+          </span>
+          <div
+            class="sc-fzoLag dgnBcS"
+          >
+            <div
+              class="react-datepicker-wrapper"
+            >
+              <div
+                class="react-datepicker__input-container"
+              >
+                <input
+                  class=""
+                  type="text"
+                  value="31 Aug"
+                />
+              </div>
+            </div>
+          </div>
           <svg>
             chevron.svg
           </svg>
         </div>
         <h3
-          class="sc-fznWqX jXPxyW"
+          class="sc-fzoiQi FHcDk"
         >
           346.5
           $
         </h3>
       </div>
       <div
-        class="sc-fzoiQi dFUsJk"
+        class="sc-fzqARJ irCVwi"
       >
         <svg
           class="settings-icon"
@@ -194,18 +228,18 @@ exports[`Expenses Page matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fzqARJ elDNLU"
+      class="sc-fzqNqU cgxesj"
     >
       <div
-        class="sc-fzqNqU dPyFOh"
+        class="sc-fzoyTs invWGD"
       >
         <h4
-          class="sc-fzoyTs MYaZa"
+          class="sc-fzoNJl gOeyto"
         >
           04 Aug
         </h4>
         <h4
-          class="sc-fzoNJl gNjhoU"
+          class="sc-fzoXWK bSYemk"
         >
           <article
             class="sc-fzqBZW dBijkG"
@@ -235,15 +269,15 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fzqNqU dPyFOh"
+        class="sc-fzoyTs invWGD"
       >
         <h4
-          class="sc-fzoyTs MYaZa"
+          class="sc-fzoNJl gOeyto"
         >
           05 Aug
         </h4>
         <h4
-          class="sc-fzoNJl gNjhoU"
+          class="sc-fzoXWK bSYemk"
         >
           <article
             class="sc-fzqBZW dBijkG"
@@ -298,15 +332,15 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fzqNqU dPyFOh"
+        class="sc-fzoyTs invWGD"
       >
         <h4
-          class="sc-fzoyTs MYaZa"
+          class="sc-fzoNJl gOeyto"
         >
           07 Aug
         </h4>
         <h4
-          class="sc-fzoNJl gNjhoU"
+          class="sc-fzoXWK bSYemk"
         >
           <article
             class="sc-fzqBZW dBijkG"
@@ -336,15 +370,15 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fzqNqU dPyFOh"
+        class="sc-fzoyTs invWGD"
       >
         <h4
-          class="sc-fzoyTs MYaZa"
+          class="sc-fzoNJl gOeyto"
         >
           08 Aug
         </h4>
         <h4
-          class="sc-fzoNJl gNjhoU"
+          class="sc-fzoXWK bSYemk"
         >
           <article
             class="sc-fzqBZW dBijkG"
@@ -374,15 +408,15 @@ exports[`Expenses Page matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        class="sc-fzqNqU dPyFOh"
+        class="sc-fzoyTs invWGD"
       >
         <h4
-          class="sc-fzoyTs MYaZa"
+          class="sc-fzoNJl gOeyto"
         >
           10 Aug
         </h4>
         <h4
-          class="sc-fzoNJl gNjhoU"
+          class="sc-fzoXWK bSYemk"
         >
           <article
             class="sc-fzqBZW dBijkG"

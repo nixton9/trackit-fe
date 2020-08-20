@@ -185,6 +185,7 @@ export const habits = [
       { date: '2020-08-14', done: true },
       { date: '2020-08-15', done: true },
       { date: '2020-08-16', done: true },
+      { date: '2020-08-17', done: true },
       { date: '2020-10-09', done: true },
       { date: '2020-10-01', done: false }
     ]

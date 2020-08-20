@@ -80,21 +80,12 @@ exports[`CalendarAll matches snapshot 1`] = `
       >
          
         <div
-          class="sc-fzozJi ccINIa not-done"
+          class="sc-fzozJi ccINIa done strike strike-sun"
         >
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            9
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            10
+            16
           </span>
         </div>
         <div
@@ -103,43 +94,52 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            11
+            17
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa done strike"
+          class="sc-fzozJi ccINIa"
         >
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            12
+            18
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa done strike"
+          class="sc-fzozJi ccINIa"
         >
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            13
+            19
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa today done strike"
+          class="sc-fzozJi ccINIa today "
         >
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            14
+            20
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa done strike strike-sat"
+          class="sc-fzozJi ccINIa"
         >
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            15
+            21
+          </span>
+        </div>
+        <div
+          class="sc-fzozJi ccINIa"
+        >
+          <span
+            class="sc-fzoLsD gOMKUi"
+          >
+            22
           </span>
         </div>
          
@@ -158,30 +158,12 @@ exports[`CalendarAll matches snapshot 1`] = `
       >
          
         <div
-          class="sc-fzozJi ccINIa done"
+          class="sc-fzozJi ccINIa"
         >
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            9
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa not-done"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            10
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            11
+            16
           </span>
         </div>
         <div
@@ -190,7 +172,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            12
+            17
           </span>
         </div>
         <div
@@ -199,7 +181,16 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            13
+            18
+          </span>
+        </div>
+        <div
+          class="sc-fzozJi ccINIa"
+        >
+          <span
+            class="sc-fzoLsD gOMKUi"
+          >
+            19
           </span>
         </div>
         <div
@@ -208,7 +199,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            14
+            20
           </span>
         </div>
         <div
@@ -217,7 +208,16 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            15
+            21
+          </span>
+        </div>
+        <div
+          class="sc-fzozJi ccINIa"
+        >
+          <span
+            class="sc-fzoLsD gOMKUi"
+          >
+            22
           </span>
         </div>
          
@@ -482,7 +482,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa today done strike"
+        class="sc-fzozJi ccINIa done strike"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -515,7 +515,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="sc-fzozJi ccINIa done strike"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -542,7 +542,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="sc-fzozJi ccINIa today "
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -729,17 +729,38 @@ exports[`Habits Page matches snapshot 1`] = `
         class="sc-fznWqX dZCTFs"
       >
         <div
-          class="sc-fzoiQi gorphq"
+          class="sc-fzoiQi gKygiC"
         >
-          Fazer exercício
-          <svg>
-            chevron.svg
-          </svg>
+          <div
+            class="MuiInputBase-root MuiInput-root"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="habits-view"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="habits-view"
+              role="button"
+              tabindex="0"
+            >
+              All
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="all"
+            />
+            <svg
+              class="MuiSelect-icon"
+            >
+              chevron.svg
+            </svg>
+          </div>
         </div>
         <h3
           class="sc-fzqARJ lfDBcG smaller"
         >
-          5 days
+          2
         </h3>
       </div>
       <div
@@ -877,418 +898,160 @@ exports[`Habits Page matches snapshot 1`] = `
         </h5>
       </div>
       <div
-        class="sc-AxmLO bELhKU"
+        class="sc-AxheI iGtvIU"
       >
-         
-        <div
-          class="sc-fzozJi ccINIa disabled "
+        <h4
+          class="sc-Axmtr hMVYMT"
         >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            26
-          </span>
-        </div>
+          Fazer exercício
+        </h4>
         <div
-          class="sc-fzozJi ccINIa disabled "
+          class="sc-AxmLO bELhKU"
         >
-          <span
-            class="sc-fzoLsD gOMKUi"
+           
+          <div
+            class="sc-fzozJi ccINIa done strike strike-sun"
           >
-            27
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              16
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa done strike"
           >
-            28
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled done"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              17
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            29
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled done strike"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              18
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            30
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              19
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa today "
           >
-            31
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              20
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            1
-          </span>
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              21
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
+          >
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              22
+            </span>
+          </div>
+           
         </div>
-         
       </div>
       <div
-        class="sc-AxmLO bELhKU"
+        class="sc-AxheI iGtvIU"
       >
-         
-        <div
-          class="sc-fzozJi ccINIa"
+        <h4
+          class="sc-Axmtr hMVYMT"
         >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            2
-          </span>
-        </div>
+          Fazer dieta
+        </h4>
         <div
-          class="sc-fzozJi ccINIa"
+          class="sc-AxmLO bELhKU"
         >
-          <span
-            class="sc-fzoLsD gOMKUi"
+           
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            3
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              16
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            4
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              17
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            5
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              18
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            6
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done strike"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              19
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa today "
           >
-            7
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done strike strike-sat"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              20
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            8
-          </span>
-        </div>
-         
-      </div>
-      <div
-        class="sc-AxmLO bELhKU"
-      >
-         
-        <div
-          class="sc-fzozJi ccINIa not-done"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              21
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
           >
-            9
-          </span>
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              22
+            </span>
+          </div>
+           
         </div>
-        <div
-          class="sc-fzozJi ccINIa done"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            10
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done strike"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            11
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done strike"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            12
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done strike"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            13
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa today done strike"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            14
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done strike strike-sat"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            15
-          </span>
-        </div>
-         
-      </div>
-      <div
-        class="sc-AxmLO bELhKU"
-      >
-         
-        <div
-          class="sc-fzozJi ccINIa done strike strike-sun"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            16
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            17
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            18
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            19
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            20
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            21
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            22
-          </span>
-        </div>
-         
-      </div>
-      <div
-        class="sc-AxmLO bELhKU"
-      >
-         
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            23
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            24
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            25
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            26
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            27
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            28
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            29
-          </span>
-        </div>
-         
-      </div>
-      <div
-        class="sc-AxmLO bELhKU"
-      >
-         
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            30
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            31
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            1
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            2
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            3
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            4
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa disabled "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            5
-          </span>
-        </div>
-         
       </div>
     </div>
   </section>

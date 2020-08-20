@@ -48,4 +48,9 @@ export const GlobalStyle = createGlobalStyle`
         color: ${props => props.theme.white} !important;
         font-size: 1.5rem !important;
     }
+
+    .MuiList-root .view-select-item {
+        min-width: 30rem;
+        min-height: 6rem;
+    }
 `

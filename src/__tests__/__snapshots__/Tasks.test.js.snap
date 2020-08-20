@@ -27,7 +27,7 @@ exports[`SingleTask matches snapshot 1`] = `
         <p
           class="sc-fznKkj ihavmM"
         >
-          20 Jul
+          14 Aug
         </p>
       </div>
       <div
@@ -55,12 +55,33 @@ exports[`Tasks Page matches snapshot 1`] = `
         class="sc-fznxsB dsgAhn"
       >
         <div
-          class="sc-fznJRM dEkFjf"
+          class="sc-fznJRM fKzpjv"
         >
-          Today
-          <svg>
-            chevron.svg
-          </svg>
+          <div
+            class="MuiInputBase-root MuiInput-root"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="tasks-view"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="tasks-view"
+              role="button"
+              tabindex="0"
+            >
+              Today
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="today"
+            />
+            <svg
+              class="MuiSelect-icon"
+            >
+              chevron.svg
+            </svg>
+          </div>
         </div>
         <h3
           class="sc-fznWqX jXPxyW"
@@ -250,7 +271,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             <p
               class="sc-fznKkj ihavmM"
             >
-              20 Jul
+              14 Aug
             </p>
           </div>
           <div
@@ -283,7 +304,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             <p
               class="sc-fznKkj ihavmM"
             >
-              03 Aug
+              13 Aug
             </p>
           </div>
           <div
@@ -310,7 +331,7 @@ exports[`Tasks Page matches snapshot 1`] = `
             <p
               class="sc-fznKkj ihavmM"
             >
-              04 Aug
+              15 Aug
             </p>
           </div>
           <div

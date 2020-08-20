@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NotesSettings from './NotesSettings'
 import SingleNote from './SingleNote'
+import { SelectMenu } from '../misc/SelectMenu'
 import { notes, notesTags } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Note } from '../../utils/ModuleTypes'
-import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 
 const NotesPage: React.FC = () => {
+  const [view, setView] = useState('all')
+
+  const viewOptions = [
+    { val: 'all', label: 'All' },
+    ...notesTags.map(tag => ({
+      val: tag.id,
+      label: tag.name
+    }))
+  ]
+
+  const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+    setView(e.target.value)
+
+  const visibleNotes =
+    view === 'all'
+      ? notes
+      : notes.filter(
+          note => note.tags?.filter(tag => tag.id === parseInt(view, 10)).length
+        )
+
   return (
     <Styled.PageContainer>
       <Styled.PageTitle>Notes</Styled.PageTitle>
@@ -14,8 +34,13 @@ const NotesPage: React.FC = () => {
       <Styled.PageHeader>
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
-            All
-            <ChevronIcon />
+            <SelectMenu
+              id="notes-view"
+              value={view}
+              onChange={handleViewChange}
+              options={viewOptions}
+              itemClass={'view-select-item'}
+            />
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
             {notes.length}
@@ -27,7 +52,7 @@ const NotesPage: React.FC = () => {
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {(notes as Note[]).map(note => (
+        {(visibleNotes as Note[]).map(note => (
           <SingleNote
             key={note.id}
             id={note.id}

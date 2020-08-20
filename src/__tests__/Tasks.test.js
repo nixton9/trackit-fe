@@ -59,7 +59,7 @@ describe('SingleTask', () => {
     )
 
     expect(getByText('Ir às compras')).toBeInTheDocument()
-    expect(getByText('20 Jul')).toBeInTheDocument()
+    expect(getByText('14 Aug')).toBeInTheDocument()
     expect(getByText('Waiting for')).toBeInTheDocument()
   })
 })

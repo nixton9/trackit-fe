@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TasksSettings from './TasksSettings'
 import SingleTask from './SingleTask'
+import { SelectMenu } from '../misc/SelectMenu'
 import { tasks, tasksCategories } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Task } from '../../utils/ModuleTypes'
-import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 
 const TasksPage: React.FC = () => {
+  const [view, setView] = useState('today')
+
+  const viewOptions = [
+    { val: 'today', label: 'Today' },
+    ...tasksCategories.map(cat => ({
+      val: cat.id,
+      label: cat.name
+    }))
+  ]
+
+  const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+    setView(e.target.value)
+
+  const visibleTasks =
+    view === 'today'
+      ? tasks
+      : tasks.filter(task => task.category?.id === parseInt(view, 10))
+
   return (
     <Styled.PageContainer>
       <Styled.PageTitle>Tasks</Styled.PageTitle>
@@ -14,8 +32,13 @@ const TasksPage: React.FC = () => {
       <Styled.PageHeader>
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
-            Today
-            <ChevronIcon />
+            <SelectMenu
+              id="tasks-view"
+              value={view}
+              onChange={handleViewChange}
+              options={viewOptions}
+              itemClass={'view-select-item'}
+            />
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
             {tasks.length}
@@ -27,7 +50,7 @@ const TasksPage: React.FC = () => {
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {(tasks as Task[]).map(task => (
+        {(visibleTasks as Task[]).map(task => (
           <SingleTask
             key={task.id}
             id={task.id}

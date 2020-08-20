@@ -2,15 +2,30 @@ import React, { useState } from 'react'
 import CalendarSingle from './CalendarSingle'
 import CalendarAll from './CalendarAll'
 import HabitsSettings from './HabitsSettings'
+import { SelectMenu } from '../misc/SelectMenu'
 import { getCurrentStrike } from '../../utils/dateHelpers'
 import { habits } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Habit } from '../../utils/ModuleTypes'
-import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 
 const HabitsPage: React.FC = () => {
-  const [showAll] = useState(false)
-  const [currHabit] = useState<Habit>(habits[0])
+  const [view, setView] = useState('all')
+
+  const viewOptions = [
+    { val: 'all', label: 'All' },
+    ...habits.map(habit => ({
+      val: habit.id,
+      label: habit.title
+    }))
+  ]
+
+  const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+    setView(e.target.value)
+
+  const showAll = view === 'all'
+  const currHabit = showAll
+    ? null
+    : habits.find(habit => habit.id === parseInt(view, 10))
 
   return (
     <>
@@ -20,11 +35,18 @@ const HabitsPage: React.FC = () => {
         <Styled.PageHeader>
           <Styled.PageHeader__View>
             <Styled.PageHeader__View__Dropdown>
-              {showAll ? 'All' : currHabit.title}
-              <ChevronIcon />
+              <SelectMenu
+                id="habits-view"
+                value={view}
+                onChange={handleViewChange}
+                options={viewOptions}
+                itemClass={'view-select-item'}
+              />
             </Styled.PageHeader__View__Dropdown>
             <Styled.PageHeader__View__Counter className="smaller">
-              {showAll ? habits.length : getCurrentStrike(currHabit) + ' days'}
+              {showAll
+                ? habits.length
+                : currHabit && getCurrentStrike(currHabit) + ' days'}
             </Styled.PageHeader__View__Counter>
           </Styled.PageHeader__View>
           <Styled.PageHeader__Settings>
@@ -37,7 +59,7 @@ const HabitsPage: React.FC = () => {
         {showAll ? (
           <CalendarAll habits={habits} />
         ) : (
-          <CalendarSingle habit={currHabit} />
+          currHabit && <CalendarSingle habit={currHabit} />
         )}
       </Styled.PageContent>
     </>

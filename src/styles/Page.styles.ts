@@ -28,6 +28,13 @@ const PageHeader__View__Dropdown = styled.div`
   font-size: 1.7rem;
   font-weight: ${props => props.theme.fontMedium};
 
+  .MuiSelect-select {
+    color: ${props => props.theme.white};
+    font-weight: ${props => props.theme.fontMedium};
+    font-size: 1.7rem;
+    min-height: 0;
+  }
+
   svg {
     width: 1.4rem;
     margin-left: 0.5rem;

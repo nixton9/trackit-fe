@@ -1,20 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ExpensesSettings from './ExpensesSettings'
 import SingleExpense from './SingleExpense'
+import DatePickerInput from '../misc/DatePicker'
 import { expenses, expensesCategories } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'
-import { displayDateString } from '../../utils/dateHelpers'
+import { displayDateString, parseDate } from '../../utils/dateHelpers'
+import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { format, startOfMonth, endOfMonth } from 'date-fns'
-
 const ExpensesPage: React.FC = () => {
-  const monthStart = format(startOfMonth(new Date()), 'dd MMM')
-  const monthEnd = format(endOfMonth(new Date()), 'dd MMM')
-  const totalExpensesVal = expenses.reduce((acc, obj) => acc + obj.value, 0)
+  const [startDate, setStartDate] = useState(startOfMonth(new Date()))
+  const [endDate, setEndDate] = useState(endOfMonth(new Date()))
+
   const expensesDays = Array.from(
     new Set(expenses.map(expense => expense.date))
   )
+
+  const visibleExpensesDay = expensesDays.filter(day =>
+    isWithinInterval(parseDate(day), {
+      start: startDate,
+      end: endDate
+    })
+  )
+
+  const totalExpensesVal = expenses
+    .filter(expense => visibleExpensesDay.includes(expense.date))
+    .reduce((acc, obj) => acc + obj.value, 0)
 
   return (
     <Styled.PageContainer>
@@ -22,7 +33,17 @@ const ExpensesPage: React.FC = () => {
       <Styled.PageHeader>
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
-            {monthStart} - {monthEnd}
+            <DatePickerInput
+              date={startDate}
+              maxDate={endDate}
+              setDate={setStartDate}
+            />
+            <span>-</span>
+            <DatePickerInput
+              date={endDate}
+              minDate={startDate}
+              setDate={setEndDate}
+            />
             <ChevronIcon />
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
@@ -35,7 +56,7 @@ const ExpensesPage: React.FC = () => {
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {(expensesDays as string[]).map(day => (
+        {(visibleExpensesDay as string[]).map(day => (
           <Styled.PageContent__Day key={day}>
             <Styled.PageContent__Day__Title>
               {displayDateString(day)}

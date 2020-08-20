@@ -17,12 +17,33 @@ exports[`Notes Page matches snapshot 1`] = `
         class="sc-fznJRM fUFvhP"
       >
         <div
-          class="sc-fznWqX dacUcA"
+          class="sc-fznWqX cfsIUA"
         >
-          All
-          <svg>
-            chevron.svg
-          </svg>
+          <div
+            class="MuiInputBase-root MuiInput-root"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="notes-view"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="notes-view"
+              role="button"
+              tabindex="0"
+            >
+              All
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="all"
+            />
+            <svg
+              class="MuiSelect-icon"
+            >
+              chevron.svg
+            </svg>
+          </div>
         </div>
         <h3
           class="sc-fzoiQi FHcDk"

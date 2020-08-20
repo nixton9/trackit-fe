@@ -7,6 +7,7 @@ type SelectMenuProps = {
   value: string
   options: { val: string | number; label: string }[]
   id: string
+  itemClass?: string
   onChange: (e: any) => void
 }
 
@@ -14,6 +15,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
   value,
   options,
   id,
+  itemClass,
   onChange
 }) => {
   return (
@@ -25,7 +27,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
       disableUnderline
     >
       {options.map(option => (
-        <MenuItem key={option.val} value={option.val}>
+        <MenuItem key={option.val} value={option.val} className={itemClass}>
           {option.label}
         </MenuItem>
       ))}
