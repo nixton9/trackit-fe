@@ -14,10 +14,7 @@ export const notes = [
     title: 'Apontamentos aula',
     date: '2020-06-25',
     content: 'asdasdad',
-    tags: [
-      { id: 3, name: 'Studies', color: '#607D8B' },
-      { id: 4, name: 'School', color: '#00BCD4' }
-    ]
+    tags: [{ id: 4, name: 'School', color: '#00BCD4' }]
   },
   {
     id: 3,

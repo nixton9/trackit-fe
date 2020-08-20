@@ -52,15 +52,21 @@ const NotesPage: React.FC = () => {
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {(visibleNotes as Note[]).map(note => (
-          <SingleNote
-            key={note.id}
-            id={note.id}
-            title={note.title}
-            date={note.date}
-            tags={note.tags}
-          />
-        ))}
+        {visibleNotes.length ? (
+          (visibleNotes as Note[]).map(note => (
+            <SingleNote
+              key={note.id}
+              id={note.id}
+              title={note.title}
+              date={note.date}
+              tags={note.tags}
+            />
+          ))
+        ) : (
+          <Styled.PageContent__NoData>
+            <p>No notes with this criteria.</p>
+          </Styled.PageContent__NoData>
+        )}
       </Styled.PageContent>
     </Styled.PageContainer>
   )

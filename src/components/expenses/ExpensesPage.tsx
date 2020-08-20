@@ -56,27 +56,33 @@ const ExpensesPage: React.FC = () => {
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {(visibleExpensesDay as string[]).map(day => (
-          <Styled.PageContent__Day key={day}>
-            <Styled.PageContent__Day__Title>
-              {displayDateString(day)}
-            </Styled.PageContent__Day__Title>
-            <Styled.PageContent__Day__Expenses>
-              {(expenses as Expense[])
-                .filter(expense => expense.date === day)
-                .map(expense => (
-                  <SingleExpense
-                    key={expense.id}
-                    id={expense.id}
-                    title={expense.title}
-                    date={expense.date}
-                    value={expense.value}
-                    category={expense.category}
-                  />
-                ))}
-            </Styled.PageContent__Day__Expenses>
-          </Styled.PageContent__Day>
-        ))}
+        {visibleExpensesDay.length ? (
+          (visibleExpensesDay as string[]).map(day => (
+            <Styled.PageContent__Day key={day}>
+              <Styled.PageContent__Day__Title>
+                {displayDateString(day)}
+              </Styled.PageContent__Day__Title>
+              <Styled.PageContent__Day__Expenses>
+                {(expenses as Expense[])
+                  .filter(expense => expense.date === day)
+                  .map(expense => (
+                    <SingleExpense
+                      key={expense.id}
+                      id={expense.id}
+                      title={expense.title}
+                      date={expense.date}
+                      value={expense.value}
+                      category={expense.category}
+                    />
+                  ))}
+              </Styled.PageContent__Day__Expenses>
+            </Styled.PageContent__Day>
+          ))
+        ) : (
+          <Styled.PageContent__NoData>
+            <p>No expenses on this date.</p>
+          </Styled.PageContent__NoData>
+        )}
       </Styled.PageContent>
     </Styled.PageContainer>
   )

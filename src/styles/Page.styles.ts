@@ -91,6 +91,17 @@ const PageContent__Day__Expenses = styled.h4`
   padding-left: ${props => props.theme.spacingXS};
 `
 
+const PageContent__NoData = styled.div`
+  padding-top: ${props => props.theme.spacingL};
+
+  p  {
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontMedium};
+    color: ${props => props.theme.greyishBlue};
+    text-align: center;
+  }
+`
+
 export const Styled = {
   PageContainer,
   PageTitle,
@@ -102,5 +113,6 @@ export const Styled = {
   PageContent,
   PageContent__Day,
   PageContent__Day__Title,
-  PageContent__Day__Expenses
+  PageContent__Day__Expenses,
+  PageContent__NoData
 }

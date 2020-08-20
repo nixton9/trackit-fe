@@ -50,16 +50,22 @@ const TasksPage: React.FC = () => {
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {(visibleTasks as Task[]).map(task => (
-          <SingleTask
-            key={task.id}
-            id={task.id}
-            title={task.title}
-            date={task.date}
-            done={task.done}
-            category={task.category}
-          />
-        ))}
+        {visibleTasks.length ? (
+          (visibleTasks as Task[]).map(task => (
+            <SingleTask
+              key={task.id}
+              id={task.id}
+              title={task.title}
+              date={task.date}
+              done={task.done}
+              category={task.category}
+            />
+          ))
+        ) : (
+          <Styled.PageContent__NoData>
+            <p>No tasks with this criteria.</p>
+          </Styled.PageContent__NoData>
+        )}
       </Styled.PageContent>
     </Styled.PageContainer>
   )
