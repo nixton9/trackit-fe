@@ -3,13 +3,12 @@ import styled from 'styled-components'
 const HomeLogo = styled.h1`
   position: absolute;
   top: 2rem;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   color: ${props => props.theme.white};
   font-size: 2rem;
   font-weight: ${props => props.theme.fontExtraBold};
   text-transform: uppercase;
-  text-align: center;
 `
 
 const HomeContainer = styled.div`
