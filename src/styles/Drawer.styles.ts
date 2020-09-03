@@ -44,7 +44,6 @@ const DrawerContent = styled.div`
   width: 100%;
   color: ${props => props.theme.white};
   max-height: 70vh;
-  overflow-y: auto;
 `
 
 export const Styled = {

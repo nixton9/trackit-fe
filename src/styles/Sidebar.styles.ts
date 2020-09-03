@@ -6,7 +6,7 @@ type SidebarContainerProps = {
 
 const SidebarToggle = styled.div`
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   top: 2rem;
   left: 2rem;
   fill: ${props => props.theme.white};

@@ -13,7 +13,7 @@ const HabitsPage: React.FC = () => {
 
   const viewOptions = [
     { val: 'all', label: 'All' },
-    ...habits.map(habit => ({
+    ...(habits as Habit[]).map(habit => ({
       val: habit.id,
       label: habit.title
     }))

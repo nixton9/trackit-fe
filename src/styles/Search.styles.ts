@@ -5,7 +5,7 @@ type SearchProps = {
 }
 
 const SearchIcon = styled.div<SearchProps>`
-  position: absolute;
+  position: fixed;
   top: 2rem;
   right: 2rem;
   z-index: 11;

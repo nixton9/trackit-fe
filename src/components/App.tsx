@@ -8,6 +8,7 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 import Sidebar from './misc/Sidebar'
 import Search from './misc/Search'
+import Add from './misc/Add'
 import { GlobalStyle } from '../styles/globalstyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
@@ -30,6 +31,7 @@ const App: React.FC = () => {
           <>
             <Sidebar user={user} />
             <Search />
+            <Add />
             <Switch>
               <Route exact path="/">
                 <Home />

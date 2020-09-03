@@ -18,7 +18,7 @@ exports[`CalendarAll matches snapshot 1`] = `
       <h2
         class="sc-AxiKw csrSaT"
       >
-        August 2020
+        September 2020
       </h2>
       <span
         class="sc-AxhCb hJMRfN right"
@@ -80,21 +80,12 @@ exports[`CalendarAll matches snapshot 1`] = `
       >
          
         <div
-          class="sc-fzozJi ccINIa done strike strike-sun"
+          class="sc-fzozJi ccINIa"
         >
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            16
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa done strike"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            17
+            30
           </span>
         </div>
         <div
@@ -103,7 +94,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            18
+            31
           </span>
         </div>
         <div
@@ -112,7 +103,16 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            19
+            1
+          </span>
+        </div>
+        <div
+          class="sc-fzozJi ccINIa"
+        >
+          <span
+            class="sc-fzoLsD gOMKUi"
+          >
+            2
           </span>
         </div>
         <div
@@ -121,7 +121,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            20
+            3
           </span>
         </div>
         <div
@@ -130,7 +130,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            21
+            4
           </span>
         </div>
         <div
@@ -139,7 +139,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            22
+            5
           </span>
         </div>
          
@@ -163,7 +163,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            16
+            30
           </span>
         </div>
         <div
@@ -172,7 +172,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            17
+            31
           </span>
         </div>
         <div
@@ -181,7 +181,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            18
+            1
           </span>
         </div>
         <div
@@ -190,7 +190,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            19
+            2
           </span>
         </div>
         <div
@@ -199,7 +199,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            20
+            3
           </span>
         </div>
         <div
@@ -208,7 +208,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            21
+            4
           </span>
         </div>
         <div
@@ -217,7 +217,7 @@ exports[`CalendarAll matches snapshot 1`] = `
           <span
             class="sc-fzoLsD gOMKUi"
           >
-            22
+            5
           </span>
         </div>
          
@@ -245,7 +245,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
       <h2
         class="sc-AxiKw csrSaT"
       >
-        August 2020
+        September 2020
       </h2>
       <span
         class="sc-AxhCb hJMRfN right"
@@ -304,42 +304,6 @@ exports[`CalendarSingle matches snapshot 1`] = `
         <span
           class="sc-fzoLsD gOMKUi"
         >
-          26
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled "
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          27
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled "
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          28
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled done"
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          29
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled done strike"
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
           30
         </span>
       </div>
@@ -361,12 +325,6 @@ exports[`CalendarSingle matches snapshot 1`] = `
           1
         </span>
       </div>
-       
-    </div>
-    <div
-      class="sc-AxmLO bELhKU"
-    >
-       
       <div
         class="sc-fzozJi ccINIa"
       >
@@ -377,7 +335,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="sc-fzozJi ccINIa today "
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -403,8 +361,14 @@ exports[`CalendarSingle matches snapshot 1`] = `
           5
         </span>
       </div>
+       
+    </div>
+    <div
+      class="sc-AxmLO bELhKU"
+    >
+       
       <div
-        class="sc-fzozJi ccINIa done"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -413,7 +377,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa done strike"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -422,7 +386,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa done strike strike-sat"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -430,14 +394,8 @@ exports[`CalendarSingle matches snapshot 1`] = `
           8
         </span>
       </div>
-       
-    </div>
-    <div
-      class="sc-AxmLO bELhKU"
-    >
-       
       <div
-        class="sc-fzozJi ccINIa not-done"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -446,7 +404,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa done"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -455,7 +413,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa done strike"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -464,39 +422,12 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa done strike"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
         >
           12
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa done strike"
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          13
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa done strike"
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          14
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa done strike strike-sat"
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          15
         </span>
       </div>
        
@@ -506,7 +437,34 @@ exports[`CalendarSingle matches snapshot 1`] = `
     >
        
       <div
-        class="sc-fzozJi ccINIa done strike strike-sun"
+        class="sc-fzozJi ccINIa"
+      >
+        <span
+          class="sc-fzoLsD gOMKUi"
+        >
+          13
+        </span>
+      </div>
+      <div
+        class="sc-fzozJi ccINIa"
+      >
+        <span
+          class="sc-fzoLsD gOMKUi"
+        >
+          14
+        </span>
+      </div>
+      <div
+        class="sc-fzozJi ccINIa"
+      >
+        <span
+          class="sc-fzoLsD gOMKUi"
+        >
+          15
+        </span>
+      </div>
+      <div
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -515,7 +473,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa done strike"
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -541,8 +499,14 @@ exports[`CalendarSingle matches snapshot 1`] = `
           19
         </span>
       </div>
+       
+    </div>
+    <div
+      class="sc-AxmLO bELhKU"
+    >
+       
       <div
-        class="sc-fzozJi ccINIa today "
+        class="sc-fzozJi ccINIa"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -568,12 +532,6 @@ exports[`CalendarSingle matches snapshot 1`] = `
           22
         </span>
       </div>
-       
-    </div>
-    <div
-      class="sc-AxmLO bELhKU"
-    >
-       
       <div
         class="sc-fzozJi ccINIa"
       >
@@ -610,6 +568,12 @@ exports[`CalendarSingle matches snapshot 1`] = `
           26
         </span>
       </div>
+       
+    </div>
+    <div
+      class="sc-AxmLO bELhKU"
+    >
+       
       <div
         class="sc-fzozJi ccINIa"
       >
@@ -637,12 +601,6 @@ exports[`CalendarSingle matches snapshot 1`] = `
           29
         </span>
       </div>
-       
-    </div>
-    <div
-      class="sc-AxmLO bELhKU"
-    >
-       
       <div
         class="sc-fzozJi ccINIa"
       >
@@ -653,16 +611,7 @@ exports[`CalendarSingle matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          31
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled "
+        class="sc-fzozJi ccINIa disabled not-done"
       >
         <span
           class="sc-fzoLsD gOMKUi"
@@ -686,24 +635,6 @@ exports[`CalendarSingle matches snapshot 1`] = `
           class="sc-fzoLsD gOMKUi"
         >
           3
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled "
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          4
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled "
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          5
         </span>
       </div>
        
@@ -780,7 +711,7 @@ exports[`Habits Page matches snapshot 1`] = `
             Settings
           </h2>
           <div
-            class="sc-fznKkj cnALjk"
+            class="sc-fznKkj dFiY"
           >
             <div
               class="sc-fznZeY colRAS"
@@ -848,7 +779,7 @@ exports[`Habits Page matches snapshot 1`] = `
         <h2
           class="sc-AxiKw csrSaT"
         >
-          August 2020
+          September 2020
         </h2>
         <span
           class="sc-AxhCb hJMRfN right"
@@ -910,21 +841,12 @@ exports[`Habits Page matches snapshot 1`] = `
         >
            
           <div
-            class="sc-fzozJi ccINIa done strike strike-sun"
+            class="sc-fzozJi ccINIa"
           >
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              16
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa done strike"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              17
+              30
             </span>
           </div>
           <div
@@ -933,7 +855,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              18
+              31
             </span>
           </div>
           <div
@@ -942,7 +864,16 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              19
+              1
+            </span>
+          </div>
+          <div
+            class="sc-fzozJi ccINIa"
+          >
+            <span
+              class="sc-fzoLsD gOMKUi"
+            >
+              2
             </span>
           </div>
           <div
@@ -951,7 +882,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              20
+              3
             </span>
           </div>
           <div
@@ -960,7 +891,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              21
+              4
             </span>
           </div>
           <div
@@ -969,7 +900,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              22
+              5
             </span>
           </div>
            
@@ -993,7 +924,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              16
+              30
             </span>
           </div>
           <div
@@ -1002,7 +933,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              17
+              31
             </span>
           </div>
           <div
@@ -1011,7 +942,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              18
+              1
             </span>
           </div>
           <div
@@ -1020,7 +951,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              19
+              2
             </span>
           </div>
           <div
@@ -1029,7 +960,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              20
+              3
             </span>
           </div>
           <div
@@ -1038,7 +969,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              21
+              4
             </span>
           </div>
           <div
@@ -1047,7 +978,7 @@ exports[`Habits Page matches snapshot 1`] = `
             <span
               class="sc-fzoLsD gOMKUi"
             >
-              22
+              5
             </span>
           </div>
            
@@ -1074,7 +1005,7 @@ exports[`HabitsSettings matches snapshot 1`] = `
       Settings
     </h2>
     <div
-      class="sc-fznKkj cnALjk"
+      class="sc-fznKkj dFiY"
     >
       <div
         class="sc-fznZeY colRAS"

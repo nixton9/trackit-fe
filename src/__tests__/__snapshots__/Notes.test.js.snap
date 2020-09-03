@@ -68,7 +68,7 @@ exports[`Notes Page matches snapshot 1`] = `
             Settings
           </h2>
           <div
-            class="sc-AxhCb iGvJwE"
+            class="sc-AxhCb bCDkJU"
           >
             <div
               class="sc-AxgMl ibGeUx"
@@ -458,7 +458,7 @@ exports[`NotesSettings matches snashot 1`] = `
       Settings
     </h2>
     <div
-      class="sc-AxhCb iGvJwE"
+      class="sc-AxhCb bCDkJU"
     >
       <div
         class="sc-AxgMl ibGeUx"

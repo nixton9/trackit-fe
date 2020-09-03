@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 49 47">
+  <defs>
+    <clipPath id="clip-Prancheta_8">
+      <rect width="49" height="47"/>
+    </clipPath>
+  </defs>
+  <g id="Prancheta_8" data-name="Prancheta – 8" clip-path="url(#clip-Prancheta_8)">
+    <g id="Grupo_102" data-name="Grupo 102" transform="translate(0.999 3)">
+      <g id="Grupo_59" data-name="Grupo 59" transform="translate(0 0)">
+        <g id="Caminho_288" data-name="Caminho 288" transform="translate(47.525) rotate(90)" fill="none">
+          <path d="M7.311,0H33.633a7.311,7.311,0,0,1,7.311,7.311v32.9a7.311,7.311,0,0,1-7.311,7.311H7.311A7.311,7.311,0,0,1,0,40.213V7.311A7.311,7.311,0,0,1,7.311,0Z" stroke="none"/>
+          <path d="M 7.311489105224609 3 C 4.934127807617188 3 2.999996185302734 4.934127807617188 2.999996185302734 7.311489105224609 L 2.999996185302734 40.21318817138672 C 2.999996185302734 42.59054946899414 4.934127807617188 44.52467727661133 7.311489105224609 44.52467727661133 L 33.63284683227539 44.52467727661133 C 36.01020812988281 44.52467727661133 37.94433975219727 42.59054946899414 37.94433975219727 40.21318817138672 L 37.94433975219727 7.311489105224609 C 37.94433975219727 4.934127807617188 36.01020812988281 3 33.63284683227539 3 L 7.311489105224609 3 M 7.311489105224609 0 L 33.63284683227539 0 C 37.67086791992188 0 40.94433975219727 3.273460388183594 40.94433975219727 7.311489105224609 L 40.94433975219727 40.21318817138672 C 40.94433975219727 44.2512092590332 37.67086791992188 47.52467727661133 33.63284683227539 47.52467727661133 L 7.311489105224609 47.52467727661133 C 3.273468017578125 47.52467727661133 -3.814697265625e-06 44.2512092590332 -3.814697265625e-06 40.21318817138672 L -3.814697265625e-06 7.311489105224609 C -3.814697265625e-06 3.273460388183594 3.273468017578125 0 7.311489105224609 0 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+      <circle id="Elipse_51" data-name="Elipse 51" cx="3" cy="3" r="3" transform="translate(6.5 14.944)" fill="#fff"/>
+      <circle id="Elipse_58" data-name="Elipse 58" cx="3" cy="3" r="3" transform="translate(6.5 25.944)" fill="#fff"/>
+      <circle id="Elipse_52" data-name="Elipse 52" cx="3" cy="3" r="3" transform="translate(16.5 14.944)" fill="#fff"/>
+      <circle id="Elipse_57" data-name="Elipse 57" cx="3" cy="3" r="3" transform="translate(16.5 25.944)" fill="#fff"/>
+      <circle id="Elipse_53" data-name="Elipse 53" cx="3" cy="3" r="3" transform="translate(25.5 14.944)" fill="#fff"/>
+      <circle id="Elipse_56" data-name="Elipse 56" cx="3" cy="3" r="3" transform="translate(25.5 25.944)" fill="#fff"/>
+      <circle id="Elipse_54" data-name="Elipse 54" cx="3" cy="3" r="3" transform="translate(35.5 14.944)" fill="#fff"/>
+      <circle id="Elipse_55" data-name="Elipse 55" cx="3" cy="3" r="3" transform="translate(35.5 25.944)" fill="#fff"/>
+      <path id="Caminho_297" data-name="Caminho 297" d="M0,0H43.869" transform="translate(2.193 10.236)" fill="none" stroke="#fff" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

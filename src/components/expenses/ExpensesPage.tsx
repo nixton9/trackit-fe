@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ExpensesSettings from './ExpensesSettings'
 import SingleExpense from './SingleExpense'
-import DatePickerInput from '../misc/DatePicker'
+import DatePickerInput from '../misc/DatePickerInput'
 import { expenses, expensesCategories } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'

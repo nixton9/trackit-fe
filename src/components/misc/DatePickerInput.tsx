@@ -8,13 +8,15 @@ type DatePickerProps = {
   setDate: Dispatch<SetStateAction<Date>>
   minDate?: Date
   maxDate?: Date
+  customInput?: any
 }
 
 const DatePickerInput: React.FC<DatePickerProps> = ({
   date,
   setDate,
   minDate,
-  maxDate
+  maxDate,
+  customInput
 }) => {
   return (
     <Styled.DatePickerContainer>
@@ -24,6 +26,7 @@ const DatePickerInput: React.FC<DatePickerProps> = ({
         dateFormat="d MMM"
         minDate={minDate}
         maxDate={maxDate}
+        customInput={customInput}
       />
     </Styled.DatePickerContainer>
   )

@@ -31,7 +31,7 @@ exports[`Expenses Page matches snapshot 1`] = `
                 <input
                   class=""
                   type="text"
-                  value="1 Aug"
+                  value="1 Sep"
                 />
               </div>
             </div>
@@ -51,7 +51,7 @@ exports[`Expenses Page matches snapshot 1`] = `
                 <input
                   class=""
                   type="text"
-                  value="31 Aug"
+                  value="30 Sep"
                 />
               </div>
             </div>
@@ -63,7 +63,7 @@ exports[`Expenses Page matches snapshot 1`] = `
         <h3
           class="sc-fzoiQi FHcDk"
         >
-          346.5
+          0
           $
         </h3>
       </div>
@@ -84,7 +84,7 @@ exports[`Expenses Page matches snapshot 1`] = `
             Settings
           </h2>
           <div
-            class="sc-AxhCb iGvJwE"
+            class="sc-AxhCb bCDkJU"
           >
             <div
               class="sc-AxhUy gnZxSn"
@@ -231,219 +231,11 @@ exports[`Expenses Page matches snapshot 1`] = `
       class="sc-fzqNqU cgxesj"
     >
       <div
-        class="sc-fzoyTs invWGD"
+        class="sc-fzpmMD NQrtN"
       >
-        <h4
-          class="sc-fzoNJl gOeyto"
-        >
-          04 Aug
-        </h4>
-        <h4
-          class="sc-fzoXWK bSYemk"
-        >
-          <article
-            class="sc-fzqBZW dBijkG"
-          >
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Conta Hospital
-              </h5>
-              <h6
-                class="sc-fznZeY ekLkIy"
-                color="#FFC107"
-              >
-                Saúde
-              </h6>
-              <p
-                class="sc-fzqNJr hKWXie"
-              >
-                57.75
-                $
-              </p>
-            </div>
-          </article>
-        </h4>
-      </div>
-      <div
-        class="sc-fzoyTs invWGD"
-      >
-        <h4
-          class="sc-fzoNJl gOeyto"
-        >
-          05 Aug
-        </h4>
-        <h4
-          class="sc-fzoXWK bSYemk"
-        >
-          <article
-            class="sc-fzqBZW dBijkG"
-          >
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Compras Continente
-              </h5>
-              <h6
-                class="sc-fznZeY gooBaK"
-                color="#FF9800"
-              >
-                Casa
-              </h6>
-              <p
-                class="sc-fzqNJr hKWXie"
-              >
-                57.75
-                $
-              </p>
-            </div>
-          </article>
-          <article
-            class="sc-fzqBZW dBijkG"
-          >
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Gasóleo
-              </h5>
-              <h6
-                class="sc-fznZeY cjOYaZ"
-                color="#673AB7"
-              >
-                Transportes
-              </h6>
-              <p
-                class="sc-fzqNJr hKWXie"
-              >
-                57.75
-                $
-              </p>
-            </div>
-          </article>
-        </h4>
-      </div>
-      <div
-        class="sc-fzoyTs invWGD"
-      >
-        <h4
-          class="sc-fzoNJl gOeyto"
-        >
-          07 Aug
-        </h4>
-        <h4
-          class="sc-fzoXWK bSYemk"
-        >
-          <article
-            class="sc-fzqBZW dBijkG"
-          >
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Compras Pull&Bear
-              </h5>
-              <h6
-                class="sc-fznZeY kvbuor"
-                color="#9E9E9E"
-              >
-                Vestuário
-              </h6>
-              <p
-                class="sc-fzqNJr hKWXie"
-              >
-                57.75
-                $
-              </p>
-            </div>
-          </article>
-        </h4>
-      </div>
-      <div
-        class="sc-fzoyTs invWGD"
-      >
-        <h4
-          class="sc-fzoNJl gOeyto"
-        >
-          08 Aug
-        </h4>
-        <h4
-          class="sc-fzoXWK bSYemk"
-        >
-          <article
-            class="sc-fzqBZW dBijkG"
-          >
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Livro Amazon
-              </h5>
-              <h6
-                class="sc-fznZeY kLrACO"
-                color="#E91E63"
-              >
-                Educação
-              </h6>
-              <p
-                class="sc-fzqNJr hKWXie"
-              >
-                57.75
-                $
-              </p>
-            </div>
-          </article>
-        </h4>
-      </div>
-      <div
-        class="sc-fzoyTs invWGD"
-      >
-        <h4
-          class="sc-fzoNJl gOeyto"
-        >
-          10 Aug
-        </h4>
-        <h4
-          class="sc-fzoXWK bSYemk"
-        >
-          <article
-            class="sc-fzqBZW dBijkG"
-          >
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Jogo XBOX
-              </h5>
-              <h6
-                class="sc-fznZeY djbAQy"
-                color="#4CAF50"
-              >
-                Lazer
-              </h6>
-              <p
-                class="sc-fzqNJr hKWXie"
-              >
-                57.75
-                $
-              </p>
-            </div>
-          </article>
-        </h4>
+        <p>
+          No expenses on this date.
+        </p>
       </div>
     </section>
   </div>
@@ -466,7 +258,7 @@ exports[`ExpensesSettings matches snashot 1`] = `
       Settings
     </h2>
     <div
-      class="sc-AxhCb iGvJwE"
+      class="sc-AxhCb bCDkJU"
     >
       <div
         class="sc-AxhUy gnZxSn"
