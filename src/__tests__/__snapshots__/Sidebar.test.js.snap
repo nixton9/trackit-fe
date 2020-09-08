@@ -45,7 +45,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/"
         >
           <div
-            class="sc-fzozJi gBYUMg"
+            class="sc-fzozJi OVUAC"
           >
             <svg>
               home.svg
@@ -57,7 +57,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/notes"
         >
           <div
-            class="sc-fzozJi gBYUMg"
+            class="sc-fzozJi OVUAC"
           >
             <svg>
               notes.svg
@@ -69,7 +69,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/tasks"
         >
           <div
-            class="sc-fzozJi gBYUMg"
+            class="sc-fzozJi OVUAC"
           >
             <svg>
               tasks.svg
@@ -81,7 +81,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/habits"
         >
           <div
-            class="sc-fzozJi gBYUMg"
+            class="sc-fzozJi OVUAC"
           >
             <svg>
               habits.svg
@@ -93,7 +93,7 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/expenses"
         >
           <div
-            class="sc-fzozJi gBYUMg"
+            class="sc-fzozJi OVUAC"
           >
             <svg>
               expenses.svg
@@ -107,12 +107,26 @@ exports[`Sidebar matches snapshot 1`] = `
           href="/settings"
         >
           <div
-            class="sc-fzozJi gBYUMg settings"
+            class="sc-fzozJi OVUAC settings"
           >
             <svg>
               settings.svg
             </svg>
              Settings
+          </div>
+        </a>
+        <a
+          aria-current="page"
+          class="active"
+          href="/"
+        >
+          <div
+            class="sc-fzozJi OVUAC logout"
+          >
+            <svg>
+              logout.svg
+            </svg>
+             Logout
           </div>
         </a>
       </div>

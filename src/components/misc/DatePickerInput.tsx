@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, ReactElement } from 'react'
 import DatePicker from 'react-datepicker'
 import { Styled } from '../../styles/DatePicker.styles'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -8,7 +8,7 @@ type DatePickerProps = {
   setDate: Dispatch<SetStateAction<Date>>
   minDate?: Date
   maxDate?: Date
-  customInput?: any
+  customInput?: ReactElement
 }
 
 const DatePickerInput: React.FC<DatePickerProps> = ({
@@ -22,7 +22,7 @@ const DatePickerInput: React.FC<DatePickerProps> = ({
     <Styled.DatePickerContainer>
       <DatePicker
         selected={date}
-        onChange={(date: any) => setDate(date)}
+        onChange={(date: Date) => setDate(date)}
         dateFormat="d MMM"
         minDate={minDate}
         maxDate={maxDate}

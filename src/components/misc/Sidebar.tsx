@@ -7,8 +7,12 @@ import { ReactComponent as TasksIcon } from '../../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../../assets/icons/habits.svg'
 import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
+import { ReactComponent as LogoutIcon } from '../../assets/icons/logout.svg'
 import { Styled } from '../../styles/Sidebar.styles'
 import { NavLink } from 'react-router-dom'
+
+const defaultAvatar =
+  'https://everydaynutrition.co.uk/wp-content/uploads/2015/01/default-user-avatar.png'
 
 interface SidebarProps {
   user: {
@@ -16,10 +20,16 @@ interface SidebarProps {
     name: string
     email: string
   }
+  logout: () => void
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ user }) => {
+const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
   const [open, setOpen, overlayEl] = useToggleElement()
+
+  const handleLogout = () => {
+    setOpen(false)
+    logout()
+  }
 
   return (
     <>
@@ -29,7 +39,10 @@ const Sidebar: React.FC<SidebarProps> = ({ user }) => {
 
       <Styled.SidebarContainer open={open}>
         <Styled.SidebarUser>
-          <Styled.SidebarUser__Img alt={user.name} src={user.image} />
+          <Styled.SidebarUser__Img
+            alt={user.name}
+            src={user.image ? user.image : defaultAvatar}
+          />
           <Styled.SidebarUser__Info>
             <Styled.SidebarUser__Info__Name>
               {user.name}
@@ -97,6 +110,11 @@ const Sidebar: React.FC<SidebarProps> = ({ user }) => {
             >
               <Styled.SidebarNavItem className="settings">
                 <SettingsIcon /> Settings
+              </Styled.SidebarNavItem>
+            </NavLink>
+            <NavLink to="/" onClick={handleLogout}>
+              <Styled.SidebarNavItem className="logout">
+                <LogoutIcon /> Logout
               </Styled.SidebarNavItem>
             </NavLink>
           </div>

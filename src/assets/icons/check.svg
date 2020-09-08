@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="74" height="71" viewBox="0 0 74 71">
+  <defs>
+    <clipPath id="clip-Prancheta_10">
+      <rect width="74" height="71"/>
+    </clipPath>
+  </defs>
+  <g id="Prancheta_10" data-name="Prancheta – 10" clip-path="url(#clip-Prancheta_10)">
+    <g id="Elipse_191" data-name="Elipse 191" transform="translate(12 10)" fill="#23b14f" stroke="#23b14f" stroke-width="4">
+      <circle cx="25.5" cy="25.5" r="25.5" stroke="none"/>
+      <circle cx="25.5" cy="25.5" r="23.5" fill="none"/>
+    </g>
+    <path id="Caminho_290" data-name="Caminho 290" d="M-13776.5-7782.885l6.907,6.553,14.575-12.527" transform="translate(13803.005 7818.359)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  </g>
+</svg>

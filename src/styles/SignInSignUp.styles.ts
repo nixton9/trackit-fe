@@ -33,6 +33,7 @@ const SignInSignUpHeader__Items = styled.div`
 const SignInSignUpContainer = styled.div`
   width: 75%;
   margin: 0 auto;
+  position: relative;
 `
 
 const SignInSignUpText = styled.h2`
@@ -50,6 +51,12 @@ const SignInSignUpText = styled.h2`
 const SignInSignUpForm = styled.form`
   margin-top: ${props => props.theme.spacingL};
   text-align: center;
+  transition: all 0.7s ease;
+
+  &.loading {
+    filter: blur(3px);
+    opacity: 0.5;
+  }
 `
 
 const SignInSignUpForm__Input = styled.div`
@@ -139,6 +146,31 @@ const SignInSignUpForm__Button = styled.button`
   cursor: pointer;
 `
 
+const SignInSignUpLoading = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`
+
+const SignInSignUpMessage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: ${props => props.theme.spacingS};
+
+  svg {
+    width: 4rem;
+  }
+
+  p {
+    color: ${props => props.theme.white};
+    font-size: 1.4rem;
+    font-weight: ${props => props.theme.fontMedium};
+    margin-left: 0.5rem;
+  }
+`
+
 export const Styled = {
   SignInSignUpHeader,
   SignInSignUpHeader__Logo,
@@ -147,5 +179,7 @@ export const Styled = {
   SignInSignUpText,
   SignInSignUpForm,
   SignInSignUpForm__Input,
-  SignInSignUpForm__Button
+  SignInSignUpForm__Button,
+  SignInSignUpLoading,
+  SignInSignUpMessage
 }

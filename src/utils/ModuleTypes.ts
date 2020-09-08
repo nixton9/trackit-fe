@@ -5,6 +5,13 @@ export enum ModuleTypes {
   Expenses = 'Expenses'
 }
 
+export type User = {
+  id: string
+  name: string
+  email: string
+  image: string
+}
+
 export type Note = {
   id: string | number
   title: string

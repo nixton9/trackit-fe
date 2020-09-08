@@ -5,8 +5,19 @@ import { SelectMenu } from '../misc/SelectMenu'
 import { notes, notesTags } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Note } from '../../utils/ModuleTypes'
+import { useQuery, gql } from '@apollo/client'
+
+const NOTES = gql`
+  query Notes {
+    notes {
+      id_note
+      title_note
+    }
+  }
+`
 
 const NotesPage: React.FC = () => {
+  const { loading, error, data } = useQuery(NOTES)
   const [view, setView] = useState('all')
 
   const viewOptions = [
@@ -52,7 +63,11 @@ const NotesPage: React.FC = () => {
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {visibleNotes.length ? (
+        {error ? (
+          <div>Error component</div>
+        ) : loading ? (
+          <div>Loading component</div>
+        ) : visibleNotes.length ? (
           (visibleNotes as Note[]).map(note => (
             <SingleNote
               key={note.id}

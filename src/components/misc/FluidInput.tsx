@@ -46,7 +46,7 @@ export const FluidInput: React.FC<FluidInputProps> = ({
       <input
         type="number"
         value={value}
-        onChange={(e: any) => setValue(e.target.value)}
+        onChange={e => setValue(e.target.value)}
         placeholder={placeholder}
         step="0.01"
       />

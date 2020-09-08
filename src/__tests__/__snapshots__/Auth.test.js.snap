@@ -1,5 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ForgotPassword matches snapshot 1`] = `
+<div>
+  <nav
+    class="sc-AxjAm icODTr"
+  >
+    <h1
+      class="sc-AxirZ bosuDb"
+    >
+      TrackIt
+    </h1>
+    <div
+      class="sc-AxiKw cmYvTE"
+    >
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Sign In
+      </a>
+      <a
+        href="/signup"
+      >
+        Sign Up
+      </a>
+    </div>
+  </nav>
+  <div
+    class="sc-AxhCb ivLleu"
+  >
+    <h2
+      class="sc-AxhUy JNaYu"
+    >
+      Reset your password here, 
+      <br />
+      <span>
+        just type your email
+      </span>
+    </h2>
+    <form
+      class="sc-AxgMl iZsHBs"
+    >
+      <div
+        class="sc-AxheI fnSDUS"
+      >
+        <input
+          placeholder="Email address"
+          type="email"
+          value=""
+        />
+      </div>
+      <button
+        class="sc-Axmtr lgMnpa"
+      >
+        Send
+      </button>
+    </form>
+    
+  </div>
+</div>
+`;
+
+exports[`ResetPassword matches snapshot 1`] = `
+<div>
+  <nav
+    class="sc-AxjAm icODTr"
+  >
+    <h1
+      class="sc-AxirZ bosuDb"
+    >
+      TrackIt
+    </h1>
+    <div
+      class="sc-AxiKw cmYvTE"
+    >
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Sign In
+      </a>
+      <a
+        href="/signup"
+      >
+        Sign Up
+      </a>
+    </div>
+  </nav>
+  <div
+    class="sc-AxhCb ivLleu"
+  >
+    <h2
+      class="sc-AxhUy JNaYu"
+    >
+      Set your new password,
+      <br />
+      <span>
+        make it sticky this time
+      </span>
+    </h2>
+    <form
+      class="sc-AxgMl iZsHBs"
+    >
+      <div
+        class="sc-AxheI fnSDUS"
+      >
+        <input
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        class="sc-Axmtr lgMnpa"
+      >
+        Update
+      </button>
+    </form>
+    
+  </div>
+</div>
+`;
+
 exports[`SignIn matches snapshot 1`] = `
 <div>
   <nav
@@ -28,7 +152,7 @@ exports[`SignIn matches snapshot 1`] = `
     </div>
   </nav>
   <div
-    class="sc-AxhCb kwOwjE"
+    class="sc-AxhCb ivLleu"
   >
     <h2
       class="sc-AxhUy JNaYu"
@@ -40,14 +164,14 @@ exports[`SignIn matches snapshot 1`] = `
       </span>
     </h2>
     <form
-      class="sc-AxgMl ixfOtu"
+      class="sc-AxgMl iZsHBs"
     >
       <div
         class="sc-AxheI fnSDUS"
       >
         <input
           placeholder="Email address"
-          type="text"
+          type="email"
           value=""
         />
       </div>
@@ -67,7 +191,11 @@ exports[`SignIn matches snapshot 1`] = `
           </svg>
         </div>
         <p>
-          Forgot password?
+          <a
+            href="/forgot"
+          >
+            Forgot password?
+          </a>
         </p>
       </div>
       <button
@@ -108,7 +236,7 @@ exports[`SignUp matches snapshot 1`] = `
     </div>
   </nav>
   <div
-    class="sc-AxhCb kwOwjE"
+    class="sc-AxhCb ivLleu"
   >
     <h2
       class="sc-AxhUy JNaYu"
@@ -120,13 +248,14 @@ exports[`SignUp matches snapshot 1`] = `
       </span>
     </h2>
     <form
-      class="sc-AxgMl ixfOtu"
+      class="sc-AxgMl iZsHBs"
     >
       <div
         class="sc-AxheI fnSDUS"
       >
         <input
           placeholder="Name"
+          required=""
           type="text"
           value=""
         />
@@ -136,7 +265,8 @@ exports[`SignUp matches snapshot 1`] = `
       >
         <input
           placeholder="Email address"
-          type="text"
+          required=""
+          type="email"
           value=""
         />
       </div>
@@ -148,6 +278,7 @@ exports[`SignUp matches snapshot 1`] = `
         >
           <input
             placeholder="Password"
+            required=""
             type="password"
             value=""
           />

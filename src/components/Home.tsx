@@ -7,14 +7,14 @@ import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../assets/icons/habits.svg'
 import { ReactComponent as ExpensesIcon } from '../assets/icons/expenses.svg'
 
-const Home: React.FC = () => {
+const Home: React.FC<{ userName: string }> = ({ userName }) => {
   return (
     <>
       <Styled.HomeLogo>Trackit</Styled.HomeLogo>
 
       <Styled.HomeContainer>
         <Styled.HomeText>
-          Hello <strong>Eduardo</strong>,<br />
+          Hello <strong>{userName}</strong>,<br />
           what will you track today?
         </Styled.HomeText>
 

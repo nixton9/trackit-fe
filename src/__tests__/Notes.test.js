@@ -5,13 +5,24 @@ import SingleNote from '../components/notes/SingleNote'
 import NotesSettings from '../components/notes/NotesSettings'
 import { notes, notesTags } from '../assets/fakeData'
 import { BrowserRouter } from 'react-router-dom'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+
+const client = new ApolloClient({
+  uri: '/',
+  cache: new InMemoryCache(),
+  headers: {
+    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTU5NDYyMzYxN30.eRuuyy-6EE6UkGFQI9UQmRklwPiyXgSJgmoZektpiG4`
+  }
+})
 
 describe('Notes Page', () => {
   it('matches snapshot', () => {
     const { container } = render(
-      <BrowserRouter>
-        <NotesPage />
-      </BrowserRouter>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <NotesPage />
+        </BrowserRouter>
+      </ApolloProvider>
     )
 
     expect(container).toMatchSnapshot()
@@ -19,9 +30,11 @@ describe('Notes Page', () => {
 
   it('has the title', () => {
     const { getByText } = render(
-      <BrowserRouter>
-        <NotesPage />
-      </BrowserRouter>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <NotesPage />
+        </BrowserRouter>
+      </ApolloProvider>
     )
 
     expect(getByText('Notes')).toBeInTheDocument()

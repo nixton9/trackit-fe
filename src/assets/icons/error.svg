@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="74" height="71" viewBox="0 0 74 71">
+  <defs>
+    <clipPath id="clip-Prancheta_9">
+      <rect width="74" height="71"/>
+    </clipPath>
+  </defs>
+  <g id="Prancheta_9" data-name="Prancheta – 9" clip-path="url(#clip-Prancheta_9)">
+    <g id="Elipse_191" data-name="Elipse 191" transform="translate(12 10)" fill="#fd1053" stroke="#fd1053" stroke-width="4">
+      <circle cx="25.5" cy="25.5" r="25.5" stroke="none"/>
+      <circle cx="25.5" cy="25.5" r="23.5" fill="none"/>
+    </g>
+    <text id="_" data-name="+" transform="translate(16.607 36.113) rotate(45)" fill="#fff" font-size="42" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">+</tspan></text>
+  </g>
+</svg>

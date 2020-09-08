@@ -99,6 +99,10 @@ const SidebarNavItem = styled.div`
   font-weight: ${props => props.theme.fontRegular};
 
   &.settings {
+    margin-bottom: ${props => props.theme.spacingS};
+  }
+
+  &.logout {
     margin-bottom: 0;
   }
 

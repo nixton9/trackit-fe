@@ -45,5 +45,6 @@ describe('Sidebar', () => {
     expect(getByText('Habits')).toBeInTheDocument()
     expect(getByText('Expenses')).toBeInTheDocument()
     expect(getByText('Settings')).toBeInTheDocument()
+    expect(getByText('Logout')).toBeInTheDocument()
   })
 })
