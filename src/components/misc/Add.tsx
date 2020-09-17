@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Drawer from './Drawer'
+import AddNote from '../notes/AddNote'
 import AddTask from '../tasks/AddTask'
 import AddHabit from '../habits/AddHabit'
 import AddExpense from '../expenses/AddExpense'
@@ -40,7 +41,7 @@ const Add: React.FC = () => {
   switch (activeContent) {
     case ModuleTypes.Notes:
       drawerTitle = notesTitle
-      drawerContent = <AddTask />
+      drawerContent = <AddNote closeModal={() => setOpen(false)} />
       break
 
     case ModuleTypes.Tasks:

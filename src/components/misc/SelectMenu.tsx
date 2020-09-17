@@ -4,8 +4,13 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 
 export type SelectMenuProps = {
-  value: string
-  options: { val: string | number; label: string }[]
+  value: string | string[]
+  options: {
+    val: string | number
+    label: string
+    disabled?: boolean
+    color?: string
+  }[]
   id: string
   itemClass?: string
   open?: boolean
@@ -36,7 +41,12 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
       disableUnderline
     >
       {options.map(option => (
-        <MenuItem key={option.val} value={option.val} className={itemClass}>
+        <MenuItem
+          key={option.val}
+          value={option.val}
+          className={itemClass}
+          disabled={option.disabled ? true : false}
+        >
           {option.label}
         </MenuItem>
       ))}

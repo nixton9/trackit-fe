@@ -121,6 +121,30 @@ const AddWidget = styled.div`
     }
   }
 
+  .ReactTags__selected {
+    display: flex;
+
+    span {
+      margin: 0 1rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .ReactTags__tags input {
+    width: 5rem;
+    font-size: 1.3rem;
+    font-weight: ${props => props.theme.fontRegular};
+    color: ${props => props.theme.white};
+    line-height: 1.5rem;
+    margin-left: 1rem;
+    background: transparent;
+    border: none;
+
+    &::placeholder {
+      color: ${props => props.theme.white};
+    }
+  }
+
   .MuiInput-root {
     .MuiSelect-selectMenu {
       font-size: 1.3rem;
@@ -165,6 +189,29 @@ const AddWidget__Button = styled.button`
   }
 `
 
+const AddTags_Suggestion = styled.div`
+  width: 100%;
+`
+
+const AddLoading = styled.div`
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+`
+
+const AddMessage = styled.div`
+  text-align: center;
+
+  svg {
+    width: 6rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontLight};
+  }
+`
+
 export const Styled = {
   AddIcon,
   AddButton,
@@ -172,5 +219,8 @@ export const Styled = {
   AddInputNumberWrapper,
   AddWidgetsContainer,
   AddWidget,
-  AddWidget__Button
+  AddWidget__Button,
+  AddTags_Suggestion,
+  AddLoading,
+  AddMessage
 }

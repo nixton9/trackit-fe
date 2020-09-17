@@ -12,7 +12,9 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
         <Styled.SingleFlex>
           <div>
             <Styled.SingleTitle>{title}</Styled.SingleTitle>
-            <Styled.SingleDate>{displayDateString(date)}</Styled.SingleDate>
+            <Styled.SingleDate>
+              {displayDateString(date.substring(0, 10))}
+            </Styled.SingleDate>
           </div>
           <Styled.SingleNote__Tags>
             {tags &&

@@ -4,40 +4,37 @@ import SingleNote from './SingleNote'
 import { SelectMenu } from '../misc/SelectMenu'
 import { notes, notesTags } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
-import { Note } from '../../utils/ModuleTypes'
-import { useQuery, gql } from '@apollo/client'
-
-const NOTES = gql`
-  query Notes {
-    notes {
-      id_note
-      title_note
-    }
-  }
-`
+import { Note, NoteTag } from '../../utils/ModuleTypes'
+import { useQuery } from '@apollo/client'
+import { NOTES, TAGS } from '../../utils/queries'
 
 const NotesPage: React.FC = () => {
   const { loading, error, data } = useQuery(NOTES)
+  const { data: tags } = useQuery(TAGS)
   const [view, setView] = useState('all')
 
-  const viewOptions = [
-    { val: 'all', label: 'All' },
-    ...notesTags.map(tag => ({
-      val: tag.id,
-      label: tag.name
-    }))
-  ]
+  const viewOptions = tags
+    ? [
+        { val: 'all', label: 'All' },
+        ...tags.tags.map((tag: NoteTag) => ({
+          val: tag.id,
+          label: tag.name
+        }))
+      ]
+    : [{ val: 'all', label: 'All' }]
 
   const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setView(e.target.value)
 
-  const visibleNotes =
-    view === 'all'
-      ? notes
-      : notes.filter(
-          note => note.tags?.filter(tag => tag.id === parseInt(view, 10)).length
+  const visibleNotes = data
+    ? view === 'all'
+      ? data.notes
+      : data.notes.filter(
+          (note: Note) => note.tags?.filter(tag => tag.id === view).length
         )
-
+    : []
+  console.log(view)
+  data && console.log(data.notes)
   return (
     <Styled.PageContainer>
       <Styled.PageTitle>Notes</Styled.PageTitle>
@@ -54,11 +51,11 @@ const NotesPage: React.FC = () => {
             />
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
-            {notes.length}
+            {data ? data.notes.length : ''}
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
-          <NotesSettings tags={notesTags} />
+          {tags && <NotesSettings tags={tags.tags} />}
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 

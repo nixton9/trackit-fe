@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { SignInSignUpHeader } from '../misc/SignInSignUpHeader'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { Styled } from '../../styles/SignInSignUp.styles'

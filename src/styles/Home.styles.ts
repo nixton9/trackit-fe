@@ -42,9 +42,23 @@ const HomeGrid = styled.section`
   }
 `
 
+const HomeLoading = styled.div`
+  width: 100%;
+  height: 45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const HomeError = styled.div`
+  width: 100%;
+`
+
 export const Styled = {
   HomeLogo,
   HomeContainer,
   HomeText,
-  HomeGrid
+  HomeGrid,
+  HomeLoading,
+  HomeError
 }
