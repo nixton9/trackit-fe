@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Dispatch, SetStateAction } from 'react'
 import Drawer from '../misc/Drawer'
 import Tag from './Tag'
 import { SelectMenu } from '../misc/SelectMenu'
@@ -7,10 +7,11 @@ import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { NoteTag } from '../../utils/ModuleTypes'
+import { SortBySettings } from '../../utils/SettingsTypes'
 
 const sortByOptions = [
-  { val: 'date', label: 'Date' },
-  { val: 'alphabetical', label: 'Alphabetical Order' }
+  { val: SortBySettings.DATE, label: 'Date' },
+  { val: SortBySettings.ALPHABETICAL, label: 'Alphabetical Order' }
 ]
 
 const fontSizeOptions = [
@@ -21,15 +22,20 @@ const fontSizeOptions = [
 
 type NotesSettingsProps = {
   tags: NoteTag[]
+  sortBy: string
+  setSortBy: Dispatch<SetStateAction<SortBySettings>>
 }
 
-const NotesSettings: React.FC<NotesSettingsProps> = ({ tags }) => {
+const NotesSettings: React.FC<NotesSettingsProps> = ({
+  tags,
+  sortBy,
+  setSortBy
+}) => {
   const [open, setOpen, overlayEl] = useToggleElement()
-  const [sortBy, setSortBy] = useState('date')
   const [fontSize, setFontSize] = useState('medium')
 
   const handleSortByChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-    setSortBy(e.target.value)
+    setSortBy(e.target.value as SortBySettings)
 
   const handleFontSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setFontSize(e.target.value)

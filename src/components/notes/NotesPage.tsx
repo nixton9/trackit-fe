@@ -2,16 +2,19 @@ import React, { useState } from 'react'
 import NotesSettings from './NotesSettings'
 import SingleNote from './SingleNote'
 import { SelectMenu } from '../misc/SelectMenu'
-import { notes, notesTags } from '../../assets/fakeData'
 import { Styled } from '../../styles/Page.styles'
 import { Note, NoteTag } from '../../utils/ModuleTypes'
-import { useQuery } from '@apollo/client'
 import { NOTES, TAGS } from '../../utils/queries'
+import { SortBySettings } from '../../utils/SettingsTypes'
+import { sortData } from '../../utils/globalHelpers'
+import { useQuery } from '@apollo/client'
 
 const NotesPage: React.FC = () => {
   const { loading, error, data } = useQuery(NOTES)
   const { data: tags } = useQuery(TAGS)
+
   const [view, setView] = useState('all')
+  const [sortBy, setSortBy] = useState<SortBySettings>(SortBySettings.DATE)
 
   const viewOptions = tags
     ? [
@@ -33,8 +36,9 @@ const NotesPage: React.FC = () => {
           (note: Note) => note.tags?.filter(tag => tag.id === view).length
         )
     : []
-  console.log(view)
-  data && console.log(data.notes)
+
+  const sortedNotes = sortData(visibleNotes, sortBy)
+
   return (
     <Styled.PageContainer>
       <Styled.PageTitle>Notes</Styled.PageTitle>
@@ -55,7 +59,13 @@ const NotesPage: React.FC = () => {
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
-          {tags && <NotesSettings tags={tags.tags} />}
+          {tags && (
+            <NotesSettings
+              tags={tags.tags}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+            />
+          )}
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
@@ -64,8 +74,8 @@ const NotesPage: React.FC = () => {
           <div>Error component</div>
         ) : loading ? (
           <div>Loading component</div>
-        ) : visibleNotes.length ? (
-          (visibleNotes as Note[]).map(note => (
+        ) : sortedNotes.length ? (
+          (sortedNotes as Note[]).map(note => (
             <SingleNote
               key={note.id}
               id={note.id}

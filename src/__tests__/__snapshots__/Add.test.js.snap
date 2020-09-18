@@ -3,7 +3,7 @@
 exports[`Add matches snapshot 1`] = `
 <div>
   <div
-    class="sc-AxgMl fBmUve"
+    class="sc-AxheI dRFulU"
   >
     <svg>
       plus.svg
@@ -21,7 +21,7 @@ exports[`Add matches snapshot 1`] = `
       class="sc-AxhCb bCDkJU"
     >
       <button
-        class="sc-AxheI gPascW"
+        class="sc-Axmtr ilVRrt"
       >
         <span>
           Create a note
@@ -31,7 +31,7 @@ exports[`Add matches snapshot 1`] = `
         </svg>
       </button>
       <button
-        class="sc-AxheI gPascW"
+        class="sc-Axmtr ilVRrt"
       >
         <span>
           Create a task
@@ -41,7 +41,7 @@ exports[`Add matches snapshot 1`] = `
         </svg>
       </button>
       <button
-        class="sc-AxheI gPascW"
+        class="sc-Axmtr ilVRrt"
       >
         <span>
           Add an expense
@@ -51,7 +51,7 @@ exports[`Add matches snapshot 1`] = `
         </svg>
       </button>
       <button
-        class="sc-AxheI gPascW"
+        class="sc-Axmtr ilVRrt"
       >
         <span>
           Add an habit

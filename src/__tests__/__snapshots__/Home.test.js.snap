@@ -3,15 +3,15 @@
 exports[`Home matches snapshot 1`] = `
 <div>
   <h1
-    class="sc-AxmLO dnSHbF"
+    class="sc-fzoLsD uGWZa"
   >
     Trackit
   </h1>
   <div
-    class="sc-fzozJi eFqdkZ"
+    class="sc-fzpans bCUNWb"
   >
     <h2
-      class="sc-fzoLsD fmhGHs"
+      class="sc-fzplWN gNeweh"
     >
       Hello 
       <strong />
@@ -19,195 +19,20 @@ exports[`Home matches snapshot 1`] = `
       <br />
       what will you track today?
     </h2>
-    <section
-      class="sc-fzpans dYPgur"
+    <div
+      class="sc-fznKkj jtgPGw"
     >
-      <a
-        href="/notes"
+      <div
+        class="sc-AxmLO kJjoWk"
       >
         <div
-          class="sc-AxjAm gJBtIG widget"
-          type="Notes"
-        >
-          <div
-            class="sc-AxirZ faeQuU"
-          >
-            <h3
-              class="sc-AxiKw iFzphh"
-            >
-              Notes
-            </h3>
-            <span
-              class="sc-AxhCb eMhwpD"
-            >
-              <svg>
-                notes.svg
-              </svg>
-            </span>
-          </div>
-          <div
-            class="sc-AxhUy kdGTln"
-          >
-            <h2
-              class="sc-AxgMl fzCZfy"
-            >
-              32
-            </h2>
-            <p
-              class="sc-AxheI jvnWOu"
-            >
-              created
-            </p>
-          </div>
-          <span
-            class="sc-Axmtr ERpEm"
-          >
-            <svg>
-              plus.svg
-            </svg>
-          </span>
-        </div>
-      </a>
-      <a
-        href="/tasks"
-      >
+          class="sc-fzozJi cLknZC"
+        />
         <div
-          class="sc-AxjAm iKszAJ widget"
-          type="Tasks"
-        >
-          <div
-            class="sc-AxirZ faeQuU"
-          >
-            <h3
-              class="sc-AxiKw iFzphh"
-            >
-              Tasks
-            </h3>
-            <span
-              class="sc-AxhCb eMhwpD"
-            >
-              <svg>
-                tasks.svg
-              </svg>
-            </span>
-          </div>
-          <div
-            class="sc-AxhUy kdGTln"
-          >
-            <h2
-              class="sc-AxgMl fzCZfy"
-            >
-              7
-            </h2>
-            <p
-              class="sc-AxheI jvnWOu"
-            >
-              for today
-            </p>
-          </div>
-          <span
-            class="sc-Axmtr ERpEm"
-          >
-            <svg>
-              plus.svg
-            </svg>
-          </span>
-        </div>
-      </a>
-      <a
-        href="/habits"
-      >
-        <div
-          class="sc-AxjAm hZZurg widget"
-          type="Habits"
-        >
-          <div
-            class="sc-AxirZ faeQuU"
-          >
-            <h3
-              class="sc-AxiKw iFzphh"
-            >
-              Habits
-            </h3>
-            <span
-              class="sc-AxhCb eMhwpD"
-            >
-              <svg>
-                habits.svg
-              </svg>
-            </span>
-          </div>
-          <div
-            class="sc-AxhUy kdGTln"
-          >
-            <h2
-              class="sc-AxgMl fzCZfy"
-            >
-              2
-            </h2>
-            <p
-              class="sc-AxheI jvnWOu"
-            >
-              active
-            </p>
-          </div>
-          <span
-            class="sc-Axmtr ERpEm"
-          >
-            <svg>
-              plus.svg
-            </svg>
-          </span>
-        </div>
-      </a>
-      <a
-        href="/expenses"
-      >
-        <div
-          class="sc-AxjAm fbomiD widget"
-          type="Expenses"
-        >
-          <div
-            class="sc-AxirZ faeQuU"
-          >
-            <h3
-              class="sc-AxiKw iFzphh"
-            >
-              Expenses
-            </h3>
-            <span
-              class="sc-AxhCb eMhwpD"
-            >
-              <svg>
-                expenses.svg
-              </svg>
-            </span>
-          </div>
-          <div
-            class="sc-AxhUy kdGTln"
-          >
-            <h2
-              class="sc-AxgMl jgaPPo"
-            >
-              454
-              $
-            </h2>
-            <p
-              class="sc-AxheI jvnWOu"
-            >
-              this month
-            </p>
-          </div>
-          <span
-            class="sc-Axmtr ERpEm"
-          >
-            <svg>
-              plus.svg
-            </svg>
-          </span>
-        </div>
-      </a>
-    </section>
+          class="sc-fzozJi cLknZC doublebounce2"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;
