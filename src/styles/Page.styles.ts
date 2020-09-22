@@ -102,6 +102,73 @@ const PageContent__NoData = styled.div`
   }
 `
 
+const PageLoading = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: ${props => props.theme.spacingL};
+`
+
+const PageError = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${props => props.theme.white};
+  font-size: 1.5rem;
+  font-weight: ${props => props.theme.fontMedium};
+  margin-top: ${props => props.theme.spacingL};
+
+  svg {
+    width: 4rem;
+    margin-right: 0.5rem;
+  }
+`
+
+const DetailBack = styled.span`
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
+
+  svg {
+    transform: rotate(90deg);
+    width: 3.2rem;
+    margin-right: ${props => props.theme.spacingXS};
+  }
+`
+
+const DetailTitle = styled.h2`
+  color: ${props => props.theme.white};
+  font-size: 2.5rem;
+  font-weight: ${props => props.theme.fontSemiBold};
+`
+
+const DetailDate = styled.h5`
+  color: ${props => props.theme.greyishBlue};
+  font-size: 1.5rem;
+  font-weight: ${props => props.theme.fontExtraBold};
+  margin-top: 0.4rem;
+`
+
+const DetailTags = styled.div`
+  display: flex;
+  margin-top: ${props => props.theme.spacingS};
+`
+
+const DetailContent = styled.p`
+  margin-top: ${props => props.theme.spacingS};
+  color: ${props => props.theme.white};
+  font-size: 1.6rem;
+  line-height: 4.5rem;
+  font-weight: ${props => props.theme.fontRegular};
+`
+
 export const Styled = {
   PageContainer,
   PageTitle,
@@ -114,5 +181,12 @@ export const Styled = {
   PageContent__Day,
   PageContent__Day__Title,
   PageContent__Day__Expenses,
-  PageContent__NoData
+  PageContent__NoData,
+  PageLoading,
+  PageError,
+  DetailBack,
+  DetailTitle,
+  DetailDate,
+  DetailTags,
+  DetailContent
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import NotesSettings from './NotesSettings'
 import SingleNote from './SingleNote'
 import { SelectMenu } from '../misc/SelectMenu'
+import { PageLoading } from '../misc/PageLoading'
+import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
 import { Note, NoteTag } from '../../utils/ModuleTypes'
 import { NOTES, TAGS } from '../../utils/queries'
@@ -59,21 +61,19 @@ const NotesPage: React.FC = () => {
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
-          {tags && (
-            <NotesSettings
-              tags={tags.tags}
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-            />
-          )}
+          <NotesSettings
+            tags={tags ? tags.tags : []}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+          />
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
       <Styled.PageContent>
         {error ? (
-          <div>Error component</div>
+          <PageError>{error.message}</PageError>
         ) : loading ? (
-          <div>Loading component</div>
+          <PageLoading />
         ) : sortedNotes.length ? (
           (sortedNotes as Note[]).map(note => (
             <SingleNote

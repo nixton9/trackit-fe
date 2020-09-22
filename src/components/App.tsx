@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Home from './Home'
 import NotesPage from './notes/NotesPage'
+import NoteDetail from './notes/NoteDetail'
 import TasksPage from './tasks/TasksPage'
 import ExpensesPage from './expenses/ExpensesPage'
 import HabitsPage from './habits/HabitsPage'
@@ -20,6 +21,7 @@ import { useLocalStorage } from '../utils/useLocalStorage'
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [showWidgets, setShowWidgets] = useState(true)
 
   const [token, setToken] = useLocalStorage('token', '')
   const [userInfo, setUserInfo] = useLocalStorage('user', {})
@@ -48,9 +50,13 @@ const App: React.FC = () => {
           <GlobalStyle />
           {loggedIn ? (
             <>
-              <Sidebar user={userInfo} logout={logout} />
-              <Search />
-              <Add />
+              {showWidgets && (
+                <>
+                  <Sidebar user={userInfo} logout={logout} />
+                  <Search />
+                  <Add />
+                </>
+              )}
               <Switch>
                 <Route exact path="/">
                   <Home userName={userInfo.name} />
@@ -67,6 +73,16 @@ const App: React.FC = () => {
                 <Route exact path="/habits">
                   <HabitsPage />
                 </Route>
+                <Route
+                  exact
+                  path="/notes/:id"
+                  render={props => (
+                    <NoteDetail
+                      {...props}
+                      setWidgets={(bool: boolean) => setShowWidgets(bool)}
+                    />
+                  )}
+                />
               </Switch>
             </>
           ) : (

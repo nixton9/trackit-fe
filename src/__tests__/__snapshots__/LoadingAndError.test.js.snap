@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-fznZeY bSJaCI"
+  >
+    <svg>
+      error.svg
+    </svg>
+    Test
+  </div>
+</div>
+`;
+
+exports[`Loading matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-fznKkj eGzyrh"
+  >
+    <div
+      class="sc-AxjAm gcvfvo"
+    >
+      <div
+        class="sc-AxirZ emeNQI"
+      />
+      <div
+        class="sc-AxirZ emeNQI doublebounce2"
+      />
+    </div>
+  </div>
+</div>
+`;
