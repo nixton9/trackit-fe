@@ -35,7 +35,8 @@ const NotesPage: React.FC = () => {
     ? view === 'all'
       ? data.notes
       : data.notes.filter(
-          (note: Note) => note.tags?.filter(tag => tag.id === view).length
+          (note: Note) =>
+            note.tags?.filter(tag => Number(tag.id) === Number(view)).length
         )
     : []
 

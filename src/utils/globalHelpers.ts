@@ -3,14 +3,16 @@ import { Note, Task, Expense } from './ModuleTypes'
 
 export const sortData = (
   data: Note[] | Task[] | Expense[],
-  sortBy: SortBySettings
+  sortBy: SortBySettings,
+  invertedDate: boolean = false
 ) => {
   return sortBy === SortBySettings.DATE
     ? data
         .slice()
-        .sort(
-          (a: Note | Task | Expense, b: Note | Task | Expense) =>
-            new Date(b.date).getTime() - new Date(a.date).getTime()
+        .sort((a: Note | Task | Expense, b: Note | Task | Expense) =>
+          invertedDate
+            ? new Date(a.date).getTime() - new Date(b.date).getTime()
+            : new Date(b.date).getTime() - new Date(a.date).getTime()
         )
     : sortBy === SortBySettings.ALPHABETICAL
     ? data

@@ -40,3 +40,29 @@ export const TAGS = gql`
     }
   }
 `
+
+export const TASKS = gql`
+  query Tasks {
+    tasks {
+      id: id_task
+      title: title_task
+      date: date_task
+      done: done
+      category {
+        id: id_category
+        name: name_category
+        color: color_category
+      }
+    }
+  }
+`
+
+export const CATEGORIES = gql`
+  query Categories {
+    categories {
+      id: id_category
+      name: name_category
+      color: color_category
+    }
+  }
+`

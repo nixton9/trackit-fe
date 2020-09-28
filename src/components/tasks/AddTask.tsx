@@ -4,34 +4,83 @@ import { Styled } from '../../styles/Add.styles'
 import { AddSubmitButton } from '../misc/Add'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
+import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
-import { tasksCategories } from '../../assets/fakeData'
 import { TaskCategory } from '../../utils/ModuleTypes'
+import { TASKS, CATEGORIES } from '../../utils/queries'
+import { DrawerAddModule } from '../notes/AddNote'
+import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
+import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
+import { gql, useMutation, useQuery } from '@apollo/client'
 
-const AddTask: React.FC = () => {
+const CREATE_TASK = gql`
+  mutation CreateTask($title: String!, $date: String!, $category: ID) {
+    createTask(title: $title, date: $date, category: $category) {
+      id_task
+      title_task
+    }
+  }
+`
+
+const AddTask: React.FC<DrawerAddModule> = ({ closeModal }) => {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('0')
   const [dueDate, setDueDate] = useState(new Date())
 
-  const categoryOptions = [
-    { val: '0', label: 'Inbox' },
-    ...(tasksCategories as TaskCategory[]).map(cat => ({
-      val: cat.id,
-      label: cat.name
-    }))
-  ]
+  const [message, setMessage] = useState('')
+
+  const { refetch: refetchTasks } = useQuery(TASKS)
+  const { loading: loadingCategories, data: categories } = useQuery(CATEGORIES)
+  const [createTask, { error, loading }] = useMutation(CREATE_TASK, {
+    variables: {
+      title: title,
+      date: dueDate,
+      category: category !== '0' ? category : null
+    }
+  })
+
+  const categoryOptions = categories
+    ? [
+        { val: '0', label: 'Inbox' },
+        ...(categories.categories as TaskCategory[]).map(cat => ({
+          val: cat.id,
+          label: cat.name
+        }))
+      ]
+    : [{ val: '0', label: 'Inbox' }]
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value)
   }
 
   const handleSubmit = () => {
-    console.log(title)
-    console.log(category)
-    console.log(dueDate)
+    createTask()
+      .then(results => {
+        setMessage('Note created with success!')
+        refetchTasks()
+        setTimeout(() => {
+          closeModal()
+          setMessage('')
+        }, 1500)
+      })
+      .catch(err => console.log(err.message))
   }
 
-  return (
+  return loading || loadingCategories ? (
+    <Styled.AddLoading>
+      <LoadingSpinner />
+    </Styled.AddLoading>
+  ) : error ? (
+    <Styled.AddMessage>
+      <ErrorIcon />
+      <p>{error.message}</p>
+    </Styled.AddMessage>
+  ) : message ? (
+    <Styled.AddMessage>
+      <CheckIcon />
+      <p>{message}</p>
+    </Styled.AddMessage>
+  ) : (
     <>
       <Styled.AddInput
         type="text"

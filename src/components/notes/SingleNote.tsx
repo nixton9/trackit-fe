@@ -2,6 +2,7 @@ import React from 'react'
 import Tag from './Tag'
 import { Styled } from '../../styles/Single.styles'
 import { Note } from '../../utils/ModuleTypes'
+import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
 import { NavLink } from 'react-router-dom'
 import { displayDateString } from '../../utils/dateHelpers'
 
@@ -13,7 +14,8 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
           <div>
             <Styled.SingleTitle>{title}</Styled.SingleTitle>
             <Styled.SingleDate>
-              {displayDateString(date.substring(0, 10))}
+              <CalendarIcon />
+              <p>{displayDateString(date.substring(0, 10))}</p>
             </Styled.SingleDate>
           </div>
           <Styled.SingleNote__Tags>

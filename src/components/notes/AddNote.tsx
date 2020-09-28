@@ -64,6 +64,7 @@ const AddNote: React.FC<DrawerAddModule> = ({ closeModal }) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [tags, setTags] = useState<Tag[] | []>([])
+
   const [message, setMessage] = useState('')
 
   const { refetch: refetchNotes } = useQuery(NOTES)
@@ -152,14 +153,6 @@ const AddNote: React.FC<DrawerAddModule> = ({ closeModal }) => {
 
       <Styled.AddWidgetsContainer>
         <Styled.AddWidget>
-          {/* <CustomAddSelect
-            id="add-tag"
-            value={tags}
-            onChange={handleTagChange}
-            options={tagsOptions}
-            icon={<NotesIcon />}
-            multi
-          /> */}
           <NotesIcon />
           <TagsInput tags={tags} setTags={setTags} />
         </Styled.AddWidget>

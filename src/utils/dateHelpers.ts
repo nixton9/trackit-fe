@@ -6,11 +6,19 @@ import {
   isSunday,
   isSameDay,
   addDays,
-  format
+  format,
+  isToday,
+  isPast
 } from 'date-fns'
 import { Habit } from './ModuleTypes'
 
 export const parseDate = (date: string) => parse(date, 'yyyy-MM-dd', new Date())
+
+export const isDateToday = (date: string) =>
+  isSameDay(parseDate(date), new Date())
+
+export const isPastDate = (date: string) =>
+  isToday(parseDate(date)) ? false : isPast(parseDate(date))
 
 export const displayDateString = (date: string) => {
   if (isSameDay(parseDate(date), new Date())) {

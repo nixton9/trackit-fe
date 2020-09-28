@@ -4,6 +4,10 @@ type SingleCategoryProps = {
   color: string
 }
 
+type SingleDateProps = {
+  past?: boolean
+}
+
 const SingleContainer = styled.article`
   width: 100%;
   padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
@@ -26,10 +30,31 @@ const SingleTitle = styled.h5`
   font-size: 1.4rem;
 `
 
-const SingleDate = styled.p`
-  color: ${props => props.theme.greyishBlue};
-  font-weight: ${props => props.theme.fontSemiBold};
-  font-size: 1rem;
+const SingleDate = styled.div<SingleDateProps>`
+  display: flex;
+  align-items: center;
+  margin-top: 0.4rem;
+
+  svg {
+    width: 1.8rem;
+    margin-right: 0.8rem;
+
+    .svg-fill {
+      fill: ${props =>
+        props.past ? props.theme.habitsRed : props.theme.greyishBlue};
+    }
+    .svg-stroke {
+      stroke: ${props =>
+        props.past ? props.theme.habitsRed : props.theme.greyishBlue};
+    }
+  }
+
+  p {
+    color: ${props =>
+      props.past ? props.theme.habitsRed : props.theme.greyishBlue};
+    font-weight: ${props => props.theme.fontSemiBold};
+    font-size: 1.15rem;
+  }
 `
 
 const SingleCategory = styled.h6<SingleCategoryProps>`
@@ -61,8 +86,13 @@ const SingleExpense__Value = styled.p`
 const SingleTask__Complete = styled.div`
   width: 1.8rem;
   height: 1.8rem;
-  border: solid 2px #6268f1;
+  border: solid 2px ${props => props.theme.mainBlue};
   border-radius: 50%;
+  cursor: pointer;
+
+  &.done {
+    background-color: ${props => props.theme.mainBlue};
+  }
 `
 
 export const Styled = {

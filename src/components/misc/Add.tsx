@@ -46,7 +46,7 @@ const Add: React.FC = () => {
 
     case ModuleTypes.Tasks:
       drawerTitle = tasksTitle
-      drawerContent = <AddTask />
+      drawerContent = <AddTask closeModal={() => setOpen(false)} />
       break
 
     case ModuleTypes.Expenses:
