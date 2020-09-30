@@ -19,6 +19,10 @@ const tasksTitle = 'Create a task'
 const expensesTitle = 'Add an expense'
 const habitsTitle = 'Add an habit'
 
+export type DrawerAddModuleProps = {
+  closeModal: () => void
+}
+
 export const AddSubmitButton: React.FC<{ handleSubmit: () => void }> = ({
   handleSubmit
 }) => (
@@ -51,7 +55,7 @@ const Add: React.FC = () => {
 
     case ModuleTypes.Expenses:
       drawerTitle = expensesTitle
-      drawerContent = <AddExpense />
+      drawerContent = <AddExpense closeModal={() => setOpen(false)} />
       break
 
     case ModuleTypes.Habits:

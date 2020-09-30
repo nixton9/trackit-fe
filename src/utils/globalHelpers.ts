@@ -1,15 +1,15 @@
 import { SortBySettings } from './SettingsTypes'
-import { Note, Task, Expense } from './ModuleTypes'
+import { Note, Task } from './ModuleTypes'
 
 export const sortData = (
-  data: Note[] | Task[] | Expense[],
+  data: Note[] | Task[],
   sortBy: SortBySettings,
   invertedDate: boolean = false
 ) => {
   return sortBy === SortBySettings.DATE
     ? data
         .slice()
-        .sort((a: Note | Task | Expense, b: Note | Task | Expense) =>
+        .sort((a: Note | Task, b: Note | Task) =>
           invertedDate
             ? new Date(a.date).getTime() - new Date(b.date).getTime()
             : new Date(b.date).getTime() - new Date(a.date).getTime()

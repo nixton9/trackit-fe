@@ -5,6 +5,7 @@ import { AddSubmitButton } from '../misc/Add'
 import { TagsInput, Tag } from './TagsInput'
 import { NOTES } from '../../utils/queries'
 import theme from '../../styles/theme'
+import { DrawerAddModuleProps } from '../misc/Add'
 import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
@@ -56,11 +57,7 @@ type AddTagToNotData = {
   }
 }
 
-export type DrawerAddModule = {
-  closeModal: () => void
-}
-
-const AddNote: React.FC<DrawerAddModule> = ({ closeModal }) => {
+const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [tags, setTags] = useState<Tag[] | []>([])

@@ -45,10 +45,10 @@ export type Expense = {
   title: string
   date: string
   value: number
-  category: ExpenseCategory
+  type: ExpenseType
 }
 
-export type ExpenseCategory = {
+export type ExpenseType = {
   id: string | number
   name: string
   color: string

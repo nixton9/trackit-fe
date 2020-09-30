@@ -2,30 +2,51 @@ import React, { useState } from 'react'
 import ExpensesSettings from './ExpensesSettings'
 import SingleExpense from './SingleExpense'
 import DatePickerInput from '../misc/DatePickerInput'
-import { expenses, expensesCategories } from '../../assets/fakeData'
+import { PageLoading } from '../misc/PageLoading'
+import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'
+import { EXPENSES, TYPES } from '../../utils/queries'
 import { displayDateString, parseDate } from '../../utils/dateHelpers'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
-import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
+import { useQuery } from '@apollo/client'
+
 const ExpensesPage: React.FC = () => {
+  const { loading, error, data } = useQuery(EXPENSES)
+  const { data: types } = useQuery(TYPES)
+
   const [startDate, setStartDate] = useState(startOfMonth(new Date()))
   const [endDate, setEndDate] = useState(endOfMonth(new Date()))
 
-  const expensesDays = Array.from(
-    new Set(expenses.map(expense => expense.date))
-  )
+  const expensesDays: [] | string[] = data
+    ? Array.from(
+        new Set(
+          data.expenses.map((expense: Expense) => expense.date.substring(0, 10))
+        )
+      )
+    : []
 
-  const visibleExpensesDay = expensesDays.filter(day =>
-    isWithinInterval(parseDate(day), {
-      start: startDate,
-      end: endDate
-    })
-  )
+  const visibleExpensesDay = data
+    ? expensesDays
+        .filter((day: string) =>
+          isWithinInterval(parseDate(day), {
+            start: startDate,
+            end: endDate
+          })
+        )
+        .sort(
+          (a: string, b: string) =>
+            new Date(b).getTime() - new Date(a).getTime()
+        )
+    : []
 
-  const totalExpensesVal = expenses
-    .filter(expense => visibleExpensesDay.includes(expense.date))
-    .reduce((acc, obj) => acc + obj.value, 0)
+  const totalExpensesVal = data
+    ? data.expenses
+        .filter((expense: Expense) =>
+          visibleExpensesDay.includes(expense.date.substring(0, 10))
+        )
+        .reduce((acc: number, obj: Expense) => acc + obj.value, 0)
+    : 0
 
   return (
     <Styled.PageContainer>
@@ -44,27 +65,31 @@ const ExpensesPage: React.FC = () => {
               minDate={startDate}
               setDate={setEndDate}
             />
-            <ChevronIcon />
+            {/* <ChevronIcon /> */}
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
             {totalExpensesVal}$
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
-          <ExpensesSettings categories={expensesCategories} />
+          <ExpensesSettings categories={types ? types.types : []} />
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
       <Styled.PageContent>
-        {visibleExpensesDay.length ? (
+        {error ? (
+          <PageError>{error.message}</PageError>
+        ) : loading ? (
+          <PageLoading />
+        ) : visibleExpensesDay.length ? (
           (visibleExpensesDay as string[]).map(day => (
             <Styled.PageContent__Day key={day}>
               <Styled.PageContent__Day__Title>
                 {displayDateString(day)}
               </Styled.PageContent__Day__Title>
               <Styled.PageContent__Day__Expenses>
-                {(expenses as Expense[])
-                  .filter(expense => expense.date === day)
+                {(data.expenses as Expense[])
+                  .filter(expense => expense.date.substring(0, 10) === day)
                   .map(expense => (
                     <SingleExpense
                       key={expense.id}
@@ -72,7 +97,7 @@ const ExpensesPage: React.FC = () => {
                       title={expense.title}
                       date={expense.date}
                       value={expense.value}
-                      category={expense.category}
+                      type={expense.type}
                     />
                   ))}
               </Styled.PageContent__Day__Expenses>

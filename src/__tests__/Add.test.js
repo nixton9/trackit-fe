@@ -5,6 +5,15 @@ import AddTask from '../components/tasks/AddTask'
 import AddExpense from '../components/expenses/AddExpense'
 import AddHabit from '../components/habits/AddHabit'
 import { format } from 'date-fns'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+
+const client = new ApolloClient({
+  uri: '/',
+  cache: new InMemoryCache(),
+  headers: {
+    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTU5NDU3Nzc1M30.BLYTV2jBpTk3PyMU7j9-53FAXEzAY6KuBH79mIbZvho`
+  }
+})
 
 describe('Add', () => {
   it('matches snapshot', () => {
@@ -26,14 +35,20 @@ describe('Add', () => {
 
 describe('AddTask', () => {
   it('matches snapshot', () => {
-    const { container } = render(<AddTask />)
+    const { container } = render(
+      <ApolloProvider client={client}>
+        <AddTask />
+      </ApolloProvider>
+    )
 
     expect(container).toBeInTheDocument()
   })
 
   it('renders the inputs', () => {
     const { getByPlaceholderText, getByDisplayValue, getByText } = render(
-      <AddTask />
+      <ApolloProvider client={client}>
+        <AddTask />
+      </ApolloProvider>
     )
 
     expect(getByPlaceholderText('Ex: Take out the trash')).toBeInTheDocument()
@@ -44,14 +59,20 @@ describe('AddTask', () => {
 
 describe('AddExpense', () => {
   it('matches snapshot', () => {
-    const { container } = render(<AddExpense />)
+    const { container } = render(
+      <ApolloProvider client={client}>
+        <AddExpense />
+      </ApolloProvider>
+    )
 
     expect(container).toBeInTheDocument()
   })
 
   it('renders the inputs', () => {
     const { getByPlaceholderText, getByDisplayValue, getByText } = render(
-      <AddExpense />
+      <ApolloProvider client={client}>
+        <AddExpense />
+      </ApolloProvider>
     )
 
     expect(getByPlaceholderText('9.99')).toBeInTheDocument()
@@ -63,13 +84,21 @@ describe('AddExpense', () => {
 
 describe('AddHabit', () => {
   it('matches snapshot', () => {
-    const { container } = render(<AddHabit />)
+    const { container } = render(
+      <ApolloProvider client={client}>
+        <AddHabit />
+      </ApolloProvider>
+    )
 
     expect(container).toBeInTheDocument()
   })
 
   it('renders the inputs', () => {
-    const { getByPlaceholderText } = render(<AddHabit />)
+    const { getByPlaceholderText } = render(
+      <ApolloProvider client={client}>
+        <AddHabit />
+      </ApolloProvider>
+    )
 
     expect(getByPlaceholderText('Ex: Eat healthy')).toBeInTheDocument()
   })

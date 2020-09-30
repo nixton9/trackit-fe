@@ -24,14 +24,19 @@ exports[`SingleTask matches snapshot 1`] = `
             Waiting for
           </h6>
         </div>
-        <p
-          class="sc-fznKkj ihavmM"
+        <div
+          class="sc-fznKkj jNhHYx"
         >
-          14 Aug
-        </p>
+          <svg>
+            calendr.svg
+          </svg>
+          <p>
+            14 Aug
+          </p>
+        </div>
       </div>
       <div
-        class="sc-fzoyAV lmwFFU"
+        class="sc-fzoyAV bnnRRV"
       />
     </div>
   </article>
@@ -41,21 +46,21 @@ exports[`SingleTask matches snapshot 1`] = `
 exports[`Tasks Page matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fzoLag eydcJC"
+    class="sc-fzpjYC izvAVX"
   >
     <h1
-      class="sc-fzoXzr MtNNd"
+      class="sc-fznxsB iTQhax"
     >
       Tasks
     </h1>
     <div
-      class="sc-fzpjYC gnMnem"
+      class="sc-fznJRM cBJzUp"
     >
       <div
-        class="sc-fznxsB dsgAhn"
+        class="sc-fznWqX dZCTFs"
       >
         <div
-          class="sc-fznJRM fKzpjv"
+          class="sc-fzoiQi gKygiC"
         >
           <div
             class="MuiInputBase-root MuiInput-root"
@@ -84,13 +89,13 @@ exports[`Tasks Page matches snapshot 1`] = `
           </div>
         </div>
         <h3
-          class="sc-fznWqX jXPxyW"
+          class="sc-fzqARJ lfDBcG"
         >
-          7
+          0
         </h3>
       </div>
       <div
-        class="sc-fzoiQi dFUsJk"
+        class="sc-fzqNqU hQTkrp"
       >
         <svg
           class="settings-icon"
@@ -137,7 +142,7 @@ exports[`Tasks Page matches snapshot 1`] = `
                     aria-hidden="true"
                     class="MuiSelect-nativeInput"
                     tabindex="-1"
-                    value="date"
+                    value="DATE"
                   />
                   <svg
                     class="MuiSelect-icon"
@@ -197,36 +202,6 @@ exports[`Tasks Page matches snapshot 1`] = `
               <div
                 class="sc-AxmLO ceYEas"
               >
-                <p
-                  class="sc-fzozJi ihgPmv"
-                  color="#673AB7"
-                >
-                  Waiting for
-                </p>
-                <p
-                  class="sc-fzozJi gqjDvs"
-                  color="#FFC107"
-                >
-                  House
-                </p>
-                <p
-                  class="sc-fzozJi fKpEFM"
-                  color="#FF9800"
-                >
-                  Trackit
-                </p>
-                <p
-                  class="sc-fzozJi dNhvgN"
-                  color="#9E9E9E"
-                >
-                  Stuff
-                </p>
-                <p
-                  class="sc-fzozJi tItWo"
-                  color="#E91E63"
-                >
-                  Personal
-                </p>
                 <span
                   class="sc-fzoLsD bpeBKU"
                 >
@@ -244,221 +219,22 @@ exports[`Tasks Page matches snapshot 1`] = `
       </div>
     </div>
     <section
-      class="sc-fzqARJ elDNLU"
+      class="sc-fzoyTs gUbeoJ"
     >
-      <article
-        class="sc-fzpans gHCdfm"
+      <div
+        class="sc-fznMAR gCPQx"
       >
         <div
-          class="sc-fzplWN gwxuzL"
+          class="sc-fzoLag kUuTIm"
         >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Ir às compras
-              </h5>
-              <h6
-                class="sc-fznZeY cjOYaZ"
-                color="#673AB7"
-              >
-                Waiting for
-              </h6>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              14 Aug
-            </p>
-          </div>
           <div
-            class="sc-fzoyAV lmwFFU"
+            class="sc-fzoXzr hScLKH"
+          />
+          <div
+            class="sc-fzoXzr hScLKH doublebounce2"
           />
         </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Dar de comer às gatas
-              </h5>
-              <h6
-                class="sc-fznZeY ekLkIy"
-                color="#FFC107"
-              >
-                House
-              </h6>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              13 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzoyAV lmwFFU"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Entregar trabalho
-              </h5>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              15 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzoyAV lmwFFU"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Fazer wireframe da App
-              </h5>
-              <h6
-                class="sc-fznZeY gooBaK"
-                color="#FF9800"
-              >
-                Trackit
-              </h6>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              05 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzoyAV lmwFFU"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Fazer design da App
-              </h5>
-              <h6
-                class="sc-fznZeY gooBaK"
-                color="#FF9800"
-              >
-                Trackit
-              </h6>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              06 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzoyAV lmwFFU"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Estudar React
-              </h5>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              07 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzoyAV lmwFFU"
-          />
-        </div>
-      </article>
-      <article
-        class="sc-fzpans gHCdfm"
-      >
-        <div
-          class="sc-fzplWN gwxuzL"
-        >
-          <div>
-            <div
-              class="sc-fzplWN gwxuzL"
-            >
-              <h5
-                class="sc-fznyAO drGMcz"
-              >
-                Esta não devia aparecer
-              </h5>
-            </div>
-            <p
-              class="sc-fznKkj ihavmM"
-            >
-              08 Aug
-            </p>
-          </div>
-          <div
-            class="sc-fzoyAV lmwFFU"
-          />
-        </div>
-      </article>
+      </div>
     </section>
   </div>
 </div>
@@ -505,13 +281,15 @@ exports[`TasksSettings matches snashot 1`] = `
               role="button"
               tabindex="0"
             >
-              Date
+              <span>
+                ​
+              </span>
             </div>
             <input
               aria-hidden="true"
               class="MuiSelect-nativeInput"
               tabindex="-1"
-              value="date"
+              value=""
             />
             <svg
               class="MuiSelect-icon"

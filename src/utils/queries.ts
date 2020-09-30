@@ -66,3 +66,29 @@ export const CATEGORIES = gql`
     }
   }
 `
+
+export const EXPENSES = gql`
+  query Expenses {
+    expenses {
+      id: id_expense
+      title: title_expense
+      value: value_expense
+      date: date_expense
+      type {
+        id: id_type
+        name: name_type
+        color: color_type
+      }
+    }
+  }
+`
+
+export const TYPES = gql`
+  query Types {
+    types {
+      id: id_type
+      name: name_type
+      color: color_type
+    }
+  }
+`

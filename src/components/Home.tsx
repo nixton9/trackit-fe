@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import HomeWidget from './misc/HomeWidget'
 import { LoadingSpinner } from './misc/LoadingSpinner'
 import { Styled } from '../styles/Home.styles'

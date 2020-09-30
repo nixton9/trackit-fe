@@ -5,36 +5,89 @@ import { FluidInput } from '../misc/FluidInput'
 import { AddSubmitButton } from '../misc/Add'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
+import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
-import { expensesCategories } from '../../assets/fakeData'
-import { ExpenseCategory } from '../../utils/ModuleTypes'
+import { ExpenseType } from '../../utils/ModuleTypes'
+import { DrawerAddModuleProps } from '../misc/Add'
+import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
+import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
+import { EXPENSES, TYPES } from '../../utils/queries'
+import { gql, useMutation, useQuery } from '@apollo/client'
 
-const AddExpense: React.FC = () => {
+const CREATE_EXPENSE = gql`
+  mutation CreateExpense(
+    $title: String!
+    $date: String!
+    $value: Float!
+    $type: ID
+  ) {
+    createExpense(title: $title, date: $date, value: $value, type: $type) {
+      id_expense
+    }
+  }
+`
+
+const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   const [value, setValue] = useState<number | string | undefined>(undefined)
   const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('0')
+  const [type, setType] = useState('0')
   const [date, setDate] = useState(new Date())
 
-  const categoryOptions = [
-    { val: '0', label: 'All' },
-    ...(expensesCategories as ExpenseCategory[]).map(cat => ({
-      val: cat.id,
-      label: cat.name
-    }))
-  ]
+  const [message, setMessage] = useState('')
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value)
+  const { refetch: refetchExpenses } = useQuery(EXPENSES)
+  const { loading: loadingTypes, data: types } = useQuery(TYPES)
+  const [createExpense, { error, loading }] = useMutation(CREATE_EXPENSE, {
+    variables: {
+      title: title,
+      date: date,
+      value: Number(value),
+      type: type !== '0' ? type : null
+    }
+  })
+
+  const typeOptions = types
+    ? [
+        { val: '0', label: 'All' },
+        ...(types.types as ExpenseType[]).map(type => ({
+          val: type.id,
+          label: type.name
+        }))
+      ]
+    : [{ val: '0', label: 'All' }]
+
+  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setType(e.target.value)
   }
 
   const handleSubmit = () => {
-    console.log(value)
-    console.log(title)
-    console.log(category)
-    console.log(date)
+    createExpense()
+      .then(res => {
+        setMessage('Expense successfully added!')
+        refetchExpenses()
+        setTimeout(() => {
+          closeModal()
+          setMessage('')
+        }, 1500)
+      })
+      .catch(err => console.log(err.message))
   }
 
-  return (
+  return loading || loadingTypes ? (
+    <Styled.AddLoading>
+      <LoadingSpinner />
+    </Styled.AddLoading>
+  ) : error ? (
+    <Styled.AddMessage>
+      <ErrorIcon />
+      <p>{error.message}</p>
+    </Styled.AddMessage>
+  ) : message ? (
+    <Styled.AddMessage>
+      <CheckIcon />
+      <p>{message}</p>
+    </Styled.AddMessage>
+  ) : (
     <>
       <Styled.AddInputNumberWrapper>
         <FluidInput value={value} setValue={setValue} placeholder={'9.99'} />
@@ -59,10 +112,10 @@ const AddExpense: React.FC = () => {
 
         <Styled.AddWidget>
           <CustomAddSelect
-            id="add-category"
-            value={category}
-            onChange={handleCategoryChange}
-            options={categoryOptions}
+            id="add-type"
+            value={type}
+            onChange={handleTypeChange}
+            options={typeOptions}
             icon={<NotesIcon />}
           />
         </Styled.AddWidget>

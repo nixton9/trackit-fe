@@ -8,7 +8,7 @@ import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { TASKS, CATEGORIES } from '../../utils/queries'
-import { DrawerAddModule } from '../notes/AddNote'
+import { DrawerAddModuleProps } from '../misc/Add'
 import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
@@ -22,7 +22,7 @@ const CREATE_TASK = gql`
   }
 `
 
-const AddTask: React.FC<DrawerAddModule> = ({ closeModal }) => {
+const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('0')
   const [dueDate, setDueDate] = useState(new Date())
@@ -55,7 +55,7 @@ const AddTask: React.FC<DrawerAddModule> = ({ closeModal }) => {
 
   const handleSubmit = () => {
     createTask()
-      .then(results => {
+      .then(res => {
         setMessage('Note created with success!')
         refetchTasks()
         setTimeout(() => {

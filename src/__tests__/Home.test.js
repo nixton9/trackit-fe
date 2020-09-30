@@ -8,7 +8,7 @@ const client = new ApolloClient({
   uri: '/',
   cache: new InMemoryCache(),
   headers: {
-    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTU5NDYyMzYxN30.eRuuyy-6EE6UkGFQI9UQmRklwPiyXgSJgmoZektpiG4`
+    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTU5NDU3Nzc1M30.BLYTV2jBpTk3PyMU7j9-53FAXEzAY6KuBH79mIbZvho`
   }
 })
 
@@ -35,20 +35,5 @@ describe('Home', () => {
     )
 
     expect(getByText('Trackit')).toBeInTheDocument()
-  })
-
-  it('shows the four widgets', () => {
-    const { getByText } = render(
-      <ApolloProvider client={client}>
-        <BrowserRouter>
-          <Home />
-        </BrowserRouter>
-      </ApolloProvider>
-    )
-
-    expect(getByText('Notes')).toBeInTheDocument()
-    expect(getByText('Tasks')).toBeInTheDocument()
-    expect(getByText('Habits')).toBeInTheDocument()
-    expect(getByText('Expenses')).toBeInTheDocument()
   })
 })

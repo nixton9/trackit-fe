@@ -5,7 +5,7 @@ import { Styled } from '../../styles/Settings.styles'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
-import { ExpenseCategory } from '../../utils/ModuleTypes'
+import { ExpenseType } from '../../utils/ModuleTypes'
 
 const currencyOptions = [
   { val: 'euro', label: 'Euro €' },
@@ -19,7 +19,7 @@ const fontSizeOptions = [
 ]
 
 type ExpensesSettingsProps = {
-  categories: ExpenseCategory[]
+  categories: ExpenseType[]
 }
 
 const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ categories }) => {

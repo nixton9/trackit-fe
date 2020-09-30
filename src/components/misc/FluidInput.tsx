@@ -40,13 +40,20 @@ export const FluidInput: React.FC<FluidInputProps> = ({
   setValue,
   placeholder
 }) => {
+  const limitDecimalPlaces = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.indexOf('.') !== -1) {
+      const decimals = e.target.value.toString().split('.')[1]
+      if (decimals.length < 3) setValue(e.target.value)
+    } else setValue(e.target.value)
+  }
+
   return (
     <FluidInputContainer>
       <span aria-hidden="true">{value ? value : placeholder}</span>
       <input
         type="number"
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={limitDecimalPlaces}
         placeholder={placeholder}
         step="0.01"
       />

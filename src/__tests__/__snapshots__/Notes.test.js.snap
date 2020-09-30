@@ -402,11 +402,16 @@ exports[`SingleNote matches snapshot 1`] = `
           >
             Lista de compras
           </h5>
-          <p
-            class="sc-fznZeY kCMyLg"
+          <div
+            class="sc-fznZeY ddesRh"
           >
-            20 Jul
-          </p>
+            <svg>
+              calendr.svg
+            </svg>
+            <p>
+              20 Jul
+            </p>
+          </div>
         </div>
         <div
           class="sc-fzqBZW fqzjjU"
