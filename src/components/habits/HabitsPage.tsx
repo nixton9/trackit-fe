@@ -3,29 +3,95 @@ import CalendarSingle from './CalendarSingle'
 import CalendarAll from './CalendarAll'
 import HabitsSettings from './HabitsSettings'
 import { SelectMenu } from '../misc/SelectMenu'
-import { getCurrentStrike } from '../../utils/dateHelpers'
-import { habits } from '../../assets/fakeData'
+import { PageLoading } from '../misc/PageLoading'
+import { PageError } from '../misc/PageError'
+import { getCurrentStrike, parseDateInverse } from '../../utils/dateHelpers'
 import { Styled } from '../../styles/Page.styles'
-import { Habit } from '../../utils/ModuleTypes'
+import { Habit, DayState } from '../../utils/ModuleTypes'
+import { HABITS } from '../../utils/queries'
+import { gql, useMutation, useQuery } from '@apollo/client'
+
+const ADD_DAY_TO_HABIT = gql`
+  mutation AddDayToHabit($habit: ID!, $date: String!, $state: DayState!) {
+    addDayToHabit(habit: $habit, date: $date, state: $state) {
+      id_day
+    }
+  }
+`
+
+const UPDATE_DAY = gql`
+  mutation UpdateHabit($id: ID!, $state: DayState!) {
+    updateDay(id: $id, state: $state) {
+      id_day
+    }
+  }
+`
 
 const HabitsPage: React.FC = () => {
+  const { loading, error, data } = useQuery(HABITS)
+  const { refetch: refetchHabits } = useQuery(HABITS)
+  const [addDayToHabit] = useMutation(ADD_DAY_TO_HABIT)
+  const [updateDay] = useMutation(UPDATE_DAY)
+
+  const handleDayClick = (
+    habitId: string | number,
+    day: Date,
+    currState: DayState | null,
+    dayId: null | string | number
+  ) => {
+    if (currState && dayId) {
+      updateDay({
+        variables: {
+          id: dayId,
+          state: getNextState(currState)
+        }
+      })
+        .then(res => refetchHabits())
+        .catch(err => console.log(err.message))
+    } else {
+      addDayToHabit({
+        variables: {
+          habit: habitId,
+          date: parseDateInverse(day),
+          state: DayState.DONE
+        }
+      })
+        .then(res => refetchHabits())
+        .catch(err => console.log(err.message))
+    }
+  }
+
+  const getNextState = (state: DayState) => {
+    switch (state) {
+      case DayState.DONE:
+        return DayState.NOTDONE
+      case DayState.NOTDONE:
+        return DayState.BLANK
+      case DayState.BLANK:
+        return DayState.DONE
+    }
+  }
+
   const [view, setView] = useState('all')
 
-  const viewOptions = [
-    { val: 'all', label: 'All' },
-    ...(habits as Habit[]).map(habit => ({
-      val: habit.id,
-      label: habit.title
-    }))
-  ]
+  const viewOptions = data
+    ? [
+        { val: 'all', label: 'All' },
+        ...(data.habits as Habit[]).map(habit => ({
+          val: habit.id,
+          label: habit.title
+        }))
+      ]
+    : [{ val: 'all', label: 'All' }]
 
   const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setView(e.target.value)
 
   const showAll = view === 'all'
-  const currHabit = showAll
-    ? null
-    : habits.find(habit => habit.id === parseInt(view, 10))
+  const currHabit =
+    showAll || !data
+      ? null
+      : data.habits.find((habit: Habit) => Number(habit.id) === Number(view))
 
   return (
     <>
@@ -44,9 +110,11 @@ const HabitsPage: React.FC = () => {
               />
             </Styled.PageHeader__View__Dropdown>
             <Styled.PageHeader__View__Counter className="smaller">
-              {showAll
-                ? habits.length
-                : currHabit && getCurrentStrike(currHabit) + ' days'}
+              {data
+                ? showAll
+                  ? data.habits.length
+                  : currHabit && getCurrentStrike(currHabit) + ' days'
+                : 0}
             </Styled.PageHeader__View__Counter>
           </Styled.PageHeader__View>
           <Styled.PageHeader__Settings>
@@ -56,10 +124,25 @@ const HabitsPage: React.FC = () => {
       </Styled.PageContainer>
 
       <Styled.PageContent>
-        {showAll ? (
-          <CalendarAll habits={habits} />
+        {error ? (
+          <PageError>{error.message}</PageError>
+        ) : loading ? (
+          <PageLoading />
+        ) : data.habits.length ? (
+          showAll ? (
+            <CalendarAll habits={data.habits} handleDayClick={handleDayClick} />
+          ) : (
+            currHabit && (
+              <CalendarSingle
+                habit={currHabit}
+                handleDayClick={handleDayClick}
+              />
+            )
+          )
         ) : (
-          currHabit && <CalendarSingle habit={currHabit} />
+          <Styled.PageContent__NoData>
+            <p>No habits in here.</p>
+          </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
     </>

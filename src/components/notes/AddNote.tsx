@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import { AddSubmitButton } from '../misc/Add'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { Styled } from '../../styles/Add.styles'
-import { AddSubmitButton } from '../misc/Add'
 import { TagsInput, Tag } from './TagsInput'
 import { NOTES } from '../../utils/queries'
 import theme from '../../styles/theme'

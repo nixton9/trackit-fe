@@ -60,7 +60,7 @@ const Add: React.FC = () => {
 
     case ModuleTypes.Habits:
       drawerTitle = habitsTitle
-      drawerContent = <AddHabit />
+      drawerContent = <AddHabit closeModal={() => setOpen(false)} />
       break
 
     default:

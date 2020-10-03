@@ -57,5 +57,17 @@ export type ExpenseType = {
 export type Habit = {
   id: string | number
   title: string
-  days: { date: string; done: boolean }[] | []
+  days: Day[] | []
+}
+
+export type Day = {
+  id: string | number
+  date: string
+  state: DayState
+}
+
+export enum DayState {
+  BLANK = 'BLANK',
+  DONE = 'DONE',
+  NOTDONE = 'NOTDONE'
 }

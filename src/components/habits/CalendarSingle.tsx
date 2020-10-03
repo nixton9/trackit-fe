@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Habit } from '../../utils/ModuleTypes'
 import { Styled } from '../../styles/Calendar.styles'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { getCalendarDayClass } from '../../utils/dateHelpers'
+import { getCalendarDayInfo } from '../../utils/dateHelpers'
+import { DayState } from '../../utils/ModuleTypes'
 import {
   addMonths,
   addDays,
@@ -18,9 +19,15 @@ import {
 
 type CalendarProps = {
   habit: Habit
+  handleDayClick: (
+    habitId: string | number,
+    day: Date,
+    currState: DayState | null,
+    dayId: null | string | number
+  ) => void
 }
 
-const CalendarSingle: React.FC<CalendarProps> = ({ habit }) => {
+const CalendarSingle: React.FC<CalendarProps> = ({ habit, handleDayClick }) => {
   const [currentDate, setCurrentDate] = useState(new Date())
 
   const header = () => {
@@ -69,7 +76,10 @@ const CalendarSingle: React.FC<CalendarProps> = ({ habit }) => {
         formattedDate = format(day, 'd')
         const cloneDay = day
         let isItSameMonth = isSameMonth(cloneDay, monthStart)
-        let dayClassName = getCalendarDayClass(habit.days, cloneDay)
+        let { dayClassName, currState, dayId } = getCalendarDayInfo(
+          habit.days,
+          cloneDay
+        )
 
         days.push(
           <Styled.CalendarDays__Cell
@@ -83,7 +93,7 @@ const CalendarSingle: React.FC<CalendarProps> = ({ habit }) => {
             }
             onClick={() => {
               if (isItSameMonth) {
-                console.log(cloneDay)
+                handleDayClick(habit.id, cloneDay, currState, dayId)
               }
             }}
           >

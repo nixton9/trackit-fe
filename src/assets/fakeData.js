@@ -1,3 +1,5 @@
+import { DayState } from '../utils/ModuleTypes'
+
 export const notes = [
   {
     id: 1,
@@ -169,33 +171,28 @@ export const habits = [
     id: 1,
     title: 'Fazer exercício',
     days: [
-      { date: '2020-07-29', done: true },
-      { date: '2020-07-30', done: true },
-      { date: '2020-08-06', done: true },
-      { date: '2020-08-07', done: true },
-      { date: '2020-08-08', done: true },
-      { date: '2020-08-09', done: false },
-      { date: '2020-08-10', done: true },
-      { date: '2020-08-11', done: true },
-      { date: '2020-08-12', done: true },
-      { date: '2020-08-13', done: true },
-      { date: '2020-08-14', done: true },
-      { date: '2020-08-15', done: true },
-      { date: '2020-08-16', done: true },
-      { date: '2020-08-17', done: true },
-      { date: '2020-10-09', done: true },
-      { date: '2020-10-01', done: false }
+      { id: 1, date: '2020-08-14', state: DayState.BLANK },
+      { id: 2, date: '2020-09-28', state: DayState.DONE },
+      { id: 3, date: '2020-09-29', state: DayState.BLANK },
+      { id: 4, date: '2020-09-30', state: DayState.DONE },
+      { id: 5, date: '2020-10-01', state: DayState.DONE },
+      { id: 6, date: '2020-10-02', state: DayState.DONE },
+      { id: 6, date: '2020-10-03', state: DayState.DONE },
+      { id: 6, date: '2020-10-04', state: DayState.DONE },
+      { id: 6, date: '2020-10-05', state: DayState.NOTDONE },
+      { id: 6, date: '2020-10-06', state: DayState.BLANK }
     ]
   },
   {
     id: 2,
     title: 'Fazer dieta',
     days: [
-      { date: '2020-08-06', done: true },
-      { date: '2020-08-07', done: true },
-      { date: '2020-08-09', done: true },
-      { date: '2020-08-10', done: false },
-      { date: '2020-08-11', done: true }
+      { id: 1, date: '2020-08-14', state: DayState.BLANK },
+      { id: 2, date: '2020-08-15', state: DayState.DONE },
+      { id: 3, date: '2020-08-16', state: DayState.NOTDONE },
+      { id: 4, date: '2020-08-17', state: DayState.DONE },
+      { id: 5, date: '2020-10-09', state: DayState.DONE },
+      { id: 6, date: '2020-10-01', state: DayState.DONE }
     ]
   }
 ]

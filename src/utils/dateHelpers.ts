@@ -10,9 +10,11 @@ import {
   isToday,
   isPast
 } from 'date-fns'
-import { Habit } from './ModuleTypes'
+import { Habit, Day, DayState } from './ModuleTypes'
 
 export const parseDate = (date: string) => parse(date, 'yyyy-MM-dd', new Date())
+
+export const parseDateInverse = (date: Date) => format(date, 'yyyy-MM-dd')
 
 export const isDateToday = (date: string) =>
   isSameDay(parseDate(date), new Date())
@@ -32,36 +34,45 @@ export const displayDateString = (date: string) => {
   }
 }
 
-export const getCalendarDayClass = (
-  allHabitDays: { date: string; done: boolean }[],
-  day: Date
-) => {
-  let className = ''
+export const getCalendarDayInfo = (allHabitDays: Day[], day: Date) => {
+  let dayClassName = ''
+  let currState = null
+  let dayId = null
 
   for (let i = 0; i < allHabitDays.length; i++) {
     if (isEqual(parseDate(allHabitDays[i].date), day)) {
-      if (allHabitDays[i].done) {
-        className = 'done'
+      dayId = allHabitDays[i].id
+      if (allHabitDays[i].state === DayState.DONE) {
+        dayClassName = 'done'
+        currState = DayState.DONE
         if (
           allHabitDays.filter(
-            (hDay: { date: string; done: boolean }) =>
-              isEqual(parseDate(hDay.date), subDays(day, 1)) && hDay.done
+            (hDay: Day) =>
+              isEqual(parseDate(hDay.date), subDays(day, 1)) &&
+              hDay.state === DayState.DONE
           )[0]
         ) {
-          className += ' strike'
+          dayClassName += ' strike'
           if (isSaturday(day)) {
-            className += ' strike-sat'
+            dayClassName += ' strike-sat'
           } else if (isSunday(day)) {
-            className += ' strike-sun'
+            dayClassName += ' strike-sun'
           }
         }
-      } else {
-        className = 'not-done'
+      } else if (allHabitDays[i].state === DayState.NOTDONE) {
+        dayClassName = 'not-done'
+        currState = DayState.NOTDONE
+      } else if (allHabitDays[i].state === DayState.BLANK) {
+        currState = DayState.BLANK
       }
     }
   }
 
-  return className
+  return {
+    dayClassName,
+    currState,
+    dayId
+  }
 }
 
 export const getCurrentStrike = (habit: Habit) => {
@@ -70,14 +81,15 @@ export const getCurrentStrike = (habit: Habit) => {
 
   if (
     habit.days.filter(
-      (hDay: { date: string; done: boolean }) =>
-        isSameDay(parseDate(hDay.date), today) && hDay.done
+      (hDay: Day) =>
+        isSameDay(parseDate(hDay.date), today) && hDay.state === DayState.DONE
     )[0]
   ) {
     counter = 1
 
-    const checkHabitDays = (hDay: { date: string; done: boolean }) =>
-      isSameDay(parseDate(hDay.date), subDays(today, counter)) && hDay.done
+    const checkHabitDays = (hDay: Day) =>
+      isSameDay(parseDate(hDay.date), subDays(today, counter)) &&
+      hDay.state === DayState.DONE
 
     while (habit.days.filter(checkHabitDays)[0]) {
       counter++

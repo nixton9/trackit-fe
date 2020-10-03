@@ -92,3 +92,17 @@ export const TYPES = gql`
     }
   }
 `
+
+export const HABITS = gql`
+  query Habits {
+    habits {
+      id: id_habit
+      title: title_habit
+      days {
+        id: id_day
+        date: date_day
+        state: state_day
+      }
+    }
+  }
+`

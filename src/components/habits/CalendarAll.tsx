@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Habit } from '../../utils/ModuleTypes'
 import { Styled } from '../../styles/Calendar.styles'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { getCalendarDayClass } from '../../utils/dateHelpers'
+import { getCalendarDayInfo } from '../../utils/dateHelpers'
+import { DayState } from '../../utils/ModuleTypes'
 import {
   addWeeks,
   addDays,
@@ -15,9 +16,15 @@ import {
 
 type CalendarProps = {
   habits: Habit[]
+  handleDayClick: (
+    habitId: string | number,
+    day: Date,
+    currState: DayState | null,
+    dayId: null | string | number
+  ) => void
 }
 
-const CalendarAll: React.FC<CalendarProps> = ({ habits }) => {
+const CalendarAll: React.FC<CalendarProps> = ({ habits, handleDayClick }) => {
   const [currentDate, setCurrentDate] = useState(new Date())
 
   const header = () => {
@@ -64,7 +71,10 @@ const CalendarAll: React.FC<CalendarProps> = ({ habits }) => {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, 'd')
         const cloneDay = day
-        let dayClassName = getCalendarDayClass(habit.days, cloneDay)
+        let { dayClassName, currState, dayId } = getCalendarDayInfo(
+          habit.days,
+          cloneDay
+        )
 
         days.push(
           <Styled.CalendarDays__Cell
@@ -74,7 +84,7 @@ const CalendarAll: React.FC<CalendarProps> = ({ habits }) => {
                 ? `today ${dayClassName}`
                 : dayClassName
             }
-            onClick={() => console.log(cloneDay)}
+            onClick={() => handleDayClick(habit.id, cloneDay, currState, dayId)}
           >
             <Styled.CalendarDays__Cell__Inner>
               {formattedDate}
