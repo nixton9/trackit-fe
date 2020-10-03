@@ -4,7 +4,7 @@ import { Styled } from '../../styles/Single.styles'
 import { Note } from '../../utils/ModuleTypes'
 import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
 import { NavLink } from 'react-router-dom'
-import { displayDateString } from '../../utils/dateHelpers'
+import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 
 const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
   return (
@@ -15,7 +15,7 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
             <Styled.SingleTitle>{title}</Styled.SingleTitle>
             <Styled.SingleDate>
               <CalendarIcon />
-              <p>{displayDateString(date.substring(0, 10))}</p>
+              <p>{displayDateString(parseDateInverse(date))}</p>
             </Styled.SingleDate>
           </div>
           <Styled.SingleNote__Tags>

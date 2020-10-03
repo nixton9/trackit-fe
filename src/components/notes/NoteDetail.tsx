@@ -3,7 +3,7 @@ import Tag from './Tag'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
-import { displayDateString } from '../../utils/dateHelpers'
+import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 import { NoteTag } from '../../utils/ModuleTypes'
 import { SINGLE_NOTE } from '../../utils/queries'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
@@ -45,7 +45,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
           <Styled.DetailTitle>{data.singleNote.title}</Styled.DetailTitle>
 
           <Styled.DetailDate>
-            {displayDateString(data.singleNote.date.substring(0, 10))}
+            {displayDateString(parseDateInverse(data.singleNote.date))}
           </Styled.DetailDate>
 
           <Styled.DetailTags>

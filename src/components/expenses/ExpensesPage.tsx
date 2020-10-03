@@ -7,7 +7,11 @@ import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
-import { displayDateString, parseDate } from '../../utils/dateHelpers'
+import {
+  displayDateString,
+  parseDate,
+  parseDateInverse
+} from '../../utils/dateHelpers'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { useQuery } from '@apollo/client'
 
@@ -21,7 +25,9 @@ const ExpensesPage: React.FC = () => {
   const expensesDays: [] | string[] = data
     ? Array.from(
         new Set(
-          data.expenses.map((expense: Expense) => expense.date.substring(0, 10))
+          data.expenses.map((expense: Expense) =>
+            parseDateInverse(expense.date)
+          )
         )
       )
     : []
@@ -43,7 +49,7 @@ const ExpensesPage: React.FC = () => {
   const totalExpensesVal = data
     ? data.expenses
         .filter((expense: Expense) =>
-          visibleExpensesDay.includes(expense.date.substring(0, 10))
+          visibleExpensesDay.includes(parseDateInverse(expense.date))
         )
         .reduce((acc: number, obj: Expense) => acc + obj.value, 0)
         .toFixed(2)
@@ -90,7 +96,7 @@ const ExpensesPage: React.FC = () => {
               </Styled.PageContent__Day__Title>
               <Styled.PageContent__Day__Expenses>
                 {(data.expenses as Expense[])
-                  .filter(expense => expense.date.substring(0, 10) === day)
+                  .filter(expense => parseDateInverse(expense.date) === day)
                   .map(expense => (
                     <SingleExpense
                       key={expense.id}

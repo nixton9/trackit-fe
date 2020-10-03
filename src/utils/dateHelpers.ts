@@ -14,7 +14,11 @@ import { Habit, Day, DayState } from './ModuleTypes'
 
 export const parseDate = (date: string) => parse(date, 'yyyy-MM-dd', new Date())
 
-export const parseDateInverse = (date: Date) => format(date, 'yyyy-MM-dd')
+export const parseDateInverse = (date: Date | string) => {
+  return typeof date === 'string'
+    ? format(new Date(date), 'yyyy-MM-dd')
+    : format(date, 'yyyy-MM-dd')
+}
 
 export const isDateToday = (date: string) =>
   isSameDay(parseDate(date), new Date())

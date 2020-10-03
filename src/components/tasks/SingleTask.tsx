@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { Styled } from '../../styles/Single.styles'
 import { Task } from '../../utils/ModuleTypes'
-import { displayDateString, isPastDate } from '../../utils/dateHelpers'
+import {
+  displayDateString,
+  isPastDate,
+  parseDateInverse
+} from '../../utils/dateHelpers'
 import { TASKS } from '../../utils/queries'
 import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
@@ -42,9 +46,9 @@ const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
               </Styled.SingleCategory>
             )}
           </Styled.SingleFlex>
-          <Styled.SingleDate past={isPastDate(date.substring(0, 10))}>
+          <Styled.SingleDate past={isPastDate(parseDateInverse(date))}>
             <CalendarIcon />
-            <p>{displayDateString(date.substring(0, 10))}</p>
+            <p>{displayDateString(parseDateInverse(date))}</p>
           </Styled.SingleDate>
         </div>
         <Styled.SingleTask__Complete

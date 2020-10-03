@@ -8,7 +8,7 @@ import { Styled } from '../../styles/Page.styles'
 import { Task, TaskCategory } from '../../utils/ModuleTypes'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { TASKS, CATEGORIES } from '../../utils/queries'
-import { isDateToday } from '../../utils/dateHelpers'
+import { isDateToday, parseDateInverse } from '../../utils/dateHelpers'
 import { sortData } from '../../utils/globalHelpers'
 import { useQuery } from '@apollo/client'
 
@@ -42,7 +42,7 @@ const TasksPage: React.FC = () => {
       ? data.tasks
       : view === 'today'
       ? data.tasks.filter((task: Task) =>
-          isDateToday(task.date.substring(0, 10))
+          isDateToday(parseDateInverse(task.date))
         )
       : data.tasks.filter(
           (task: Task) => Number(task.category?.id) === Number(view)

@@ -4,7 +4,7 @@ import { LoadingSpinner } from './misc/LoadingSpinner'
 import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
-import { parseDate, isDateToday } from '../utils/dateHelpers'
+import { parseDate, isDateToday, parseDateInverse } from '../utils/dateHelpers'
 import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../assets/icons/habits.svg'
@@ -39,7 +39,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
   const currMonthExpensesVal = expenses
     ? expenses.expenses
         .filter((expense: Expense) =>
-          isWithinInterval(parseDate(expense.date.substring(0, 10)), {
+          isWithinInterval(parseDate(parseDateInverse(expense.date)), {
             start: startOfMonth(new Date()),
             end: endOfMonth(new Date())
           })
@@ -50,7 +50,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
 
   const tasksForToday = tasks
     ? tasks.tasks.filter((task: Task) =>
-        isDateToday(task.date.substring(0, 10))
+        isDateToday(parseDateInverse(task.date))
       ).length
     : 0
 
