@@ -46,6 +46,7 @@ const ExpensesPage: React.FC = () => {
           visibleExpensesDay.includes(expense.date.substring(0, 10))
         )
         .reduce((acc: number, obj: Expense) => acc + obj.value, 0)
+        .toFixed(2)
     : 0
 
   return (

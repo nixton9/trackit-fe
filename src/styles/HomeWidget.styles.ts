@@ -87,9 +87,21 @@ const WidgetInfo = styled.div`
 const WidgetInfo_Value = styled.h2<WidgetInfo__ValueProps>`
   font-weight: ${props => props.theme.fontExtraLight};
   font-size: ${props =>
-    props.length < 3 ? '7.6rem' : props.length < 4 ? '5.7rem' : '4.8rem'};
+    props.length < 2
+      ? '7.6rem'
+      : props.length < 3
+      ? '6.9rem'
+      : props.length < 4
+      ? '5.7rem'
+      : '4.8rem'};
   line-height: ${props =>
-    props.length < 3 ? '7.2rem' : props.length < 4 ? '6rem' : '5.2rem'};
+    props.length < 2
+      ? '7.2rem'
+      : props.length < 3
+      ? '7rem'
+      : props.length < 4
+      ? '6rem'
+      : '5.2rem'};
 `
 
 const WidgetInfo_Label = styled.p`
