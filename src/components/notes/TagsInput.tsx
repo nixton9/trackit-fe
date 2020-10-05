@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { WithContext as ReactTags } from 'react-tag-input'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 import { Styled } from '../../styles/Add.styles'
 import { TAGS } from '../../utils/queries'
+import { WithContext as ReactTags } from 'react-tag-input'
 import { useQuery } from '@apollo/client'
 
 const KeyCodes = {
@@ -37,13 +37,6 @@ export const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
     setTags([...tags, tag])
   }
 
-  const handleDrag = (tag: Tag, currPos: number, newPos: number) => {
-    const newTags = tags.slice()
-    newTags.splice(currPos, 1)
-    newTags.splice(newPos, 0, tag)
-    setTags(newTags)
-  }
-
   const suggestions = data
     ? data.tags.map((tag: Tag) => ({
         id: tag.id,
@@ -52,35 +45,27 @@ export const TagsInput: React.FC<TagsInputProps> = ({ tags, setTags }) => {
       }))
     : []
 
-  const customSugg = (item: Tag) => (
-    <Styled.AddTags_Suggestion>
-      <p>{item.text}</p>
-      <span
-        style={{ backgroundColor: item.color, width: '40px', height: '40px' }}
-      ></span>
-    </Styled.AddTags_Suggestion>
-  )
-
   return loading ? (
-    <Styled.AddLoading>
+    <Styled.AddTags_Loading>
       <LoadingSpinner />
-    </Styled.AddLoading>
+    </Styled.AddTags_Loading>
   ) : error ? (
     <Styled.AddMessage>
       <ErrorIcon />
       <p>{error.message}</p>
     </Styled.AddMessage>
   ) : (
-    <ReactTags
-      tags={tags}
-      suggestions={suggestions}
-      handleDelete={handleDelete}
-      handleAddition={handleAddition}
-      handleDrag={handleDrag}
-      delimiters={delimiters}
-      placeholder="Tags"
-      minQueryLength={1}
-      renderSuggestion={customSugg}
-    />
+    <Styled.AddTags>
+      <ReactTags
+        tags={tags}
+        suggestions={suggestions}
+        handleDelete={handleDelete}
+        handleAddition={handleAddition}
+        delimiters={delimiters}
+        placeholder="Tags"
+        minQueryLength={1}
+        allowDragDrop={false}
+      />
+    </Styled.AddTags>
   )
 }

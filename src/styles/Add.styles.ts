@@ -99,6 +99,7 @@ const AddWidget = styled.div`
   display: inline-flex;
   align-items: center;
   margin-right: ${props => props.theme.spacingS};
+  max-width: 82%;
 
   &:last-of-type {
     margin-right: 0;
@@ -123,6 +124,9 @@ const AddWidget = styled.div`
 
   .ReactTags__selected {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem 1rem;
 
     span {
       margin: 0 1rem;
@@ -189,8 +193,78 @@ const AddWidget__Button = styled.button`
   }
 `
 
-const AddTags_Suggestion = styled.div`
-  width: 100%;
+const AddTags = styled.div`
+  position: relative;
+
+  .ReactTags__selected span.ReactTags__tag {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: ${props => props.theme.greyishBlue};
+    min-width: 5rem;
+    margin: 0;
+    padding: 0.5rem 2rem 0.5rem 0.9rem;
+    font-size: 1.1rem;
+    font-weight: ${props => props.theme.fontMedium};
+    border-radius: ${props => props.theme.bigBorderRadius};
+
+    &:first-child {
+      margin-left: 1rem;
+    }
+  }
+
+  .ReactTags__selected a.ReactTags__remove {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 3rem;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding-right: 0.6rem;
+    color: ${props => props.theme.white};
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .ReactTags__suggestions {
+    position: absolute;
+    bottom: 4rem;
+    background-color: ${props => props.theme.surfacesBlue};
+    border-radius: 4px;
+    padding: 0.6rem 0;
+  }
+  .ReactTags__suggestions ul {
+    list-style-type: none;
+    width: 20rem;
+  }
+  .ReactTags__suggestions li {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    min-height: 6rem;
+    font-weight: ${props => props.theme.fontMedium};
+  }
+  .ReactTags__suggestions li mark {
+    background: none;
+    color: ${props => props.theme.mainBlue};
+  }
+  .ReactTags__suggestions ul li.ReactTags__activeSuggestion {
+    background: ${props => props.theme.greyishBlue};
+    cursor: pointer;
+  }
+`
+
+const AddTags_Loading = styled.div`
+  margin: 0 1rem;
+
+  & > div {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 `
 
 const AddLoading = styled.div`
@@ -220,7 +294,8 @@ export const Styled = {
   AddWidgetsContainer,
   AddWidget,
   AddWidget__Button,
-  AddTags_Suggestion,
+  AddTags,
+  AddTags_Loading,
   AddLoading,
   AddMessage
 }
