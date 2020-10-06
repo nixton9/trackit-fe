@@ -9,6 +9,10 @@ const PageTitle = styled.h1`
   color: ${props => props.theme.white};
   font-size: 3rem;
   font-weight: ${props => props.theme.fontSemiBold};
+
+  &.smaller {
+    font-size: 1.9rem;
+  }
 `
 
 const PageHeader = styled.div`
@@ -169,6 +173,51 @@ const DetailContent = styled.p`
   font-weight: ${props => props.theme.fontRegular};
 `
 
+const SearchResults = styled.div`
+  margin-top: ${props => props.theme.spacingM};
+`
+
+const SearchResults__Module = styled.div`
+  margin-bottom: ${props => props.theme.spacingS};
+`
+
+const SearchResults__Module__Title = styled.h3`
+  color: ${props => props.theme.mainBlue};
+  font-size: 1.7rem;
+  font-weight: ${props => props.theme.fontBold};
+`
+
+const SearchResults__Item = styled.div`
+  display: flex;
+  align-items: baseline;
+  padding: 3rem 1rem;
+  border-bottom: 1px solid ${props => props.theme.greyishBlue};
+
+  &:last-child {
+    border: none;
+  }
+`
+
+const SearchResults__Item__Title = styled.p`
+  color: ${props => props.theme.white};
+  font-size: 1.6rem;
+  font-weight: ${props => props.theme.fontLight};
+`
+
+const SearchResults__Item__Date = styled.span`
+  color: ${props => props.theme.greyishBlue};
+  font-size: 1.4rem;
+  font-weight: ${props => props.theme.fontSemiBold};
+  margin-left: ${props => props.theme.spacingXS};
+`
+
+const SearchResults__Item__Value = styled.span`
+  color: ${props => props.theme.mainBlue};
+  font-size: 1.4rem;
+  font-weight: ${props => props.theme.fontSemiBold};
+  margin-left: auto;
+`
+
 export const Styled = {
   PageContainer,
   PageTitle,
@@ -188,5 +237,12 @@ export const Styled = {
   DetailTitle,
   DetailDate,
   DetailTags,
-  DetailContent
+  DetailContent,
+  SearchResults,
+  SearchResults__Module,
+  SearchResults__Module__Title,
+  SearchResults__Item,
+  SearchResults__Item__Title,
+  SearchResults__Item__Date,
+  SearchResults__Item__Value
 }

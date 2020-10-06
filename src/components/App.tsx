@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Home from './Home'
+import SearchPage from './SearchPage'
 import NotesPage from './notes/NotesPage'
 import NoteDetail from './notes/NoteDetail'
 import TasksPage from './tasks/TasksPage'
@@ -73,6 +74,11 @@ const App: React.FC = () => {
                 <Route exact path="/habits">
                   <HabitsPage />
                 </Route>
+                <Route
+                  exact
+                  path="/search/:query"
+                  render={props => <SearchPage {...props} />}
+                />
                 <Route
                   exact
                   path="/notes/:id"

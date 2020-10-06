@@ -106,3 +106,30 @@ export const HABITS = gql`
     }
   }
 `
+
+export const SEARCH = gql`
+  query Search($query: String!) {
+    search(query: $query) {
+      notes {
+        id: id_note
+        title: title_note
+        date: createdAt
+      }
+      tasks {
+        id: id_task
+        title: title_task
+        date: date_task
+      }
+      expenses {
+        id: id_expense
+        title: title_expense
+        value: value_expense
+        date: date_expense
+      }
+      habits {
+        id: id_habit
+        title: title_habit
+      }
+    }
+  }
+`

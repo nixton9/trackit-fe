@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { Styled } from '../../styles/Search.styles'
 import { ReactComponent as GlassIcon } from '../../assets/icons/glass.svg'
+import { useHistory } from 'react-router-dom'
 
 const Search: React.FC = () => {
   const [inputVal, setInputVal] = useState('')
   const [open, setOpen, overlayEl] = useToggleElement()
+
+  const inputRef: React.RefObject<HTMLInputElement> = useRef(null)
+
+  const history = useHistory()
 
   useEffect(() => {
     if (!open) setInputVal('')
@@ -16,12 +21,13 @@ const Search: React.FC = () => {
       handleSubmit()
     } else {
       setOpen(true)
+      inputRef && inputRef.current && inputRef.current.focus()
     }
   }
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e && e.preventDefault()
-    console.log(inputVal)
+    history.push(`/search/${inputVal}`)
     setOpen(false)
     setInputVal('')
   }
@@ -32,6 +38,7 @@ const Search: React.FC = () => {
         <GlassIcon onClick={handleIconClick} />
         <form onSubmit={handleSubmit}>
           <Styled.SearchInput
+            ref={inputRef}
             open={open}
             type="text"
             placeholder="Search for a note, task, habit or expense"
