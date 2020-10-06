@@ -3,8 +3,10 @@ import styled from 'styled-components'
 const CalendarContainer = styled.div`
   position: relative;
   width: 95%;
+  max-width: 100rem;
   height: auto;
   margin: 0 auto;
+  overflow: hidden;
 `
 const CalendarHeader = styled.div`
   display: flex;
@@ -71,7 +73,6 @@ const CalendarDays__Cell = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  z-index: 11;
 
   &:not(.disabled) {
     cursor: pointer;
@@ -92,12 +93,12 @@ const CalendarDays__Cell = styled.div`
   &.strike-sat:after {
     content: '';
     position: absolute;
-    /* TODO ESTA WIDTH TEM QUE SER CONSOANTE O ECRA */
-    width: 3rem;
+    width: 4rem;
     height: 3px;
     top: 50%;
     transform: translateY(-50%);
     background-color: ${props => props.theme.habitsGreen};
+    z-index: -1;
   }
   &.strike:before {
     right: 100%;
@@ -106,6 +107,28 @@ const CalendarDays__Cell = styled.div`
     right: unset;
     left: 100%;
   }
+
+  @media (min-width: 550px) {
+    &.strike:before {
+      width: 6rem;
+    }
+  }
+  @media (min-width: 700px) {
+    &.strike:before {
+      width: 8rem;
+    }
+  }
+  @media (min-width: 850px) {
+    &.strike:before {
+      width: 10rem;
+    }
+  }
+  @media (min-width: 850px) {
+    &.strike:before {
+      width: 12rem;
+    }
+  }
+
   &.strike-sun:before,
   &.strike-sat:after {
     width: 1rem;
