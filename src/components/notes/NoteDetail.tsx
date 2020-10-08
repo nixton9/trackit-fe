@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Tag from './Tag'
+import { NoteEditor } from './NoteEditor'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
@@ -23,10 +24,21 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     variables: { id: match.params.id }
   })
 
+  const [noteContent, setNoteContent] = useState('')
+  const [showEditor, setShowEditor] = useState(false)
+
   useEffect(() => {
     setWidgets(false)
     return () => setWidgets(true)
   })
+
+  useEffect(() => {
+    data && setNoteContent(data.singleNote.content)
+  }, [data])
+
+  const toggleEditor = () => {
+    setShowEditor(!showEditor)
+  }
 
   return (
     <Styled.PageContainer>
@@ -60,7 +72,16 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               ))}
           </Styled.DetailTags>
 
-          <Styled.DetailContent>{data.singleNote.content}</Styled.DetailContent>
+          <button onClick={toggleEditor}>editor</button>
+
+          <Styled.DetailContent>
+            <NoteEditor
+              value={noteContent}
+              setValue={setNoteContent}
+              showEditor={showEditor}
+              readMode
+            />
+          </Styled.DetailContent>
         </>
       )}
     </Styled.PageContainer>

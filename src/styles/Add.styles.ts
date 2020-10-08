@@ -65,6 +65,8 @@ const AddInput = styled.input`
   }
 `
 
+const AddEditor = styled.div``
+
 const AddInputNumberWrapper = styled.div`
   display: flex;
   color: ${props => props.theme.white};
@@ -290,6 +292,7 @@ export const Styled = {
   AddIcon,
   AddButton,
   AddInput,
+  AddEditor,
   AddInputNumberWrapper,
   AddWidgetsContainer,
   AddWidget,

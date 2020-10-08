@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NoteEditor } from './NoteEditor'
 import { AddSubmitButton } from '../misc/Add'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { Styled } from '../../styles/Add.styles'
@@ -10,6 +11,7 @@ import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
+import 'react-quill/dist/quill.snow.css'
 
 const CREATE_NOTE = gql`
   mutation CreateNote($title: String!, $content: String!) {
@@ -142,11 +144,18 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
         onChange={e => setTitle(e.target.value)}
       />
 
-      <textarea
+      {/* <textarea
         placeholder="- Milk;"
         value={content}
         onChange={e => setContent(e.target.value)}
-      />
+      /> */}
+      <Styled.AddEditor>
+        <NoteEditor
+          value={content}
+          setValue={setContent}
+          placeholder="Start writing your note here"
+        />
+      </Styled.AddEditor>
 
       <Styled.AddWidgetsContainer>
         <Styled.AddWidget>

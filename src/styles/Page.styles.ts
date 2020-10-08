@@ -168,9 +168,6 @@ const DetailTags = styled.div`
 const DetailContent = styled.p`
   margin-top: ${props => props.theme.spacingS};
   color: ${props => props.theme.white};
-  font-size: 1.6rem;
-  line-height: 4.5rem;
-  font-weight: ${props => props.theme.fontRegular};
 `
 
 const SearchResults = styled.div`
