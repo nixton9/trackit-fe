@@ -72,6 +72,7 @@ const PageContent = styled.section`
   margin-top: ${props => props.theme.spacingS};
   overflow-y: auto;
   height: 75vh;
+  padding-right: ${props => props.theme.spacingXXS};
 `
 
 const PageContent__Day = styled.div`
