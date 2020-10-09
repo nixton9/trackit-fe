@@ -21,7 +21,7 @@ const AddIcon = styled.div`
   }
 `
 
-const AddButton = styled.button`
+const AddButton = styled.div`
   width: 100%;
   background-color: ${props => props.theme.mainBlue};
   color: ${props => props.theme.white};

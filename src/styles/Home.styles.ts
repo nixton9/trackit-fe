@@ -33,11 +33,11 @@ const HomeGrid = styled.section`
   grid-gap: 4rem;
   margin-top: ${props => props.theme.spacingL};
 
-  > a:nth-child(odd) {
+  > div:nth-child(odd) {
     justify-self: flex-end;
   }
 
-  > a:nth-child(even) .widget {
+  > div:nth-child(even) {
     transform: translateY(${props => props.theme.spacingS});
   }
 `

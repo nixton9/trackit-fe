@@ -13,12 +13,18 @@ type WidgetInfo__ValueProps = {
   length: number
 }
 
+const WidgetContainer = styled.div`
+  position: relative;
+  width: 19.2rem;
+  height: 20rem;
+`
+
 const Widget = styled.div<WidgetProps>`
   position: relative;
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.bigBorderRadius};
-  width: 19.2rem;
-  height: 20rem;
+  width: 100%;
+  height: 100%;
   padding: 1.8rem;
   background: ${props =>
     props.type === ModuleTypes.Notes
@@ -114,13 +120,21 @@ const WidgetPlus = styled.span`
   position: absolute;
   right: 1.1rem;
   bottom: 1rem;
+  cursor: pointer;
 
   svg {
     width: 2.4rem;
+    .svg-fill {
+      fill: ${props => props.theme.white};
+    }
+    .svg-stroke {
+      stroke: ${props => props.theme.white};
+    }
   }
 `
 
 export const Styled = {
+  WidgetContainer,
   Widget,
   WidgetHeader,
   WidgetHeader__Title,

@@ -20,28 +20,30 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
   icon
 }) => {
   return (
-    <Link to={`/${type.toLowerCase()}`}>
-      <Styled.Widget type={type} className="widget">
-        <Styled.WidgetHeader>
-          <Styled.WidgetHeader__Title>{type}</Styled.WidgetHeader__Title>
-          <Styled.WidgetHeader__Icon>{icon}</Styled.WidgetHeader__Icon>
-        </Styled.WidgetHeader>
+    <Styled.WidgetContainer>
+      <Link to={`/${type.toLowerCase()}`}>
+        <Styled.Widget type={type} className="widget">
+          <Styled.WidgetHeader>
+            <Styled.WidgetHeader__Title>{type}</Styled.WidgetHeader__Title>
+            <Styled.WidgetHeader__Icon>{icon}</Styled.WidgetHeader__Icon>
+          </Styled.WidgetHeader>
 
-        <Styled.WidgetInfo>
-          <Styled.WidgetInfo_Value
-            length={type === ModuleTypes.Expenses ? value.length : 0}
-          >
-            {value}
-            {type === ModuleTypes.Expenses && '$'}
-          </Styled.WidgetInfo_Value>
-          <Styled.WidgetInfo_Label>{label}</Styled.WidgetInfo_Label>
-        </Styled.WidgetInfo>
+          <Styled.WidgetInfo>
+            <Styled.WidgetInfo_Value
+              length={type === ModuleTypes.Expenses ? value.length : 0}
+            >
+              {value}
+              {type === ModuleTypes.Expenses && '$'}
+            </Styled.WidgetInfo_Value>
+            <Styled.WidgetInfo_Label>{label}</Styled.WidgetInfo_Label>
+          </Styled.WidgetInfo>
+        </Styled.Widget>
+      </Link>
 
-        <Styled.WidgetPlus>
-          <PlusIcon />
-        </Styled.WidgetPlus>
-      </Styled.Widget>
-    </Link>
+      <Styled.WidgetPlus onClick={() => console.log(type)}>
+        <PlusIcon />
+      </Styled.WidgetPlus>
+    </Styled.WidgetContainer>
   )
 }
 
