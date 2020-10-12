@@ -19,6 +19,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { useLocalStorage } from '../utils/useLocalStorage'
+import { RecoilRoot } from 'recoil'
 
 const App: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -50,7 +51,7 @@ const App: React.FC = () => {
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           {loggedIn ? (
-            <>
+            <RecoilRoot>
               {showWidgets && (
                 <>
                   <Sidebar user={userInfo} logout={logout} />
@@ -90,7 +91,7 @@ const App: React.FC = () => {
                   )}
                 />
               </Switch>
-            </>
+            </RecoilRoot>
           ) : (
             <Switch>
               <Route exact path="/">

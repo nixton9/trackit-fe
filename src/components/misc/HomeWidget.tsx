@@ -1,14 +1,15 @@
 import React, { ReactElement } from 'react'
 import { ModuleTypes } from '../../utils/ModuleTypes'
 import { Styled } from '../../styles/HomeWidget.styles'
-import { Link } from 'react-router-dom'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { activeContentState } from './Add'
+import { useSetRecoilState } from 'recoil'
+import { Link } from 'react-router-dom'
 
 interface HomeWidgetProps {
   type: ModuleTypes
   value: string
   label: string
-  url: string
   icon: ReactElement
 }
 
@@ -16,9 +17,10 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
   type,
   value,
   label,
-  url,
   icon
 }) => {
+  const setActiveContent = useSetRecoilState(activeContentState)
+
   return (
     <Styled.WidgetContainer>
       <Link to={`/${type.toLowerCase()}`}>
@@ -40,7 +42,7 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
         </Styled.Widget>
       </Link>
 
-      <Styled.WidgetPlus onClick={() => console.log(type)}>
+      <Styled.WidgetPlus onClick={() => setActiveContent(type)}>
         <PlusIcon />
       </Styled.WidgetPlus>
     </Styled.WidgetContainer>

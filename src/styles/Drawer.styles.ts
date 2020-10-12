@@ -1,8 +1,16 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 type DrawerContainerProps = {
   open: boolean
 }
+
+const fadeIn = keyframes`
+  0% { 
+    opacity: 0;
+  } 100% { 
+    opacity: 1;
+  }
+`
 
 const DrawerContainer = styled.div<DrawerContainerProps>`
   position: fixed;
@@ -28,9 +36,11 @@ const DrawerOverlay = styled.div<DrawerContainerProps>`
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
   overflow: hidden;
   display: ${props => (props.open ? 'block' : 'none')};
   z-index: 1;
+  animation: ${fadeIn} 0.5s ease;
 `
 
 const DrawerTitle = styled.h2`

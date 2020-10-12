@@ -76,28 +76,24 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
               type={ModuleTypes.Notes}
               value={notes.notes.length}
               label="created"
-              url="/link"
               icon={<NotesIcon />}
             />
             <HomeWidget
               type={ModuleTypes.Tasks}
               value={tasksForToday}
               label="for today"
-              url="/link"
               icon={<TasksIcon />}
             />
             <HomeWidget
               type={ModuleTypes.Habits}
               value={habits.habits.length}
               label="active"
-              url="/link"
               icon={<HabitsIcon />}
             />
             <HomeWidget
               type={ModuleTypes.Expenses}
               value={currMonthExpensesVal}
               label="this month"
-              url="/link"
               icon={<ExpensesIcon />}
             />
           </Styled.HomeGrid>

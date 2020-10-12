@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Drawer from './Drawer'
 import AddNote from '../notes/AddNote'
 import AddTask from '../tasks/AddTask'
@@ -13,6 +13,7 @@ import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
 import { ReactComponent as HabitsIcon } from '../../assets/icons/habits.svg'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { Styled } from '../../styles/Add.styles'
+import { atom, useRecoilState } from 'recoil'
 
 const notesTitle = 'Create a note'
 const tasksTitle = 'Create a task'
@@ -23,6 +24,11 @@ export type DrawerAddModuleProps = {
   closeModal: () => void
 }
 
+export const activeContentState: any = atom({
+  key: 'activeContent',
+  default: null
+})
+
 export const AddSubmitButton: React.FC<{ handleSubmit: () => void }> = ({
   handleSubmit
 }) => (
@@ -32,12 +38,16 @@ export const AddSubmitButton: React.FC<{ handleSubmit: () => void }> = ({
 )
 
 const Add: React.FC = () => {
-  const [activeContent, setActiveContent] = useState<ModuleTypes | null>(null)
-  const [open, setOpen, overlayEl] = useToggleElement()
+  const [activeContent, setActiveContent] = useRecoilState<any>(
+    activeContentState
+  )
+  const onClose = () => setTimeout(() => setActiveContent(null), 500)
+
+  const [open, setOpen, overlayEl] = useToggleElement(onClose)
 
   useEffect(() => {
-    if (open) setActiveContent(null)
-  }, [open])
+    if (activeContent) setOpen(true)
+  }, [activeContent, setOpen])
 
   let drawerTitle
   let drawerContent
