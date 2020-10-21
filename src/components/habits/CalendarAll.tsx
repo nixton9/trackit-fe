@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { HabitHeader } from './HabitHeader'
 import { Habit } from '../../utils/ModuleTypes'
 import { Styled } from '../../styles/Calendar.styles'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
@@ -97,9 +98,7 @@ const CalendarAll: React.FC<CalendarProps> = ({ habits, handleDayClick }) => {
 
       rows.push(
         <Styled.CalendarHabit key={habit.id}>
-          <Styled.CalendarHabit__Title>
-            {habit.title}
-          </Styled.CalendarHabit__Title>
+          <HabitHeader id={habit.id} title={habit.title} />
           <Styled.CalendarDays key={day.toString()}>
             {' '}
             {days}{' '}

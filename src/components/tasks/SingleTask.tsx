@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { taskIdState } from './AddTask'
+import { TaskStatus } from './TaskStatus'
+import { activeContentState, isEditState } from '../misc/Add'
 import { Styled } from '../../styles/Single.styles'
-import { Task } from '../../utils/ModuleTypes'
+import { ModuleTypes, Task } from '../../utils/ModuleTypes'
 import {
   displayDateString,
   isPastDate,
@@ -9,6 +12,7 @@ import {
 import { TASKS } from '../../utils/queries'
 import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
 
 const MARK_AS_DONE = gql`
   mutation MarkAsDone($id: ID!, $done: Boolean) {
@@ -22,6 +26,10 @@ const MARK_AS_DONE = gql`
 const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
   const [taskDone, setTaskDone] = useState(false)
 
+  const setActiveContent = useSetRecoilState(activeContentState)
+  const setTaskId = useSetRecoilState(taskIdState)
+  const setIsEdit = useSetRecoilState(isEditState)
+
   const { refetch: refetchTasks } = useQuery(TASKS)
   const [markAsDone] = useMutation(MARK_AS_DONE, {
     variables: { id: id, done: true }
@@ -34,29 +42,37 @@ const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
       .catch(err => console.log(err))
   }
 
+  const handleTaskEdit = () => {
+    setActiveContent(ModuleTypes.Tasks)
+    setIsEdit(true)
+    setTaskId(id.toString())
+  }
   return (
-    <Styled.SingleContainer>
-      <Styled.SingleFlex>
-        <div>
-          <Styled.SingleFlex>
-            <Styled.SingleTitle>{title}</Styled.SingleTitle>
-            {category && (
-              <Styled.SingleCategory color={category.color}>
-                {category.name}
-              </Styled.SingleCategory>
-            )}
-          </Styled.SingleFlex>
-          <Styled.SingleDate past={isPastDate(parseDateInverse(date))}>
-            <CalendarIcon />
-            <p>{displayDateString(parseDateInverse(date))}</p>
-          </Styled.SingleDate>
-        </div>
-        <Styled.SingleTask__Complete
-          onClick={handleCompleteTask}
-          className={taskDone ? 'done' : ''}
-        />
-      </Styled.SingleFlex>
-    </Styled.SingleContainer>
+    <Styled.SingleWrapper>
+      <Styled.SingleContainer onClick={handleTaskEdit}>
+        <Styled.SingleFlex>
+          <div>
+            <Styled.SingleFlex>
+              <Styled.SingleTitle>{title}</Styled.SingleTitle>
+              {category && (
+                <Styled.SingleCategory color={category.color}>
+                  {category.name}
+                </Styled.SingleCategory>
+              )}
+            </Styled.SingleFlex>
+            <Styled.SingleDate past={isPastDate(parseDateInverse(date))}>
+              <CalendarIcon />
+              <p>{displayDateString(parseDateInverse(date))}</p>
+            </Styled.SingleDate>
+          </div>
+        </Styled.SingleFlex>
+      </Styled.SingleContainer>
+      <TaskStatus onClick={handleCompleteTask} isDone={taskDone} />
+      {/* <Styled.SingleTask__Complete
+        onClick={handleCompleteTask}
+        className={taskDone ? 'done' : ''}
+      /> */}
+    </Styled.SingleWrapper>
   )
 }
 

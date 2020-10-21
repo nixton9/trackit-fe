@@ -1,10 +1,23 @@
 import React from 'react'
 import { Styled } from '../../styles/Single.styles'
-import { Expense } from '../../utils/ModuleTypes'
+import { ModuleTypes, Expense } from '../../utils/ModuleTypes'
+import { activeContentState, isEditState } from '../misc/Add'
+import { expenseIdState } from './AddExpense'
+import { useSetRecoilState } from 'recoil'
 
-const SingleExpense: React.FC<Expense> = ({ id, title, value, type }) => {
+const SingleExpense: React.FC<Expense> = ({ id, title, value, type, date }) => {
+  const setActiveContent = useSetRecoilState(activeContentState)
+  const setTaskId = useSetRecoilState(expenseIdState)
+  const setIsEdit = useSetRecoilState(isEditState)
+
+  const handleExpenseEdit = () => {
+    setActiveContent(ModuleTypes.Expenses)
+    setIsEdit(true)
+    setTaskId(id.toString())
+  }
+
   return (
-    <Styled.SingleExpense__Container>
+    <Styled.SingleExpense__Container onClick={handleExpenseEdit}>
       <Styled.SingleFlex>
         <Styled.SingleTitle>{title}</Styled.SingleTitle>
         {type && (

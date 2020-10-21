@@ -57,6 +57,21 @@ export const TASKS = gql`
   }
 `
 
+export const SINGLE_TASK = gql`
+  query SingleTask($id: ID!) {
+    singleTask(id: $id) {
+      title: title_task
+      date: date_task
+      done
+      category {
+        id: id_category
+        name: name_category
+        color: color_category
+      }
+    }
+  }
+`
+
 export const CATEGORIES = gql`
   query Categories {
     categories {
@@ -70,6 +85,22 @@ export const CATEGORIES = gql`
 export const EXPENSES = gql`
   query Expenses {
     expenses {
+      id: id_expense
+      title: title_expense
+      value: value_expense
+      date: date_expense
+      type {
+        id: id_type
+        name: name_type
+        color: color_type
+      }
+    }
+  }
+`
+
+export const SINGLE_EXPENSE = gql`
+  query SingleExpense($id: ID!) {
+    singleExpense(id: $id) {
       id: id_expense
       title: title_expense
       value: value_expense
@@ -107,6 +138,15 @@ export const HABITS = gql`
   }
 `
 
+export const SINGLE_HABIT = gql`
+  query SingleHabit($id: ID!) {
+    singleHabit(id: $id) {
+      id: id_habit
+      title: title_habit
+    }
+  }
+`
+
 export const SEARCH = gql`
   query Search($query: String!) {
     search(query: $query) {
@@ -119,6 +159,7 @@ export const SEARCH = gql`
         id: id_task
         title: title_task
         date: date_task
+        done
       }
       expenses {
         id: id_expense

@@ -4,7 +4,7 @@ type DrawerContainerProps = {
   open: boolean
 }
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   0% { 
     opacity: 0;
   } 100% { 

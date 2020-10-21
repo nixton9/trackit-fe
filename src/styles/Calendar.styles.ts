@@ -56,6 +56,7 @@ const CalendarHabit__Title = styled.h4`
   font-weight: ${props => props.theme.fontRegular};
   margin-bottom: ${props => props.theme.spacingXS};
   padding-left: 2rem;
+  cursor: pointer;
 `
 
 const CalendarDays = styled.div`

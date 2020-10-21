@@ -50,6 +50,15 @@ const AddButton = styled.div`
   }
 `
 
+const AddInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  .task-status {
+    margin-right: ${props => props.theme.spacingXS};
+  }
+`
+
 const AddInput = styled.input`
   width: 100%;
   color: ${props => props.theme.white};
@@ -291,6 +300,7 @@ const AddMessage = styled.div`
 export const Styled = {
   AddIcon,
   AddButton,
+  AddInputWrapper,
   AddInput,
   AddEditor,
   AddInputNumberWrapper,

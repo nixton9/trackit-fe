@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import DatePickerInput from '../misc/DatePickerInput'
 import { Styled } from '../../styles/Add.styles'
+import { TaskStatus } from './TaskStatus'
 import { AddSubmitButton } from '../misc/Add'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
-import { TASKS, CATEGORIES } from '../../utils/queries'
+import { TASKS, CATEGORIES, SINGLE_TASK } from '../../utils/queries'
+import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
-import { gql, useMutation, useQuery } from '@apollo/client'
+import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
+import { atom, useRecoilState } from 'recoil'
 
 const CREATE_TASK = gql`
   mutation CreateTask($title: String!, $date: String!, $category: ID) {
@@ -22,20 +25,91 @@ const CREATE_TASK = gql`
   }
 `
 
-const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
-  const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('0')
-  const [dueDate, setDueDate] = useState(new Date())
+const UPDATE_TASK = gql`
+  mutation UpdateTask(
+    $id: ID!
+    $title: String
+    $date: String
+    $done: Boolean
+    $category: ID
+  ) {
+    updateTask(
+      id: $id
+      title: $title
+      date: $date
+      done: $done
+      category: $category
+    ) {
+      id_task
+      title_task
+    }
+  }
+`
+
+export const taskIdState = atom({
+  key: 'taskId',
+  default: ''
+})
+
+export const taskTitleState = atom({
+  key: 'taskTitle',
+  default: ''
+})
+
+export const taskCategoryState = atom({
+  key: 'taskCategory',
+  default: '0'
+})
+
+export const taskDateState = atom({
+  key: 'taskDate',
+  default: new Date()
+})
+
+export const taskDoneState = atom({
+  key: 'taskDone',
+  default: false
+})
+
+const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
+  const [taskId, setTaskId] = useRecoilState(taskIdState)
+  const [title, setTitle] = useRecoilState(taskTitleState)
+  const [category, setCategory] = useRecoilState(taskCategoryState)
+  const [dueDate, setDueDate] = useRecoilState(taskDateState)
+  const [done, setDone] = useRecoilState(taskDoneState)
 
   const [message, setMessage] = useState('')
 
   const { refetch: refetchTasks } = useQuery(TASKS)
   const { loading: loadingCategories, data: categories } = useQuery(CATEGORIES)
+
   const [createTask, { error, loading }] = useMutation(CREATE_TASK, {
     variables: {
       title: title,
       date: dueDate,
       category: category !== '0' ? category : null
+    }
+  })
+
+  const [updateTask, { error: errorEdit, loading: loadingEdit }] = useMutation(
+    UPDATE_TASK,
+    {
+      variables: {
+        id: taskId,
+        title: title,
+        date: dueDate,
+        done: done,
+        category: category
+      }
+    }
+  )
+
+  const [
+    getTask,
+    { error: errorGet, loading: loadingGet, data: dataTask }
+  ] = useLazyQuery(SINGLE_TASK, {
+    variables: {
+      id: taskId
     }
   })
 
@@ -53,27 +127,77 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     setCategory(e.target.value)
   }
 
+  const cleanData = useCallback(() => {
+    setTaskId('')
+    setTitle('')
+    setCategory('0')
+    setDueDate(new Date())
+    setDone(false)
+    setMessage('')
+  }, [setTaskId, setTitle, setCategory, setDueDate, setMessage, setDone])
+
   const handleSubmit = () => {
-    createTask()
-      .then(res => {
-        setMessage('Note created with success!')
-        refetchTasks()
-        setTimeout(() => {
-          closeModal()
-          setMessage('')
-        }, 1500)
-      })
-      .catch(err => console.log(err.message))
+    if (isEdit) {
+      updateTask()
+        .then(res => {
+          setMessage('Your note was edited')
+          refetchTasks()
+          setTimeout(() => {
+            closeModal()
+            cleanData()
+          }, 1500)
+        })
+        .catch(err => console.log(err.message))
+    } else {
+      createTask()
+        .then(res => {
+          setMessage('Note created with success!')
+          refetchTasks()
+          setTimeout(() => {
+            closeModal()
+            cleanData()
+          }, 1500)
+        })
+        .catch(err => console.log(err.message))
+    }
   }
 
-  return loading || loadingCategories ? (
+  useEffect(() => {
+    if (taskId) {
+      getTask()
+    }
+  }, [taskId, getTask])
+
+  useEffect(() => {
+    if (dataTask && dataTask.singleTask) {
+      const { title, category, date, done } = dataTask.singleTask
+      setTitle(title)
+      setDueDate(parseDate(parseDateInverse(date)))
+      setDone(done)
+      category && setCategory(category.id)
+    }
+  }, [dataTask, setTitle, setCategory, setDueDate, setDone])
+
+  useEffect(() => () => cleanData(), [cleanData])
+
+  const isLoading = loading || loadingCategories || loadingEdit || loadingGet
+
+  const errors = error
+    ? error
+    : errorEdit
+    ? errorEdit
+    : errorGet
+    ? errorGet
+    : null
+
+  return isLoading ? (
     <Styled.AddLoading>
       <LoadingSpinner />
     </Styled.AddLoading>
-  ) : error ? (
+  ) : errors ? (
     <Styled.AddMessage>
       <ErrorIcon />
-      <p>{error.message}</p>
+      <p>{errors.message}</p>
     </Styled.AddMessage>
   ) : message ? (
     <Styled.AddMessage>
@@ -82,12 +206,15 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     </Styled.AddMessage>
   ) : (
     <>
-      <Styled.AddInput
-        type="text"
-        placeholder="Ex: Take out the trash"
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
+      <Styled.AddInputWrapper>
+        {isEdit && <TaskStatus onClick={() => setDone(!done)} isDone={done} />}
+        <Styled.AddInput
+          type="text"
+          placeholder="Ex: Take out the trash"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+      </Styled.AddInputWrapper>
 
       <Styled.AddWidgetsContainer>
         <Styled.AddWidget>

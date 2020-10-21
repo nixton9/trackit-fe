@@ -8,10 +8,22 @@ type SingleDateProps = {
   past?: boolean
 }
 
+const SingleWrapper = styled.div`
+  position: relative;
+
+  .task-status {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`
+
 const SingleContainer = styled.article`
   width: 100%;
   padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
   border-top: 1px solid ${props => props.theme.greyishBlue};
+  cursor: pointer;
 
   &:last-child {
     border-bottom: 1px solid ${props => props.theme.greyishBlue};
@@ -71,6 +83,7 @@ const SingleNote__Tags = styled.div`
 
 const SingleExpense__Container = styled.article`
   margin-bottom: ${props => props.theme.spacingS};
+  cursor: pointer;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -83,19 +96,9 @@ const SingleExpense__Value = styled.p`
   font-weight: ${props => props.theme.fontRegular};
   margin-left: auto;
 `
-const SingleTask__Complete = styled.div`
-  width: 1.8rem;
-  height: 1.8rem;
-  border: solid 2px ${props => props.theme.mainBlue};
-  border-radius: 50%;
-  cursor: pointer;
-
-  &.done {
-    background-color: ${props => props.theme.mainBlue};
-  }
-`
 
 export const Styled = {
+  SingleWrapper,
   SingleContainer,
   SingleFlex,
   SingleTitle,
@@ -103,6 +106,5 @@ export const Styled = {
   SingleCategory,
   SingleNote__Tags,
   SingleExpense__Container,
-  SingleExpense__Value,
-  SingleTask__Complete
+  SingleExpense__Value
 }

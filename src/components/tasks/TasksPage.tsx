@@ -16,12 +16,12 @@ const TasksPage: React.FC = () => {
   const { loading, error, data } = useQuery(TASKS)
   const { data: categories } = useQuery(CATEGORIES)
 
-  const [view, setView] = useState('today')
+  const [view, setView] = useState('all')
   const [sortBy, setSortBy] = useState<SortBySettings>(SortBySettings.DATE)
 
   const defaultOptions = [
-    { val: 'today', label: 'Today' },
-    { val: 'all', label: 'All' }
+    { val: 'all', label: 'All' },
+    { val: 'today', label: 'Today' }
   ]
 
   const viewOptions = categories

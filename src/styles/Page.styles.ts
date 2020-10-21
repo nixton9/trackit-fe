@@ -1,4 +1,9 @@
 import styled from 'styled-components'
+import { fadeIn } from './Drawer.styles'
+
+type DetailHeaderProps = {
+  editorActive?: boolean
+}
 
 const PageContainer = styled.div`
   width: 85%;
@@ -60,7 +65,7 @@ const PageHeader__View__Counter = styled.h3`
 const PageHeader__Settings = styled.div`
   .settings-icon {
     cursor: pointer;
-    width: 2.9rem;
+    width: 3.2rem;
 
     .svg-fill {
       fill: ${props => props.theme.white};
@@ -148,10 +153,34 @@ const DetailBack = styled.span`
   }
 `
 
-const DetailTitle = styled.h2`
+const DetailHeader = styled.div<DetailHeaderProps>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    width: 5rem;
+    padding: 0.4rem;
+    border-radius: ${props => props.theme.smallBorderRadius};
+    background-color: ${props => (props.editorActive ? '#1b1f3a' : '')};
+    cursor: pointer;
+
+    .svg-fill {
+      fill: ${props => props.theme.white};
+    }
+    .svg-stroke {
+      stroke: ${props => props.theme.white};
+    }
+  }
+`
+
+const DetailTitle = styled.input`
   color: ${props => props.theme.white};
   font-size: 2.5rem;
   font-weight: ${props => props.theme.fontSemiBold};
+  background: transparent;
+  border: none;
 `
 
 const DetailDate = styled.h5`
@@ -171,12 +200,27 @@ const DetailContent = styled.p`
   color: ${props => props.theme.white};
 `
 
+const DetailSave = styled.div`
+  display: flex;
+  align-items: center;
+  float: right;
+  margin: ${props => props.theme.spacingM} 0;
+  animation: ${fadeIn} 0.4s ease forwards;
+
+  p {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-right: 2.5rem;
+    color: ${props => props.theme.greyishBlue};
+  }
+`
+
 const SearchResults = styled.div`
   margin-top: ${props => props.theme.spacingM};
 `
 
 const SearchResults__Module = styled.div`
-  margin-bottom: ${props => props.theme.spacingS};
+  margin-bottom: ${props => props.theme.spacingL};
 `
 
 const SearchResults__Module__Title = styled.h3`
@@ -190,9 +234,15 @@ const SearchResults__Item = styled.div`
   align-items: baseline;
   padding: 3rem 1rem;
   border-bottom: 1px solid ${props => props.theme.greyishBlue};
+  cursor: pointer;
 
   &:last-child {
     border: none;
+  }
+
+  .task-status {
+    margin-left: auto;
+    transform: translateY(3px);
   }
 `
 
@@ -232,10 +282,12 @@ export const Styled = {
   PageLoading,
   PageError,
   DetailBack,
+  DetailHeader,
   DetailTitle,
   DetailDate,
   DetailTags,
   DetailContent,
+  DetailSave,
   SearchResults,
   SearchResults__Module,
   SearchResults__Module__Title,
