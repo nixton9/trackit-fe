@@ -5,6 +5,7 @@ import { TaskStatus } from './TaskStatus'
 import { AddSubmitButton } from '../misc/Add'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
+import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
@@ -21,6 +22,14 @@ const CREATE_TASK = gql`
     createTask(title: $title, date: $date, category: $category) {
       id_task
       title_task
+    }
+  }
+`
+
+const DELETE_TASK = gql`
+  mutation DeleteTask($id: ID!) {
+    deleteTask(id: $id) {
+      id_task
     }
   }
 `
@@ -91,6 +100,15 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   })
 
+  const [
+    deleteTask,
+    { error: errorDelete, loading: loadingDelete }
+  ] = useMutation(DELETE_TASK, {
+    variables: {
+      id: taskId
+    }
+  })
+
   const [updateTask, { error: errorEdit, loading: loadingEdit }] = useMutation(
     UPDATE_TASK,
     {
@@ -110,7 +128,8 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   ] = useLazyQuery(SINGLE_TASK, {
     variables: {
       id: taskId
-    }
+    },
+    fetchPolicy: 'network-only'
   })
 
   const categoryOptions = categories
@@ -162,6 +181,33 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   }
 
+  const handleDeleteTask = () => {
+    if (window.confirm('Sure?')) {
+      deleteTask()
+        .then(res => {
+          setMessage('Your task was deleted')
+          refetchTasks()
+          setTimeout(() => {
+            closeModal()
+            cleanData()
+          }, 1500)
+        })
+        .catch(err => console.log(err.message))
+    }
+  }
+
+  const cancelOption = {
+    label: 'Cancel',
+    onClick: () => {
+      closeModal()
+      cleanData()
+    }
+  }
+
+  const menuOptions = isEdit
+    ? [{ label: 'Delete task', onClick: handleDeleteTask }, cancelOption]
+    : [cancelOption]
+
   useEffect(() => {
     if (taskId) {
       getTask()
@@ -180,7 +226,8 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   useEffect(() => () => cleanData(), [cleanData])
 
-  const isLoading = loading || loadingCategories || loadingEdit || loadingGet
+  const isLoading =
+    loading || loadingCategories || loadingEdit || loadingGet || loadingDelete
 
   const errors = error
     ? error
@@ -188,6 +235,8 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     ? errorEdit
     : errorGet
     ? errorGet
+    : errorDelete
+    ? errorDelete
     : null
 
   return isLoading ? (
@@ -206,6 +255,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     </Styled.AddMessage>
   ) : (
     <>
+      <ThreeDotsMenu options={menuOptions} />
       <Styled.AddInputWrapper>
         {isEdit && <TaskStatus onClick={() => setDone(!done)} isDone={done} />}
         <Styled.AddInput

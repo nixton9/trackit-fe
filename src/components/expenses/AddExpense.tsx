@@ -5,6 +5,7 @@ import { FluidInput } from '../misc/FluidInput'
 import { AddSubmitButton } from '../misc/Add'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
+import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { ExpenseType } from '../../utils/ModuleTypes'
@@ -24,6 +25,14 @@ const CREATE_EXPENSE = gql`
     $type: ID
   ) {
     createExpense(title: $title, date: $date, value: $value, type: $type) {
+      id_expense
+    }
+  }
+`
+
+const DELETE_EXPENSE = gql`
+  mutation DeleteExpense($id: ID!) {
+    deleteExpense(id: $id) {
       id_expense
     }
   }
@@ -96,6 +105,15 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   })
 
   const [
+    deleteExpense,
+    { error: errorDelete, loading: loadingDelete }
+  ] = useMutation(DELETE_EXPENSE, {
+    variables: {
+      id: expenseId
+    }
+  })
+
+  const [
     updateExpense,
     { error: errorEdit, loading: loadingEdit }
   ] = useMutation(UPDATE_EXPENSE, {
@@ -114,7 +132,8 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   ] = useLazyQuery(SINGLE_EXPENSE, {
     variables: {
       id: expenseId
-    }
+    },
+    fetchPolicy: 'network-only'
   })
 
   const cleanData = useCallback(() => {
@@ -166,6 +185,33 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   }
 
+  const handleDeleteExpense = () => {
+    if (window.confirm('Sure?')) {
+      deleteExpense()
+        .then(res => {
+          setMessage('This expense was deleted')
+          refetchExpenses()
+          setTimeout(() => {
+            closeModal()
+            cleanData()
+          }, 1500)
+        })
+        .catch(err => console.log(err.message))
+    }
+  }
+
+  const cancelOption = {
+    label: 'Cancel',
+    onClick: () => {
+      closeModal()
+      cleanData()
+    }
+  }
+
+  const menuOptions = isEdit
+    ? [{ label: 'Delete expense', onClick: handleDeleteExpense }, cancelOption]
+    : [cancelOption]
+
   useEffect(() => {
     if (expenseId) {
       getExpense()
@@ -184,7 +230,8 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   useEffect(() => () => cleanData(), [cleanData])
 
-  const isLoading = loading || loadingTypes || loadingEdit || loadingGet
+  const isLoading =
+    loading || loadingTypes || loadingEdit || loadingGet || loadingDelete
 
   const errors = error
     ? error
@@ -192,6 +239,8 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     ? errorEdit
     : errorGet
     ? errorGet
+    : errorDelete
+    ? errorDelete
     : null
 
   return isLoading ? (
@@ -210,6 +259,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     </Styled.AddMessage>
   ) : (
     <>
+      <ThreeDotsMenu options={menuOptions} />
       <Styled.AddInputNumberWrapper>
         <FluidInput value={value} setValue={setValue} placeholder={'9.99'} />
         <span className={value ? 'active' : ''}>€</span>

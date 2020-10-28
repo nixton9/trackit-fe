@@ -4,18 +4,26 @@ import { NoteEditor } from './NoteEditor'
 import { AddSubmitButton } from '../misc/Add'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
+import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { Styled } from '../../styles/Page.styles'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 import { NoteTag } from '../../utils/ModuleTypes'
 import { SINGLE_NOTE } from '../../utils/queries'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { ReactComponent as EditIcon } from '../../assets/icons/edit.svg'
-import { Link, RouteComponentProps } from 'react-router-dom'
+import { Link, RouteComponentProps, useHistory } from 'react-router-dom'
 import { useQuery, useMutation, gql } from '@apollo/client'
 
 const UPDATE_NOTE = gql`
   mutation UpdateNote($id: ID!, $title: String, $content: String) {
     updateNote(id: $id, title: $title, content: $content) {
+      id_note
+    }
+  }
+`
+
+const DELETE_NOTE = gql`
+  mutation DeleteNote($id: ID!) {
+    deleteNote(id: $id) {
       id_note
     }
   }
@@ -51,6 +59,46 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     }
   )
 
+  const [
+    deleteNote,
+    { error: errorDelete, loading: loadingDelete }
+  ] = useMutation(DELETE_NOTE, {
+    variables: {
+      id: match.params.id
+    }
+  })
+
+  const history = useHistory()
+
+  const toggleEditor = () => {
+    setShowEditor(!showEditor)
+  }
+
+  const handleSubmit = () => {
+    updateNote()
+      .then(res => {
+        setMessage('Your note was saved')
+        refetchNote()
+      })
+      .catch(err => console.log(err.message))
+  }
+
+  const handleDeleteNote = () => {
+    if (window.confirm('Sure?')) {
+      deleteNote()
+        .then(res => {
+          setMessage('Your note was deleted')
+          history.push(`/notes`)
+        })
+        .catch(err => console.log(err.message))
+    }
+  }
+
+  const menuOptions = [
+    { label: 'Delete note', onClick: handleDeleteNote },
+    { label: showEditor ? 'Hide editor' : 'Show editor', onClick: toggleEditor }
+  ]
+
   useEffect(() => {
     setWidgets(false)
     return () => setWidgets(true)
@@ -76,18 +124,15 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     if (message) setTimeout(() => setMessage(''), 1500)
   }, [message])
 
-  const toggleEditor = () => {
-    setShowEditor(!showEditor)
-  }
+  const isLoading = loading || loadingEdit || loadingDelete
 
-  const handleSubmit = () => {
-    updateNote()
-      .then(res => {
-        setMessage('Your note was saved')
-        refetchNote()
-      })
-      .catch(err => console.log(err.message))
-  }
+  const errors = error
+    ? error
+    : errorEdit
+    ? errorEdit
+    : errorDelete
+    ? errorDelete
+    : null
 
   return (
     <Styled.PageContainer>
@@ -97,11 +142,9 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
         </Link>
       </Styled.DetailBack>
 
-      {error ? (
-        <PageError>{error.message}</PageError>
-      ) : errorEdit ? (
-        <PageError>{errorEdit.message}</PageError>
-      ) : loading || loadingEdit ? (
+      {errors ? (
+        <PageError>{errors.message}</PageError>
+      ) : isLoading ? (
         <PageLoading />
       ) : (
         <>
@@ -111,7 +154,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               value={noteTitle}
               onChange={e => setNoteTitle(e.target.value)}
             />
-            <EditIcon onClick={toggleEditor} />
+            <ThreeDotsMenu options={menuOptions} />
           </Styled.DetailHeader>
 
           <Styled.DetailDate>
