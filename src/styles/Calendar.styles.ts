@@ -36,26 +36,30 @@ const CalendarDOW = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
-  margin: ${props => props.theme.spacingXS} 0;
+  margin: ${props => props.theme.spacingXS} 0 ${props => props.theme.spacingS} 0;
 `
 
 const CalendarDOW__Day = styled.h5`
-  color: ${props => props.theme.greyishBlue};
+  color: ${props => props.theme.grey};
   font-weight: ${props => props.theme.fontLight};
   font-size: 1.4rem;
   padding: ${props => props.theme.spacingXXS};
 `
 
 const CalendarHabit = styled.div`
-  margin-bottom: 4rem;
+  margin-bottom: ${props => props.theme.spacingM};
 `
 
 const CalendarHabit__Title = styled.h4`
+  display: inline-block;
+  background: ${props => props.theme.accent};
   color: ${props => props.theme.white};
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
   font-size: 1.7rem;
   font-weight: ${props => props.theme.fontRegular};
-  margin-bottom: ${props => props.theme.spacingXS};
-  padding-left: 2rem;
+  margin-bottom: ${props => props.theme.spacingS};
+  margin-left: ${props => props.theme.spacingS};
   cursor: pointer;
 `
 
@@ -79,7 +83,7 @@ const CalendarDays__Cell = styled.div`
     cursor: pointer;
   }
   &.today {
-    border: 3px solid ${props => props.theme.mainBlue};
+    border: 3px solid ${props => props.theme.accent};
   }
   &.done {
     background-color: ${props => props.theme.habitsGreen};
@@ -89,6 +93,13 @@ const CalendarDays__Cell = styled.div`
   }
   &.disabled {
     opacity: 0.2;
+  }
+  &.disabled.done {
+    opacity: 1;
+    background: #203e30;
+  }
+  &.disabled.done span {
+    color: #4c4d53;
   }
   &.strike:before,
   &.strike-sat:after {

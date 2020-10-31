@@ -22,7 +22,7 @@ const SearchIcon = styled.div<SearchProps>`
 `
 
 const SearchInput = styled.input<SearchProps>`
-  background-color: ${props => props.theme.surfacesBlue};
+  background-color: ${props => props.theme.surfacesBlack};
   width: 30rem;
   height: 3.6rem;
   position: absolute;
@@ -40,15 +40,15 @@ const SearchInput = styled.input<SearchProps>`
   transition: transform 0.15s linear;
 
   &::placeholder {
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
   }
 
   &:-ms-input-placeholder {
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
   }
 
   &::-ms-input-placeholder {
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
   }
 `
 

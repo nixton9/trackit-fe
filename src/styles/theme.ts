@@ -18,6 +18,58 @@ const theme = {
   mainBorderRadius: '20px',
   bigBorderRadius: '30px',
   white: '#fff',
+  offWhite: '#dedede',
+  black: '#111111',
+  backgroundBlack: '#1F2128',
+  accent: '#7D41FF',
+  grey: '#757575',
+  surfacesBlack: '#222733',
+  habitsRed: '#fd1053',
+  habitsGreen: '#23b14f',
+  mainGradient:
+    'linear-gradient(137deg, #2d325a 0%, #3d447e 73%, #3d447e 78%);',
+  blueGradient: `linear-gradient(210deg, #08b0fd 0%, #81d1f5 100%);`,
+  purpleGradient: `linear-gradient(210deg, #8925fd 0%, #be88fa 100%);`,
+  pinkGradient: `linear-gradient(210deg, #fd0853 0%, #ef91ae 100%);`,
+  greenGradient: `linear-gradient(210deg, #1db74d 0%, #5dffba 100%);`,
+  categories: {
+    red: '#F44336',
+    pink: '#E91E63',
+    purple: '#9C27B0',
+    indigo: '#3F51B5',
+    blue: '#2196F3',
+    blueGrey: '#607D8B',
+    grey: '#9E9E9E',
+    cyan: '#00BCD4',
+    teal: '#009688',
+    yellow: '#FFC107',
+    orange: '#FF9800',
+    green: '#4CAF50'
+  }
+}
+
+export default theme
+
+const oldTheme = {
+  spacingXXS: '1rem',
+  spacingXS: '1.5rem',
+  spacingS: '3rem',
+  spacingM: '6rem',
+  spacingL: '9rem',
+  spacingXL: '12rem',
+  spacingXXL: '15rem',
+  fontFamily: '"Poppins", sans-serif',
+  fontExtraLight: 200,
+  fontLight: 300,
+  fontRegular: 400,
+  fontMedium: 500,
+  fontSemiBold: 600,
+  fontBold: 700,
+  fontExtraBold: 800,
+  smallBorderRadius: '10px',
+  mainBorderRadius: '20px',
+  bigBorderRadius: '30px',
+  white: '#fff',
   black: '#262626',
   darkerBlue: '#202442',
   mainBlue: '#6268F1',
@@ -46,5 +98,3 @@ const theme = {
     green: '#4CAF50'
   }
 }
-
-export default theme

@@ -22,11 +22,11 @@ const SingleWrapper = styled.div`
 const SingleContainer = styled.article`
   width: 100%;
   padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
-  border-top: 1px solid ${props => props.theme.greyishBlue};
+  border-top: 1px solid rgb(119, 118, 118, 0.25);
   cursor: pointer;
 
   &:last-child {
-    border-bottom: 1px solid ${props => props.theme.greyishBlue};
+    border-bottom: 1px solid rgb(119, 118, 118, 0.25);
   }
 `
 
@@ -52,18 +52,16 @@ const SingleDate = styled.div<SingleDateProps>`
     margin-right: 0.8rem;
 
     .svg-fill {
-      fill: ${props =>
-        props.past ? props.theme.habitsRed : props.theme.greyishBlue};
+      fill: ${props => (props.past ? props.theme.habitsRed : props.theme.grey)};
     }
     .svg-stroke {
       stroke: ${props =>
-        props.past ? props.theme.habitsRed : props.theme.greyishBlue};
+        props.past ? props.theme.habitsRed : props.theme.grey};
     }
   }
 
   p {
-    color: ${props =>
-      props.past ? props.theme.habitsRed : props.theme.greyishBlue};
+    color: ${props => (props.past ? props.theme.habitsRed : props.theme.grey)};
     font-weight: ${props => props.theme.fontSemiBold};
     font-size: 1.15rem;
   }
@@ -91,9 +89,9 @@ const SingleExpense__Container = styled.article`
 `
 
 const SingleExpense__Value = styled.p`
-  color: ${props => props.theme.mainBlue};
+  color: ${props => props.theme.accent};
   font-size: 1.3rem;
-  font-weight: ${props => props.theme.fontRegular};
+  font-weight: ${props => props.theme.fontBold};
   margin-left: auto;
 `
 

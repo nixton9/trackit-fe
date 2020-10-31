@@ -4,7 +4,7 @@ const DatePickerContainer = styled.div`
   display: inline-block;
 
   .react-datepicker {
-    background-color: ${props => props.theme.surfacesBlue};
+    background-color: ${props => props.theme.surfacesBlack};
     border: none;
     border-radius: ${props => props.theme.smallBorderRadius};
     font-family: ${props => props.theme.fontFamily};
@@ -28,7 +28,7 @@ const DatePickerContainer = styled.div`
     left: 0;
   }
   .react-datepicker__header {
-    background-color: ${props => props.theme.surfacesBlue};
+    background-color: ${props => props.theme.surfacesBlack};
     border-top-right-radius: ${props => props.theme.smallBorderRadius};
     border-top-left-radius: ${props => props.theme.smallBorderRadius};
     padding-top: ${props => props.theme.spacingXS};
@@ -41,7 +41,7 @@ const DatePickerContainer = styled.div`
     line-height: 4rem;
     font-size: 1.6rem;
     border-radius: 50%;
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.offWhite};
     margin: 0 0.5rem;
   }
   .react-datepicker__navigation {
@@ -66,12 +66,12 @@ const DatePickerContainer = styled.div`
     margin-top: ${props => props.theme.spacingXXS};
   }
   .react-datepicker__day-name {
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
     font-weight: ${props => props.theme.fontRegular};
     font-size: 1.4rem;
   }
   .react-datepicker__day--selected {
-    background-color: ${props => props.theme.mainBlue};
+    background-color: ${props => props.theme.accent};
   }
   .react-datepicker__month {
     padding: 0 0.5rem 0.5rem 0.5rem;
@@ -82,7 +82,7 @@ const DatePickerContainer = styled.div`
   }
   .react-datepicker-popper[data-placement^='bottom']
     .react-datepicker__triangle {
-    border-bottom-color: ${props => props.theme.surfacesBlue};
+    border-bottom-color: ${props => props.theme.surfacesBlack};
     &:before {
       border-bottom-color: #333333;
     }

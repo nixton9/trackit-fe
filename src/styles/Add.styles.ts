@@ -9,7 +9,7 @@ const AddIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.surfacesBlue};
+  background-color: ${props => props.theme.surfacesBlack};
   border-radius: 50%;
   box-shadow: 7px 7px 16px 0 rgba(0, 0, 0, 0.07);
   z-index: 11;
@@ -23,7 +23,7 @@ const AddIcon = styled.div`
 
 const AddButton = styled.div`
   width: 100%;
-  background-color: ${props => props.theme.mainBlue};
+  background-color: ${props => props.theme.accent};
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.smallBorderRadius};
   border: none;
@@ -104,7 +104,7 @@ const AddWidgetsContainer = styled.div`
 `
 
 const AddWidget = styled.div`
-  background-color: ${props => props.theme.surfacesBlue};
+  background-color: ${props => props.theme.backgroundBlack};
   padding: 1.3rem 1rem 1.3rem 1.5rem;
   border-radius: ${props => props.theme.smallBorderRadius};
   display: inline-flex;
@@ -190,7 +190,7 @@ const AddWidget = styled.div`
 `
 
 const AddWidget__Button = styled.button`
-  background-color: ${props => props.theme.mainBlue};
+  background-color: ${props => props.theme.accent};
   color: ${props => props.theme.white};
   border: none;
   padding: 1.5rem;
@@ -211,7 +211,7 @@ const AddTags = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    background: ${props => props.theme.greyishBlue};
+    background: ${props => props.theme.grey};
     min-width: 5rem;
     margin: 0;
     padding: 0.5rem 2rem 0.5rem 0.9rem;
@@ -243,7 +243,7 @@ const AddTags = styled.div`
   .ReactTags__suggestions {
     position: absolute;
     bottom: 4rem;
-    background-color: ${props => props.theme.surfacesBlue};
+    background-color: ${props => props.theme.backgroundBlack};
     border-radius: 4px;
     padding: 0.6rem 0;
   }
@@ -258,13 +258,14 @@ const AddTags = styled.div`
     margin: 0;
     min-height: 6rem;
     font-weight: ${props => props.theme.fontMedium};
+    color: ${props => props.theme.grey};
   }
   .ReactTags__suggestions li mark {
     background: none;
-    color: ${props => props.theme.mainBlue};
+    color: ${props => props.theme.white};
   }
   .ReactTags__suggestions ul li.ReactTags__activeSuggestion {
-    background: ${props => props.theme.greyishBlue};
+    background: #9e9e9e;
     cursor: pointer;
   }
 `

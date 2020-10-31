@@ -36,12 +36,50 @@ const PageHeader__View__Dropdown = styled.div`
   color: ${props => props.theme.white};
   font-size: 1.7rem;
   font-weight: ${props => props.theme.fontMedium};
+  display: flex;
+
+  .MuiInput-root {
+    background: ${props => props.theme.accent};
+    border-radius: ${props => props.theme.smallBorderRadius};
+    min-width: 11rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .input-wrapper {
+    position: relative;
+    background: ${props => props.theme.accent};
+    border-radius: ${props => props.theme.smallBorderRadius};
+    width: 11rem;
+    cursor: pointer;
+
+    &:last-child {
+      margin-left: 2rem;
+    }
+
+    input  {
+      width: 100%;
+      font-size: 1.5rem;
+      padding: 0.6rem 3rem 0.6rem 1.5rem;
+    }
+
+    svg {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+  }
 
   .MuiSelect-select {
     color: ${props => props.theme.white};
     font-weight: ${props => props.theme.fontMedium};
     font-size: 1.7rem;
     min-height: 0;
+  }
+
+  .MuiSelect-icon {
+    right: 1rem;
   }
 
   svg {
@@ -52,10 +90,10 @@ const PageHeader__View__Dropdown = styled.div`
 `
 
 const PageHeader__View__Counter = styled.h3`
-  color: ${props => props.theme.mainBlue};
+  color: ${props => props.theme.offWhite};
   font-size: 2.4rem;
   font-weight: ${props => props.theme.fontLight};
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 
   &.smaller {
     font-size: 1.9rem;
@@ -83,17 +121,17 @@ const PageContent = styled.section`
 const PageContent__Day = styled.div`
   width: 100%;
   padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
-  border-top: 1px solid ${props => props.theme.greyishBlue};
+  border-top: 1px solid rgb(119, 118, 118, 0.25);
 
   &:last-child {
-    border-bottom: 1px solid ${props => props.theme.greyishBlue};
+    border-bottom: 1px solid rgb(119, 118, 118, 0.25);
   }
 `
 
 const PageContent__Day__Title = styled.h4`
-  color: ${props => props.theme.greyishBlue};
+  color: ${props => props.theme.grey};
   font-size: 1.5rem;
-  font-weight: ${props => props.theme.fontMedium};
+  font-weight: ${props => props.theme.fontBold};
   margin-bottom: ${props => props.theme.spacingS};
 `
 
@@ -107,7 +145,7 @@ const PageContent__NoData = styled.div`
   p  {
     font-size: 1.5rem;
     font-weight: ${props => props.theme.fontMedium};
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
     text-align: center;
   }
 `
@@ -184,7 +222,7 @@ const DetailTitle = styled.input`
 `
 
 const DetailDate = styled.h5`
-  color: ${props => props.theme.greyishBlue};
+  color: ${props => props.theme.grey};
   font-size: 1.5rem;
   font-weight: ${props => props.theme.fontExtraBold};
   margin-top: 0.4rem;
@@ -211,7 +249,7 @@ const DetailSave = styled.div`
     font-weight: 500;
     font-size: 1.2rem;
     margin-right: 2.5rem;
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
   }
 `
 
@@ -224,7 +262,7 @@ const SearchResults__Module = styled.div`
 `
 
 const SearchResults__Module__Title = styled.h3`
-  color: ${props => props.theme.mainBlue};
+  color: ${props => props.theme.accent};
   font-size: 1.7rem;
   font-weight: ${props => props.theme.fontBold};
 `
@@ -233,7 +271,7 @@ const SearchResults__Item = styled.div`
   display: flex;
   align-items: baseline;
   padding: 3rem 1rem;
-  border-bottom: 1px solid ${props => props.theme.greyishBlue};
+  border-bottom: 1px solid rgb(119, 118, 118, 0.25);
   cursor: pointer;
 
   &:last-child {
@@ -253,14 +291,14 @@ const SearchResults__Item__Title = styled.p`
 `
 
 const SearchResults__Item__Date = styled.span`
-  color: ${props => props.theme.greyishBlue};
+  color: ${props => props.theme.grey};
   font-size: 1.4rem;
   font-weight: ${props => props.theme.fontSemiBold};
   margin-left: ${props => props.theme.spacingXS};
 `
 
 const SearchResults__Item__Value = styled.span`
-  color: ${props => props.theme.mainBlue};
+  color: ${props => props.theme.accent};
   font-size: 1.4rem;
   font-weight: ${props => props.theme.fontSemiBold};
   margin-left: auto;

@@ -23,7 +23,7 @@ const HomeText = styled.h2`
 
   strong {
     font-weight: ${props => props.theme.fontSemiBold};
-    color: ${props => props.theme.mainBlue};
+    color: ${props => props.theme.accent};
   }
 `
 

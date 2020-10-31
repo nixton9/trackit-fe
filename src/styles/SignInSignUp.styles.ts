@@ -18,7 +18,7 @@ const SignInSignUpHeader__Logo = styled.h1`
 
 const SignInSignUpHeader__Items = styled.div`
   a {
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
     font-size: 1.5rem;
     font-weight: ${props => props.theme.fontMedium};
     margin-left: ${props => props.theme.spacingXS};
@@ -43,7 +43,7 @@ const SignInSignUpText = styled.h2`
   font-weight: ${props => props.theme.fontSemiBold};
 
   span {
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
     font-size: inherit;
   }
 `
@@ -71,7 +71,7 @@ const SignInSignUpForm__Input = styled.div`
     width: 100%;
     height: 6rem;
     border-radius: ${props => props.theme.smallBorderRadius};
-    background-color: ${props => props.theme.greyishBlue};
+    background-color: ${props => props.theme.grey};
     border: none;
     color: ${props => props.theme.white};
     font-size: 1.4rem;
@@ -83,7 +83,7 @@ const SignInSignUpForm__Input = styled.div`
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
       -webkit-box-shadow: ${props =>
-        `0 0 0 30px ${props.theme.greyishBlue} inset !important`};
+        `0 0 0 30px ${props.theme.grey} inset !important`};
       -webkit-text-fill-color: ${props => props.theme.white};
     }
     &::placeholder {
@@ -114,7 +114,7 @@ const SignInSignUpForm__Input = styled.div`
     transition: background-color 0.2s ease;
 
     .svg-fill {
-      fill: ${props => props.theme.darkerBlue};
+      fill: ${props => props.theme.backgroundBlack};
     }
 
     &.selected {
@@ -123,7 +123,7 @@ const SignInSignUpForm__Input = styled.div`
   }
 
   p {
-    color: ${props => props.theme.greyishBlue};
+    color: ${props => props.theme.grey};
     text-align: right;
     font-size: 1.15rem;
     font-weight: 500;
@@ -135,7 +135,7 @@ const SignInSignUpForm__Input = styled.div`
 const SignInSignUpForm__Button = styled.button`
   width: 20rem;
   height: 6rem;
-  background-color: ${props => props.theme.mainBlue};
+  background-color: ${props => props.theme.accent};
   color: ${props => props.theme.white};
   font-size: 1.9rem;
   font-weight: ${props => props.theme.fontSemiBold};

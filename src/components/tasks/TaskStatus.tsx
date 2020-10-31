@@ -4,12 +4,12 @@ import styled from 'styled-components'
 const TaskStatusDiv = styled.div`
   width: 1.8rem;
   height: 1.8rem;
-  border: solid 2px ${props => props.theme.mainBlue};
+  border: solid 2px ${props => props.theme.accent};
   border-radius: 50%;
   cursor: pointer;
 
   &.done {
-    background-color: ${props => props.theme.mainBlue};
+    background-color: ${props => props.theme.accent};
   }
 `
 

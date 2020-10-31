@@ -7,6 +7,7 @@ import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
+import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import {
   displayDateString,
   parseDate,
@@ -61,18 +62,22 @@ const ExpensesPage: React.FC = () => {
       <Styled.PageHeader>
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
-            <DatePickerInput
-              date={startDate}
-              maxDate={endDate}
-              setDate={setStartDate}
-            />
-            <span>-</span>
-            <DatePickerInput
-              date={endDate}
-              minDate={startDate}
-              setDate={setEndDate}
-            />
-            {/* <ChevronIcon /> */}
+            <div className="input-wrapper">
+              <DatePickerInput
+                date={startDate}
+                maxDate={endDate}
+                setDate={setStartDate}
+              />
+              <ChevronIcon />
+            </div>
+            <div className="input-wrapper">
+              <DatePickerInput
+                date={endDate}
+                minDate={startDate}
+                setDate={setEndDate}
+              />
+              <ChevronIcon />
+            </div>
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
             {totalExpensesVal}$

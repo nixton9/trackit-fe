@@ -26,7 +26,7 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   width: 65vw;
   max-width: 38rem;
   padding: 4rem;
-  background: ${props => props.theme.mainGradient};
+  background: ${props => props.theme.surfacesBlack};
   box-shadow: 23px 0 16px 0 rgba(0, 0, 0, 0.07);
   transform: ${props => (props.open ? 'translateX(0);' : 'translateX(-101%);')};
   will-change: transform;
@@ -35,10 +35,10 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   overflow: hidden;
   svg {
     .svg-fill {
-      fill: ${props => props.theme.mainBlue};
+      fill: ${props => props.theme.accent};
     }
     .svg-stroke {
-      stroke: ${props => props.theme.mainBlue};
+      stroke: ${props => props.theme.accent};
     }
   }
 `
@@ -76,7 +76,7 @@ const SidebarUser__Info__Name = styled.h3`
 `
 
 const SidebarUser__Info__Email = styled.p`
-  color: ${props => props.theme.greyishBlue};
+  color: ${props => props.theme.grey};
   font-weight: ${props => props.theme.fontSemiBold};
   font-size: 1rem;
 `
@@ -109,12 +109,12 @@ const SidebarNavItem = styled.div`
   svg {
     width: 3rem;
     margin-right: ${props => props.theme.spacingXS};
-    fill: ${props => props.theme.mainBlue};
+    fill: ${props => props.theme.accent};
     .svg-fill {
-      fill: ${props => props.theme.mainBlue};
+      fill: ${props => props.theme.accent};
     }
     .svg-stroke {
-      stroke: ${props => props.theme.mainBlue};
+      stroke: ${props => props.theme.accent};
     }
   }
 `

@@ -46,7 +46,7 @@ const Icon = styled.div`
 const Menu = styled.ul`
   position: relative;
   list-style-type: none;
-  background-color: ${props => props.theme.surfacesBlue};
+  background-color: ${props => props.theme.surfacesBlack};
   padding-top: 8px;
   padding-bottom: 8px;
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
@@ -67,7 +67,7 @@ const MenuItem = styled.li`
   cursor: pointer;
 
   &:hover {
-    background-color: ${props => props.theme.greyishBlue};
+    background-color: ${props => props.theme.grey};
   }
 `
 
