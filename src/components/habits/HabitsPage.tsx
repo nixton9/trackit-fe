@@ -118,7 +118,7 @@ const HabitsPage: React.FC = () => {
               {data
                 ? showAll
                   ? data.habits.length
-                  : currHabit && getCurrentStrike(currHabit) + ' days'
+                  : currHabit && getCurrentStrike(currHabit.days) + ' days'
                 : 0}
             </Styled.PageHeader__View__Counter>
           </Styled.PageHeader__View>

@@ -170,6 +170,11 @@ export const SEARCH = gql`
       habits {
         id: id_habit
         title: title_habit
+        days {
+          id: id_day
+          date: date_day
+          state: state_day
+        }
       }
     }
   }

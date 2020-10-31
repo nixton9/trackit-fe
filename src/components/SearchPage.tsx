@@ -9,7 +9,11 @@ import { habitIdState } from './habits/AddHabit'
 import { activeContentState, isEditState } from './misc/Add'
 import { SEARCH } from '../utils/queries'
 import { ModuleTypes } from '../utils/ModuleTypes'
-import { displayDateString, parseDateInverse } from '../utils/dateHelpers'
+import {
+  displayDateString,
+  parseDateInverse,
+  getCurrentStrike
+} from '../utils/dateHelpers'
 import { RouteComponentProps } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
@@ -123,6 +127,11 @@ const SearchPage: React.FC<RouteComponentProps<SearchPageProps>> = ({
                         )}
                         {item.hasOwnProperty('done') && (
                           <TaskStatus isDone={item.done} />
+                        )}
+                        {item.hasOwnProperty('days') && (
+                          <Styled.SearchResults__Item__Value>
+                            {getCurrentStrike(item.days)} days
+                          </Styled.SearchResults__Item__Value>
                         )}
                       </Styled.SearchResults__Item>
                     ))}

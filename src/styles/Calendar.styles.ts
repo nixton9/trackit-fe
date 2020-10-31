@@ -5,7 +5,7 @@ const CalendarContainer = styled.div`
   width: 95%;
   max-width: 100rem;
   height: auto;
-  margin: 0 auto;
+  margin: ${props => props.theme.spacingS} auto 0 auto;
   overflow: hidden;
 `
 const CalendarHeader = styled.div`

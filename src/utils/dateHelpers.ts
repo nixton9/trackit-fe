@@ -88,12 +88,12 @@ export const getCalendarDayInfo = (allHabitDays: Day[], day: Date) => {
   }
 }
 
-export const getCurrentStrike = (habit: Habit) => {
+export const getCurrentStrike = (days: Day[]) => {
   let counter = 0
   const today = new Date()
 
   if (
-    habit.days.filter(
+    days.filter(
       (hDay: Day) =>
         isSameDay(parseDate(hDay.date), today) && hDay.state === DayState.DONE
     )[0]
@@ -104,7 +104,7 @@ export const getCurrentStrike = (habit: Habit) => {
       isSameDay(parseDate(hDay.date), subDays(today, counter)) &&
       hDay.state === DayState.DONE
 
-    while (habit.days.filter(checkHabitDays)[0]) {
+    while (days.filter(checkHabitDays)[0]) {
       counter++
     }
   }
