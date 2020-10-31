@@ -4,14 +4,19 @@ import SingleNote from './SingleNote'
 import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
+import { activeContentState } from '../misc/Add'
 import { Styled } from '../../styles/Page.styles'
-import { Note, NoteTag } from '../../utils/ModuleTypes'
+import { Note, NoteTag, ModuleTypes } from '../../utils/ModuleTypes'
 import { NOTES, TAGS } from '../../utils/queries'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { sortData } from '../../utils/globalHelpers'
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { useQuery } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
 
 const NotesPage: React.FC = () => {
+  const setActiveContent = useSetRecoilState(activeContentState)
+
   const { loading, error, data } = useQuery(NOTES)
   const { data: tags } = useQuery(TAGS)
 
@@ -91,6 +96,9 @@ const NotesPage: React.FC = () => {
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
+      <Styled.PageAddItem onClick={() => setActiveContent(ModuleTypes.Notes)}>
+        <PlusIcon />
+      </Styled.PageAddItem>
     </Styled.PageContainer>
   )
 }

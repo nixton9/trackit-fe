@@ -52,13 +52,6 @@ const App: React.FC = () => {
           <GlobalStyle />
           {loggedIn ? (
             <RecoilRoot>
-              {showWidgets && (
-                <>
-                  <Sidebar user={userInfo} logout={logout} />
-                  <Search />
-                  <Add />
-                </>
-              )}
               <Switch>
                 <Route exact path="/">
                   <Home userName={userInfo.name} />
@@ -91,6 +84,13 @@ const App: React.FC = () => {
                   )}
                 />
               </Switch>
+              {showWidgets && (
+                <>
+                  <Sidebar user={userInfo} logout={logout} />
+                  <Search />
+                  <Add />
+                </>
+              )}
             </RecoilRoot>
           ) : (
             <Switch>

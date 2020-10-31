@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
         outline: none;
         font-family: ${props => props.theme.fontFamily};
     }
-
+    
     .MuiInput-root,
     .MuiMenuItem-root {
         font-family: ${props => props.theme.fontFamily} !important;

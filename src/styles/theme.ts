@@ -50,6 +50,7 @@ const theme = {
 
 export default theme
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const oldTheme = {
   spacingXXS: '1rem',
   spacingXS: '1.5rem',

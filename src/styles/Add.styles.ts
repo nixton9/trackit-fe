@@ -1,26 +1,5 @@
 import styled from 'styled-components'
 
-const AddIcon = styled.div`
-  position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  width: 7rem;
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.surfacesBlack};
-  border-radius: 50%;
-  box-shadow: 7px 7px 16px 0 rgba(0, 0, 0, 0.07);
-  z-index: 11;
-  cursor: pointer;
-
-  svg {
-    width: 3rem;
-    fill: ${props => props.theme.white};
-  }
-`
-
 const AddButton = styled.div`
   width: 100%;
   background-color: ${props => props.theme.accent};
@@ -61,7 +40,7 @@ const AddInputWrapper = styled.div`
 
 const AddInput = styled.input`
   width: 100%;
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.offWhite};
   font-size: 1.7rem;
   font-weight: ${props => props.theme.fontLight};
   background: transparent;
@@ -78,7 +57,7 @@ const AddEditor = styled.div``
 
 const AddInputNumberWrapper = styled.div`
   display: flex;
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.offWhite};
   font-size: 1.9rem;
   font-weight: ${props => props.theme.fontRegular};
   margin-bottom: ${props => props.theme.spacingXS};
@@ -149,7 +128,7 @@ const AddWidget = styled.div`
     width: 5rem;
     font-size: 1.3rem;
     font-weight: ${props => props.theme.fontRegular};
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.offWhite};
     line-height: 1.5rem;
     margin-left: 1rem;
     background: transparent;
@@ -165,7 +144,7 @@ const AddWidget = styled.div`
       font-size: 1.3rem;
       line-height: 1.5rem;
       font-weight: ${props => props.theme.fontRegular};
-      color: ${props => props.theme.white};
+      color: ${props => props.theme.offWhite};
       margin-left: 1rem;
       padding: 0;
       padding-right: 1rem;
@@ -181,10 +160,10 @@ const AddWidget = styled.div`
     display: block;
 
     .svg-fill {
-      fill: ${props => props.theme.white};
+      fill: ${props => props.theme.offWhite};
     }
     .svg-stroke {
-      stroke: ${props => props.theme.white};
+      stroke: ${props => props.theme.offWhite};
     }
   }
 `
@@ -299,7 +278,6 @@ const AddMessage = styled.div`
 `
 
 export const Styled = {
-  AddIcon,
   AddButton,
   AddInputWrapper,
   AddInput,

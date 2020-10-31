@@ -150,6 +150,27 @@ const PageContent__NoData = styled.div`
   }
 `
 
+const PageAddItem = styled.div`
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.surfacesBlack};
+  border-radius: 50%;
+  box-shadow: 7px 7px 16px 0 rgba(0, 0, 0, 0.07);
+  z-index: 11;
+  cursor: pointer;
+
+  svg {
+    width: 3rem;
+    fill: ${props => props.theme.white};
+  }
+`
+
 const PageLoading = styled.div`
   position: absolute;
   top: 35%;
@@ -317,6 +338,7 @@ export const Styled = {
   PageContent__Day__Title,
   PageContent__Day__Expenses,
   PageContent__NoData,
+  PageAddItem,
   PageLoading,
   PageError,
   DetailBack,

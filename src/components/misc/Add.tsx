@@ -6,7 +6,6 @@ import AddHabit from '../habits/AddHabit'
 import AddExpense from '../expenses/AddExpense'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ModuleTypes } from '../../utils/ModuleTypes'
-import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../../assets/icons/tasks.svg'
 import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
@@ -127,10 +126,6 @@ const Add: React.FC = () => {
 
   return (
     <>
-      <Styled.AddIcon onClick={() => setOpen(true)}>
-        <PlusIcon />
-      </Styled.AddIcon>
-
       <Drawer title={drawerTitle} open={open} overlayRef={overlayEl}>
         {drawerContent}
       </Drawer>

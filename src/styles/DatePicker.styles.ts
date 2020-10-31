@@ -13,7 +13,7 @@ const DatePickerContainer = styled.div`
 
   .react-datepicker-wrapper {
     input {
-      color: ${props => props.theme.white};
+      color: ${props => props.theme.offWhite};
       font-weight: ${props => props.theme.fontMedium};
       font-size: 1.7rem;
       background: none;

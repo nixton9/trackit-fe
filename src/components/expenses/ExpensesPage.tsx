@@ -4,10 +4,12 @@ import SingleExpense from './SingleExpense'
 import DatePickerInput from '../misc/DatePickerInput'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
+import { activeContentState } from '../misc/Add'
 import { Styled } from '../../styles/Page.styles'
-import { Expense } from '../../utils/ModuleTypes'
+import { Expense, ModuleTypes } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import {
   displayDateString,
   parseDate,
@@ -15,8 +17,11 @@ import {
 } from '../../utils/dateHelpers'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { useQuery } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
 
 const ExpensesPage: React.FC = () => {
+  const setActiveContent = useSetRecoilState(activeContentState)
+
   const { loading, error, data } = useQuery(EXPENSES)
   const { data: types } = useQuery(TYPES)
 
@@ -121,6 +126,11 @@ const ExpensesPage: React.FC = () => {
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
+      <Styled.PageAddItem
+        onClick={() => setActiveContent(ModuleTypes.Expenses)}
+      >
+        <PlusIcon />
+      </Styled.PageAddItem>
     </Styled.PageContainer>
   )
 }

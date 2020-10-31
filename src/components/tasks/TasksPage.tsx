@@ -4,15 +4,20 @@ import SingleTask from './SingleTask'
 import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
+import { activeContentState } from '../misc/Add'
 import { Styled } from '../../styles/Page.styles'
-import { Task, TaskCategory } from '../../utils/ModuleTypes'
+import { Task, TaskCategory, ModuleTypes } from '../../utils/ModuleTypes'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { TASKS, CATEGORIES } from '../../utils/queries'
 import { isDateToday, parseDateInverse } from '../../utils/dateHelpers'
 import { sortData } from '../../utils/globalHelpers'
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { useQuery } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
 
 const TasksPage: React.FC = () => {
+  const setActiveContent = useSetRecoilState(activeContentState)
+
   const { loading, error, data } = useQuery(TASKS)
   const { data: categories } = useQuery(CATEGORIES)
 
@@ -101,6 +106,9 @@ const TasksPage: React.FC = () => {
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
+      <Styled.PageAddItem onClick={() => setActiveContent(ModuleTypes.Tasks)}>
+        <PlusIcon />
+      </Styled.PageAddItem>
     </Styled.PageContainer>
   )
 }

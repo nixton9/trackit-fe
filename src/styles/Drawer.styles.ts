@@ -27,7 +27,7 @@ const DrawerContainer = styled.div<DrawerContainerProps>`
   transform: ${props => (props.open ? 'translateY(0);' : 'translateY(101%);')};
   will-change: transform;
   transition: transform 0.15s linear;
-  z-index: 11;
+  z-index: 111;
 `
 
 const DrawerOverlay = styled.div<DrawerContainerProps>`

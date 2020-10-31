@@ -5,11 +5,14 @@ import HabitsSettings from './HabitsSettings'
 import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
+import { activeContentState } from '../misc/Add'
 import { getCurrentStrike, parseDateInverse } from '../../utils/dateHelpers'
 import { Styled } from '../../styles/Page.styles'
-import { Habit, DayState } from '../../utils/ModuleTypes'
+import { Habit, DayState, ModuleTypes } from '../../utils/ModuleTypes'
 import { HABITS } from '../../utils/queries'
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
 
 const ADD_DAY_TO_HABIT = gql`
   mutation AddDayToHabit($habit: ID!, $date: String!, $state: DayState!) {
@@ -28,6 +31,8 @@ const UPDATE_DAY = gql`
 `
 
 const HabitsPage: React.FC = () => {
+  const setActiveContent = useSetRecoilState(activeContentState)
+
   const { loading, error, data } = useQuery(HABITS)
   const { refetch: refetchHabits } = useQuery(HABITS)
   const [addDayToHabit] = useMutation(ADD_DAY_TO_HABIT)
@@ -145,6 +150,9 @@ const HabitsPage: React.FC = () => {
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
+      <Styled.PageAddItem onClick={() => setActiveContent(ModuleTypes.Habits)}>
+        <PlusIcon />
+      </Styled.PageAddItem>
     </>
   )
 }
