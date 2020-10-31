@@ -57,10 +57,19 @@ export const getCalendarDayInfo = (allHabitDays: Day[], day: Date) => {
           )[0]
         ) {
           dayClassName += ' strike'
+          if (isSunday(day)) {
+            dayClassName += ' strike-sun'
+          }
+        }
+        if (
+          allHabitDays.filter(
+            (hDay: Day) =>
+              isEqual(parseDate(hDay.date), addDays(day, 1)) &&
+              hDay.state === DayState.DONE
+          )[0]
+        ) {
           if (isSaturday(day)) {
             dayClassName += ' strike-sat'
-          } else if (isSunday(day)) {
-            dayClassName += ' strike-sun'
           }
         }
       } else if (allHabitDays[i].state === DayState.NOTDONE) {
