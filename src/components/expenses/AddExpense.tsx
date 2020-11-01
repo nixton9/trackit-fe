@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import DatePickerInput from '../misc/DatePickerInput'
 import { Styled } from '../../styles/Add.styles'
 import { FluidInput } from '../misc/FluidInput'
@@ -7,14 +7,13 @@ import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
+import { NotificationTypes, notificationState } from '../misc/Notification'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { ExpenseType } from '../../utils/ModuleTypes'
 import { DrawerAddModuleProps } from '../misc/Add'
-import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
-import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { EXPENSES, TYPES, SINGLE_EXPENSE } from '../../utils/queries'
 import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { atom, useRecoilState } from 'recoil'
+import { atom, useRecoilState, useSetRecoilState } from 'recoil'
 import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 
 const CREATE_EXPENSE = gql`
@@ -90,12 +89,12 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [type, setType] = useRecoilState(expenseTypeState)
   const [date, setDate] = useRecoilState(expenseDateState)
 
-  const [message, setMessage] = useState('')
+  const setNotification = useSetRecoilState(notificationState)
 
   const { refetch: refetchExpenses } = useQuery(EXPENSES)
   const { loading: loadingTypes, data: types } = useQuery(TYPES)
 
-  const [createExpense, { error, loading }] = useMutation(CREATE_EXPENSE, {
+  const [createExpense, { loading }] = useMutation(CREATE_EXPENSE, {
     variables: {
       title: title,
       date: date,
@@ -104,37 +103,37 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   })
 
-  const [
-    deleteExpense,
-    { error: errorDelete, loading: loadingDelete }
-  ] = useMutation(DELETE_EXPENSE, {
-    variables: {
-      id: expenseId
+  const [deleteExpense, { loading: loadingDelete }] = useMutation(
+    DELETE_EXPENSE,
+    {
+      variables: {
+        id: expenseId
+      }
     }
-  })
+  )
 
-  const [
-    updateExpense,
-    { error: errorEdit, loading: loadingEdit }
-  ] = useMutation(UPDATE_EXPENSE, {
-    variables: {
-      id: expenseId,
-      title: title,
-      date: date,
-      value: Number(value),
-      type: type
+  const [updateExpense, { loading: loadingEdit }] = useMutation(
+    UPDATE_EXPENSE,
+    {
+      variables: {
+        id: expenseId,
+        title: title,
+        date: date,
+        value: Number(value),
+        type: type
+      }
     }
-  })
+  )
 
-  const [
-    getExpense,
-    { error: errorGet, loading: loadingGet, data: dataExpense }
-  ] = useLazyQuery(SINGLE_EXPENSE, {
-    variables: {
-      id: expenseId
-    },
-    fetchPolicy: 'network-only'
-  })
+  const [getExpense, { loading: loadingGet, data: dataExpense }] = useLazyQuery(
+    SINGLE_EXPENSE,
+    {
+      variables: {
+        id: expenseId
+      },
+      fetchPolicy: 'network-only'
+    }
+  )
 
   const cleanData = useCallback(() => {
     setExpenseId('')
@@ -142,8 +141,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     setTitle('')
     setType('0')
     setDate(new Date())
-    setMessage('')
-  }, [setExpenseId, setValue, setTitle, setType, setDate, setMessage])
+  }, [setExpenseId, setValue, setTitle, setType, setDate])
 
   const typeOptions = types
     ? [
@@ -163,25 +161,37 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (isEdit) {
       updateExpense()
         .then(res => {
-          setMessage('Expense edited')
+          setNotification({
+            text: `Expense was successfully updated`,
+            type: NotificationTypes.Success
+          })
           refetchExpenses()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     } else {
       createExpense()
         .then(res => {
-          setMessage('Expense successfully added!')
+          setNotification({
+            text: `New expense added for ${value}$`,
+            type: NotificationTypes.Success
+          })
           refetchExpenses()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     }
   }
 
@@ -189,14 +199,20 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (window.confirm('Sure?')) {
       deleteExpense()
         .then(res => {
-          setMessage('This expense was deleted')
+          setNotification({
+            text: `Expense was deleted`,
+            type: NotificationTypes.Success
+          })
           refetchExpenses()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     }
   }
 
@@ -233,30 +249,10 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const isLoading =
     loading || loadingTypes || loadingEdit || loadingGet || loadingDelete
 
-  const errors = error
-    ? error
-    : errorEdit
-    ? errorEdit
-    : errorGet
-    ? errorGet
-    : errorDelete
-    ? errorDelete
-    : null
-
   return isLoading ? (
     <Styled.AddLoading>
       <LoadingSpinner />
     </Styled.AddLoading>
-  ) : errors ? (
-    <Styled.AddMessage>
-      <ErrorIcon />
-      <p>{errors.message}</p>
-    </Styled.AddMessage>
-  ) : message ? (
-    <Styled.AddMessage>
-      <CheckIcon />
-      <p>{message}</p>
-    </Styled.AddMessage>
   ) : (
     <>
       <ThreeDotsMenu options={menuOptions} />

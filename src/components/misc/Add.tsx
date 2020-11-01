@@ -6,10 +6,6 @@ import AddHabit from '../habits/AddHabit'
 import AddExpense from '../expenses/AddExpense'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ModuleTypes } from '../../utils/ModuleTypes'
-import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
-import { ReactComponent as TasksIcon } from '../../assets/icons/tasks.svg'
-import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
-import { ReactComponent as HabitsIcon } from '../../assets/icons/habits.svg'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { Styled } from '../../styles/Add.styles'
 import { atom, useRecoilState } from 'recoil'
@@ -52,11 +48,10 @@ const Add: React.FC = () => {
   )
   const [isEdit, setIsEdit] = useRecoilState(isEditState)
 
-  const onClose = () =>
-    setTimeout(() => {
-      setActiveContent(null)
-      setIsEdit(false)
-    }, 500)
+  const onClose = () => {
+    setActiveContent(null)
+    setIsEdit(false)
+  }
 
   const [open, setOpen, overlayEl] = useToggleElement(onClose)
 
@@ -94,34 +89,8 @@ const Add: React.FC = () => {
       break
 
     default:
-      drawerTitle = 'What do you want to track?'
-      drawerContent = (
-        <>
-          <Styled.AddButton onClick={() => setActiveContent(ModuleTypes.Notes)}>
-            <span>{notesTitle}</span>
-            <NotesIcon />
-          </Styled.AddButton>
-
-          <Styled.AddButton onClick={() => setActiveContent(ModuleTypes.Tasks)}>
-            <span>{tasksTitle}</span>
-            <TasksIcon />
-          </Styled.AddButton>
-
-          <Styled.AddButton
-            onClick={() => setActiveContent(ModuleTypes.Expenses)}
-          >
-            <span>{expensesTitle}</span>
-            <ExpensesIcon />
-          </Styled.AddButton>
-
-          <Styled.AddButton
-            onClick={() => setActiveContent(ModuleTypes.Habits)}
-          >
-            <span>{habitsTitle}</span>
-            <HabitsIcon />
-          </Styled.AddButton>
-        </>
-      )
+      drawerTitle = ''
+      drawerContent = <></>
   }
 
   return (

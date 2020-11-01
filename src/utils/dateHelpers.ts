@@ -10,7 +10,7 @@ import {
   isToday,
   isPast
 } from 'date-fns'
-import { Habit, Day, DayState } from './ModuleTypes'
+import { Day, DayState } from './ModuleTypes'
 
 export const parseDate = (date: string) => parse(date, 'yyyy-MM-dd', new Date())
 

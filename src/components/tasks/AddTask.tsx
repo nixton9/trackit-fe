@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import DatePickerInput from '../misc/DatePickerInput'
 import { Styled } from '../../styles/Add.styles'
 import { TaskStatus } from './TaskStatus'
@@ -7,15 +7,18 @@ import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
+import { NotificationTypes, notificationState } from '../misc/Notification'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { TASKS, CATEGORIES, SINGLE_TASK } from '../../utils/queries'
-import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
+import {
+  parseDate,
+  parseDateInverse,
+  displayDateString
+} from '../../utils/dateHelpers'
 import { DrawerAddModuleProps } from '../misc/Add'
-import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
-import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { atom, useRecoilState } from 'recoil'
+import { atom, useRecoilState, useSetRecoilState } from 'recoil'
 
 const CREATE_TASK = gql`
   mutation CreateTask($title: String!, $date: String!, $category: ID) {
@@ -87,12 +90,12 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [dueDate, setDueDate] = useRecoilState(taskDateState)
   const [done, setDone] = useRecoilState(taskDoneState)
 
-  const [message, setMessage] = useState('')
+  const setNotification = useSetRecoilState(notificationState)
 
   const { refetch: refetchTasks } = useQuery(TASKS)
   const { loading: loadingCategories, data: categories } = useQuery(CATEGORIES)
 
-  const [createTask, { error, loading }] = useMutation(CREATE_TASK, {
+  const [createTask, { loading }] = useMutation(CREATE_TASK, {
     variables: {
       title: title,
       date: dueDate,
@@ -100,37 +103,31 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   })
 
-  const [
-    deleteTask,
-    { error: errorDelete, loading: loadingDelete }
-  ] = useMutation(DELETE_TASK, {
+  const [deleteTask, { loading: loadingDelete }] = useMutation(DELETE_TASK, {
     variables: {
       id: taskId
     }
   })
 
-  const [updateTask, { error: errorEdit, loading: loadingEdit }] = useMutation(
-    UPDATE_TASK,
+  const [updateTask, { loading: loadingEdit }] = useMutation(UPDATE_TASK, {
+    variables: {
+      id: taskId,
+      title: title,
+      date: dueDate,
+      done: done,
+      category: category
+    }
+  })
+
+  const [getTask, { loading: loadingGet, data: dataTask }] = useLazyQuery(
+    SINGLE_TASK,
     {
       variables: {
-        id: taskId,
-        title: title,
-        date: dueDate,
-        done: done,
-        category: category
-      }
+        id: taskId
+      },
+      fetchPolicy: 'network-only'
     }
   )
-
-  const [
-    getTask,
-    { error: errorGet, loading: loadingGet, data: dataTask }
-  ] = useLazyQuery(SINGLE_TASK, {
-    variables: {
-      id: taskId
-    },
-    fetchPolicy: 'network-only'
-  })
 
   const categoryOptions = categories
     ? [
@@ -152,32 +149,45 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     setCategory('0')
     setDueDate(new Date())
     setDone(false)
-    setMessage('')
-  }, [setTaskId, setTitle, setCategory, setDueDate, setMessage, setDone])
+  }, [setTaskId, setTitle, setCategory, setDueDate, setDone])
 
   const handleSubmit = () => {
     if (isEdit) {
       updateTask()
         .then(res => {
-          setMessage('Your note was edited')
+          setNotification({
+            text: `Task was successfully updated`,
+            type: NotificationTypes.Success
+          })
           refetchTasks()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     } else {
       createTask()
         .then(res => {
-          setMessage('Note created with success!')
+          setNotification({
+            text: `New task added for ${displayDateString(
+              parseDateInverse(dueDate)
+            )}`,
+            type: NotificationTypes.Success
+          })
           refetchTasks()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     }
   }
 
@@ -185,14 +195,20 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (window.confirm('Sure?')) {
       deleteTask()
         .then(res => {
-          setMessage('Your task was deleted')
+          setNotification({
+            text: `Task was deleted`,
+            type: NotificationTypes.Success
+          })
           refetchTasks()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     }
   }
 
@@ -229,30 +245,10 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const isLoading =
     loading || loadingCategories || loadingEdit || loadingGet || loadingDelete
 
-  const errors = error
-    ? error
-    : errorEdit
-    ? errorEdit
-    : errorGet
-    ? errorGet
-    : errorDelete
-    ? errorDelete
-    : null
-
   return isLoading ? (
     <Styled.AddLoading>
       <LoadingSpinner />
     </Styled.AddLoading>
-  ) : errors ? (
-    <Styled.AddMessage>
-      <ErrorIcon />
-      <p>{errors.message}</p>
-    </Styled.AddMessage>
-  ) : message ? (
-    <Styled.AddMessage>
-      <CheckIcon />
-      <p>{message}</p>
-    </Styled.AddMessage>
   ) : (
     <>
       <ThreeDotsMenu options={menuOptions} />

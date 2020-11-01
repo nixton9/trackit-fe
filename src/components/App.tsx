@@ -13,6 +13,7 @@ import ResetPassword from './auth/ResetPassword'
 import Sidebar from './misc/Sidebar'
 import Search from './misc/Search'
 import Add from './misc/Add'
+import { Notification } from './misc/Notification'
 import { GlobalStyle } from '../styles/globalstyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
@@ -84,6 +85,7 @@ const App: React.FC = () => {
                   )}
                 />
               </Switch>
+              <Notification />
               {showWidgets && (
                 <>
                   <Sidebar user={userInfo} logout={logout} />

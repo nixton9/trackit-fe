@@ -4,6 +4,7 @@ import { NoteEditor } from './NoteEditor'
 import { AddSubmitButton } from '../misc/Add'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
+import { NotificationTypes, notificationState } from '../misc/Notification'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { Styled } from '../../styles/Page.styles'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
@@ -12,6 +13,7 @@ import { SINGLE_NOTE } from '../../utils/queries'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { Link, RouteComponentProps, useHistory } from 'react-router-dom'
 import { useQuery, useMutation, gql } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
 
 const UPDATE_NOTE = gql`
   mutation UpdateNote($id: ID!, $title: String, $content: String) {
@@ -43,6 +45,8 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const [showEditor, setShowEditor] = useState(false)
   const [message, setMessage] = useState('')
   const [noteWasEdited, setNoteWasEdited] = useState(false)
+
+  const setNotification = useSetRecoilState(notificationState)
 
   const { loading, error, data } = useQuery(SINGLE_NOTE, {
     variables: { id: match.params.id }
@@ -77,18 +81,29 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const handleSubmit = () => {
     updateNote()
       .then(res => {
-        setMessage('Your note was saved')
+        setNotification({
+          text: `Note was successfully updated`,
+          type: NotificationTypes.Success
+        })
         refetchNote()
       })
-      .catch(err => console.log(err.message))
+      .catch(err =>
+        setNotification({
+          text: 'There was a problem, please try again',
+          type: NotificationTypes.Error
+        })
+      )
   }
 
   const handleDeleteNote = () => {
     if (window.confirm('Sure?')) {
       deleteNote()
         .then(res => {
-          setMessage('Your note was deleted')
           history.push(`/notes`)
+          setNotification({
+            text: `Note was deleted`,
+            type: NotificationTypes.Success
+          })
         })
         .catch(err => console.log(err.message))
     }

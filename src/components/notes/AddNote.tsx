@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import { NoteEditor } from './NoteEditor'
 import { AddSubmitButton } from '../misc/Add'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
+import { NotificationTypes, notificationState } from '../misc/Notification'
 import { Styled } from '../../styles/Add.styles'
 import { TagsInput, Tag } from './TagsInput'
 import { NOTES } from '../../utils/queries'
 import theme from '../../styles/theme'
 import { DrawerAddModuleProps } from '../misc/Add'
-import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
-import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
+import { useSetRecoilState } from 'recoil'
 import 'react-quill/dist/quill.snow.css'
 
 const CREATE_NOTE = gql`
@@ -64,17 +64,14 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   const [content, setContent] = useState('')
   const [tags, setTags] = useState<Tag[] | []>([])
 
-  const [message, setMessage] = useState('')
+  const setNotification = useSetRecoilState(notificationState)
 
   const { refetch: refetchNotes } = useQuery(NOTES)
   const [addTagToNote] = useMutation<AddTagToNotData>(ADD_TAG_TO_NOTE)
   const [createTag] = useMutation<CreateTagData>(CREATE_TAG)
-  const [createNote, { error, loading }] = useMutation<CreateNoteData>(
-    CREATE_NOTE,
-    {
-      variables: { title: title, content: content }
-    }
-  )
+  const [createNote, { loading }] = useMutation<CreateNoteData>(CREATE_NOTE, {
+    variables: { title: title, content: content }
+  })
 
   // If there are tags, we'll add them to the note. If a tag is new we need to create it first
   // and only then assign it to the note
@@ -96,15 +93,20 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
               attachTagToNote(noteId, tag.id)
             }
           })
-          setMessage('Note created with success!')
+          setNotification({
+            text: `New note created '${title}'`,
+            type: NotificationTypes.Success
+          })
           refetchNotes()
-          setTimeout(() => {
-            closeModal()
-            setMessage('')
-          }, 1500)
+          closeModal()
         }
       })
-      .catch(err => console.log(err))
+      .catch(err =>
+        setNotification({
+          text: 'There was a problem, please try again',
+          type: NotificationTypes.Error
+        })
+      )
   }
 
   const attachTagToNote = (note: string, tag: string) => {
@@ -125,16 +127,6 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     <Styled.AddLoading>
       <LoadingSpinner />
     </Styled.AddLoading>
-  ) : error ? (
-    <Styled.AddMessage>
-      <ErrorIcon />
-      <p>{error.message}</p>
-    </Styled.AddMessage>
-  ) : message ? (
-    <Styled.AddMessage>
-      <CheckIcon />
-      <p>{message}</p>
-    </Styled.AddMessage>
   ) : (
     <>
       <Styled.AddInput
@@ -143,12 +135,6 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
-
-      {/* <textarea
-        placeholder="- Milk;"
-        value={content}
-        onChange={e => setContent(e.target.value)}
-      /> */}
       <Styled.AddEditor>
         <NoteEditor
           value={content}

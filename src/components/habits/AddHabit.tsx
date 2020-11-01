@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { AddSubmitButton } from '../misc/Add'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { DrawerAddModuleProps } from '../misc/Add'
+import { NotificationTypes, notificationState } from '../misc/Notification'
 import { Styled } from '../../styles/Add.styles'
 import { HABITS, SINGLE_HABIT } from '../../utils/queries'
-import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
-import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { atom, useRecoilState } from 'recoil'
+import { atom, useRecoilState, useSetRecoilState } from 'recoil'
 
 const CREATE_HABIT = gql`
   mutation CreateHabit($title: String!) {
@@ -48,69 +47,74 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [habitId, setHabitId] = useRecoilState(habitIdState)
   const [title, setTitle] = useRecoilState(habitTitleState)
 
-  const [message, setMessage] = useState('')
+  const setNotification = useSetRecoilState(notificationState)
 
   const { refetch: refetchHabits } = useQuery(HABITS)
 
-  const [createHabit, { error, loading }] = useMutation(CREATE_HABIT, {
+  const [createHabit, { loading }] = useMutation(CREATE_HABIT, {
     variables: { title: title }
   })
 
-  const [
-    deleteHabit,
-    { error: errorDelete, loading: loadingDelete }
-  ] = useMutation(DELETE_HABIT, {
+  const [deleteHabit, { loading: loadingDelete }] = useMutation(DELETE_HABIT, {
     variables: {
       id: habitId
     }
   })
 
-  const [updateHabit, { error: errorEdit, loading: loadingEdit }] = useMutation(
-    UPDATE_HABIT,
+  const [updateHabit, { loading: loadingEdit }] = useMutation(UPDATE_HABIT, {
+    variables: { id: habitId, title: title }
+  })
+
+  const [getHabit, { loading: loadingGet, data: dataHabit }] = useLazyQuery(
+    SINGLE_HABIT,
     {
-      variables: { id: habitId, title: title }
+      variables: {
+        id: habitId
+      },
+      fetchPolicy: 'network-only'
     }
   )
-
-  const [
-    getHabit,
-    { error: errorGet, loading: loadingGet, data: dataHabit }
-  ] = useLazyQuery(SINGLE_HABIT, {
-    variables: {
-      id: habitId
-    },
-    fetchPolicy: 'network-only'
-  })
 
   const cleanData = useCallback(() => {
     setHabitId('')
     setTitle('')
-    setMessage('')
-  }, [setHabitId, setTitle, setMessage])
+  }, [setHabitId, setTitle])
 
   const handleSubmit = () => {
     if (isEdit) {
       updateHabit()
         .then(res => {
-          setMessage('Your habit was edited')
+          setNotification({
+            text: `Habit was successfully updated`,
+            type: NotificationTypes.Success
+          })
           refetchHabits()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     } else {
       createHabit()
         .then(res => {
-          setMessage('Habit created!')
+          setNotification({
+            text: `New habit created '${title}'`,
+            type: NotificationTypes.Success
+          })
           refetchHabits()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     }
   }
 
@@ -118,14 +122,20 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (window.confirm('Sure?')) {
       deleteHabit()
         .then(res => {
-          setMessage('This habit was deleted')
+          setNotification({
+            text: `Habit was deleted`,
+            type: NotificationTypes.Success
+          })
           refetchHabits()
-          setTimeout(() => {
-            closeModal()
-            cleanData()
-          }, 1500)
+          closeModal()
+          cleanData()
         })
-        .catch(err => console.log(err.message))
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
     }
   }
 
@@ -157,30 +167,10 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const isLoading = loading || loadingEdit || loadingGet || loadingDelete
 
-  const errors = error
-    ? error
-    : errorEdit
-    ? errorEdit
-    : errorGet
-    ? errorGet
-    : errorDelete
-    ? errorDelete
-    : null
-
   return isLoading ? (
     <Styled.AddLoading>
       <LoadingSpinner />
     </Styled.AddLoading>
-  ) : errors ? (
-    <Styled.AddMessage>
-      <ErrorIcon />
-      <p>{errors.message}</p>
-    </Styled.AddMessage>
-  ) : message ? (
-    <Styled.AddMessage>
-      <CheckIcon />
-      <p>{message}</p>
-    </Styled.AddMessage>
   ) : (
     <>
       <ThreeDotsMenu options={menuOptions} />
