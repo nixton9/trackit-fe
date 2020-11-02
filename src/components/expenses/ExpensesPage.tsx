@@ -10,6 +10,7 @@ import { Expense, ModuleTypes } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import {
   displayDateString,
   parseDate,
@@ -122,7 +123,7 @@ const ExpensesPage: React.FC = () => {
           ))
         ) : (
           <Styled.PageContent__NoData>
-            <p>No expenses on this date.</p>
+            <NoDataIcon />
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>

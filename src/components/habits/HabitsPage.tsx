@@ -11,6 +11,7 @@ import { Styled } from '../../styles/Page.styles'
 import { Habit, DayState, ModuleTypes } from '../../utils/ModuleTypes'
 import { HABITS } from '../../utils/queries'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 
@@ -146,7 +147,7 @@ const HabitsPage: React.FC = () => {
           )
         ) : (
           <Styled.PageContent__NoData>
-            <p>No habits in here.</p>
+            <NoDataIcon />
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>

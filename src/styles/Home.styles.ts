@@ -19,7 +19,7 @@ const HomeText = styled.h2`
   color: ${props => props.theme.white};
   font-size: 3rem;
   line-height: 4.5rem;
-  font-weight: ${props => props.theme.fontRegular};
+  font-weight: ${props => props.theme.fontSemiBold};
 
   strong {
     font-weight: ${props => props.theme.fontSemiBold};

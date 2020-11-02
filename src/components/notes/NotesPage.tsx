@@ -11,6 +11,7 @@ import { NOTES, TAGS } from '../../utils/queries'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { sortData } from '../../utils/globalHelpers'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 
@@ -92,7 +93,7 @@ const NotesPage: React.FC = () => {
           ))
         ) : (
           <Styled.PageContent__NoData>
-            <p>No notes with this criteria.</p>
+            <NoDataIcon />
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>

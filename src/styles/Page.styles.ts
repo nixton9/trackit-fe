@@ -140,7 +140,17 @@ const PageContent__Day__Expenses = styled.h4`
 `
 
 const PageContent__NoData = styled.div`
-  padding-top: ${props => props.theme.spacingL};
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  svg {
+    width: 25rem;
+    opacity: 0.89;
+  }
 
   p  {
     font-size: 1.5rem;

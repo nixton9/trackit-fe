@@ -12,6 +12,7 @@ import { TASKS, CATEGORIES } from '../../utils/queries'
 import { isDateToday, parseDateInverse } from '../../utils/dateHelpers'
 import { sortData } from '../../utils/globalHelpers'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 
@@ -102,7 +103,7 @@ const TasksPage: React.FC = () => {
           ))
         ) : (
           <Styled.PageContent__NoData>
-            <p>No tasks to do in here.</p>
+            <NoDataIcon />
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
