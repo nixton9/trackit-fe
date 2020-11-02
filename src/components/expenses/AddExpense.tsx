@@ -8,6 +8,7 @@ import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
+import { alertState } from '../misc/Alert'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { ExpenseType } from '../../utils/ModuleTypes'
 import { DrawerAddModuleProps } from '../misc/Add'
@@ -90,6 +91,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [date, setDate] = useRecoilState(expenseDateState)
 
   const setNotification = useSetRecoilState(notificationState)
+  const setAlert = useSetRecoilState(alertState)
 
   const { refetch: refetchExpenses } = useQuery(EXPENSES)
   const { loading: loadingTypes, data: types } = useQuery(TYPES)
@@ -195,25 +197,30 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   }
 
+  const handleDeleteConfirm = () => {
+    setAlert({
+      text: 'This expense will be removed.',
+      onConfirm: handleDeleteExpense
+    })
+  }
+
   const handleDeleteExpense = () => {
-    if (window.confirm('Sure?')) {
-      deleteExpense()
-        .then(res => {
-          setNotification({
-            text: `Expense was deleted`,
-            type: NotificationTypes.Success
-          })
-          refetchExpenses()
-          closeModal()
-          cleanData()
+    deleteExpense()
+      .then(res => {
+        setNotification({
+          text: `Expense was deleted`,
+          type: NotificationTypes.Success
         })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
-          })
-        )
-    }
+        refetchExpenses()
+        closeModal()
+        cleanData()
+      })
+      .catch(err =>
+        setNotification({
+          text: 'There was a problem, please try again',
+          type: NotificationTypes.Error
+        })
+      )
   }
 
   const cancelOption = {
@@ -225,7 +232,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   }
 
   const menuOptions = isEdit
-    ? [{ label: 'Delete expense', onClick: handleDeleteExpense }, cancelOption]
+    ? [{ label: 'Delete expense', onClick: handleDeleteConfirm }, cancelOption]
     : [cancelOption]
 
   useEffect(() => {

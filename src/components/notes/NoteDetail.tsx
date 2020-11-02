@@ -5,6 +5,7 @@ import { AddSubmitButton } from '../misc/Add'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { NotificationTypes, notificationState } from '../misc/Notification'
+import { alertState } from '../misc/Alert'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { Styled } from '../../styles/Page.styles'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
@@ -47,6 +48,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const [noteWasEdited, setNoteWasEdited] = useState(false)
 
   const setNotification = useSetRecoilState(notificationState)
+  const setAlert = useSetRecoilState(alertState)
 
   const { loading, error, data } = useQuery(SINGLE_NOTE, {
     variables: { id: match.params.id }
@@ -95,22 +97,27 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
       )
   }
 
+  const handleDeleteConfirm = () => {
+    setAlert({
+      text: 'This note will be removed.',
+      onConfirm: handleDeleteNote
+    })
+  }
+
   const handleDeleteNote = () => {
-    if (window.confirm('Sure?')) {
-      deleteNote()
-        .then(res => {
-          history.push(`/notes`)
-          setNotification({
-            text: `Note was deleted`,
-            type: NotificationTypes.Success
-          })
+    deleteNote()
+      .then(res => {
+        history.push(`/notes`)
+        setNotification({
+          text: `Note was deleted`,
+          type: NotificationTypes.Success
         })
-        .catch(err => console.log(err.message))
-    }
+      })
+      .catch(err => console.log(err.message))
   }
 
   const menuOptions = [
-    { label: 'Delete note', onClick: handleDeleteNote },
+    { label: 'Delete note', onClick: handleDeleteConfirm },
     { label: showEditor ? 'Hide editor' : 'Show editor', onClick: toggleEditor }
   ]
 

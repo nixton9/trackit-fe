@@ -84,7 +84,10 @@ const MenuOverlay = styled.div<MenuOverlayProps>`
 
 export const ThreeDotsMenu: React.FC<ThreeDotsMenuProps> = ({ options }) => {
   const [open, setOpen, overlayEl] = useToggleElement()
-
+  const itemClick = (fn: () => void) => {
+    fn()
+    setOpen(false)
+  }
   return (
     <MenuContainer className="three-dots-menu">
       {' '}
@@ -97,7 +100,7 @@ export const ThreeDotsMenu: React.FC<ThreeDotsMenuProps> = ({ options }) => {
       {open && options && options.length > 0 && (
         <Menu>
           {options.map(item => (
-            <MenuItem key={item.label} onClick={item.onClick}>
+            <MenuItem key={item.label} onClick={() => itemClick(item.onClick)}>
               {item.label}
             </MenuItem>
           ))}

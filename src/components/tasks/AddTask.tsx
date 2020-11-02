@@ -8,6 +8,7 @@ import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
+import { alertState } from '../misc/Alert'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { TASKS, CATEGORIES, SINGLE_TASK } from '../../utils/queries'
@@ -91,6 +92,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [done, setDone] = useRecoilState(taskDoneState)
 
   const setNotification = useSetRecoilState(notificationState)
+  const setAlert = useSetRecoilState(alertState)
 
   const { refetch: refetchTasks } = useQuery(TASKS)
   const { loading: loadingCategories, data: categories } = useQuery(CATEGORIES)
@@ -191,25 +193,30 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   }
 
+  const handleDeleteConfirm = () => {
+    setAlert({
+      text: 'This task will be removed.',
+      onConfirm: handleDeleteTask
+    })
+  }
+
   const handleDeleteTask = () => {
-    if (window.confirm('Sure?')) {
-      deleteTask()
-        .then(res => {
-          setNotification({
-            text: `Task was deleted`,
-            type: NotificationTypes.Success
-          })
-          refetchTasks()
-          closeModal()
-          cleanData()
+    deleteTask()
+      .then(res => {
+        setNotification({
+          text: `Task was deleted`,
+          type: NotificationTypes.Success
         })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
-          })
-        )
-    }
+        refetchTasks()
+        closeModal()
+        cleanData()
+      })
+      .catch(err =>
+        setNotification({
+          text: 'There was a problem, please try again',
+          type: NotificationTypes.Error
+        })
+      )
   }
 
   const cancelOption = {
@@ -221,7 +228,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   }
 
   const menuOptions = isEdit
-    ? [{ label: 'Delete task', onClick: handleDeleteTask }, cancelOption]
+    ? [{ label: 'Delete task', onClick: handleDeleteConfirm }, cancelOption]
     : [cancelOption]
 
   useEffect(() => {

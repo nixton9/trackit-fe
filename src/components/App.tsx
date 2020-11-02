@@ -14,6 +14,7 @@ import Sidebar from './misc/Sidebar'
 import Search from './misc/Search'
 import Add from './misc/Add'
 import { Notification } from './misc/Notification'
+import { Alert } from './misc/Alert'
 import { GlobalStyle } from '../styles/globalstyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
@@ -86,6 +87,7 @@ const App: React.FC = () => {
                 />
               </Switch>
               <Notification />
+              <Alert />
               {showWidgets && (
                 <>
                   <Sidebar user={userInfo} logout={logout} />
