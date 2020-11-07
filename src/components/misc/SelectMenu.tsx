@@ -1,7 +1,16 @@
 import React from 'react'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
+import { capitalize } from '../../utils/globalHelpers'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
+import styled from 'styled-components'
+
+const StyledItemColor = styled.div`
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin-left: auto;
+`
 
 export type SelectMenuProps = {
   value: string | string[]
@@ -14,6 +23,7 @@ export type SelectMenuProps = {
   id: string
   itemClass?: string
   open?: boolean
+  isColorPicker?: boolean
   onChange: (e: any) => void
   onOpen?: (e: any) => void
   onClose?: (e: any) => void
@@ -27,7 +37,8 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
   open,
   onChange,
   onOpen,
-  onClose
+  onClose,
+  isColorPicker
 }) => {
   return (
     <Select
@@ -47,7 +58,14 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
           className={itemClass}
           disabled={option.disabled ? true : false}
         >
-          {option.label}
+          {isColorPicker ? (
+            <>
+              <span>{capitalize(option.label)}</span>
+              <StyledItemColor style={{ background: option.val }} />
+            </>
+          ) : (
+            option.label
+          )}
         </MenuItem>
       ))}
     </Select>

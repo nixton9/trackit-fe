@@ -7,6 +7,7 @@ import AddExpense from '../expenses/AddExpense'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ModuleTypes } from '../../utils/ModuleTypes'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { Styled } from '../../styles/Add.styles'
 import { atom, useRecoilState } from 'recoil'
 
@@ -34,11 +35,12 @@ export const isEditState = atom({
   default: false
 })
 
-export const AddSubmitButton: React.FC<{ handleSubmit: () => void }> = ({
-  handleSubmit
-}) => (
+export const AddSubmitButton: React.FC<{
+  plusIcon?: boolean
+  handleSubmit?: () => void
+}> = ({ plusIcon, handleSubmit }) => (
   <Styled.AddWidget__Button onClick={handleSubmit}>
-    <ChevronIcon />
+    {plusIcon ? <PlusIcon /> : <ChevronIcon />}
   </Styled.AddWidget__Button>
 )
 

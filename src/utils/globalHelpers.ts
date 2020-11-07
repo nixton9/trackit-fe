@@ -26,3 +26,6 @@ export const sortData = (
         )
     : data
 }
+
+export const capitalize = (name: string) =>
+  name.charAt(0).toUpperCase() + name.slice(1)

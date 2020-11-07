@@ -19,7 +19,7 @@ const SingleExpense: React.FC<Expense> = ({ id, title, value, type, date }) => {
   return (
     <Styled.SingleExpense__Container onClick={handleExpenseEdit}>
       <Styled.SingleFlex>
-        <Styled.SingleTitle>{title}</Styled.SingleTitle>
+        <Styled.SingleTitle>{title ? title : '-'}</Styled.SingleTitle>
         {type && (
           <Styled.SingleCategory color={type.color}>
             {type.name}

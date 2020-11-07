@@ -75,38 +75,47 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
 
   // If there are tags, we'll add them to the note. If a tag is new we need to create it first
   // and only then assign it to the note
-  const handleSubmit = () => {
-    createNote()
-      .then(results => {
-        if (results && results.data && results.data.createNote) {
-          const noteId = results.data.createNote.id_note
-          tags.forEach(tag => {
-            if (isNaN(Number(tag.id))) {
-              createTag({
-                variables: { name: tag.text, color: pickRandomColor() }
-              })
-                .then(res => {
-                  res.data && attachTagToNote(noteId, res.data.createTag.id_tag)
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault()
+    if (title) {
+      createNote()
+        .then(results => {
+          if (results && results.data && results.data.createNote) {
+            const noteId = results.data.createNote.id_note
+            tags.forEach(tag => {
+              if (isNaN(Number(tag.id))) {
+                createTag({
+                  variables: { name: tag.text, color: pickRandomColor() }
                 })
-                .catch(err => console.log(err))
-            } else {
-              attachTagToNote(noteId, tag.id)
-            }
-          })
-          setNotification({
-            text: `New note created '${title}'`,
-            type: NotificationTypes.Success
-          })
-          refetchNotes()
-          closeModal()
-        }
-      })
-      .catch(err =>
-        setNotification({
-          text: 'There was a problem, please try again',
-          type: NotificationTypes.Error
+                  .then(res => {
+                    res.data &&
+                      attachTagToNote(noteId, res.data.createTag.id_tag)
+                  })
+                  .catch(err => console.log(err))
+              } else {
+                attachTagToNote(noteId, tag.id)
+              }
+            })
+            setNotification({
+              text: `New note created '${title}'`,
+              type: NotificationTypes.Success
+            })
+            refetchNotes()
+            closeModal()
+          }
         })
-      )
+        .catch(err =>
+          setNotification({
+            text: 'There was a problem, please try again',
+            type: NotificationTypes.Error
+          })
+        )
+    } else {
+      setNotification({
+        text: `You need to insert a title for your note`,
+        type: NotificationTypes.Error
+      })
+    }
   }
 
   const attachTagToNote = (note: string, tag: string) => {
@@ -129,28 +138,30 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     </Styled.AddLoading>
   ) : (
     <>
-      <Styled.AddInput
-        type="text"
-        placeholder="Ex: Groceries list"
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
-      <Styled.AddEditor>
-        <NoteEditor
-          value={content}
-          setValue={setContent}
-          placeholder="Start writing your note here"
+      <form onSubmit={handleSubmit}>
+        <Styled.AddInput
+          type="text"
+          placeholder="Ex: Groceries list"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
         />
-      </Styled.AddEditor>
+        <Styled.AddEditor>
+          <NoteEditor
+            value={content}
+            setValue={setContent}
+            placeholder="Start writing your note here"
+          />
+        </Styled.AddEditor>
 
-      <Styled.AddWidgetsContainer>
-        <Styled.AddWidget>
-          <NotesIcon />
-          <TagsInput tags={tags} setTags={setTags} />
-        </Styled.AddWidget>
+        <Styled.AddWidgetsContainer>
+          <Styled.AddWidget>
+            <NotesIcon />
+            <TagsInput tags={tags} setTags={setTags} />
+          </Styled.AddWidget>
 
-        <AddSubmitButton handleSubmit={handleSubmit} />
-      </Styled.AddWidgetsContainer>
+          <AddSubmitButton />
+        </Styled.AddWidgetsContainer>
+      </form>
     </>
   )
 }

@@ -90,7 +90,7 @@ const ExpensesPage: React.FC = () => {
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
-          <ExpensesSettings categories={types ? types.types : []} />
+          <ExpensesSettings types={types ? types.types : []} />
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 

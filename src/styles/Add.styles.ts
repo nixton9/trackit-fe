@@ -178,6 +178,7 @@ const AddWidget__Button = styled.button`
   cursor: pointer;
 
   svg {
+    fill: ${props => props.theme.white};
     display: block;
     transform: rotate(-90deg);
   }

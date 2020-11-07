@@ -159,41 +159,49 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     setType(e.target.value)
   }
 
-  const handleSubmit = () => {
-    if (isEdit) {
-      updateExpense()
-        .then(res => {
-          setNotification({
-            text: `Expense was successfully updated`,
-            type: NotificationTypes.Success
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault()
+    if (value) {
+      if (isEdit) {
+        updateExpense()
+          .then(res => {
+            setNotification({
+              text: `Expense was successfully updated`,
+              type: NotificationTypes.Success
+            })
+            refetchExpenses()
+            closeModal()
+            cleanData()
           })
-          refetchExpenses()
-          closeModal()
-          cleanData()
-        })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
+          .catch(err =>
+            setNotification({
+              text: 'There was a problem, please try again',
+              type: NotificationTypes.Error
+            })
+          )
+      } else {
+        createExpense()
+          .then(res => {
+            setNotification({
+              text: `New expense added for ${value}$`,
+              type: NotificationTypes.Success
+            })
+            refetchExpenses()
+            closeModal()
+            cleanData()
           })
-        )
+          .catch(err =>
+            setNotification({
+              text: 'There was a problem, please try again',
+              type: NotificationTypes.Error
+            })
+          )
+      }
     } else {
-      createExpense()
-        .then(res => {
-          setNotification({
-            text: `New expense added for ${value}$`,
-            type: NotificationTypes.Success
-          })
-          refetchExpenses()
-          closeModal()
-          cleanData()
-        })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
-          })
-        )
+      setNotification({
+        text: `You need to insert a value for your expense`,
+        type: NotificationTypes.Error
+      })
     }
   }
 
@@ -263,39 +271,42 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   ) : (
     <>
       <ThreeDotsMenu options={menuOptions} />
-      <Styled.AddInputNumberWrapper>
-        <FluidInput value={value} setValue={setValue} placeholder={'9.99'} />
-        <span className={value ? 'active' : ''}>€</span>
-      </Styled.AddInputNumberWrapper>
 
-      <Styled.AddInput
-        type="text"
-        placeholder="Ex: Dinner at mcdonalds"
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
+      <form onSubmit={handleSubmit}>
+        <Styled.AddInputNumberWrapper>
+          <FluidInput value={value} setValue={setValue} placeholder={'9.99'} />
+          <span className={value ? 'active' : ''}>€</span>
+        </Styled.AddInputNumberWrapper>
 
-      <Styled.AddWidgetsContainer>
-        <Styled.AddWidget>
-          <DatePickerInput
-            date={date}
-            setDate={setDate}
-            customInput={<CustomAddDatePicker />}
-          />
-        </Styled.AddWidget>
+        <Styled.AddInput
+          type="text"
+          placeholder="Ex: Dinner at mcdonalds"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
 
-        <Styled.AddWidget>
-          <CustomAddSelect
-            id="add-type"
-            value={type}
-            onChange={handleTypeChange}
-            options={typeOptions}
-            icon={<NotesIcon />}
-          />
-        </Styled.AddWidget>
+        <Styled.AddWidgetsContainer>
+          <Styled.AddWidget>
+            <DatePickerInput
+              date={date}
+              setDate={setDate}
+              customInput={<CustomAddDatePicker />}
+            />
+          </Styled.AddWidget>
 
-        <AddSubmitButton handleSubmit={handleSubmit} />
-      </Styled.AddWidgetsContainer>
+          <Styled.AddWidget>
+            <CustomAddSelect
+              id="add-type"
+              value={type}
+              onChange={handleTypeChange}
+              options={typeOptions}
+              icon={<NotesIcon />}
+            />
+          </Styled.AddWidget>
+
+          <AddSubmitButton />
+        </Styled.AddWidgetsContainer>
+      </form>
     </>
   )
 }

@@ -153,43 +153,51 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     setDone(false)
   }, [setTaskId, setTitle, setCategory, setDueDate, setDone])
 
-  const handleSubmit = () => {
-    if (isEdit) {
-      updateTask()
-        .then(res => {
-          setNotification({
-            text: `Task was successfully updated`,
-            type: NotificationTypes.Success
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault()
+    if (title) {
+      if (isEdit) {
+        updateTask()
+          .then(res => {
+            setNotification({
+              text: `Task was successfully updated`,
+              type: NotificationTypes.Success
+            })
+            refetchTasks()
+            closeModal()
+            cleanData()
           })
-          refetchTasks()
-          closeModal()
-          cleanData()
-        })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
+          .catch(err =>
+            setNotification({
+              text: 'There was a problem, please try again',
+              type: NotificationTypes.Error
+            })
+          )
+      } else {
+        createTask()
+          .then(res => {
+            setNotification({
+              text: `New task added for ${displayDateString(
+                parseDateInverse(dueDate)
+              )}`,
+              type: NotificationTypes.Success
+            })
+            refetchTasks()
+            closeModal()
+            cleanData()
           })
-        )
+          .catch(err =>
+            setNotification({
+              text: 'There was a problem, please try again',
+              type: NotificationTypes.Error
+            })
+          )
+      }
     } else {
-      createTask()
-        .then(res => {
-          setNotification({
-            text: `New task added for ${displayDateString(
-              parseDateInverse(dueDate)
-            )}`,
-            type: NotificationTypes.Success
-          })
-          refetchTasks()
-          closeModal()
-          cleanData()
-        })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
-          })
-        )
+      setNotification({
+        text: `You need to insert a title for your task`,
+        type: NotificationTypes.Error
+      })
     }
   }
 
@@ -259,37 +267,42 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   ) : (
     <>
       <ThreeDotsMenu options={menuOptions} />
-      <Styled.AddInputWrapper>
-        {isEdit && <TaskStatus onClick={() => setDone(!done)} isDone={done} />}
-        <Styled.AddInput
-          type="text"
-          placeholder="Ex: Take out the trash"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-      </Styled.AddInputWrapper>
 
-      <Styled.AddWidgetsContainer>
-        <Styled.AddWidget>
-          <DatePickerInput
-            date={dueDate}
-            setDate={setDueDate}
-            customInput={<CustomAddDatePicker />}
+      <form onSubmit={handleSubmit}>
+        <Styled.AddInputWrapper>
+          {isEdit && (
+            <TaskStatus onClick={() => setDone(!done)} isDone={done} />
+          )}
+          <Styled.AddInput
+            type="text"
+            placeholder="Ex: Take out the trash"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
           />
-        </Styled.AddWidget>
+        </Styled.AddInputWrapper>
 
-        <Styled.AddWidget>
-          <CustomAddSelect
-            id="add-category"
-            value={category}
-            onChange={handleCategoryChange}
-            options={categoryOptions}
-            icon={<NotesIcon />}
-          />
-        </Styled.AddWidget>
+        <Styled.AddWidgetsContainer>
+          <Styled.AddWidget>
+            <DatePickerInput
+              date={dueDate}
+              setDate={setDueDate}
+              customInput={<CustomAddDatePicker />}
+            />
+          </Styled.AddWidget>
 
-        <AddSubmitButton handleSubmit={handleSubmit} />
-      </Styled.AddWidgetsContainer>
+          <Styled.AddWidget>
+            <CustomAddSelect
+              id="add-category"
+              value={category}
+              onChange={handleCategoryChange}
+              options={categoryOptions}
+              icon={<NotesIcon />}
+            />
+          </Styled.AddWidget>
+
+          <AddSubmitButton />
+        </Styled.AddWidgetsContainer>
+      </form>
     </>
   )
 }

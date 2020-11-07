@@ -70,7 +70,7 @@ const SingleDate = styled.div<SingleDateProps>`
 const SingleCategory = styled.h6<SingleCategoryProps>`
   color: ${props => props.color};
   font-size: 1.2rem;
-  font-weight: ${props => props.theme.fontMedium};
+  font-weight: ${props => props.theme.fontBold};
   margin-left: ${props => props.theme.spacingXS};
 `
 

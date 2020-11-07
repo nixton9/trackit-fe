@@ -82,41 +82,49 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     setTitle('')
   }, [setHabitId, setTitle])
 
-  const handleSubmit = () => {
-    if (isEdit) {
-      updateHabit()
-        .then(res => {
-          setNotification({
-            text: `Habit was successfully updated`,
-            type: NotificationTypes.Success
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault()
+    if (title) {
+      if (isEdit) {
+        updateHabit()
+          .then(res => {
+            setNotification({
+              text: `Habit was successfully updated`,
+              type: NotificationTypes.Success
+            })
+            refetchHabits()
+            closeModal()
+            cleanData()
           })
-          refetchHabits()
-          closeModal()
-          cleanData()
-        })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
+          .catch(err =>
+            setNotification({
+              text: 'There was a problem, please try again',
+              type: NotificationTypes.Error
+            })
+          )
+      } else {
+        createHabit()
+          .then(res => {
+            setNotification({
+              text: `New habit created '${title}'`,
+              type: NotificationTypes.Success
+            })
+            refetchHabits()
+            closeModal()
+            cleanData()
           })
-        )
+          .catch(err =>
+            setNotification({
+              text: 'There was a problem, please try again',
+              type: NotificationTypes.Error
+            })
+          )
+      }
     } else {
-      createHabit()
-        .then(res => {
-          setNotification({
-            text: `New habit created '${title}'`,
-            type: NotificationTypes.Success
-          })
-          refetchHabits()
-          closeModal()
-          cleanData()
-        })
-        .catch(err =>
-          setNotification({
-            text: 'There was a problem, please try again',
-            type: NotificationTypes.Error
-          })
-        )
+      setNotification({
+        text: `You need to insert a title for your habit`,
+        type: NotificationTypes.Error
+      })
     }
   }
 
@@ -181,16 +189,19 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   ) : (
     <>
       <ThreeDotsMenu options={menuOptions} />
-      <Styled.AddInput
-        type="text"
-        placeholder="Ex: Eat healthy"
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
 
-      <Styled.AddWidgetsContainer>
-        <AddSubmitButton handleSubmit={handleSubmit} />
-      </Styled.AddWidgetsContainer>
+      <form onSubmit={handleSubmit}>
+        <Styled.AddInput
+          type="text"
+          placeholder="Ex: Eat healthy"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+
+        <Styled.AddWidgetsContainer>
+          <AddSubmitButton />
+        </Styled.AddWidgetsContainer>
+      </form>
     </>
   )
 }

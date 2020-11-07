@@ -48,6 +48,7 @@ export const GlobalStyle = createGlobalStyle`
     .MuiMenuItem-root {
         color: ${props => props.theme.white} !important;
         font-size: 1.5rem !important;
+        min-width: 15rem;
     }
 
     .MuiList-root .view-select-item {
