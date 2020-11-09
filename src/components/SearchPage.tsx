@@ -5,10 +5,12 @@ import { PageError } from './misc/PageError'
 import { Styled } from '../styles/Page.styles'
 import { taskIdState } from './tasks/AddTask'
 import { expenseIdState } from './expenses/AddExpense'
+import { currencyState } from './expenses/ExpensesSettings'
 import { habitIdState } from './habits/AddHabit'
 import { activeContentState, isEditState } from './misc/Add'
 import { SEARCH } from '../utils/queries'
 import { ModuleTypes } from '../utils/ModuleTypes'
+import { showCurrencySym } from '../utils/globalHelpers'
 import {
   displayDateString,
   parseDateInverse,
@@ -17,7 +19,7 @@ import {
 import { RouteComponentProps } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
-import { useSetRecoilState } from 'recoil'
+import { useSetRecoilState, useRecoilValue } from 'recoil'
 
 type SearchPageProps = {
   query: string
@@ -31,6 +33,8 @@ const SearchPage: React.FC<RouteComponentProps<SearchPageProps>> = ({
   const setTaskId = useSetRecoilState(taskIdState)
   const setExpenseId = useSetRecoilState(expenseIdState)
   const setHabitId = useSetRecoilState(habitIdState)
+
+  const currency = useRecoilValue(currencyState)
 
   const { loading, error, data } = useQuery(SEARCH, {
     variables: { query: match.params.query }
@@ -122,7 +126,8 @@ const SearchPage: React.FC<RouteComponentProps<SearchPageProps>> = ({
                         )}
                         {item.value && (
                           <Styled.SearchResults__Item__Value>
-                            {item.value}$
+                            {item.value}
+                            {currency && showCurrencySym(currency)}
                           </Styled.SearchResults__Item__Value>
                         )}
                         {item.hasOwnProperty('done') && (

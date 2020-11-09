@@ -71,3 +71,13 @@ export enum DayState {
   DONE = 'DONE',
   NOTDONE = 'NOTDONE'
 }
+
+export enum Currencies {
+  EURO = 'EURO',
+  DOLLAR = 'DOLLAR'
+}
+
+export const currencyOptions = [
+  { val: Currencies.EURO, label: 'Euro (€)' },
+  { val: Currencies.DOLLAR, label: 'Dollar ($)' }
+]

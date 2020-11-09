@@ -1,5 +1,5 @@
 import { SortBySettings } from './SettingsTypes'
-import { Note, Task } from './ModuleTypes'
+import { Note, Task, Currencies } from './ModuleTypes'
 
 export const sortData = (
   data: Note[] | Task[],
@@ -29,3 +29,13 @@ export const sortData = (
 
 export const capitalize = (name: string) =>
   name.charAt(0).toUpperCase() + name.slice(1)
+
+export const showCurrencySym = (currency: Currencies) => {
+  switch (currency) {
+    case Currencies.EURO:
+      return '€'
+
+    case Currencies.DOLLAR:
+      return '$'
+  }
+}

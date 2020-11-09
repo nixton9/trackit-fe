@@ -9,9 +9,19 @@ import { TYPES, EXPENSES } from '../../utils/queries'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
-import { ExpenseType } from '../../utils/ModuleTypes'
-import { useSetRecoilState } from 'recoil'
+import {
+  ExpenseType,
+  Currencies,
+  currencyOptions
+} from '../../utils/ModuleTypes'
+import { useLocalStorage } from '../../utils/useLocalStorage'
+import { useSetRecoilState, useRecoilState, atom } from 'recoil'
 import { gql, useMutation, useQuery } from '@apollo/client'
+
+export const currencyState = atom({
+  key: 'currency',
+  default: Currencies.EURO
+})
 
 const DELETE_TYPE = gql`
   mutation DeleteType($id: ID!) {
@@ -21,11 +31,6 @@ const DELETE_TYPE = gql`
   }
 `
 
-const currencyOptions = [
-  { val: 'euro', label: 'Euro €' },
-  { val: 'dollar', label: 'Dollar $' }
-]
-
 type ExpensesSettingsProps = {
   types: ExpenseType[]
 }
@@ -33,7 +38,9 @@ type ExpensesSettingsProps = {
 const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
   const [showTypeEditor, setShowTypeEditor] = useState(false)
   const [activeType, setActiveType] = useState<ExpenseType | null>(null)
-  const [currency, setCurrency] = useState('euro')
+
+  const [, setLSCurrency] = useLocalStorage('currency', Currencies.EURO)
+  const [currency, setCurrency] = useRecoilState(currencyState)
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
@@ -49,8 +56,10 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
 
   const [deleteType] = useMutation(DELETE_TYPE)
 
-  const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+  const handleCurrencyChange = (e: any) => {
     setCurrency(e.target.value)
+    setLSCurrency(e.target.value)
+  }
 
   const handleTypeClick = (type: ExpenseType) => {
     setActiveType(type)

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ExpensesSettings from './ExpensesSettings'
+import ExpensesSettings, { currencyState } from './ExpensesSettings'
 import SingleExpense from './SingleExpense'
 import DatePickerInput from '../misc/DatePickerInput'
 import { PageLoading } from '../misc/PageLoading'
@@ -8,6 +8,7 @@ import { activeContentState } from '../misc/Add'
 import { Styled } from '../../styles/Page.styles'
 import { Expense, ModuleTypes } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
+import { showCurrencySym } from '../../utils/globalHelpers'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
@@ -18,10 +19,12 @@ import {
 } from '../../utils/dateHelpers'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { useQuery } from '@apollo/client'
-import { useSetRecoilState } from 'recoil'
+import { useSetRecoilState, useRecoilValue } from 'recoil'
 
 const ExpensesPage: React.FC = () => {
   const setActiveContent = useSetRecoilState(activeContentState)
+
+  const currency = useRecoilValue(currencyState)
 
   const { loading, error, data } = useQuery(EXPENSES)
   const { data: types } = useQuery(TYPES)
@@ -86,7 +89,7 @@ const ExpensesPage: React.FC = () => {
             </div>
           </Styled.PageHeader__View__Dropdown>
           <Styled.PageHeader__View__Counter>
-            {totalExpensesVal}$
+            {totalExpensesVal} {currency && showCurrencySym(currency)}
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
         <Styled.PageHeader__Settings>
@@ -116,6 +119,7 @@ const ExpensesPage: React.FC = () => {
                       date={expense.date}
                       value={expense.value}
                       type={expense.type}
+                      currency={currency}
                     />
                   ))}
               </Styled.PageContent__Day__Expenses>

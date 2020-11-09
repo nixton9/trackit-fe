@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react'
+import { currencyState } from '../expenses/ExpensesSettings'
 import { ModuleTypes } from '../../utils/ModuleTypes'
+import { showCurrencySym } from '../../utils/globalHelpers'
 import { Styled } from '../../styles/HomeWidget.styles'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { activeContentState } from './Add'
-import { useSetRecoilState } from 'recoil'
+import { useSetRecoilState, useRecoilValue } from 'recoil'
 import { Link } from 'react-router-dom'
 
 interface HomeWidgetProps {
@@ -20,6 +22,7 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
   icon
 }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
+  const currency = useRecoilValue(currencyState)
 
   return (
     <Styled.WidgetContainer>
@@ -35,7 +38,9 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
               length={type === ModuleTypes.Expenses ? value.length : 0}
             >
               {value}
-              {type === ModuleTypes.Expenses && '$'}
+              {type === ModuleTypes.Expenses &&
+                currency &&
+                showCurrencySym(currency)}
             </Styled.WidgetInfo_Value>
             <Styled.WidgetInfo_Label>{label}</Styled.WidgetInfo_Label>
           </Styled.WidgetInfo>
