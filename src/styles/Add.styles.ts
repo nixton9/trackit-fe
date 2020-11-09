@@ -53,17 +53,24 @@ const AddInput = styled.input`
   }
 `
 
+const AddInput__Label = styled.label`
+  color: ${props => props.theme.offWhite};
+  font-size: 1.5rem;
+  font-weight: ${props => props.theme.fontBold};
+  margin-right: 2rem;
+`
+
 const AddEditor = styled.div``
 
 const AddInputNumberWrapper = styled.div`
   display: flex;
-  color: ${props => props.theme.offWhite};
-  font-size: 1.9rem;
-  font-weight: ${props => props.theme.fontRegular};
+  color: ${props => props.theme.white};
+  font-size: 3rem;
+  font-weight: ${props => props.theme.fontExtraLight};
   margin-bottom: ${props => props.theme.spacingXS};
 
   span {
-    opacity: 0.8;
+    opacity: 0.35;
 
     &.active {
       opacity: 1;
@@ -282,6 +289,7 @@ export const Styled = {
   AddButton,
   AddInputWrapper,
   AddInput,
+  AddInput__Label,
   AddEditor,
   AddInputNumberWrapper,
   AddWidgetsContainer,

@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react'
+import { currencyState } from './ExpensesSettings'
 import DatePickerInput from '../misc/DatePickerInput'
 import { Styled } from '../../styles/Add.styles'
 import { FluidInput } from '../misc/FluidInput'
@@ -13,9 +14,10 @@ import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
 import { ExpenseType } from '../../utils/ModuleTypes'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { EXPENSES, TYPES, SINGLE_EXPENSE } from '../../utils/queries'
-import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { atom, useRecoilState, useSetRecoilState } from 'recoil'
 import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
+import { showCurrencySym } from '../../utils/globalHelpers'
+import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
+import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 
 const CREATE_EXPENSE = gql`
   mutation CreateExpense(
@@ -95,6 +97,8 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const { refetch: refetchExpenses } = useQuery(EXPENSES)
   const { loading: loadingTypes, data: types } = useQuery(TYPES)
+
+  const currency = useRecoilValue(currencyState)
 
   const [createExpense, { loading }] = useMutation(CREATE_EXPENSE, {
     variables: {
@@ -275,15 +279,20 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
       <form onSubmit={handleSubmit}>
         <Styled.AddInputNumberWrapper>
           <FluidInput value={value} setValue={setValue} placeholder={'9.99'} />
-          <span className={value ? 'active' : ''}>€</span>
+          <span className={value ? 'active' : ''}>
+            {currency && showCurrencySym(currency)}
+          </span>
         </Styled.AddInputNumberWrapper>
 
-        <Styled.AddInput
-          type="text"
-          placeholder="Ex: Dinner at mcdonalds"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
+        <Styled.AddInputWrapper>
+          <Styled.AddInput__Label>Title</Styled.AddInput__Label>
+          <Styled.AddInput
+            type="text"
+            placeholder="Ex: Dinner at mcdonalds"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+        </Styled.AddInputWrapper>
 
         <Styled.AddWidgetsContainer>
           <Styled.AddWidget>

@@ -11,7 +11,7 @@ export const SignInSignUpHeader: React.FC = () => {
           Sign In
         </NavLink>
         <NavLink to="/signup" activeClassName="active">
-          Sign Up
+          Register
         </NavLink>
       </Styled.SignInSignUpHeader__Items>
     </Styled.SignInSignUpHeader>

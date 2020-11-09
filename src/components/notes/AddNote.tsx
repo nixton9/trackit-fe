@@ -139,12 +139,16 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   ) : (
     <>
       <form onSubmit={handleSubmit}>
-        <Styled.AddInput
-          type="text"
-          placeholder="Ex: Groceries list"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
+        <Styled.AddInputWrapper>
+          <Styled.AddInput__Label>Title</Styled.AddInput__Label>
+          <Styled.AddInput
+            type="text"
+            placeholder="Ex: Groceries list"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+        </Styled.AddInputWrapper>
+
         <Styled.AddEditor>
           <NoteEditor
             value={content}

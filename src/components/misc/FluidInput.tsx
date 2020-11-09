@@ -26,6 +26,10 @@ const FluidInputContainer = styled.div`
       -webkit-appearance: none;
       margin: 0;
     }
+
+    &::placeholder {
+      color: ${props => props.theme.grey};
+    }
   }
 `
 

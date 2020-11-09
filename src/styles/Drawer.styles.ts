@@ -47,7 +47,7 @@ const DrawerTitle = styled.h2`
   color: ${props => props.theme.white};
   font-size: 2rem;
   font-weight: ${props => props.theme.fontBold};
-  margin: ${props => props.theme.spacingS} 0;
+  margin: ${props => props.theme.spacingS} 0 ${props => props.theme.spacingS} -0.8rem;
 `
 
 const DrawerContent = styled.div`

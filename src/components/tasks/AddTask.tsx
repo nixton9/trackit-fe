@@ -270,15 +270,16 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
       <form onSubmit={handleSubmit}>
         <Styled.AddInputWrapper>
-          {isEdit && (
-            <TaskStatus onClick={() => setDone(!done)} isDone={done} />
-          )}
+          <Styled.AddInput__Label>Title</Styled.AddInput__Label>
           <Styled.AddInput
             type="text"
             placeholder="Ex: Take out the trash"
             value={title}
             onChange={e => setTitle(e.target.value)}
           />
+          {isEdit && (
+            <TaskStatus onClick={() => setDone(!done)} isDone={done} />
+          )}
         </Styled.AddInputWrapper>
 
         <Styled.AddWidgetsContainer>

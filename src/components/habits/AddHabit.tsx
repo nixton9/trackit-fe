@@ -191,13 +191,15 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
       <ThreeDotsMenu options={menuOptions} />
 
       <form onSubmit={handleSubmit}>
-        <Styled.AddInput
-          type="text"
-          placeholder="Ex: Eat healthy"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-
+        <Styled.AddInputWrapper>
+          <Styled.AddInput__Label>Title</Styled.AddInput__Label>
+          <Styled.AddInput
+            type="text"
+            placeholder="Ex: Eat healthy"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+        </Styled.AddInputWrapper>
         <Styled.AddWidgetsContainer>
           <AddSubmitButton />
         </Styled.AddWidgetsContainer>
