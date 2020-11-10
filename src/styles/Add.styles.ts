@@ -211,7 +211,7 @@ const AddTags = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    background: ${props => props.theme.grey};
+    background: ${props => props.theme.accent};
     min-width: 5rem;
     margin: 0;
     padding: 0.5rem 2rem 0.5rem 0.9rem;
