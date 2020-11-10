@@ -239,6 +239,13 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     ? [{ label: 'Delete task', onClick: handleDeleteConfirm }, cancelOption]
     : [cancelOption]
 
+  const clickDateInput = () => {
+    const input = document.querySelector(
+      '.tasks-add-date .react-datepicker__input-container input'
+    ) as any
+    input && input.click()
+  }
+
   useEffect(() => {
     if (taskId) {
       getTask()
@@ -283,11 +290,12 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
         </Styled.AddInputWrapper>
 
         <Styled.AddWidgetsContainer>
-          <Styled.AddWidget>
+          <Styled.AddWidget onClick={clickDateInput}>
             <DatePickerInput
               date={dueDate}
               setDate={setDueDate}
               customInput={<CustomAddDatePicker />}
+              classname="tasks-add-date"
             />
           </Styled.AddWidget>
 

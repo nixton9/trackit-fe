@@ -15,10 +15,8 @@ const DatePickerContainer = styled.div`
     input {
       color: ${props => props.theme.offWhite};
       font-weight: ${props => props.theme.fontMedium};
-      font-size: 1.7rem;
       background: none;
       border: none;
-      width: 6.5rem;
     }
   }
 

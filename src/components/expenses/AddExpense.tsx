@@ -247,6 +247,13 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     ? [{ label: 'Delete expense', onClick: handleDeleteConfirm }, cancelOption]
     : [cancelOption]
 
+  const clickDateInput = () => {
+    const input = document.querySelector(
+      '.expenses-add-date .react-datepicker__input-container input'
+    ) as any
+    input && input.click()
+  }
+
   useEffect(() => {
     if (expenseId) {
       getExpense()
@@ -295,11 +302,12 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
         </Styled.AddInputWrapper>
 
         <Styled.AddWidgetsContainer>
-          <Styled.AddWidget>
+          <Styled.AddWidget onClick={clickDateInput}>
             <DatePickerInput
               date={date}
               setDate={setDate}
               customInput={<CustomAddDatePicker />}
+              classname="expenses-add-date"
             />
           </Styled.AddWidget>
 

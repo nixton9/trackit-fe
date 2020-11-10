@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ReactHTMLElement } from 'react'
 import { NoteEditor } from './NoteEditor'
 import { AddSubmitButton } from '../misc/Add'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
@@ -137,6 +137,11 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     return (categories as any)[randomColor]
   }
 
+  const focusTagInput = () => {
+    const input = document.querySelector('.ReactTags__tagInputField') as any
+    input && input.focus()
+  }
+
   return loading ? (
     <Styled.AddLoading>
       <LoadingSpinner />
@@ -163,7 +168,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
         </Styled.AddEditor>
 
         <Styled.AddWidgetsContainer>
-          <Styled.AddWidget>
+          <Styled.AddWidget onClick={focusTagInput}>
             <NotesIcon />
             <TagsInput tags={tags} setTags={setTags} />
           </Styled.AddWidget>

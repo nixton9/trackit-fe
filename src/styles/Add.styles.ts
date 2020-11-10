@@ -31,7 +31,7 @@ const AddButton = styled.div`
 
 const AddInputWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 
   .task-status {
     margin-right: ${props => props.theme.spacingXS};
@@ -41,7 +41,7 @@ const AddInputWrapper = styled.div`
 const AddInput = styled.input`
   width: 100%;
   color: ${props => props.theme.offWhite};
-  font-size: 1.7rem;
+  font-size: 2.2rem;
   font-weight: ${props => props.theme.fontLight};
   background: transparent;
   border: none;
@@ -54,10 +54,11 @@ const AddInput = styled.input`
 `
 
 const AddInput__Label = styled.label`
-  color: ${props => props.theme.offWhite};
+  color: ${props => props.theme.accent};
   font-size: 1.5rem;
   font-weight: ${props => props.theme.fontBold};
   margin-right: 2rem;
+  transform: translateY(-2px);
 `
 
 const AddEditor = styled.div``
@@ -97,6 +98,7 @@ const AddWidget = styled.div`
   align-items: center;
   margin-right: ${props => props.theme.spacingS};
   max-width: 82%;
+  cursor: pointer;
 
   &:last-of-type {
     margin-right: 0;
@@ -114,8 +116,9 @@ const AddWidget = styled.div`
       width: 5rem;
       font-size: 1.3rem;
       line-height: 1.5rem;
-      font-weight: ${props => props.theme.fontRegular};
+      font-weight: ${props => props.theme.fontRegular} !important;
       margin-left: 1rem;
+      width: 5rem;
     }
   }
 
@@ -140,6 +143,7 @@ const AddWidget = styled.div`
     margin-left: 1rem;
     background: transparent;
     border: none;
+    position: relative;
 
     &::placeholder {
       color: ${props => props.theme.white};
@@ -155,6 +159,15 @@ const AddWidget = styled.div`
       margin-left: 1rem;
       padding: 0;
       padding-right: 1rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 10.5rem;
+        height: 4.5rem;
+        left: -4rem;
+        top: -1.5rem;
+      }
     }
 
     svg {
