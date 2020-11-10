@@ -19,7 +19,9 @@ const NotesPage: React.FC = () => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const { loading, error, data } = useQuery(NOTES)
-  const { data: tags } = useQuery(TAGS)
+  const { data: tags } = useQuery(TAGS, {
+    fetchPolicy: 'no-cache'
+  })
 
   const [view, setView] = useState('all')
   const [sortBy, setSortBy] = useState<SortBySettings>(SortBySettings.DATE)

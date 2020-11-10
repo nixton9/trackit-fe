@@ -5,7 +5,7 @@ import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { Styled } from '../../styles/Add.styles'
 import { TagsInput, Tag } from './TagsInput'
-import { NOTES } from '../../utils/queries'
+import { NOTES, TAGS } from '../../utils/queries'
 import theme from '../../styles/theme'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
@@ -120,7 +120,12 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
 
   const attachTagToNote = (note: string, tag: string) => {
     addTagToNote({
-      variables: { note: note, tag: tag }
+      variables: { note: note, tag: tag },
+      refetchQueries: () => [
+        {
+          query: NOTES
+        }
+      ]
     }).catch(err => console.log(err.message))
   }
 
