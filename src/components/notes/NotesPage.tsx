@@ -20,7 +20,7 @@ const NotesPage: React.FC = () => {
 
   const { loading, error, data } = useQuery(NOTES)
   const { data: tags } = useQuery(TAGS, {
-    fetchPolicy: 'no-cache'
+    fetchPolicy: 'network-only'
   })
 
   const [view, setView] = useState('all')
