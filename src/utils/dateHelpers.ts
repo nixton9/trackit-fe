@@ -38,6 +38,8 @@ export const displayDateString = (date: string) => {
   }
 }
 
+export const displayDate = (date: string) => format(parseDate(date), 'dd MMM')
+
 export const getCalendarDayInfo = (allHabitDays: Day[], day: Date) => {
   let dayClassName = ''
   let currState = null

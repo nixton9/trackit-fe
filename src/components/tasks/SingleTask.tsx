@@ -60,10 +60,12 @@ const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
                 </Styled.SingleCategory>
               )}
             </Styled.SingleFlex>
-            <Styled.SingleDate past={isPastDate(parseDateInverse(date))}>
-              <CalendarIcon />
-              <p>{displayDateString(parseDateInverse(date))}</p>
-            </Styled.SingleDate>
+            {date && (
+              <Styled.SingleDate past={isPastDate(parseDateInverse(date))}>
+                <CalendarIcon />
+                <p>{displayDateString(parseDateInverse(date))}</p>
+              </Styled.SingleDate>
+            )}
           </div>
         </Styled.SingleFlex>
       </Styled.SingleContainer>

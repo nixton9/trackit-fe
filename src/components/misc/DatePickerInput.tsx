@@ -9,6 +9,8 @@ type DatePickerProps = {
   minDate?: Date
   maxDate?: Date
   classname?: string
+  open?: boolean
+  onClose?: () => void
   customInput?: ReactElement
 }
 
@@ -18,6 +20,8 @@ const DatePickerInput: React.FC<DatePickerProps> = ({
   minDate,
   maxDate,
   classname,
+  open,
+  onClose,
   customInput
 }) => {
   return (
@@ -29,6 +33,8 @@ const DatePickerInput: React.FC<DatePickerProps> = ({
         minDate={minDate}
         maxDate={maxDate}
         customInput={customInput}
+        open={open}
+        onCalendarClose={onClose}
       />
     </Styled.DatePickerContainer>
   )

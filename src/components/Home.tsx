@@ -50,7 +50,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
 
   const tasksForToday = tasks
     ? tasks.tasks.filter((task: Task) =>
-        isDateToday(parseDateInverse(task.date))
+        task.date ? isDateToday(parseDateInverse(task.date)) : false
       ).length
     : 0
 

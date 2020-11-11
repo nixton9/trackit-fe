@@ -1,5 +1,7 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import DatePickerInput from '../misc/DatePickerInput'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 import { Styled } from '../../styles/Add.styles'
 import { TaskStatus } from './TaskStatus'
 import { AddSubmitButton } from '../misc/Add'
@@ -10,19 +12,22 @@ import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { alertState } from '../misc/Alert'
 import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
+import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { TASKS, CATEGORIES, SINGLE_TASK } from '../../utils/queries'
 import {
   parseDate,
   parseDateInverse,
+  displayDate,
   displayDateString
 } from '../../utils/dateHelpers'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
 import { atom, useRecoilState, useSetRecoilState } from 'recoil'
+import { addDays } from 'date-fns'
 
 const CREATE_TASK = gql`
-  mutation CreateTask($title: String!, $date: String!, $category: ID) {
+  mutation CreateTask($title: String!, $date: String, $category: ID) {
     createTask(title: $title, date: $date, category: $category) {
       id_task
       title_task
@@ -58,6 +63,7 @@ const UPDATE_TASK = gql`
     }
   }
 `
+const now = new Date()
 
 export const taskIdState = atom({
   key: 'taskId',
@@ -76,7 +82,7 @@ export const taskCategoryState = atom({
 
 export const taskDateState = atom({
   key: 'taskDate',
-  default: new Date()
+  default: now
 })
 
 export const taskDoneState = atom({
@@ -91,19 +97,17 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [dueDate, setDueDate] = useRecoilState(taskDateState)
   const [done, setDone] = useRecoilState(taskDoneState)
 
+  const [dateSelect, setDateSelect] = useState('1')
+
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
+
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
 
   const { refetch: refetchTasks } = useQuery(TASKS)
   const { loading: loadingCategories, data: categories } = useQuery(CATEGORIES)
 
-  const [createTask, { loading }] = useMutation(CREATE_TASK, {
-    variables: {
-      title: title,
-      date: dueDate,
-      category: category !== '0' ? category : null
-    }
-  })
+  const [createTask, { loading }] = useMutation(CREATE_TASK)
 
   const [deleteTask, { loading: loadingDelete }] = useMutation(DELETE_TASK, {
     variables: {
@@ -141,6 +145,10 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
       ]
     : [{ val: '0', label: 'Inbox' }]
 
+  const handleDateSelectChange = (e: any) => {
+    setDateSelect(e.target.value)
+  }
+
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value)
   }
@@ -174,12 +182,20 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             })
           )
       } else {
-        createTask()
+        createTask({
+          variables: {
+            title: title,
+            date: dateSelect === '4' ? null : dueDate,
+            category: category !== '0' ? category : null
+          }
+        })
           .then(res => {
+            console.log(dueDate)
             setNotification({
-              text: `New task added for ${displayDateString(
-                parseDateInverse(dueDate)
-              )}`,
+              text: `New task added ${
+                dateSelect !== '4' &&
+                displayDateString(parseDateInverse(dueDate))
+              }`,
               type: NotificationTypes.Success
             })
             refetchTasks()
@@ -264,6 +280,14 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   useEffect(() => () => cleanData(), [cleanData])
 
+  useEffect(() => {
+    if (dateSelect === '1') {
+      setDueDate(now)
+    } else if (dateSelect === '2') {
+      setDueDate(addDays(now, 1))
+    }
+  }, [dateSelect, setDueDate])
+
   const isLoading =
     loading || loadingCategories || loadingEdit || loadingGet || loadingDelete
 
@@ -291,11 +315,28 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
         <Styled.AddWidgetsContainer>
           <Styled.AddWidget onClick={clickDateInput}>
+            <span>{<CalendarIcon />}</span>
+            <Select
+              value={dateSelect}
+              onChange={handleDateSelectChange}
+              disableUnderline
+            >
+              <MenuItem value={'1'}>Today</MenuItem>
+              <MenuItem value={'2'}>Tomorrow</MenuItem>
+              <MenuItem value={'3'} onClick={() => setIsDatePickerOpen(true)}>
+                {dueDate === now
+                  ? 'Custom Date'
+                  : displayDate(parseDateInverse(dueDate))}
+              </MenuItem>
+              <MenuItem value={'4'}>No Date</MenuItem>
+            </Select>
             <DatePickerInput
-              date={dueDate}
+              date={new Date(dueDate)}
               setDate={setDueDate}
-              customInput={<CustomAddDatePicker />}
+              customInput={<CustomAddDatePicker showIcon={false} />}
               classname="tasks-add-date"
+              open={isDatePickerOpen}
+              onClose={() => setIsDatePickerOpen(false)}
             />
           </Styled.AddWidget>
 

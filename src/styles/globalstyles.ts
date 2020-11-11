@@ -45,12 +45,16 @@ export const GlobalStyle = createGlobalStyle`
         background-color: rgba(0, 0, 0, .16) !important;
     }
 
+    .MuiListItem-root {
+        padding: 1.4rem 1rem !important;
+    }
+
     .MuiMenuItem-root {
         color: ${props => props.theme.white} !important;
         font-size: 1.5rem !important;
         min-width: 15rem;
     }
-
+    
     .MuiList-root .view-select-item {
         min-width: 30rem;
         min-height: 6rem;

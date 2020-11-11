@@ -48,7 +48,7 @@ const TasksPage: React.FC = () => {
       ? data.tasks
       : view === 'today'
       ? data.tasks.filter((task: Task) =>
-          isDateToday(parseDateInverse(task.date))
+          task.date ? isDateToday(parseDateInverse(task.date)) : false
         )
       : data.tasks.filter(
           (task: Task) => Number(task.category?.id) === Number(view)

@@ -108,6 +108,14 @@ const AddWidget = styled.div`
     display: block;
   }
 
+  .react-datepicker__triangle {
+    display: none;
+  }
+
+  .tasks-add-date input {
+    display: none;
+  }
+
   .react-datepicker__input-container {
     display: flex;
     align-items: center;
