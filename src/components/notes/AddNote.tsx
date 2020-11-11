@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NoteEditor } from './NoteEditor'
 import { AddSubmitButton } from '../misc/Add'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
@@ -59,9 +59,11 @@ type AddTagToNotData = {
   }
 }
 
+let cachedContent: any
+
 const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(cachedContent || '')
   const [tags, setTags] = useState<Tag[] | []>([])
 
   const setNotification = useSetRecoilState(notificationState)
@@ -141,6 +143,8 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     const input = document.querySelector('.ReactTags__tagInputField') as any
     input && input.focus()
   }
+
+  useEffect(() => () => (cachedContent = content))
 
   return loading ? (
     <Styled.AddLoading>
