@@ -74,4 +74,8 @@ export const GlobalStyle = createGlobalStyle`
         background: ${props => props.theme.accent};
         border-radius: 20px;
     }
+
+    :focus {
+        outline: none;
+    }
 `
