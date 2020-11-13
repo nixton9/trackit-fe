@@ -63,7 +63,7 @@ const UPDATE_TASK = gql`
     }
   }
 `
-const now = new Date()
+const NOW = new Date()
 
 export const taskIdState = atom({
   key: 'taskId',
@@ -82,7 +82,7 @@ export const taskCategoryState = atom({
 
 export const taskDateState = atom({
   key: 'taskDate',
-  default: now
+  default: NOW
 })
 
 export const taskDoneState = atom({
@@ -272,7 +272,12 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (dataTask && dataTask.singleTask) {
       const { title, category, date, done } = dataTask.singleTask
       setTitle(title)
-      setDueDate(parseDate(parseDateInverse(date)))
+      setDueDate(
+        date
+          ? parseDate(parseDateInverse(date))
+          : parseDate(parseDateInverse(NOW))
+      )
+      setDateSelect(date ? '3' : '4')
       setDone(done)
       category && setCategory(category.id)
     }
@@ -282,9 +287,9 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   useEffect(() => {
     if (dateSelect === '1') {
-      setDueDate(now)
+      setDueDate(NOW)
     } else if (dateSelect === '2') {
-      setDueDate(addDays(now, 1))
+      setDueDate(addDays(NOW, 1))
     }
   }, [dateSelect, setDueDate])
 
@@ -324,7 +329,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               <MenuItem value={'1'}>Today</MenuItem>
               <MenuItem value={'2'}>Tomorrow</MenuItem>
               <MenuItem value={'3'} onClick={() => setIsDatePickerOpen(true)}>
-                {dueDate === now
+                {dueDate === NOW
                   ? 'Custom Date'
                   : displayDate(parseDateInverse(dueDate))}
               </MenuItem>
