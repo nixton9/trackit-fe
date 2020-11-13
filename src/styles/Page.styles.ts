@@ -261,11 +261,36 @@ const DetailDate = styled.h5`
 
 const DetailTags = styled.div`
   display: flex;
+  align-items: center;
+  padding: ${props => props.theme.spacingXS};
   margin-top: ${props => props.theme.spacingS};
+  background-color: ${props => props.theme.surfacesBlack};
+  border-radius: ${props => props.theme.smallBorderRadius};
+
+  p {
+    color: ${props => props.theme.offWhite};
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontMedium};
+  }
+
+  .single-tag .inner {
+    margin-bottom: 0;
+  }
+
+  svg {
+    width: 2rem;
+    fill: ${props => props.theme.white};
+    margin-left: auto;
+    cursor: pointer;
+  }
+`
+
+const DetailTagEditor = styled.div`
+  margin-top: ${props => props.theme.spacingXS};
 `
 
 const DetailContent = styled.p`
-  margin-top: ${props => props.theme.spacingS};
+  margin-top: ${props => props.theme.spacingM};
   color: ${props => props.theme.white};
 `
 
@@ -356,6 +381,7 @@ export const Styled = {
   DetailTitle,
   DetailDate,
   DetailTags,
+  DetailTagEditor,
   DetailContent,
   DetailSave,
   SearchResults,

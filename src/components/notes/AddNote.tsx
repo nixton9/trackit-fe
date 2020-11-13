@@ -23,7 +23,7 @@ const CREATE_NOTE = gql`
   }
 `
 
-const ADD_TAG_TO_NOTE = gql`
+export const ADD_TAG_TO_NOTE = gql`
   mutation AddTagToNote($note: ID!, $tag: ID!) {
     addTagToNote(note: $note, tag: $tag) {
       note_id
@@ -31,7 +31,7 @@ const ADD_TAG_TO_NOTE = gql`
   }
 `
 
-const CREATE_TAG = gql`
+export const CREATE_TAG = gql`
   mutation CreateTag($name: String!, $color: String!) {
     createTag(name: $name, color: $color) {
       id_tag

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { ADD_TAG_TO_NOTE, CREATE_TAG } from './AddNote'
 import { SelectMenu } from '../misc/SelectMenu'
 import { AddSubmitButton } from '../misc/Add'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
@@ -9,14 +10,6 @@ import { Styled } from '../../styles/TagEditor.styles'
 import theme from '../../styles/theme'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
-
-const CREATE_TAG = gql`
-  mutation CreateTag($name: String!, $color: String!) {
-    createTag(name: $name, color: $color) {
-      id_tag
-    }
-  }
-`
 
 const UPDATE_TAG = gql`
   mutation UpdateTag($id: ID!, $name: String, $color: String) {
@@ -29,14 +22,22 @@ const UPDATE_TAG = gql`
 type TagEditorProps = {
   tag: NoteTag | null
   closeEditor: () => void
+  noteId?: string | number
+  refetchQuery?: any
 }
 
-export const TagEditor: React.FC<TagEditorProps> = ({ tag, closeEditor }) => {
+export const TagEditor: React.FC<TagEditorProps> = ({
+  tag,
+  noteId,
+  closeEditor,
+  refetchQuery
+}) => {
   const [name, setName] = useState('')
   const [color, setColor] = useState(theme.categories.blue)
   const [isEdit, setIsEdit] = useState(false)
 
   const { refetch: refetchTags } = useQuery(TAGS)
+  const [addTagToNote] = useMutation(ADD_TAG_TO_NOTE)
   const [createTag, { loading }] = useMutation(CREATE_TAG, {
     variables: { name: name, color: color }
   })
@@ -68,7 +69,10 @@ export const TagEditor: React.FC<TagEditorProps> = ({ tag, closeEditor }) => {
           })
           .catch(err => {
             setNotification({
-              text: 'There was a problem, please try again',
+              text:
+                err.message === 'duplicated'
+                  ? 'A tag with this name already exists'
+                  : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
             cleanData()
@@ -76,16 +80,39 @@ export const TagEditor: React.FC<TagEditorProps> = ({ tag, closeEditor }) => {
       } else {
         createTag()
           .then(res => {
-            setNotification({
-              text: `New tag created '${name}'`,
-              type: NotificationTypes.Success
-            })
-            refetchTags()
-            cleanData()
+            if (noteId && res.data) {
+              addTagToNote({
+                variables: { note: noteId, tag: res.data.createTag.id_tag }
+              })
+                .then(res => {
+                  setNotification({
+                    text: `Tag was successfully added`,
+                    type: NotificationTypes.Success
+                  })
+                  refetchQuery && refetchQuery()
+                  cleanData()
+                })
+                .catch(err => {
+                  setNotification({
+                    text: 'There was a problem, please try again',
+                    type: NotificationTypes.Error
+                  })
+                })
+            } else {
+              setNotification({
+                text: `New tag created '${name}'`,
+                type: NotificationTypes.Success
+              })
+              refetchTags()
+              cleanData()
+            }
           })
           .catch(err => {
             setNotification({
-              text: 'There was a problem, please try again',
+              text:
+                err.message === 'duplicated'
+                  ? 'A tag with this name already exists'
+                  : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
             cleanData()
@@ -147,6 +174,7 @@ export const TagEditor: React.FC<TagEditorProps> = ({ tag, closeEditor }) => {
           />
         </Styled.TagEditorSelect>
         <AddSubmitButton plusIcon={!isEdit} />
+        <Styled.TagEditorClose onClick={closeEditor}>+</Styled.TagEditorClose>
       </form>
     </Styled.TagEditorContainer>
   )

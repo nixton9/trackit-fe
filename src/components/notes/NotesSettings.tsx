@@ -91,11 +91,11 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
       )
   }
 
-  const handleDeleteTagConfirm = (typeId: string | number) => {
+  const handleDeleteTagConfirm = (tagId: string | number) => {
     setShowTagEditor(false)
     setAlert({
-      text: 'This type will be removed.',
-      onConfirm: () => handleDeleteTag(typeId)
+      text: 'This tag will be removed.',
+      onConfirm: () => handleDeleteTag(tagId)
     })
   }
 

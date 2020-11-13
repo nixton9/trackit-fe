@@ -62,8 +62,19 @@ const TagEditorSelect = styled.div`
   }
 `
 
+const TagEditorClose = styled.span`
+  color: ${props => props.theme.offWhite};
+  font-size: 2.3rem;
+  font-weight: ${props => props.theme.fontSemiBold};
+  margin-left: ${props => props.theme.spacingXXS};
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  transform: rotate(45deg);
+`
+
 export const Styled = {
   TagEditorContainer,
   TagEditorInput,
-  TagEditorSelect
+  TagEditorSelect,
+  TagEditorClose
 }

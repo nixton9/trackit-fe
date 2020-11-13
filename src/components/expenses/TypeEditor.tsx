@@ -71,7 +71,10 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
           })
           .catch(err => {
             setNotification({
-              text: 'There was a problem, please try again',
+              text:
+                err.message === 'duplicated'
+                  ? 'A type with this name already exists'
+                  : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
             cleanData()
@@ -89,7 +92,10 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
           })
           .catch(err => {
             setNotification({
-              text: 'There was a problem, please try again',
+              text:
+                err.message === 'duplicated'
+                  ? 'A type with this name already exists'
+                  : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
             cleanData()

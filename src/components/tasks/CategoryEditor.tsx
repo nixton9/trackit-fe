@@ -74,7 +74,10 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
           })
           .catch(err => {
             setNotification({
-              text: 'There was a problem, please try again',
+              text:
+                err.message === 'duplicated'
+                  ? 'A category with this name already exists'
+                  : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
             cleanData()
@@ -91,7 +94,10 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
           })
           .catch(err => {
             setNotification({
-              text: 'There was a problem, please try again',
+              text:
+                err.message === 'duplicated'
+                  ? 'A category with this name already exists'
+                  : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
             cleanData()
