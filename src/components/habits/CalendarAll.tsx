@@ -3,7 +3,7 @@ import { HabitHeader } from './HabitHeader'
 import { Habit } from '../../utils/ModuleTypes'
 import { Styled } from '../../styles/Calendar.styles'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { getCalendarDayInfo } from '../../utils/dateHelpers'
+import { getCalendarDayInfo, getDayNextClass } from '../../utils/dateHelpers'
 import { DayState } from '../../utils/ModuleTypes'
 import {
   addWeeks,
@@ -46,6 +46,22 @@ const CalendarAll: React.FC<CalendarProps> = ({ habits, handleDayClick }) => {
     )
   }
 
+  const handleClickDay = (
+    e: any,
+    habit: any,
+    clondeDay: any,
+    currState: any,
+    dayId: any
+  ) => {
+    console.log(getDayNextClass(currState))
+    const dayClass = getDayNextClass(currState)
+    e.target.classList.add(dayClass)
+    if (dayClass === 'blank') {
+      e.target.classList.remove('done', 'not-done')
+    }
+    handleDayClick(habit, clondeDay, currState, dayId)
+  }
+
   const daysOfWeek = () => {
     const dateFormat = 'E'
     const days = []
@@ -85,7 +101,9 @@ const CalendarAll: React.FC<CalendarProps> = ({ habits, handleDayClick }) => {
                 ? `today ${dayClassName}`
                 : dayClassName
             }
-            onClick={() => handleDayClick(habit.id, cloneDay, currState, dayId)}
+            onClick={e =>
+              handleClickDay(e, habit.id, cloneDay, currState, dayId)
+            }
           >
             <Styled.CalendarDays__Cell__Inner>
               {formattedDate}

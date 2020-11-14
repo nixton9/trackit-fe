@@ -151,6 +151,7 @@ const CalendarDays__Cell__Inner = styled.span`
   color: ${props => props.theme.white};
   font-weight: ${props => props.theme.fontMedium};
   font-size: 1.8rem;
+  pointer-events: none;
 `
 
 export const Styled = {

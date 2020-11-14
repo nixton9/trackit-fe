@@ -112,3 +112,14 @@ export const getCurrentStrike = (days: Day[]) => {
   }
   return counter
 }
+
+export const getDayNextClass = (currState: DayState) => {
+  switch (currState) {
+    case DayState.BLANK:
+      return 'done'
+    case DayState.DONE:
+      return 'not-done'
+    case DayState.NOTDONE:
+      return 'blank'
+  }
+}
