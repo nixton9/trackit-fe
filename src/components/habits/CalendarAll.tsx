@@ -53,7 +53,6 @@ const CalendarAll: React.FC<CalendarProps> = ({ habits, handleDayClick }) => {
     currState: any,
     dayId: any
   ) => {
-    console.log(getDayNextClass(currState))
     const dayClass = getDayNextClass(currState)
     e.target.classList.add(dayClass)
     if (dayClass === 'blank') {
