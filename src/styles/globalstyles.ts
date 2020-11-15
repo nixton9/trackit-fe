@@ -82,4 +82,22 @@ export const GlobalStyle = createGlobalStyle`
     :focus {
         outline: none;
     }
+
+    .react-tooltip-lite {
+        background: ${props => props.theme.surfacesBlack};
+        color: ${props => props.theme.white};
+        border-radius: ${props => props.theme.smallBorderRadius};
+        transform: translateY(-.5rem);
+        font-size: 1.3rem;
+        font-weight: ${props => props.theme.fontSemiBold};
+        letter-spacing: .02rem;
+        padding: 1rem 1.75rem !important;
+        box-shadow: 7px 7px 16px 0 rgba(0,0,0,0.07);
+        word-wrap: normal;
+    }
+
+    .tag-tooltip .react-tooltip-lite {
+        font-size: 1rem;
+    }
+
 `

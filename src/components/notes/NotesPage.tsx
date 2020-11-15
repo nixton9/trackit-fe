@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NotesSettings from './NotesSettings'
 import SingleNote from './SingleNote'
+import Tooltip from 'react-tooltip-lite'
 import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
@@ -65,16 +66,26 @@ const NotesPage: React.FC = () => {
               itemClass={'view-select-item'}
             />
           </Styled.PageHeader__View__Dropdown>
-          <Styled.PageHeader__View__Counter>
-            {data ? data.notes.length : ''}
-          </Styled.PageHeader__View__Counter>
+
+          <Tooltip
+            content={`${data ? visibleNotes.length : '0'} notes`}
+            arrow={false}
+            direction={'up'}
+          >
+            <Styled.PageHeader__View__Counter>
+              {data ? visibleNotes.length : '0'}
+            </Styled.PageHeader__View__Counter>
+          </Tooltip>
         </Styled.PageHeader__View>
+
         <Styled.PageHeader__Settings>
-          <NotesSettings
-            tags={tags ? tags.tags : []}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-          />
+          <Tooltip content={'Settings'} arrow={false} direction={'up'}>
+            <NotesSettings
+              tags={tags ? tags.tags : []}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+            />
+          </Tooltip>
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 

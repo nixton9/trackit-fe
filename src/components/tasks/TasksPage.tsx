@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import TasksSettings from './TasksSettings'
 import SingleTask from './SingleTask'
+import Tooltip from 'react-tooltip-lite'
 import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
@@ -81,27 +82,40 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
               itemClass={'view-select-item'}
             />
           </Styled.PageHeader__View__Dropdown>
-          <Styled.PageHeader__View__Counter>
-            {visibleTasks.length}
-          </Styled.PageHeader__View__Counter>
+
+          <Tooltip
+            content={`${visibleTasks.length} tasks in view`}
+            arrow={false}
+            direction={'up'}
+          >
+            <Styled.PageHeader__View__Counter>
+              {visibleTasks.length}
+            </Styled.PageHeader__View__Counter>
+          </Tooltip>
         </Styled.PageHeader__View>
 
         <Styled.PageHeader__Settings>
           {done ? (
-            <Link to="/tasks">
-              <TasksIcon />
-            </Link>
+            <Tooltip content={'Tasks'} arrow={false} direction={'up'}>
+              <Link to="/tasks">
+                <TasksIcon />
+              </Link>
+            </Tooltip>
           ) : (
-            <Link to="/tasks/done">
-              <DoneTasksIcon />
-            </Link>
+            <Tooltip content={'Done Tasks'} arrow={false} direction={'up'}>
+              <Link to="/tasks/done">
+                <DoneTasksIcon />
+              </Link>
+            </Tooltip>
           )}
 
-          <TasksSettings
-            categories={categories ? categories.categories : []}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-          />
+          <Tooltip content={'Settings'} arrow={false} direction={'up'}>
+            <TasksSettings
+              categories={categories ? categories.categories : []}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+            />
+          </Tooltip>
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 

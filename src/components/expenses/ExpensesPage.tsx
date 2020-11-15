@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ExpensesSettings, { currencyState } from './ExpensesSettings'
 import SingleExpense from './SingleExpense'
 import DatePickerInput from '../misc/DatePickerInput'
+import Tooltip from 'react-tooltip-lite'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { activeContentState } from '../misc/Add'
@@ -88,12 +89,22 @@ const ExpensesPage: React.FC = () => {
               <ChevronIcon />
             </div>
           </Styled.PageHeader__View__Dropdown>
-          <Styled.PageHeader__View__Counter>
-            {totalExpensesVal} {currency && showCurrencySym(currency)}
-          </Styled.PageHeader__View__Counter>
+
+          <Tooltip
+            content={'Spent on this period'}
+            arrow={false}
+            direction={'up'}
+          >
+            <Styled.PageHeader__View__Counter>
+              {totalExpensesVal} {currency && showCurrencySym(currency)}
+            </Styled.PageHeader__View__Counter>
+          </Tooltip>
         </Styled.PageHeader__View>
+
         <Styled.PageHeader__Settings>
-          <ExpensesSettings types={types ? types.types : []} />
+          <Tooltip content={'Settings'} arrow={false} direction={'up'}>
+            <ExpensesSettings types={types ? types.types : []} />
+          </Tooltip>
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 

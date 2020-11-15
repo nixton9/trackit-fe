@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import CalendarSingle from './CalendarSingle'
 import CalendarAll from './CalendarAll'
 import HabitsSettings from './HabitsSettings'
+import Tooltip from 'react-tooltip-lite'
 import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
@@ -115,16 +116,32 @@ const HabitsPage: React.FC = () => {
                 itemClass={'view-select-item'}
               />
             </Styled.PageHeader__View__Dropdown>
-            <Styled.PageHeader__View__Counter className="smaller">
-              {data
-                ? showAll
-                  ? data.habits.length
-                  : currHabit && getCurrentStrike(currHabit.days) + ' days'
-                : 0}
-            </Styled.PageHeader__View__Counter>
+
+            <Tooltip
+              content={
+                showAll
+                  ? data
+                    ? `${data.habits.length} habits`
+                    : '0 days'
+                  : currHabit && 'Current streak'
+              }
+              arrow={false}
+              direction={'up'}
+            >
+              <Styled.PageHeader__View__Counter className="smaller">
+                {data
+                  ? showAll
+                    ? data.habits.length
+                    : currHabit && getCurrentStrike(currHabit.days) + ' days'
+                  : 0}
+              </Styled.PageHeader__View__Counter>
+            </Tooltip>
           </Styled.PageHeader__View>
+
           <Styled.PageHeader__Settings>
-            <HabitsSettings />
+            <Tooltip content={'Settings'} arrow={false} direction={'up'}>
+              <HabitsSettings />
+            </Tooltip>
           </Styled.PageHeader__Settings>
         </Styled.PageHeader>
       </Styled.PageContainer>

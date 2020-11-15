@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Tag from './Tag'
+import Tooltip from 'react-tooltip-lite'
 import { NoteEditor } from './NoteEditor'
 import { TagEditor } from './TagEditor'
 import { AddSubmitButton } from '../misc/Add'
@@ -243,21 +244,32 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
           </Styled.DetailDate>
 
           <Styled.DetailTags>
-            {data.singleNote.tags && data.singleNote.tags.length ? (
-              data.singleNote.tags.map((tag: NoteTag) => (
-                <Tag
-                  key={tag.id}
-                  id={tag.id}
-                  name={tag.name}
-                  color={tag.color}
-                  onClick={() => handleTagClick(tag)}
-                  onDelete={() => handleRemoveTagConfirm(tag.id)}
-                />
-              ))
-            ) : (
-              <p>No tags</p>
-            )}
-            <PlusIcon onClick={handlePlusClick} />
+            <Styled.DetailTags__Inner>
+              {data.singleNote.tags && data.singleNote.tags.length ? (
+                data.singleNote.tags.map((tag: NoteTag) => (
+                  <Tooltip
+                    content={'Click to edit tag'}
+                    arrow={false}
+                    direction={'up'}
+                    className="tag-tooltip"
+                  >
+                    <Tag
+                      key={tag.id}
+                      id={tag.id}
+                      name={tag.name}
+                      color={tag.color}
+                      onClick={() => handleTagClick(tag)}
+                      onDelete={() => handleRemoveTagConfirm(tag.id)}
+                    />
+                  </Tooltip>
+                ))
+              ) : (
+                <p>No tags</p>
+              )}
+            </Styled.DetailTags__Inner>
+            <Tooltip content={'Add tag'} arrow={false} direction={'up'}>
+              <PlusIcon onClick={handlePlusClick} />
+            </Tooltip>
           </Styled.DetailTags>
 
           {showTagEditor && (
