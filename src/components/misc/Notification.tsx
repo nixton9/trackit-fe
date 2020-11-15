@@ -10,24 +10,30 @@ export enum NotificationTypes {
   Null = 'Null'
 }
 
-export const notificationState = atom({
+export const notificationState: any = atom({
   key: 'notification',
   default: {
     text: '',
-    type: NotificationTypes.Null
+    type: NotificationTypes.Null,
+    revertFunc: () => null
   }
 })
 
 export const Notification: React.FC = () => {
   const [notification, setNotification] = useRecoilState(notificationState)
 
-  const { type, text } = notification
+  const { type, text, revert } = notification
 
   useEffect(() => {
     if (type !== NotificationTypes.Null) {
       let notificationTimer = setTimeout(
-        () => setNotification({ text: '', type: NotificationTypes.Null }),
-        3500
+        () =>
+          setNotification({
+            text: '',
+            type: NotificationTypes.Null,
+            revertFun: () => null
+          }),
+        30500
       )
 
       return () => clearTimeout(notificationTimer)
@@ -42,7 +48,10 @@ export const Notification: React.FC = () => {
       <Styled.NotificationContainer>
         <Styled.Notification>
           {Icon}
-          <p>{text}</p>
+          <p>
+            {text}
+            {revert && <span onClick={revert}>Revert?</span>}
+          </p>
         </Styled.Notification>
       </Styled.NotificationContainer>
     )

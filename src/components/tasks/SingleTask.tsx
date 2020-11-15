@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { taskIdState } from './AddTask'
 import { TaskStatus } from './TaskStatus'
 import { activeContentState, isEditState } from '../misc/Add'
+import { NotificationTypes, notificationState } from '../misc/Notification'
 import { Styled } from '../../styles/Single.styles'
 import { ModuleTypes, Task } from '../../utils/ModuleTypes'
 import {
@@ -30,15 +31,32 @@ const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
   const setTaskId = useSetRecoilState(taskIdState)
   const setIsEdit = useSetRecoilState(isEditState)
 
+  const setNotification = useSetRecoilState(notificationState)
+
   const { refetch: refetchTasks } = useQuery(TASKS)
-  const [markAsDone] = useMutation(MARK_AS_DONE, {
-    variables: { id: id, done: true }
-  })
+  const [markAsDone] = useMutation(MARK_AS_DONE)
 
   const handleCompleteTask = (e: React.MouseEvent<HTMLDivElement>) => {
     setTaskDone(true)
-    markAsDone()
-      .then(res => refetchTasks())
+    markAsDone({
+      variables: { id: id, done: true }
+    })
+      .then(res => {
+        setNotification({
+          text: `Task '${title}' was completed.`,
+          type: NotificationTypes.Success,
+          revert: () =>
+            markAsDone({
+              variables: { id: id, done: false },
+              refetchQueries: () => [
+                {
+                  query: TASKS
+                }
+              ]
+            })
+        })
+        refetchTasks()
+      })
       .catch(err => console.log(err))
   }
 
@@ -47,6 +65,7 @@ const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
     setIsEdit(true)
     setTaskId(id.toString())
   }
+
   return (
     <Styled.SingleWrapper>
       <Styled.SingleContainer onClick={handleTaskEdit}>

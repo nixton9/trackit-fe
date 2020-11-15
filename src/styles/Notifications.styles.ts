@@ -35,6 +35,13 @@ const Notification = styled.div`
   p {
     font-weight: ${props => props.theme.fontSemiBold};
     font-size: 1.4rem;
+
+    span {
+      margin-left: 1rem;
+      color: ${props => props.theme.accent};
+      font-weight: ${props => props.theme.fontBold};
+      cursor: pointer;
+    }
   }
 `
 
