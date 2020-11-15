@@ -22,6 +22,7 @@ export const notificationState: any = atom({
 export const Notification: React.FC = () => {
   const [notification, setNotification] = useRecoilState(notificationState)
 
+  //@ts-ignore
   const { type, text, revert } = notification
 
   useEffect(() => {
