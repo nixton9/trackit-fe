@@ -13,7 +13,7 @@ const SingleWrapper = styled.div`
 
   .task-status {
     position: absolute;
-    right: 1rem;
+    right: ${props => props.theme.spacingXS};
     top: 50%;
     transform: translateY(-50%);
   }

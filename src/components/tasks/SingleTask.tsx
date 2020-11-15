@@ -24,7 +24,7 @@ const MARK_AS_DONE = gql`
 `
 
 const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
-  const [taskDone, setTaskDone] = useState(false)
+  const [taskDone, setTaskDone] = useState(done)
 
   const setActiveContent = useSetRecoilState(activeContentState)
   const setTaskId = useSetRecoilState(taskIdState)
@@ -70,10 +70,6 @@ const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
         </Styled.SingleFlex>
       </Styled.SingleContainer>
       <TaskStatus onClick={handleCompleteTask} isDone={taskDone} />
-      {/* <Styled.SingleTask__Complete
-        onClick={handleCompleteTask}
-        className={taskDone ? 'done' : ''}
-      /> */}
     </Styled.SingleWrapper>
   )
 }

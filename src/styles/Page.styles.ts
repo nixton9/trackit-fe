@@ -101,12 +101,26 @@ const PageHeader__View__Counter = styled.h3`
 `
 
 const PageHeader__Settings = styled.div`
+  display: flex;
+
   .settings-icon {
     cursor: pointer;
+    width: 3.2rem;
+  }
+
+  a {
+    display: inherit;
+    margin-right: ${props => props.theme.spacingXS};
+  }
+
+  svg {
     width: 3.2rem;
 
     .svg-fill {
       fill: ${props => props.theme.white};
+    }
+    .svg-stroke {
+      stroke: ${props => props.theme.white};
     }
   }
 `

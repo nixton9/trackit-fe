@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74 71">
+  <defs>
+    <clipPath id="clip-Prancheta_20">
+      <rect width="74" height="71"/>
+    </clipPath>
+  </defs>
+  <g id="Prancheta_20" data-name="Prancheta – 20" clip-path="url(#clip-Prancheta_20)">
+    <g id="Grupo_199" data-name="Grupo 199">
+      <g id="Grupo_190" data-name="Grupo 190" transform="translate(-942 -608)">
+        <g id="Grupo_54" data-name="Grupo 54" transform="translate(89 35)">
+          <g id="Caminho_288" data-name="Caminho 288" transform="translate(862 576)" fill="none">
+            <path d="M10,0H46A10,10,0,0,1,56,10V55A10,10,0,0,1,46,65H10A10,10,0,0,1,0,55V10A10,10,0,0,1,10,0Z" stroke="none"/>
+            <path d="M 10 5 C 7.242984771728516 5 5 7.242984771728516 5 10 L 5 55 C 5 57.75701141357422 7.242984771728516 60 10 60 L 46 60 C 48.75701141357422 60 51 57.75701141357422 51 55 L 51 10 C 51 7.242984771728516 48.75701141357422 5 46 5 L 10 5 M 10 0 L 46 0 C 51.5228385925293 0 56 4.477146148681641 56 10 L 56 55 C 56 60.5228385925293 51.5228385925293 65 46 65 L 10 65 C 4.477146148681641 65 0 60.5228385925293 0 55 L 0 10 C 0 4.477146148681641 4.477146148681641 0 10 0 Z" stroke="none" fill="none" class="svg-fill"/>
+          </g>
+        </g>
+      </g>
+      <path id="Caminho_290" data-name="Caminho 290" d="M-13776.5-7782.885l6.907,6.553,14.575-12.527" transform="translate(13803.005 7818.359)" fill="none" class="svg-stroke" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+    </g>
+  </g>
+</svg>

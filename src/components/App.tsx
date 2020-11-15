@@ -85,6 +85,11 @@ const App: React.FC = () => {
                     />
                   )}
                 />
+                <Route
+                  exact
+                  path="/tasks/done"
+                  render={props => <TasksPage {...props} done />}
+                />
               </Switch>
               <Notification />
               <Alert />

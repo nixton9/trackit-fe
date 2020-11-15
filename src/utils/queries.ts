@@ -42,8 +42,8 @@ export const TAGS = gql`
 `
 
 export const TASKS = gql`
-  query Tasks {
-    tasks {
+  query Tasks($done: Boolean) {
+    tasks(done: $done) {
       id: id_task
       title: title_task
       date: date_task

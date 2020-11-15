@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const TaskStatusDiv = styled.div`
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2rem;
+  height: 2rem;
   border: solid 2px ${props => props.theme.accent};
   border-radius: 50%;
   cursor: pointer;

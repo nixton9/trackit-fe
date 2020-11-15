@@ -13,13 +13,22 @@ import { isDateToday, parseDateInverse } from '../../utils/dateHelpers'
 import { sortData } from '../../utils/globalHelpers'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
+import { ReactComponent as TasksIcon } from '../../assets/icons/tasks.svg'
+import { ReactComponent as DoneTasksIcon } from '../../assets/icons/donetasks.svg'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
+import { Link } from 'react-router-dom'
 
-const TasksPage: React.FC = () => {
+type TasksPageProps = {
+  done?: boolean
+}
+
+const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
-  const { loading, error, data } = useQuery(TASKS)
+  const { loading, error, data } = useQuery(TASKS, {
+    variables: { done: done }
+  })
   const { data: categories } = useQuery(CATEGORIES)
 
   const [view, setView] = useState('all')
@@ -59,7 +68,7 @@ const TasksPage: React.FC = () => {
 
   return (
     <Styled.PageContainer>
-      <Styled.PageTitle>Tasks</Styled.PageTitle>
+      <Styled.PageTitle>{done && 'Completed'} Tasks</Styled.PageTitle>
 
       <Styled.PageHeader>
         <Styled.PageHeader__View>
@@ -76,7 +85,18 @@ const TasksPage: React.FC = () => {
             {visibleTasks.length}
           </Styled.PageHeader__View__Counter>
         </Styled.PageHeader__View>
+
         <Styled.PageHeader__Settings>
+          {done ? (
+            <Link to="/tasks">
+              <TasksIcon />
+            </Link>
+          ) : (
+            <Link to="/tasks/done">
+              <DoneTasksIcon />
+            </Link>
+          )}
+
           <TasksSettings
             categories={categories ? categories.categories : []}
             sortBy={sortBy}
