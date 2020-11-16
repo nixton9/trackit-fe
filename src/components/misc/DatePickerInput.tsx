@@ -11,6 +11,7 @@ type DatePickerProps = {
   classname?: string
   open?: boolean
   onClose?: () => void
+  onChangeRaw?: () => void
   customInput?: ReactElement
 }
 
@@ -22,7 +23,8 @@ const DatePickerInput: React.FC<DatePickerProps> = ({
   classname,
   open,
   onClose,
-  customInput
+  customInput,
+  onChangeRaw
 }) => {
   return (
     <Styled.DatePickerContainer className={classname}>
@@ -35,6 +37,7 @@ const DatePickerInput: React.FC<DatePickerProps> = ({
         customInput={customInput}
         open={open}
         onCalendarClose={onClose}
+        onChangeRaw={onChangeRaw}
       />
     </Styled.DatePickerContainer>
   )

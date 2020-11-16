@@ -127,6 +127,7 @@ const AddWidget = styled.div`
       font-weight: ${props => props.theme.fontRegular} !important;
       margin-left: 1rem;
       width: 5rem;
+      cursor: pointer;
     }
   }
 

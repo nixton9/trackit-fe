@@ -94,7 +94,7 @@ const SettingsBlock__Category = styled.div<SettingsBlock__CategoryProps>`
 
 const SettingsBlock__Icon = styled.span`
   svg {
-    width: 1.7rem;
+    width: 1.7rem !important;
     cursor: pointer;
 
     .svg-fill {

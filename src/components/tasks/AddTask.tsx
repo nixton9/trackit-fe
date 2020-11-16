@@ -190,7 +190,6 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
           }
         })
           .then(res => {
-            console.log(dueDate)
             setNotification({
               text: `New task added ${
                 dateSelect !== '4' &&
@@ -255,7 +254,8 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     ? [{ label: 'Delete task', onClick: handleDeleteConfirm }, cancelOption]
     : [cancelOption]
 
-  const clickDateInput = () => {
+  const clickDateInput = (e: React.ChangeEvent<EventTarget>) => {
+    e.preventDefault()
     const input = document.querySelector(
       '.tasks-add-date .react-datepicker__input-container input'
     ) as any
@@ -342,6 +342,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               classname="tasks-add-date"
               open={isDatePickerOpen}
               onClose={() => setIsDatePickerOpen(false)}
+              onChangeRaw={() => setIsDatePickerOpen(false)}
             />
           </Styled.AddWidget>
 

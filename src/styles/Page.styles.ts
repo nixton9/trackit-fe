@@ -60,6 +60,7 @@ const PageHeader__View__Dropdown = styled.div`
       width: 100%;
       font-size: 1.5rem;
       padding: 0.6rem 3rem 0.6rem 1.5rem;
+      cursor: pointer;
     }
 
     svg {
