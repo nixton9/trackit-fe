@@ -87,7 +87,7 @@ const SingleNote__Tags = styled.div`
 const SingleExpense__Container = styled.article`
   padding: ${props => props.theme.spacingXS};
   margin-bottom: ${props => props.theme.spacingXS};
-  border-radius: ${props => props.theme.XSBorderRadius}
+  border-radius: ${props => props.theme.XSBorderRadius};
   cursor: pointer;
   transition: all 0.25s ease;
 
