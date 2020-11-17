@@ -10,6 +10,7 @@ import { activeContentState } from '../misc/Add'
 import { getCurrentStrike, parseDateInverse } from '../../utils/dateHelpers'
 import { Styled } from '../../styles/Page.styles'
 import { Habit, DayState, ModuleTypes } from '../../utils/ModuleTypes'
+import { habitsViewOptions } from '../../utils/selectsOptions'
 import { HABITS } from '../../utils/queries'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
@@ -81,16 +82,6 @@ const HabitsPage: React.FC = () => {
 
   const [view, setView] = useState('all')
 
-  const viewOptions = data
-    ? [
-        { val: 'all', label: 'All' },
-        ...(data.habits as Habit[]).map(habit => ({
-          val: habit.id,
-          label: habit.title
-        }))
-      ]
-    : [{ val: 'all', label: 'All' }]
-
   const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setView(e.target.value)
 
@@ -112,7 +103,7 @@ const HabitsPage: React.FC = () => {
                 id="habits-view"
                 value={view}
                 onChange={handleViewChange}
-                options={viewOptions}
+                options={habitsViewOptions(data)}
                 itemClass={'view-select-item'}
               />
             </Styled.PageHeader__View__Dropdown>

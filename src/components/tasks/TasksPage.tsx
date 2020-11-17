@@ -11,6 +11,7 @@ import { Task, TaskCategory, ModuleTypes } from '../../utils/ModuleTypes'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { TASKS, CATEGORIES } from '../../utils/queries'
 import { isDateToday, parseDateInverse } from '../../utils/dateHelpers'
+import { tasksViewOptions } from '../../utils/selectsOptions'
 import { sortData } from '../../utils/globalHelpers'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
@@ -34,21 +35,6 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
 
   const [view, setView] = useState('all')
   const [sortBy, setSortBy] = useState<SortBySettings>(SortBySettings.DATE)
-
-  const defaultOptions = [
-    { val: 'all', label: 'All' },
-    { val: 'today', label: 'Today' }
-  ]
-
-  const viewOptions = categories
-    ? [
-        ...defaultOptions,
-        ...categories.categories.map((cat: TaskCategory) => ({
-          val: cat.id,
-          label: cat.name
-        }))
-      ]
-    : defaultOptions
 
   const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setView(e.target.value)
@@ -78,7 +64,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
               id="tasks-view"
               value={view}
               onChange={handleViewChange}
-              options={viewOptions}
+              options={tasksViewOptions(categories)}
               itemClass={'view-select-item'}
             />
           </Styled.PageHeader__View__Dropdown>

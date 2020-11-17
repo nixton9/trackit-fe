@@ -11,6 +11,7 @@ import { Note, NoteTag, ModuleTypes } from '../../utils/ModuleTypes'
 import { NOTES, TAGS } from '../../utils/queries'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { sortData } from '../../utils/globalHelpers'
+import { notesViewOptions } from '../../utils/selectsOptions'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { useQuery } from '@apollo/client'
@@ -26,16 +27,6 @@ const NotesPage: React.FC = () => {
 
   const [view, setView] = useState('all')
   const [sortBy, setSortBy] = useState<SortBySettings>(SortBySettings.DATE)
-
-  const viewOptions = tags
-    ? [
-        { val: 'all', label: 'All' },
-        ...tags.tags.map((tag: NoteTag) => ({
-          val: tag.id,
-          label: tag.name
-        }))
-      ]
-    : [{ val: 'all', label: 'All' }]
 
   const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setView(e.target.value)
@@ -62,7 +53,7 @@ const NotesPage: React.FC = () => {
               id="notes-view"
               value={view}
               onChange={handleViewChange}
-              options={viewOptions}
+              options={notesViewOptions(tags)}
               itemClass={'view-select-item'}
             />
           </Styled.PageHeader__View__Dropdown>
