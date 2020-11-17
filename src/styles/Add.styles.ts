@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const AddButton = styled.div`
   width: 100%;
@@ -99,6 +99,11 @@ const AddWidget = styled.div`
   margin-right: ${props => props.theme.spacingS};
   max-width: 82%;
   cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    filter: contrast(1.07);
+  }
 
   &:last-of-type {
     margin-right: 0;
@@ -205,6 +210,11 @@ const AddWidget__Button = styled.button`
   border-radius: ${props => props.theme.smallBorderRadius};
   margin-left: auto;
   cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    filter: contrast(1.5);
+  }
 
   svg {
     fill: ${props => props.theme.white};

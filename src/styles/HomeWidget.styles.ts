@@ -34,7 +34,13 @@ const Widget = styled.div<WidgetProps>`
       : props.type === ModuleTypes.Habits
       ? `url(${wave3}), ${props.theme.pinkGradient}`
       : `url(${wave4}), ${props.theme.greenGradient}`};
-  background-size: cover;
+  background-size: 300px;
+  background-position: 50% 50%;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-position: 70% 70%;
+  }
 
   .svg-fill {
     fill: ${props => props.theme.white};

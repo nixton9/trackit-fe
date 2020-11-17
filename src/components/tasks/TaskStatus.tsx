@@ -7,8 +7,10 @@ const TaskStatusDiv = styled.div`
   border: solid 2px ${props => props.theme.accent};
   border-radius: 50%;
   cursor: pointer;
+  transition: all 0.25s ease;
 
-  &.done {
+  &.done,
+  :hover {
     background-color: ${props => props.theme.accent};
   }
 `

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { fadeIn } from './Drawer.styles'
 
 type DetailHeaderProps = {
@@ -43,6 +43,12 @@ const PageHeader__View__Dropdown = styled.div`
     border-radius: ${props => props.theme.smallBorderRadius};
     min-width: 11rem;
     padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      filter: contrast(1.5);
+    }
   }
 
   .input-wrapper {
@@ -51,6 +57,11 @@ const PageHeader__View__Dropdown = styled.div`
     border-radius: ${props => props.theme.smallBorderRadius};
     width: 11rem;
     cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #7c22ff;
+    }
 
     &:last-child {
       margin-left: 2rem;
@@ -135,7 +146,8 @@ const PageContent = styled.section`
 
 const PageContent__Day = styled.div`
   width: 100%;
-  padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
+  padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS}
+    ${props => props.theme.spacingXXS} ${props => props.theme.spacingXXS};
   border-top: 1px solid rgb(119, 118, 118, 0.25);
 
   &:last-child {
@@ -147,12 +159,10 @@ const PageContent__Day__Title = styled.h4`
   color: ${props => props.theme.grey};
   font-size: 1.5rem;
   font-weight: ${props => props.theme.fontBold};
-  margin-bottom: ${props => props.theme.spacingS};
+  margin-bottom: ${props => props.theme.spacingXXS};
 `
 
-const PageContent__Day__Expenses = styled.h4`
-  padding-left: ${props => props.theme.spacingXS};
-`
+const PageContent__Day__Expenses = styled.div``
 
 const PageContent__NoData = styled.div`
   position: absolute;
@@ -189,6 +199,11 @@ const PageAddItem = styled.div`
   box-shadow: 7px 7px 16px 0 rgba(0, 0, 0, 0.07);
   z-index: 11;
   cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    filter: contrast(1.05);
+  }
 
   svg {
     width: 3rem;
@@ -341,6 +356,7 @@ const SearchResults__Module__Title = styled.h3`
   color: ${props => props.theme.accent};
   font-size: 1.7rem;
   font-weight: ${props => props.theme.fontBold};
+  margin-bottom: ${props => props.theme.spacingXS};
 `
 
 const SearchResults__Item = styled.div`
@@ -349,6 +365,11 @@ const SearchResults__Item = styled.div`
   padding: 3rem 1rem;
   border-bottom: 1px solid rgb(119, 118, 118, 0.25);
   cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: ${props => props.theme.hoverBlack};
+  }
 
   &:last-child {
     border: none;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 type SettingsBlock__CategoryProps = {
   color: string
@@ -15,19 +15,35 @@ const SettingsBlock__Label = styled.label`
 
 const SettingsBlock__Input = styled.div`
   width: 100%;
-  margin-top: 0.4rem;
+  margin-top: ${props => props.theme.spacingXXS};
   color: ${props => props.theme.white};
   font-weight: ${props => props.theme.fontLight};
   font-size: 1.5rem;
+
+  .MuiSelect-select.MuiSelect-select {
+    padding-right: 4rem;
+  }
 
   .MuiSelect-select {
     color: ${props => props.theme.white};
     font-weight: ${props => props.theme.fontLight};
     font-size: 1.5rem;
+    padding: 1rem;
+    min-width: 7rem;
+    line-height: 2rem;
+    border-radius: ${props => props.theme.XSBorderRadius}
+    transition: all 0.25s ease;
+
+    &:hover {
+      background: ${props => props.theme.backgroundBlack};
+    }
   }
 
   .MuiSelect-icon {
     width: 1.4rem;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 `
 
@@ -96,10 +112,16 @@ const SettingsBlock__Icon = styled.span`
   svg {
     width: 1.7rem !important;
     cursor: pointer;
+    transform-origin: center;
+    transition: all 0.25s ease;
 
     .svg-fill {
       fill: ${props => props.theme.white};
     }
+  }
+
+  &:hover svg {
+    transform: scale(1.2);
   }
 `
 

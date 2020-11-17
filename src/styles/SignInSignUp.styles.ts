@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const SignInSignUpHeader = styled.nav`
   display: flex;
@@ -118,7 +118,7 @@ const SignInSignUpForm__Input = styled.div`
     }
 
     &.selected {
-      background: #737ca0;
+      background: #5a5a5a;
     }
   }
 
@@ -129,6 +129,11 @@ const SignInSignUpForm__Input = styled.div`
     font-weight: 500;
     margin: ${props => props.theme.spacingS} 0.5rem 0 0;
     cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: ${props => props.theme.accent};
+    }
   }
 `
 
@@ -144,6 +149,11 @@ const SignInSignUpForm__Button = styled.button`
   border-radius: ${props => props.theme.smallBorderRadius};
   margin-top: ${props => props.theme.spacingS};
   cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    filter: contrast(1.5);
+  }
 `
 
 const SignInSignUpLoading = styled.div`

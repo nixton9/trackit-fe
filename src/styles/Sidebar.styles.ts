@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 type SidebarContainerProps = {
   open: boolean
@@ -25,7 +25,7 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   flex-direction: column;
   width: 65vw;
   max-width: 38rem;
-  padding: 4rem;
+  padding: 4rem 2rem;
   background: ${props => props.theme.surfacesBlack};
   box-shadow: 23px 0 16px 0 rgba(0, 0, 0, 0.07);
   transform: ${props => (props.open ? 'translateX(0);' : 'translateX(-101%);')};
@@ -57,11 +57,12 @@ const SidebarOverlay = styled.div<SidebarContainerProps>`
 const SidebarUser = styled.div`
   display: flex;
   align-items: center;
+  padding: 0 2rem;
 `
 
 const SidebarUser__Img = styled.img`
   border-radius: 50%;
-  width: 3.5rem;
+  width: 4.5rem;
   object-fit: contain;
 `
 
@@ -72,13 +73,13 @@ const SidebarUser__Info = styled.div`
 const SidebarUser__Info__Name = styled.h3`
   color: ${props => props.theme.white};
   font-weight: ${props => props.theme.fontRegular};
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 `
 
 const SidebarUser__Info__Email = styled.p`
   color: ${props => props.theme.grey};
   font-weight: ${props => props.theme.fontSemiBold};
-  font-size: 1rem;
+  font-size: 1.1rem;
 `
 
 const SidebarNav = styled.nav`
@@ -93,13 +94,20 @@ const SidebarNavItem = styled.div`
   display: flex;
   align-items: center;
   color: ${props => props.theme.white};
-  margin-bottom: ${props => props.theme.spacingM};
+  padding: 2rem;
+  margin-bottom: ${props => props.theme.spacingXS};
   font-size: 1.7rem;
   line-height: 2.5rem;
   font-weight: ${props => props.theme.fontRegular};
+  border-radius: ${props => props.theme.XSBorderRadius};
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: ${props => props.theme.hoverBlack};
+  }
 
   &.settings {
-    margin-bottom: ${props => props.theme.spacingS};
+    margin-bottom: ${props => props.theme.spacingXS};
   }
 
   &.logout {

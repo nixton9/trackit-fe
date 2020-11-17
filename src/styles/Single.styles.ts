@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 type SingleCategoryProps = {
   color: string
@@ -24,6 +24,11 @@ const SingleContainer = styled.article`
   padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
   border-top: 1px solid rgb(119, 118, 118, 0.25);
   cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: ${props => props.theme.hoverBlack};
+  }
 
   &:last-child {
     border-bottom: 1px solid rgb(119, 118, 118, 0.25);
@@ -80,8 +85,15 @@ const SingleNote__Tags = styled.div`
 `
 
 const SingleExpense__Container = styled.article`
-  margin-bottom: ${props => props.theme.spacingS};
+  padding: ${props => props.theme.spacingXS};
+  margin-bottom: ${props => props.theme.spacingXS};
+  border-radius: ${props => props.theme.XSBorderRadius}
   cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: ${props => props.theme.hoverBlack};
+  }
 
   &:last-of-type {
     margin-bottom: 0;

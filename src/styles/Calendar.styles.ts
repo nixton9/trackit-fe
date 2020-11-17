@@ -24,11 +24,20 @@ const CalendarHeader__Icon = styled.span`
   transform: rotate(90deg);
   cursor: pointer;
 
+  &:hover svg {
+    transform: translateY(3px);
+  }
+
   &.right {
     transform: rotate(-90deg);
+
+    &:hover svg {
+      transform: translateY(3px);
+    }
   }
   svg {
     width: 1.6rem;
+    transition: all 0.25s ease;
   }
 `
 
