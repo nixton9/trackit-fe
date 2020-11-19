@@ -40,7 +40,10 @@ const App: React.FC = () => {
   }
 
   const client = new ApolloClient({
-    uri: '/',
+    uri:
+      !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+        ? '/'
+        : 'https://trackitbe.herokuapp.com/',
     cache: new InMemoryCache(),
     headers: {
       authorization: `Bearer ${token}`
