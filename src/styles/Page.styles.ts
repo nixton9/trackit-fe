@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import { fadeIn } from './Drawer.styles'
+import { device } from './theme'
 
 type DetailHeaderProps = {
   editorActive?: boolean
@@ -81,6 +82,10 @@ const PageHeader__View__Dropdown = styled.div`
       transform: translateY(-50%);
       pointer-events: none;
     }
+
+    @media ${device.mobile} {
+      width: 10rem;
+    }
   }
 
   .MuiSelect-select {
@@ -109,6 +114,10 @@ const PageHeader__View__Counter = styled.h3`
 
   &.smaller {
     font-size: 1.9rem;
+  }
+
+  @media ${device.mobile} {
+    font-size: 2.2rem;
   }
 `
 
@@ -140,8 +149,21 @@ const PageHeader__Settings = styled.div`
 const PageContent = styled.section`
   margin-top: ${props => props.theme.spacingS};
   overflow-y: auto;
-  height: 75vh;
   padding-right: ${props => props.theme.spacingXXS};
+  height: 70vh;
+
+  @media only screen and (max-height: 650px) {
+    height: 67vh;
+  }
+  @media only screen and (max-height: 600px) {
+    height: 64vh;
+  }
+  @media only screen and (max-height: 550px) {
+    height: 61vh;
+  }
+  @media only screen and (max-height: 500px) {
+    height: 59vh;
+  }
 `
 
 const PageContent__Day = styled.div`

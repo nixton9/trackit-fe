@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { ModuleTypes } from '../utils/ModuleTypes'
 import wave1 from '../assets/wave1.svg'
 import wave2 from '../assets/wave2.svg'
@@ -86,7 +86,7 @@ const WidgetHeader__Title = styled.h3`
 
 const WidgetHeader__Icon = styled.span`
   svg {
-    width: 3.5rem;
+    width: 4rem;
   }
 `
 

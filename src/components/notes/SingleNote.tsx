@@ -2,7 +2,7 @@ import React from 'react'
 import Tag from './Tag'
 import { Styled } from '../../styles/Single.styles'
 import { Note } from '../../utils/ModuleTypes'
-import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
+import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar.svg'
 import { NavLink } from 'react-router-dom'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 

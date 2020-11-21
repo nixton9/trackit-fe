@@ -8,7 +8,7 @@ import { TagsInput, Tag } from './TagsInput'
 import { NOTES } from '../../utils/queries'
 import theme from '../../styles/theme'
 import { DrawerAddModuleProps } from '../misc/Add'
-import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
+import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import 'react-quill/dist/quill.snow.css'
@@ -173,7 +173,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
 
         <Styled.AddWidgetsContainer>
           <Styled.AddWidget onClick={focusTagInput}>
-            <NotesIcon />
+            <CategoriesIcon />
             <TagsInput tags={tags} setTags={setTags} />
           </Styled.AddWidget>
 

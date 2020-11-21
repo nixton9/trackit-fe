@@ -10,7 +10,7 @@ import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { alertState } from '../misc/Alert'
-import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
+import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg'
 import { ExpenseType } from '../../utils/ModuleTypes'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { EXPENSES, TYPES, SINGLE_EXPENSE } from '../../utils/queries'
@@ -318,7 +318,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               value={type}
               onChange={handleTypeChange}
               options={typeOptions}
-              icon={<NotesIcon />}
+              icon={<CategoriesIcon />}
             />
           </Styled.AddWidget>
 

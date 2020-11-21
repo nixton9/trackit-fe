@@ -11,7 +11,7 @@ import {
   parseDateInverse
 } from '../../utils/dateHelpers'
 import { TASKS } from '../../utils/queries'
-import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
+import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 

@@ -11,8 +11,8 @@ import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { alertState } from '../misc/Alert'
-import { ReactComponent as NotesIcon } from '../../assets/icons/notes.svg'
-import { ReactComponent as CalendarIcon } from '../../assets/icons/calendr.svg'
+import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg'
+import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { TASKS, CATEGORIES, SINGLE_TASK } from '../../utils/queries'
 import {
@@ -352,7 +352,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               value={category}
               onChange={handleCategoryChange}
               options={categoryOptions}
-              icon={<NotesIcon />}
+              icon={<CategoriesIcon />}
             />
           </Styled.AddWidget>
 

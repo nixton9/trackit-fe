@@ -95,7 +95,6 @@ const SidebarNavItem = styled.div`
   align-items: center;
   color: ${props => props.theme.white};
   padding: 2rem;
-  margin-bottom: ${props => props.theme.spacingXS};
   font-size: 1.7rem;
   line-height: 2.5rem;
   font-weight: ${props => props.theme.fontRegular};
@@ -106,16 +105,8 @@ const SidebarNavItem = styled.div`
     background-color: ${props => props.theme.hoverBlack};
   }
 
-  &.settings {
-    margin-bottom: ${props => props.theme.spacingXS};
-  }
-
-  &.logout {
-    margin-bottom: 0;
-  }
-
   svg {
-    width: 3rem;
+    width: 3.5rem;
     margin-right: ${props => props.theme.spacingXS};
     fill: ${props => props.theme.accent};
     .svg-fill {

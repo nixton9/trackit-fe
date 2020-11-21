@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components/macro'
+import { device } from './theme'
 
 type DrawerContainerProps = {
   open: boolean
@@ -18,7 +19,7 @@ const DrawerContainer = styled.div<DrawerContainerProps>`
   left: 0;
   right: 0;
   min-height: 20vh;
-  max-height: 80vh;
+  max-height: 90vh;
   padding: ${props => props.theme.spacingS} 4rem;
   background: ${props => props.theme.surfacesBlack};
   border-top-left-radius: ${props => props.theme.mainBorderRadius};
@@ -48,12 +49,16 @@ const DrawerTitle = styled.h2`
   font-size: 2rem;
   font-weight: ${props => props.theme.fontBold};
   margin: ${props => props.theme.spacingS} 0 ${props => props.theme.spacingS} -0.8rem;
+
+  @media ${device.mobile} {
+    margin: ${props => props.theme.spacingXS} 0 ${props => props.theme.spacingS} -0.8rem;
+  }
 `
 
 const DrawerContent = styled.div`
   width: 100%;
   color: ${props => props.theme.white};
-  max-height: 70vh;
+  max-height: 80vh;
 `
 
 export const Styled = {

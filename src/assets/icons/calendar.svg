@@ -1,50 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49" height="47" viewBox="0 0 49 47">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 435 409">
   <defs>
-    <clipPath id="clip-Prancheta_8">
-      <rect width="49" height="47"/>
+    <clipPath id="clip-Prancheta_21">
+      <rect width="435" height="409"/>
     </clipPath>
   </defs>
-  <g id="Prancheta_8" data-name="Prancheta – 8" clip-path="url(#clip-Prancheta_8)">
-    <g id="Grupo_102" data-name="Grupo 102" transform="translate(0.999 3)">
-      <g id="Grupo_59" data-name="Grupo 59" transform="translate(0 0)">
-        <g id="Caminho_288" data-name="Caminho 288" transform="translate(47.525) rotate(90)" fill="none">
-          <path d="M7.311,0H33.633a7.311,7.311,0,0,1,7.311,7.311v32.9a7.311,7.311,0,0,1-7.311,7.311H7.311A7.311,7.311,0,0,1,0,40.213V7.311A7.311,7.311,0,0,1,7.311,0Z" stroke="none"/>
-          <path d="M 7.311489105224609 3 C 4.934127807617188 3 2.999996185302734 4.934127807617188 2.999996185302734 7.311489105224609 L 2.999996185302734 40.21318817138672 C 2.999996185302734 42.59054946899414 4.934127807617188 44.52467727661133 7.311489105224609 44.52467727661133 L 33.63284683227539 44.52467727661133 C 36.01020812988281 44.52467727661133 37.94433975219727 42.59054946899414 37.94433975219727 40.21318817138672 L 37.94433975219727 7.311489105224609 C 37.94433975219727 4.934127807617188 36.01020812988281 3 33.63284683227539 3 L 7.311489105224609 3 M 7.311489105224609 0 L 33.63284683227539 0 C 37.67086791992188 0 40.94433975219727 3.273460388183594 40.94433975219727 7.311489105224609 L 40.94433975219727 40.21318817138672 C 40.94433975219727 44.2512092590332 37.67086791992188 47.52467727661133 33.63284683227539 47.52467727661133 L 7.311489105224609 47.52467727661133 C 3.273468017578125 47.52467727661133 -3.814697265625e-06 44.2512092590332 -3.814697265625e-06 40.21318817138672 L -3.814697265625e-06 7.311489105224609 C -3.814697265625e-06 3.273460388183594 3.273468017578125 0 7.311489105224609 0 Z" stroke="none" fill="#fff"/>
-        </g>
-      </g>
-      <g id="Elipse_51" data-name="Elipse 51" transform="translate(6.5 14.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <g id="Elipse_58" data-name="Elipse 58" transform="translate(6.5 25.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <g id="Elipse_52" data-name="Elipse 52" transform="translate(16.5 14.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <g id="Elipse_57" data-name="Elipse 57" transform="translate(16.5 25.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <g id="Elipse_53" data-name="Elipse 53" transform="translate(25.5 14.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <g id="Elipse_56" data-name="Elipse 56" transform="translate(25.5 25.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <g id="Elipse_54" data-name="Elipse 54" transform="translate(35.5 14.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <g id="Elipse_55" data-name="Elipse 55" transform="translate(35.5 25.944)" fill="none" stroke="#fff" stroke-width="1">
-        <circle cx="3" cy="3" r="3" stroke="none"/>
-        <circle cx="3" cy="3" r="2.5" fill="none"/>
-      </g>
-      <path id="Caminho_297" data-name="Caminho 297" d="M0,0H43.869" transform="translate(2.193 10.236)" fill="none" stroke="#fff" stroke-width="2"/>
+  <g id="Prancheta_21" data-name="Prancheta – 21" clip-path="url(#clip-Prancheta_21)">
+    <g id="calendar" transform="translate(-38 -35)">
+      <path id="Caminho_326" data-name="Caminho 326" d="M384,80H352V64a16,16,0,0,0-32,0V80H272V64a16,16,0,0,0-32,0V80H192V64a16,16,0,0,0-32,0V80H128a80.09,80.09,0,0,0-80,80V352a80.09,80.09,0,0,0,80,80H384a80.09,80.09,0,0,0,80-80V160a80.09,80.09,0,0,0-80-80ZM128,112h32v16a16,16,0,0,0,32,0V112h48v16a16,16,0,0,0,32,0V112h48v16a16,16,0,0,0,32,0V112h32a48.05,48.05,0,0,1,48,48v16H80V160a48.05,48.05,0,0,1,48-48ZM384,400H128a48.05,48.05,0,0,1-48-48V208H432V352A48.05,48.05,0,0,1,384,400Z" class="svg-fill"/>
+      <circle id="Elipse_201" data-name="Elipse 201" cx="16" cy="16" r="16" transform="translate(304 256)" class="svg-fill"/>
+      <circle id="Elipse_209" data-name="Elipse 209" cx="16" cy="16" r="16" transform="translate(368 256)" class="svg-fill"/>
+      <circle id="Elipse_202" data-name="Elipse 202" cx="16" cy="16" r="16" transform="translate(240 256)" class="svg-fill"/>
+      <circle id="Elipse_203" data-name="Elipse 203" cx="16" cy="16" r="16" transform="translate(176 256)" class="svg-fill"/>
+      <circle id="Elipse_207" data-name="Elipse 207" cx="16" cy="16" r="16" transform="translate(112 256)" class="svg-fill"/>
+      <circle id="Elipse_204" data-name="Elipse 204" cx="16" cy="16" r="16" transform="translate(240 320)" class="svg-fill"/>
+      <circle id="Elipse_208" data-name="Elipse 208" cx="16" cy="16" r="16" transform="translate(304 320)" class="svg-fill"/>
+      <circle id="Elipse_210" data-name="Elipse 210" cx="16" cy="16" r="16" transform="translate(368 320)" class="svg-fill"/>
+      <circle id="Elipse_205" data-name="Elipse 205" cx="16" cy="16" r="16" transform="translate(176 320)" class="svg-fill"/>
+      <circle id="Elipse_206" data-name="Elipse 206" cx="16" cy="16" r="16" transform="translate(112 320)" class="svg-fill"/>
     </g>
   </g>
 </svg>

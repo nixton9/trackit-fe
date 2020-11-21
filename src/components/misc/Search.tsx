@@ -21,15 +21,20 @@ const Search: React.FC = () => {
       handleSubmit()
     } else {
       setOpen(true)
-      inputRef && inputRef.current && inputRef.current.focus()
+      setTimeout(
+        () => inputRef && inputRef.current && inputRef.current.focus(),
+        400
+      )
     }
   }
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e && e.preventDefault()
-    history.push(`/search/${inputVal}`)
-    setOpen(false)
-    setInputVal('')
+    if (inputVal.length) {
+      history.push(`/search/${inputVal}`)
+      setOpen(false)
+      setInputVal('')
+    }
   }
 
   return (

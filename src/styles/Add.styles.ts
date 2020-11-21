@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { device } from './theme'
 
 const AddButton = styled.div`
   width: 100%;
@@ -217,9 +218,18 @@ const AddWidget__Button = styled.button`
   }
 
   svg {
+    width: 2.5rem;
     fill: ${props => props.theme.white};
     display: block;
     transform: rotate(-90deg);
+  }
+
+  @media ${device.mobile} {
+    padding: 1.2rem;
+
+    svg {
+      width: 2.3rem;
+    }
   }
 `
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from './theme'
 
 const HomeLogo = styled.h1`
   position: absolute;
@@ -39,6 +40,15 @@ const HomeGrid = styled.section`
 
   > div:nth-child(even) {
     transform: translateY(${props => props.theme.spacingS});
+  }
+
+  @media ${device.mobile} {
+    margin-top: ${props => props.theme.spacingM};
+    grid-gap: 3rem;
+
+    > div:nth-child(even) {
+      transform: translateY(2rem);
+    }
   }
 `
 

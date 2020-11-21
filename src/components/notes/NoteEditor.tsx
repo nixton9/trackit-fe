@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import ReactQuill from 'react-quill'
 import styled from 'styled-components'
+import { device } from '../../styles/theme'
 import 'react-quill/dist/quill.snow.css'
 
 type EditorContainerProps = {
@@ -15,10 +16,16 @@ const EditorContainer = styled.div<EditorContainerProps>`
     border: 2px solid ${props => props.theme.white};
     border-radius: ${props => props.theme.smallBorderRadius};
     display: ${props => (props.showEditor ? 'block' : 'none')};
+
+    @media ${device.mobile} {
+      .ql-formats {
+        margin-right: 0.5rem;
+      }
+    }
   }
 
   .ql-container {
-    min-height: ${props => (props.readMode ? 'unset' : '50vh')};
+    min-height: ${props => (props.readMode ? 'unset' : '40vh')};
     max-height: ${props => (props.readMode ? 'unset' : '55vh')};
     overflow-y: auto;
     border: none;
