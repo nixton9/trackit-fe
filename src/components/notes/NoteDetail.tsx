@@ -248,6 +248,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               {data.singleNote.tags && data.singleNote.tags.length ? (
                 data.singleNote.tags.map((tag: NoteTag) => (
                   <Tooltip
+                    eventOff={'onClick'}
                     content={'Click to edit tag'}
                     arrow={false}
                     direction={'up'}
@@ -267,7 +268,12 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
                 <p>No tags</p>
               )}
             </Styled.DetailTags__Inner>
-            <Tooltip content={'Add tag'} arrow={false} direction={'up'}>
+            <Tooltip
+              eventOff={'onClick'}
+              content={'Add tag'}
+              arrow={false}
+              direction={'up'}
+            >
               <PlusIcon onClick={handlePlusClick} />
             </Tooltip>
           </Styled.DetailTags>

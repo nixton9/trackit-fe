@@ -82,20 +82,35 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
 
         <Styled.PageHeader__Settings>
           {done ? (
-            <Tooltip content={'Tasks'} arrow={false} direction={'up'}>
+            <Tooltip
+              eventOff={'onClick'}
+              content={'Tasks'}
+              arrow={false}
+              direction={'up'}
+            >
               <Link to="/tasks">
                 <TasksIcon />
               </Link>
             </Tooltip>
           ) : (
-            <Tooltip content={'Done Tasks'} arrow={false} direction={'up'}>
+            <Tooltip
+              eventOff={'onClick'}
+              content={'Done Tasks'}
+              arrow={false}
+              direction={'up'}
+            >
               <Link to="/tasks/done">
                 <DoneTasksIcon />
               </Link>
             </Tooltip>
           )}
 
-          <Tooltip content={'Settings'} arrow={false} direction={'up'}>
+          <Tooltip
+            eventOff={'onClick'}
+            content={'Settings'}
+            arrow={false}
+            direction={'up'}
+          >
             <TasksSettings
               categories={categories ? categories.categories : []}
               sortBy={sortBy}

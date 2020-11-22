@@ -70,7 +70,12 @@ const NotesPage: React.FC = () => {
         </Styled.PageHeader__View>
 
         <Styled.PageHeader__Settings>
-          <Tooltip content={'Settings'} arrow={false} direction={'up'}>
+          <Tooltip
+            eventOff={'onClick'}
+            content={'Settings'}
+            arrow={false}
+            direction={'up'}
+          >
             <NotesSettings
               tags={tags ? tags.tags : []}
               sortBy={sortBy}

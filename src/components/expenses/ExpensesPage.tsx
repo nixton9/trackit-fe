@@ -102,7 +102,12 @@ const ExpensesPage: React.FC = () => {
         </Styled.PageHeader__View>
 
         <Styled.PageHeader__Settings>
-          <Tooltip content={'Settings'} arrow={false} direction={'up'}>
+          <Tooltip
+            eventOff={'onClick'}
+            content={'Settings'}
+            arrow={false}
+            direction={'up'}
+          >
             <ExpensesSettings types={types ? types.types : []} />
           </Tooltip>
         </Styled.PageHeader__Settings>
