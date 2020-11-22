@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback, useRef } from 'react'
 import { currencyState } from './ExpensesSettings'
 import DatePickerInput from '../misc/DatePickerInput'
 import { Styled } from '../../styles/Add.styles'
@@ -141,6 +141,8 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   )
 
+  const valueRef: React.RefObject<HTMLInputElement> = useRef(null)
+
   const cleanData = useCallback(() => {
     setExpenseId('')
     setValue(undefined)
@@ -256,6 +258,12 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   }
 
   useEffect(() => {
+    if (valueRef && valueRef.current) {
+      valueRef.current.focus()
+    }
+  }, [])
+
+  useEffect(() => {
     if (expenseId) {
       getExpense()
     }
@@ -286,7 +294,12 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
       <form onSubmit={handleSubmit}>
         <Styled.AddInputNumberWrapper>
-          <FluidInput value={value} setValue={setValue} placeholder={'9.99'} />
+          <FluidInput
+            value={value}
+            setValue={setValue}
+            placeholder={'9.99'}
+            ref={valueRef}
+          />
           <span className={value ? 'active' : ''}>
             {currency && showCurrencySym(currency)}
           </span>

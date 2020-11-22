@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { NoteEditor } from './NoteEditor'
 import { AddSubmitButton } from '../misc/Add'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
@@ -75,6 +75,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     variables: { title: title, content: content }
   })
 
+  const titleRef: React.RefObject<HTMLInputElement> = useRef(null)
   // If there are tags, we'll add them to the note. If a tag is new we need to create it first
   // and only then assign it to the note
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
@@ -144,6 +145,12 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     input && input.focus()
   }
 
+  useEffect(() => {
+    if (titleRef && titleRef.current) {
+      titleRef.current.focus()
+    }
+  }, [])
+
   useEffect(() => () => (cachedContent = content))
 
   return loading ? (
@@ -160,6 +167,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
             placeholder="Ex: Groceries list"
             value={title}
             onChange={e => setTitle(e.target.value)}
+            ref={titleRef}
           />
         </Styled.AddInputWrapper>
 

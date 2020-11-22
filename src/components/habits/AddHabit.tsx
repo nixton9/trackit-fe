@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback, useRef } from 'react'
 import { AddSubmitButton } from '../misc/Add'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
@@ -76,6 +76,8 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
       fetchPolicy: 'network-only'
     }
   )
+
+  const titleRef: React.RefObject<HTMLInputElement> = useRef(null)
 
   const cleanData = useCallback(() => {
     setHabitId('')
@@ -167,6 +169,12 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     : [cancelOption]
 
   useEffect(() => {
+    if (titleRef && titleRef.current) {
+      titleRef.current.focus()
+    }
+  }, [])
+
+  useEffect(() => {
     if (habitId) {
       getHabit()
     }
@@ -198,6 +206,7 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             placeholder="Ex: Eat healthy"
             value={title}
             onChange={e => setTitle(e.target.value)}
+            ref={titleRef}
           />
         </Styled.AddInputWrapper>
         <Styled.AddWidgetsContainer>

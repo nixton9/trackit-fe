@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import DatePickerInput from '../misc/DatePickerInput'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -135,6 +135,8 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   )
 
+  const titleRef: React.RefObject<HTMLInputElement> = useRef(null)
+
   const categoryOptions = categories
     ? [
         { val: '0', label: 'Inbox' },
@@ -263,6 +265,12 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   }
 
   useEffect(() => {
+    if (titleRef && titleRef.current) {
+      titleRef.current.focus()
+    }
+  }, [])
+
+  useEffect(() => {
     if (taskId) {
       getTask()
     }
@@ -312,6 +320,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             placeholder="Ex: Take out the trash"
             value={title}
             onChange={e => setTitle(e.target.value)}
+            ref={titleRef}
           />
           {isEdit && (
             <TaskStatus onClick={() => setDone(!done)} isDone={done} />
