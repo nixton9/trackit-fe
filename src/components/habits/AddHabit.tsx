@@ -9,6 +9,7 @@ import { Styled } from '../../styles/Add.styles'
 import { HABITS, SINGLE_HABIT } from '../../utils/queries'
 import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
 import { atom, useRecoilState, useSetRecoilState } from 'recoil'
+import { useHistory } from 'react-router-dom'
 
 const CREATE_HABIT = gql`
   mutation CreateHabit($title: String!) {
@@ -78,6 +79,7 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   )
 
   const titleRef: React.RefObject<HTMLInputElement> = useRef(null)
+  const history = useHistory()
 
   const cleanData = useCallback(() => {
     setHabitId('')
@@ -172,7 +174,14 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (titleRef && titleRef.current) {
       titleRef.current.focus()
     }
-  }, [])
+
+    history.push(`#`)
+
+    window.onpopstate = (e: any) => {
+      closeModal()
+      cleanData()
+    }
+  }, [closeModal, cleanData, history])
 
   useEffect(() => {
     if (habitId) {

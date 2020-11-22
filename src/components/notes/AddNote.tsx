@@ -11,6 +11,7 @@ import { DrawerAddModuleProps } from '../misc/Add'
 import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
+import { useHistory } from 'react-router-dom'
 import 'react-quill/dist/quill.snow.css'
 
 const CREATE_NOTE = gql`
@@ -76,6 +77,8 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   })
 
   const titleRef: React.RefObject<HTMLInputElement> = useRef(null)
+  const history = useHistory()
+
   // If there are tags, we'll add them to the note. If a tag is new we need to create it first
   // and only then assign it to the note
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
@@ -149,7 +152,13 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     if (titleRef && titleRef.current) {
       titleRef.current.focus()
     }
-  }, [])
+
+    history.push(`#`)
+
+    window.onpopstate = (e: any) => {
+      closeModal()
+    }
+  }, [closeModal, history])
 
   useEffect(() => () => (cachedContent = content))
 

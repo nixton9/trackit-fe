@@ -18,6 +18,7 @@ import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 import { showCurrencySym } from '../../utils/globalHelpers'
 import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
 import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
+import { useHistory } from 'react-router-dom'
 
 const CREATE_EXPENSE = gql`
   mutation CreateExpense(
@@ -142,6 +143,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   )
 
   const valueRef: React.RefObject<HTMLInputElement> = useRef(null)
+  const history = useHistory()
 
   const cleanData = useCallback(() => {
     setExpenseId('')
@@ -261,7 +263,14 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (valueRef && valueRef.current) {
       valueRef.current.focus()
     }
-  }, [])
+
+    history.push(`#`)
+
+    window.onpopstate = (e: any) => {
+      closeModal()
+      cleanData()
+    }
+  }, [closeModal, cleanData, history])
 
   useEffect(() => {
     if (expenseId) {

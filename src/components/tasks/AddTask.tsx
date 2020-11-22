@@ -25,6 +25,7 @@ import { DrawerAddModuleProps } from '../misc/Add'
 import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
 import { atom, useRecoilState, useSetRecoilState } from 'recoil'
 import { addDays } from 'date-fns'
+import { useHistory } from 'react-router-dom'
 
 const CREATE_TASK = gql`
   mutation CreateTask($title: String!, $date: String, $category: ID) {
@@ -136,6 +137,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   )
 
   const titleRef: React.RefObject<HTMLInputElement> = useRef(null)
+  const history = useHistory()
 
   const categoryOptions = categories
     ? [
@@ -268,7 +270,14 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     if (titleRef && titleRef.current) {
       titleRef.current.focus()
     }
-  }, [])
+
+    history.push(`#`)
+
+    window.onpopstate = (e: any) => {
+      closeModal()
+      cleanData()
+    }
+  }, [closeModal, cleanData, history])
 
   useEffect(() => {
     if (taskId) {
