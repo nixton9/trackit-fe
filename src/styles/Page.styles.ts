@@ -9,6 +9,7 @@ type DetailHeaderProps = {
 const PageContainer = styled.div`
   width: 85%;
   margin: ${props => props.theme.spacingL} auto 0 auto;
+  overflow-x: hidden;
 `
 
 const PageTitle = styled.h1`
