@@ -48,7 +48,7 @@ const EditorContainer = styled.div<EditorContainerProps>`
   .ql-editor p {
     color: ${props => props.theme.white};
     font-size: 1.6rem;
-    line-height: ${props => (props.readMode ? '4.5rem' : '3.5rem')};
+    line-height: 3rem;
     font-weight: ${props =>
       props.readMode ? props.theme.fontRegular : props.theme.fontLight};
   }
