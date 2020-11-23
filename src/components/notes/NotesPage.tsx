@@ -69,7 +69,7 @@ const NotesPage: React.FC = () => {
           </Tooltip>
         </Styled.PageHeader__View>
 
-        <Styled.PageHeader__Settings>
+        <Styled.PageHeader__Settings className="mbl-click">
           <Tooltip
             eventOff={'onClick'}
             content={'Settings'}

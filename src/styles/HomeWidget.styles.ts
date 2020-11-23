@@ -42,6 +42,14 @@ const Widget = styled.div<WidgetProps>`
     background-position: 70% 70%;
   }
 
+  &:active {
+    background-position: 70% 70%;
+
+    &:before {
+      opacity: 60%;
+    }
+  }
+
   .svg-fill {
     fill: ${props => props.theme.white};
   }
@@ -70,6 +78,7 @@ const Widget = styled.div<WidgetProps>`
         ? props.theme.pinkGradient
         : props.theme.greenGradient};
     z-index: -1;
+    transition: all 0.2s ease-in-out;
   }
 `
 

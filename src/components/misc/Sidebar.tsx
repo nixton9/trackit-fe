@@ -33,7 +33,10 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
 
   return (
     <>
-      <Styled.SidebarToggle onClick={() => setOpen(!open)}>
+      <Styled.SidebarToggle
+        className="mbl-click"
+        onClick={() => setOpen(!open)}
+      >
         <MenuIcon />
       </Styled.SidebarToggle>
 

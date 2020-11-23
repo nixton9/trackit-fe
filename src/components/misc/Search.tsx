@@ -39,7 +39,7 @@ const Search: React.FC = () => {
 
   return (
     <>
-      <Styled.SearchIcon open={open}>
+      <Styled.SearchIcon open={open} className="mbl-click">
         <GlassIcon onClick={handleIconClick} />
         <form onSubmit={handleSubmit}>
           <Styled.SearchInput

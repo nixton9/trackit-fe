@@ -24,9 +24,10 @@ const SingleContainer = styled.article`
   padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS};
   border-top: 1px solid rgb(119, 118, 118, 0.25);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.1s ease;
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: ${props => props.theme.hoverBlack};
   }
 

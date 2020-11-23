@@ -9,7 +9,6 @@ type DetailHeaderProps = {
 const PageContainer = styled.div`
   width: 85%;
   margin: ${props => props.theme.spacingL} auto 0 auto;
-  overflow-x: hidden;
 `
 
 const PageTitle = styled.h1`
@@ -50,6 +49,9 @@ const PageHeader__View__Dropdown = styled.div`
 
     &:hover {
       filter: contrast(1.5);
+    }
+    &::active {
+      filter: contrast(2);
     }
   }
 
@@ -124,6 +126,7 @@ const PageHeader__View__Counter = styled.h3`
 
 const PageHeader__Settings = styled.div`
   display: flex;
+  position: relative;
 
   .settings-icon {
     cursor: pointer;
@@ -226,6 +229,12 @@ const PageAddItem = styled.div`
 
   &:hover {
     filter: contrast(1.05);
+  }
+
+  &:active {
+    background-color: ${props => props.theme.hoverBlack};
+    box-shadow: 7px 3px 9px 0 rgba(0, 0, 0, 0.07);
+    transform: translateY(2px);
   }
 
   svg {

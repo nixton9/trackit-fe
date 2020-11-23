@@ -32,6 +32,21 @@ export const GlobalStyle = createGlobalStyle`
         color: inherit;
     }
 
+    // Mobile cliks
+    .mbl-click:active:before {
+        content: '';
+        width: 5rem;
+        height: 5rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #30323a;
+        border-radius: 50%;
+        transition: all 0.2s ease-in-out;
+        z-index: -1;
+    }
+
     input,
     textarea,
     button {
@@ -112,5 +127,5 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
     }
 
-
+    
 `
