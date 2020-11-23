@@ -36,6 +36,7 @@ const AddInputWrapper = styled.div`
 
   .task-status {
     margin-right: ${props => props.theme.spacingXS};
+    align-self: center;
   }
 `
 
