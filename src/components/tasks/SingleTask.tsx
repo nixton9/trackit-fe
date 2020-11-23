@@ -24,7 +24,18 @@ const MARK_AS_DONE = gql`
   }
 `
 
-const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
+interface SingleTaskProps extends Task {
+  disableStatus?: boolean
+}
+
+const SingleTask: React.FC<SingleTaskProps> = ({
+  id,
+  title,
+  date,
+  done,
+  category,
+  disableStatus
+}) => {
   const [taskDone, setTaskDone] = useState(done)
 
   const setActiveContent = useSetRecoilState(activeContentState)
@@ -88,7 +99,11 @@ const SingleTask: React.FC<Task> = ({ id, title, date, done, category }) => {
           </div>
         </Styled.SingleFlex>
       </Styled.SingleContainer>
-      <TaskStatus onClick={handleCompleteTask} isDone={taskDone} />
+      <TaskStatus
+        onClick={handleCompleteTask}
+        isDone={taskDone}
+        disable={disableStatus}
+      />
     </Styled.SingleWrapper>
   )
 }

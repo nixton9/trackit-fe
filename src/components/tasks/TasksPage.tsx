@@ -134,6 +134,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
               date={task.date}
               done={task.done}
               category={task.category}
+              disableStatus={done}
             />
           ))
         ) : (

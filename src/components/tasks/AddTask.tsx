@@ -175,7 +175,9 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               text: `Task was successfully updated`,
               type: NotificationTypes.Success
             })
-            refetchTasks()
+            refetchTasks({
+              variables: { done: !done }
+            })
             closeModal()
             cleanData()
           })
