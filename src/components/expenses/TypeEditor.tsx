@@ -63,7 +63,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
         updateType()
           .then(res => {
             setNotification({
-              text: `Type was successfully updated`,
+              text: `Category was successfully updated`,
               type: NotificationTypes.Success
             })
             refetchTypes()
@@ -73,7 +73,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
             setNotification({
               text:
                 err.message === 'duplicated'
-                  ? 'A type with this name already exists'
+                  ? 'A category with this name already exists'
                   : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
@@ -83,7 +83,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
         createType()
           .then(res => {
             setNotification({
-              text: `New type created '${name}'`,
+              text: `New category created '${name}'`,
               type: NotificationTypes.Success
             })
             refetchTypes()
@@ -94,7 +94,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
             setNotification({
               text:
                 err.message === 'duplicated'
-                  ? 'A type with this name already exists'
+                  ? 'A category with this name already exists'
                   : 'There was a problem, please try again',
               type: NotificationTypes.Error
             })
@@ -103,7 +103,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
       }
     } else {
       setNotification({
-        text: `You need to insert a name and a color for a type`,
+        text: `You need to insert a name and a color for a category`,
         type: NotificationTypes.Error
       })
     }
@@ -119,7 +119,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
   }))
 
   const selectOptions = [
-    { label: 'Type color', val: '', disabled: true },
+    { label: 'Category color', val: '', disabled: true },
     ...colorOptions
   ]
 
@@ -144,7 +144,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
       <form onSubmit={handleSubmit}>
         <Styled.TagEditorInput
           value={name}
-          placeholder={'Type name'}
+          placeholder={'Category name'}
           onChange={e => setName(e.target.value)}
         />
         <Styled.TagEditorSelect>

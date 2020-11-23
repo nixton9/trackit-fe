@@ -122,7 +122,9 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
           </Styled.SettingsBlock>
 
           <Styled.SettingsBlock>
-            <Styled.SettingsBlock__Label>Types</Styled.SettingsBlock__Label>
+            <Styled.SettingsBlock__Label>
+              Categories
+            </Styled.SettingsBlock__Label>
             <Styled.SettingsBlock__Categories>
               {types &&
                 types.map(type => (
