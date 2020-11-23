@@ -87,7 +87,7 @@ const NotesPage: React.FC = () => {
 
       <Styled.PageContent>
         {error ? (
-          <PageError>{error.message}</PageError>
+          <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (
           <PageLoading />
         ) : sortedNotes.length ? (

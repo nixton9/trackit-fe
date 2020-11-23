@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeWidget from './misc/HomeWidget'
 import { LoadingSpinner } from './misc/LoadingSpinner'
+import { PageError } from './misc/PageError'
 import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
@@ -69,7 +70,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
             <LoadingSpinner />
           </Styled.HomeLoading>
         ) : hasError ? (
-          <Styled.HomeError>Error loading data</Styled.HomeError>
+          <PageError>Couldn't get data, check your connection.</PageError>
         ) : (
           <Styled.HomeGrid>
             <HomeWidget

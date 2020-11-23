@@ -5,6 +5,6 @@ import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 export const PageError: React.FC = ({ children }) => (
   <Styled.PageError>
     <ErrorIcon />
-    {children}
+    <p>{children}</p>
   </Styled.PageError>
 )

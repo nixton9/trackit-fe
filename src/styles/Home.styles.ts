@@ -59,16 +59,10 @@ const HomeLoading = styled.div`
   align-items: center;
   justify-content: center;
 `
-
-const HomeError = styled.div`
-  width: 100%;
-`
-
 export const Styled = {
   HomeLogo,
   HomeContainer,
   HomeText,
   HomeGrid,
-  HomeLoading,
-  HomeError
+  HomeLoading
 }

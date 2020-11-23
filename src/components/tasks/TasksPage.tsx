@@ -122,7 +122,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
 
       <Styled.PageContent>
         {error ? (
-          <PageError>{error.message}</PageError>
+          <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (
           <PageLoading />
         ) : sortedTasks.length ? (
