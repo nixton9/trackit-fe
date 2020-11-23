@@ -27,7 +27,8 @@ const SingleContainer = styled.article`
   transition: all 0.1s ease;
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     background-color: ${props => props.theme.hoverBlack};
   }
 

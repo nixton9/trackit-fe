@@ -99,9 +99,10 @@ const SidebarNavItem = styled.div`
   line-height: 2.5rem;
   font-weight: ${props => props.theme.fontRegular};
   border-radius: ${props => props.theme.XSBorderRadius};
-  transition: all 0.25s ease;
+  transition: all 0.1s ease;
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: ${props => props.theme.hoverBlack};
   }
 

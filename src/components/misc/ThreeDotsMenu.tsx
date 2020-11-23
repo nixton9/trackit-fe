@@ -28,10 +28,26 @@ const MenuContainer = styled.div`
 `
 
 const Icon = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding: 1rem 2rem;
+  border-radius: 50%;
+
+  &:active:before {
+    content: '';
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    transform: translateY(-50%);
+    background-color: ${props => props.theme.activeBackground};
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    z-index: -1;
+  }
 
   span {
     display: block;

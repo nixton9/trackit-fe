@@ -24,8 +24,10 @@ const theme = {
   backgroundBlack: '#1F2128',
   hoverBlack: '#1d1f25',
   accent: '#7D41FF',
+  darkenAccent: '#3e2377',
   grey: '#757575',
   surfacesBlack: '#222733',
+  activeBackground: '#30323a;',
   habitsRed: '#fd1053',
   habitsGreen: '#23b14f',
   mainGradient:

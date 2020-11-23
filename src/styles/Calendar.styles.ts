@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const CalendarContainer = styled.div`
   position: relative;
@@ -70,6 +70,12 @@ const CalendarHabit__Title = styled.h4`
   margin-bottom: ${props => props.theme.spacingS};
   margin-left: ${props => props.theme.spacingS};
   cursor: pointer;
+  transition: all 0.1s ease;
+
+  &:hover,
+  &:active {
+    background-color: ${props => props.theme.darkenAccent};
+  }
 `
 
 const CalendarDays = styled.div`
@@ -90,6 +96,9 @@ const CalendarDays__Cell = styled.div`
 
   &:not(.disabled) {
     cursor: pointer;
+  }
+  &:active {
+    background-color: #31343e;
   }
   &.today {
     border: 3px solid ${props => props.theme.accent};

@@ -88,7 +88,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
               arrow={false}
               direction={'up'}
             >
-              <Link to="/tasks">
+              <Link to="/tasks" className="mbl-click">
                 <TasksIcon />
               </Link>
             </Tooltip>
@@ -99,7 +99,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
               arrow={false}
               direction={'up'}
             >
-              <Link to="/tasks/done">
+              <Link to="/tasks/done" className="mbl-click">
                 <DoneTasksIcon />
               </Link>
             </Tooltip>
@@ -111,11 +111,13 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
             arrow={false}
             direction={'up'}
           >
-            <TasksSettings
-              categories={categories ? categories.categories : []}
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-            />
+            <div className="mbl-click">
+              <TasksSettings
+                categories={categories ? categories.categories : []}
+                sortBy={sortBy}
+                setSortBy={setSortBy}
+              />
+            </div>
           </Tooltip>
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>

@@ -68,6 +68,10 @@ const DatePickerContainer = styled.div`
     font-weight: ${props => props.theme.fontRegular};
     font-size: 1.4rem;
   }
+  .react-datepicker__day:hover,
+  .react-datepicker__day:active {
+    background-color: #31343e;
+  }
   .react-datepicker__day--selected {
     background-color: ${props => props.theme.accent};
   }

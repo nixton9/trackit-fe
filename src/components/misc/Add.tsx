@@ -63,7 +63,9 @@ const Add: React.FC = () => {
   }
 
   useEffect(() => {
-    if (activeContent) setOpen(true)
+    if (activeContent) {
+      setTimeout(() => setOpen(true), 200)
+    }
   }, [activeContent, setOpen])
 
   let drawerTitle

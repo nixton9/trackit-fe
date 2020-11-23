@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: #30323a;
+        background-color: ${props => props.theme.activeBackground};
         border-radius: 50%;
         transition: all 0.2s ease-in-out;
         z-index: -1;

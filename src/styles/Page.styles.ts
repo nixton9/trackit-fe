@@ -45,13 +45,11 @@ const PageHeader__View__Dropdown = styled.div`
     min-width: 11rem;
     padding: 0.6rem 1.5rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
 
-    &:hover {
-      filter: contrast(1.5);
-    }
-    &::active {
-      filter: contrast(2);
+    &:hover,
+    &:active {
+      background-color: ${props => props.theme.darkenAccent};
     }
   }
 
@@ -61,10 +59,11 @@ const PageHeader__View__Dropdown = styled.div`
     border-radius: ${props => props.theme.smallBorderRadius};
     width: 11rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
 
-    &:hover {
-      background: #7c22ff;
+    &:hover,
+    &:active {
+      background-color: ${props => props.theme.darkenAccent};
     }
 
     &:last-child {
@@ -134,6 +133,7 @@ const PageHeader__Settings = styled.div`
   }
 
   a {
+    position: relative;
     display: inherit;
     margin-right: ${props => props.theme.spacingXS};
   }
