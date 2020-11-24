@@ -31,10 +31,11 @@ const SettingsBlock__Input = styled.div`
     padding: 1rem;
     min-width: 7rem;
     line-height: 2rem;
-    border-radius: ${props => props.theme.XSBorderRadius}
-    transition: all 0.25s ease;
+    border-radius: ${props => props.theme.XSBorderRadius};
+    transition: all 0.1s ease;
 
-    &:hover {
+    &:hover,
+    &:active {
       background: ${props => props.theme.backgroundBlack};
     }
   }
@@ -69,6 +70,11 @@ const SettingsBlock__Categories = styled.div`
 
 const SettingsBlock__Category = styled.div<SettingsBlock__CategoryProps>`
   position: relative;
+  transition: all 0.1s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
 
   .inner {
     background-color: ${props => props.color};
@@ -109,6 +115,9 @@ const SettingsBlock__Category = styled.div<SettingsBlock__CategoryProps>`
 `
 
 const SettingsBlock__Icon = styled.span`
+  position: relative;
+  max-height: 2rem;
+
   svg {
     width: 1.7rem !important;
     cursor: pointer;

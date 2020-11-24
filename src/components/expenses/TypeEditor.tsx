@@ -157,6 +157,9 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
           />
         </Styled.TagEditorSelect>
         <AddSubmitButton plusIcon={!isEdit} />
+        <Styled.TagEditorClose className="mbl-click" onClick={closeEditor}>
+          +
+        </Styled.TagEditorClose>
       </form>
     </Styled.TagEditorContainer>
   )

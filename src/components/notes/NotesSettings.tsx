@@ -133,7 +133,10 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
                     onDelete={() => handleDeleteTagConfirm(tag.id)}
                   />
                 ))}
-              <Styled.SettingsBlock__Icon onClick={handlePlusClick}>
+              <Styled.SettingsBlock__Icon
+                onClick={handlePlusClick}
+                className="mbl-click"
+              >
                 <PlusIcon />
               </Styled.SettingsBlock__Icon>
             </Styled.SettingsBlock__Tags>

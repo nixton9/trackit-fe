@@ -330,11 +330,17 @@ const DetailTags = styled.div`
   background-color: ${props => props.theme.surfacesBlack};
   border-radius: ${props => props.theme.smallBorderRadius};
 
+  .mbl-click:before {
+    z-index: 0 !important;
+  }
+
   svg {
+    position: relative;
     width: 2rem;
     fill: ${props => props.theme.white};
     margin-left: auto;
     cursor: pointer;
+    transform: translateY(2px);
   }
 `
 
@@ -357,7 +363,7 @@ const DetailTagEditor = styled.div`
 `
 
 const DetailContent = styled.p`
-  margin-top: ${props => props.theme.spacingM};
+  margin-top: ${props => props.theme.spacingS};
   color: ${props => props.theme.white};
 `
 

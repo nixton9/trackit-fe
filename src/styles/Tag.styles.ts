@@ -7,6 +7,11 @@ type TagChipProps = {
 
 const TagChip = styled.div<TagChipProps>`
   position: relative;
+  transition: all 0.1s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
 
   .inner {
     background-color: ${props => props.color};

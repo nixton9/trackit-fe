@@ -34,7 +34,7 @@ const EditorContainer = styled.div<EditorContainerProps>`
   }
 
   .ql-editor {
-    padding: ${props => props.theme.spacingS};
+    padding: ${props => props.theme.spacingXS};
   }
 
   .ql-snow .ql-stroke {

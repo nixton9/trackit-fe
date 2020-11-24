@@ -274,7 +274,9 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               arrow={false}
               direction={'up'}
             >
-              <PlusIcon onClick={handlePlusClick} />
+              <div onClick={handlePlusClick} className="mbl-click">
+                <PlusIcon />
+              </div>
             </Tooltip>
           </Styled.DetailTags>
 

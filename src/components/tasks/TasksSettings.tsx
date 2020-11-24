@@ -145,7 +145,10 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
                     </span>
                   </Styled.SettingsBlock__Category>
                 ))}
-              <Styled.SettingsBlock__Icon onClick={handlePlusClick}>
+              <Styled.SettingsBlock__Icon
+                className="mbl-click"
+                onClick={handlePlusClick}
+              >
                 <PlusIcon />
               </Styled.SettingsBlock__Icon>
             </Styled.SettingsBlock__Categories>

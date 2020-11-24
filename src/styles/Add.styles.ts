@@ -212,10 +212,11 @@ const AddWidget__Button = styled.button`
   border-radius: ${props => props.theme.smallBorderRadius};
   margin-left: auto;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 
-  &:hover {
-    filter: contrast(1.5);
+  &:hover,
+  &:active {
+    background-color: ${props => props.theme.darkenAccent};
   }
 
   svg {

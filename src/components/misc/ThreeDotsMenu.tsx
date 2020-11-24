@@ -1,6 +1,6 @@
 import React from 'react'
 import { useToggleElement } from '../../utils/useToggleElement'
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components/macro'
 
 type ThreeDotsMenuProps = {
   options?: { label: string; onClick: () => void }[]
@@ -78,12 +78,14 @@ const MenuItem = styled.li`
   font-size: 1.5rem;
   font-weight: ${props => props.theme.fontRegular};
   line-height: 1.5;
-  padding: 0.6rem 2.5rem 0.6rem 1.5rem;
+  padding: 1.2rem 2.5rem 1.2rem 1.5rem;
   min-width: 12rem;
   cursor: pointer;
+  transition: all 0.1s ease;
 
-  &:hover {
-    background-color: ${props => props.theme.grey};
+  &:hover,
+  &:active {
+    background-color: ${props => props.theme.hoverBlack};
   }
 `
 
