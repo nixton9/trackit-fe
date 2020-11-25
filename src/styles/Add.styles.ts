@@ -103,8 +103,9 @@ const AddWidget = styled.div`
   cursor: pointer;
   transition: all 0.2s ease;
 
-  &:hover {
-    filter: contrast(1.07);
+  &:hover,
+  &:active {
+    background-color: #17181b;
   }
 
   &:last-of-type {
@@ -134,6 +135,9 @@ const AddWidget = styled.div`
       font-weight: ${props => props.theme.fontRegular} !important;
       margin-left: 1rem;
       width: 5rem;
+      background: transparent;
+      border: none;
+      color: inherit;
       cursor: pointer;
     }
   }
@@ -201,6 +205,10 @@ const AddWidget = styled.div`
     .svg-stroke {
       stroke: ${props => props.theme.offWhite};
     }
+  }
+
+  &.no-datepicker .react-datepicker__portal {
+    display: none;
   }
 `
 

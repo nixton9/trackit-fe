@@ -25,8 +25,7 @@ const DrawerContainer = styled.div<DrawerContainerProps>`
   border-top-left-radius: ${props => props.theme.mainBorderRadius};
   border-top-right-radius: ${props => props.theme.mainBorderRadius};
   box-shadow: 0 -23px 16px 0 rgba(0, 0, 0, 0.07);
-  transform: ${props => (props.open ? 'translateY(0);' : 'translateY(101%);')};
-  will-change: transform;
+  transform: ${props => (props.open ? 'unset;' : 'translateY(101%);')};
   transition: transform 0.15s linear;
   z-index: 111;
 `

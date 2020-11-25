@@ -39,6 +39,7 @@ const DatePickerInput: React.FC<DatePickerProps> = ({
         onCalendarClose={onClose}
         onChangeRaw={onChangeRaw}
         onFocus={e => (e.target.readOnly = true)}
+        withPortal
       />
     </Styled.DatePickerContainer>
   )

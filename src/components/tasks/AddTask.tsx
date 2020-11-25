@@ -314,7 +314,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const isLoading =
     loading || loadingCategories || loadingEdit || loadingGet || loadingDelete
-
+  console.log(isDatePickerOpen)
   return isLoading ? (
     <Styled.AddLoading>
       <LoadingSpinner />
@@ -339,7 +339,10 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
         </Styled.AddInputWrapper>
 
         <Styled.AddWidgetsContainer>
-          <Styled.AddWidget onClick={clickDateInput}>
+          <Styled.AddWidget
+            onClick={clickDateInput}
+            className={isDatePickerOpen ? 'has-datepicker' : 'no-datepicker'}
+          >
             <span>{<CalendarIcon />}</span>
             <Select
               value={dateSelect}
