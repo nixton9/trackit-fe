@@ -57,7 +57,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
 
   return (
     <>
-      <Styled.HomeLogo>Trackit</Styled.HomeLogo>
+      <Styled.HomeLogo>Trckr</Styled.HomeLogo>
 
       <Styled.HomeContainer>
         <Styled.HomeText>

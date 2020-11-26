@@ -56,11 +56,10 @@ const AddInput = styled.input`
 `
 
 const AddInput__Label = styled.label`
-  color: ${props => props.theme.accent};
-  font-size: 1.5rem;
+  color: ${props => props.theme.grey};
+  font-size: 2rem;
   font-weight: ${props => props.theme.fontBold};
   margin-right: 2rem;
-  transform: translateY(-2px);
 `
 
 const AddEditor = styled.div``
