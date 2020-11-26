@@ -6,6 +6,7 @@ import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg'
 import { gql, useMutation } from '@apollo/client'
 import { useParams } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 const RESET_PASSWORD = gql`
   mutation resetPassword(
@@ -35,6 +36,8 @@ const ResetPassword: React.FC = () => {
 
   const { email, token } = useParams()
 
+  const history = useHistory()
+
   const [resetPw, { error, loading }] = useMutation<ResetPwData>(
     RESET_PASSWORD,
     {
@@ -52,6 +55,7 @@ const ResetPassword: React.FC = () => {
       .then(results => {
         if (results && results.data && results.data.resetPassword) {
           setMessage('Your password was updated successfully.')
+          setTimeout(() => history.push('/'), 2000)
         }
       })
       .catch(err => console.log(err))
