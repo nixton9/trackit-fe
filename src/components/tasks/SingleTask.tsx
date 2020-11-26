@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { taskIdState } from './AddTask'
 import { TaskStatus } from './TaskStatus'
 import { activeContentState, isEditState } from '../misc/Add'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { Styled } from '../../styles/Single.styles'
 import { ModuleTypes, Task } from '../../utils/ModuleTypes'
+import { taskIdState } from '../../utils/atoms'
 import {
   displayDateString,
   isPastDate,

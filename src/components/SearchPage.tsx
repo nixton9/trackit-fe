@@ -3,14 +3,13 @@ import { TaskStatus } from './tasks/TaskStatus'
 import { PageLoading } from './misc/PageLoading'
 import { PageError } from './misc/PageError'
 import { Styled } from '../styles/Page.styles'
-import { taskIdState } from './tasks/AddTask'
-import { expenseIdState } from './expenses/AddExpense'
 import { currencyState } from './expenses/ExpensesSettings'
-import { habitIdState } from './habits/AddHabit'
 import { activeContentState, isEditState } from './misc/Add'
 import { SEARCH } from '../utils/queries'
+import { habitIdState } from '../utils/atoms'
 import { ModuleTypes } from '../utils/ModuleTypes'
 import { showCurrencySym } from '../utils/globalHelpers'
+import { taskIdState, expenseIdState } from '../utils/atoms'
 import {
   displayDateString,
   parseDateInverse,

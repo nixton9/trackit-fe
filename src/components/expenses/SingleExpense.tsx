@@ -3,7 +3,7 @@ import { Styled } from '../../styles/Single.styles'
 import { ModuleTypes, Expense, Currencies } from '../../utils/ModuleTypes'
 import { showCurrencySym } from '../../utils/globalHelpers'
 import { activeContentState, isEditState } from '../misc/Add'
-import { expenseIdState } from './AddExpense'
+import { expenseIdState } from '../../utils/atoms'
 import { useSetRecoilState } from 'recoil'
 
 interface SingleExpenseProps extends Expense {

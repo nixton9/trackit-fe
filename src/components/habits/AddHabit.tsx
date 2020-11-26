@@ -7,43 +7,11 @@ import { NotificationTypes, notificationState } from '../misc/Notification'
 import { alertState } from '../misc/Alert'
 import { Styled } from '../../styles/Add.styles'
 import { HABITS, SINGLE_HABIT } from '../../utils/queries'
-import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { atom, useRecoilState, useSetRecoilState } from 'recoil'
+import { CREATE_HABIT, DELETE_HABIT, UPDATE_HABIT } from '../../utils/mutations'
+import { habitIdState, habitTitleState } from '../../utils/atoms'
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { useHistory } from 'react-router-dom'
-
-const CREATE_HABIT = gql`
-  mutation CreateHabit($title: String!) {
-    createHabit(title: $title) {
-      id_habit
-    }
-  }
-`
-
-const DELETE_HABIT = gql`
-  mutation DeleteHabit($id: ID!) {
-    deleteHabit(id: $id) {
-      id_habit
-    }
-  }
-`
-
-const UPDATE_HABIT = gql`
-  mutation UpdateHabit($id: ID!, $title: String) {
-    updateHabit(id: $id, title: $title) {
-      id_habit
-    }
-  }
-`
-
-export const habitIdState = atom({
-  key: 'habitId',
-  default: ''
-})
-
-export const habitTitleState = atom({
-  key: 'habitTitle',
-  default: ''
-})
 
 const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [habitId, setHabitId] = useRecoilState(habitIdState)

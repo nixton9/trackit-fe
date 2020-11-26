@@ -6,39 +6,14 @@ import { NotificationTypes, notificationState } from '../misc/Notification'
 import { Styled } from '../../styles/Add.styles'
 import { TagsInput, Tag } from './TagsInput'
 import { NOTES } from '../../utils/queries'
+import { CREATE_NOTE, ADD_TAG_TO_NOTE, CREATE_TAG } from '../../utils/mutations'
 import theme from '../../styles/theme'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg'
-import { gql, useMutation, useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import { useHistory } from 'react-router-dom'
 import 'react-quill/dist/quill.snow.css'
-
-const CREATE_NOTE = gql`
-  mutation CreateNote($title: String!, $content: String!) {
-    createNote(title: $title, content: $content) {
-      id_note
-      title_note
-      content_note
-    }
-  }
-`
-
-export const ADD_TAG_TO_NOTE = gql`
-  mutation AddTagToNote($note: ID!, $tag: ID!) {
-    addTagToNote(note: $note, tag: $tag) {
-      note_id
-    }
-  }
-`
-
-export const CREATE_TAG = gql`
-  mutation CreateTag($name: String!, $color: String!) {
-    createTag(name: $name, color: $color) {
-      id_tag
-    }
-  }
-`
 
 type CreateNoteData = {
   createNote: {
@@ -54,7 +29,7 @@ type CreateTagData = {
   }
 }
 
-type AddTagToNotData = {
+type AddTagToNoteData = {
   addTagToNote: {
     note_id: string
   }
@@ -70,7 +45,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   const setNotification = useSetRecoilState(notificationState)
 
   const { refetch: refetchNotes } = useQuery(NOTES)
-  const [addTagToNote] = useMutation<AddTagToNotData>(ADD_TAG_TO_NOTE)
+  const [addTagToNote] = useMutation<AddTagToNoteData>(ADD_TAG_TO_NOTE)
   const [createTag] = useMutation<CreateTagData>(CREATE_TAG)
   const [createNote, { loading }] = useMutation<CreateNoteData>(CREATE_NOTE, {
     variables: { title: title, content: content }

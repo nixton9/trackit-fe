@@ -2,7 +2,7 @@ import React, { ReactText } from 'react'
 import { Styled } from '../../styles/Calendar.styles'
 import { ModuleTypes } from '../../utils/ModuleTypes'
 import { activeContentState, isEditState } from '../misc/Add'
-import { habitIdState } from './AddHabit'
+import { habitIdState } from '../../utils/atoms'
 import { useSetRecoilState } from 'recoil'
 
 type HabitHeaderProps = {

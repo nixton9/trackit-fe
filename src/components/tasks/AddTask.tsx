@@ -15,6 +15,14 @@ import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.
 import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { TASKS, CATEGORIES, SINGLE_TASK } from '../../utils/queries'
+import { CREATE_TASK, DELETE_TASK, UPDATE_TASK } from '../../utils/mutations'
+import {
+  taskIdState,
+  taskTitleState,
+  taskCategoryState,
+  taskDateState,
+  taskDoneState
+} from '../../utils/atoms'
 import {
   parseDate,
   parseDateInverse,
@@ -22,74 +30,12 @@ import {
   displayDateString
 } from '../../utils/dateHelpers'
 import { DrawerAddModuleProps } from '../misc/Add'
-import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { atom, useRecoilState, useSetRecoilState } from 'recoil'
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { addDays } from 'date-fns'
 import { useHistory } from 'react-router-dom'
 
-const CREATE_TASK = gql`
-  mutation CreateTask($title: String!, $date: String, $category: ID) {
-    createTask(title: $title, date: $date, category: $category) {
-      id_task
-      title_task
-    }
-  }
-`
-
-const DELETE_TASK = gql`
-  mutation DeleteTask($id: ID!) {
-    deleteTask(id: $id) {
-      id_task
-    }
-  }
-`
-
-const UPDATE_TASK = gql`
-  mutation UpdateTask(
-    $id: ID!
-    $title: String
-    $date: String
-    $done: Boolean
-    $category: ID
-  ) {
-    updateTask(
-      id: $id
-      title: $title
-      date: $date
-      done: $done
-      category: $category
-    ) {
-      id_task
-      title_task
-    }
-  }
-`
 const NOW = new Date()
-
-export const taskIdState = atom({
-  key: 'taskId',
-  default: ''
-})
-
-export const taskTitleState = atom({
-  key: 'taskTitle',
-  default: ''
-})
-
-export const taskCategoryState = atom({
-  key: 'taskCategory',
-  default: '0'
-})
-
-export const taskDateState = atom({
-  key: 'taskDate',
-  default: NOW
-})
-
-export const taskDoneState = atom({
-  key: 'taskDone',
-  default: false
-})
 
 const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [taskId, setTaskId] = useRecoilState(taskIdState)
@@ -314,7 +260,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const isLoading =
     loading || loadingCategories || loadingEdit || loadingGet || loadingDelete
-  console.log(isDatePickerOpen)
+
   return isLoading ? (
     <Styled.AddLoading>
       <LoadingSpinner />

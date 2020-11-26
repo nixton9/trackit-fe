@@ -14,77 +14,23 @@ import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.
 import { ExpenseType } from '../../utils/ModuleTypes'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { EXPENSES, TYPES, SINGLE_EXPENSE } from '../../utils/queries'
+import {
+  CREATE_EXPENSE,
+  DELETE_EXPENSE,
+  UPDATE_EXPENSE
+} from '../../utils/mutations'
+import {
+  expenseIdState,
+  expenseValueState,
+  expenseTitleState,
+  expenseTypeState,
+  expenseDateState
+} from '../../utils/atoms'
 import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 import { showCurrencySym } from '../../utils/globalHelpers'
-import { gql, useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client'
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 import { useHistory } from 'react-router-dom'
-
-const CREATE_EXPENSE = gql`
-  mutation CreateExpense(
-    $title: String!
-    $date: String!
-    $value: Float!
-    $type: ID
-  ) {
-    createExpense(title: $title, date: $date, value: $value, type: $type) {
-      id_expense
-    }
-  }
-`
-
-const DELETE_EXPENSE = gql`
-  mutation DeleteExpense($id: ID!) {
-    deleteExpense(id: $id) {
-      id_expense
-    }
-  }
-`
-
-const UPDATE_EXPENSE = gql`
-  mutation UpdateExpense(
-    $id: ID!
-    $title: String
-    $date: String
-    $value: Float
-    $type: ID
-  ) {
-    updateExpense(
-      id: $id
-      title: $title
-      date: $date
-      value: $value
-      type: $type
-    ) {
-      id_expense
-    }
-  }
-`
-
-export const expenseIdState = atom({
-  key: 'expenseId',
-  default: ''
-})
-
-export const expenseValueState = atom<number | string | undefined>({
-  key: 'expenseValue',
-  default: undefined
-})
-
-export const expenseTitleState = atom({
-  key: 'expenseTitle',
-  default: ''
-})
-
-export const expenseTypeState = atom({
-  key: 'expenseType',
-  default: '0'
-})
-
-export const expenseDateState = atom({
-  key: 'expenseDate',
-  default: new Date()
-})
 
 const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [expenseId, setExpenseId] = useRecoilState(expenseIdState)
