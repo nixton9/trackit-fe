@@ -37,6 +37,7 @@ const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
   const [nameVal, setNameVal] = useState('')
   const [emailVal, setEmailVal] = useState('')
   const [passwordVal, setPasswordVal] = useState('')
+  const [formError, setFormError] = useState('')
 
   const passwordEl = useRef<HTMLInputElement>(null)
   const iconEl = useRef<SVGSVGElement>(null)
@@ -61,20 +62,26 @@ const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
 
   const handleRegister = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault()
-    register()
-      .then(results => {
-        if (results && results.data && results.data.signup) {
-          setToken(results.data.signup.token)
-          setUserInfo({
-            id: results.data.signup.user.id_user,
-            name: results.data.signup.user.name_user,
-            email: results.data.signup.user.email_user,
-            image: results.data.signup.user.image_user
-          })
-          history.push('/')
-        }
-      })
-      .catch(err => console.log(err))
+
+    if (passwordVal.length < 6) {
+      setFormError('Password needs to have at least 6 characters')
+    } else {
+      setFormError('')
+      register()
+        .then(results => {
+          if (results && results.data && results.data.signup) {
+            setToken(results.data.signup.token)
+            setUserInfo({
+              id: results.data.signup.user.id_user,
+              name: results.data.signup.user.name_user,
+              email: results.data.signup.user.email_user,
+              image: results.data.signup.user.image_user
+            })
+            history.push('/')
+          }
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   return (
@@ -136,11 +143,18 @@ const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
           </Styled.SignInSignUpForm__Button>
         </Styled.SignInSignUpForm>
 
-        {error && (
+        {error ? (
           <Styled.SignInSignUpMessage>
             <ErrorIcon />
             <p>{error.message}</p>
           </Styled.SignInSignUpMessage>
+        ) : (
+          formError && (
+            <Styled.SignInSignUpMessage>
+              <ErrorIcon />
+              <p>{formError}</p>
+            </Styled.SignInSignUpMessage>
+          )
         )}
       </Styled.SignInSignUpContainer>
     </>

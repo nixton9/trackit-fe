@@ -100,6 +100,14 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
   }
 
   const updateUserPW = () => {
+    console.log(newPassword.length)
+    if (newPassword.length < 6) {
+      setNotification({
+        text: 'New password needs to have at least 6 characters',
+        type: NotificationTypes.Error
+      })
+      return
+    }
     updateUserPassword()
       .then(res => {
         setNotification({
