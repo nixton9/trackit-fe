@@ -16,6 +16,17 @@ const SidebarToggle = styled.div`
   }
 `
 
+const SidebarOverlay = styled.div<SidebarContainerProps>`
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: ${props => (props.open ? 'block' : 'none')};
+  z-index: 1;
+`
+
 const SidebarContainer = styled.div<SidebarContainerProps>`
   position: fixed;
   top: 0;
@@ -41,17 +52,15 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
       stroke: ${props => props.theme.accent};
     }
   }
-`
 
-const SidebarOverlay = styled.div<SidebarContainerProps>`
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  overflow: hidden;
-  display: ${props => (props.open ? 'block' : 'none')};
-  z-index: 1;
+  .user-anchor {
+    padding: 1rem 0;
+
+    &:hover,
+    &:active {
+      background-color: ${props => props.theme.hoverBlack};
+    }
+  }
 `
 
 const SidebarNav = styled.nav`

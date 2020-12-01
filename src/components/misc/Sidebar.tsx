@@ -26,7 +26,9 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
     logout()
   }
 
-  return (
+  const hasUser = Boolean(user.id) && Boolean(user.name) && Boolean(user.email)
+
+  return hasUser ? (
     <>
       <Styled.SidebarToggle
         className="mbl-click"
@@ -36,7 +38,10 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
       </Styled.SidebarToggle>
 
       <Styled.SidebarContainer open={open}>
-        <UserHeader user={user} small />
+        <NavLink to="/settings" className="user-anchor">
+          <UserHeader user={user} small />
+        </NavLink>
+
         <Styled.SidebarNav>
           <div>
             <NavLink
@@ -107,7 +112,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
 
       <Styled.SidebarOverlay open={open} ref={overlayEl} />
     </>
-  )
+  ) : null
 }
 
 export default Sidebar
