@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components/macro'
 
 const SlideDown = keyframes`
     0% {
@@ -18,7 +18,7 @@ const NotificationContainer = styled.div`
   background-color: ${props => props.theme.surfacesBlack};
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.smallBorderRadius};
-  z-index: 11;
+  z-index: 111;
   animation: ${SlideDown} 0.15s linear forwards;
 `
 
@@ -58,6 +58,8 @@ const Alert = styled.div`
 
 const Alert__Buttons = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: ${props => props.theme.spacingXS};
 
   button {

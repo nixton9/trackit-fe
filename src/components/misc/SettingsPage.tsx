@@ -22,7 +22,9 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
   const [selectedFile, setSelectedFile] = useState('')
   const [isLoadingProfile, setIsLoadingProfile] = useState(false)
 
-  const [updateUserInfo] = useMutation(UPDATE_USER_INFO)
+  const [updateUserInfo, { loading: loadingUserInfo }] = useMutation(
+    UPDATE_USER_INFO
+  )
 
   const [updateUserPassword, { loading: loadingPassword }] = useMutation(
     UPDATE_USER_PASSWORD,
@@ -39,12 +41,14 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
 
   const imageFileRef = useRef<HTMLInputElement>(null)
 
-  const updateUser = (img?: string) => {
+  const updateUser = (img?: string, deleteImage?: boolean) => {
     updateUserInfo({
-      variables: {
-        name: name || undefined,
-        image: img || image || undefined
-      }
+      variables: deleteImage
+        ? { image: null }
+        : {
+            name: name || undefined,
+            image: img || image || undefined
+          }
     })
       .then(res => {
         const { id, name, email, image } = res.data.updateUserInfo
@@ -66,7 +70,6 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
   }
 
   const updateProfile = () => {
-    console.log('here')
     setIsLoadingProfile(true)
     //@ts-ignore
     const { files } = document.querySelector('input[type="file"]')
@@ -116,6 +119,13 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
       })
   }
 
+  const handleDeleteImage = () => {
+    setAlert({
+      text: 'Are you sure you want to remove your picture?',
+      onConfirm: () => updateUser('', true)
+    })
+  }
+
   useEffect(() => {
     if (imageFileRef && imageFileRef.current) {
       imageFileRef.current.addEventListener('change', () => {
@@ -128,7 +138,7 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
       })
     }
   }, [imageFileRef])
-  console.log(isLoadingProfile)
+
   return (
     <Styled.PageContainer>
       <UserHeader user={user} />
@@ -137,7 +147,7 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
         <Styled.Settings_Title>User Profile</Styled.Settings_Title>
 
         <Styled.SettingsBlock>
-          {isLoadingProfile ? (
+          {isLoadingProfile || loadingUserInfo ? (
             <LoadingSpinner />
           ) : (
             <>
@@ -156,7 +166,9 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
                   <label htmlFor="image-file">Change picture</label>
                   <small>{selectedFile}</small>
                 </div>
-                <span onClick={() => console.log('lol')}>Delete picture</span>
+                {user.image && (
+                  <span onClick={handleDeleteImage}>Delete picture</span>
+                )}
               </div>
 
               <Styled.SettingsButton
