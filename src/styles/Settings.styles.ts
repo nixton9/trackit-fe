@@ -7,6 +7,8 @@ type SettingsBlock__CategoryProps = {
 const SettingsBlock = styled.div`
   margin-bottom: ${props => props.theme.spacingS};
   position: relative;
+  
+  }
 `
 const SettingsBlock__Label = styled.label`
   font-weight: ${props => props.theme.fontExtraBold};

@@ -443,6 +443,99 @@ const SearchResults__Item__Value = styled.span`
   margin-left: auto;
 `
 
+const Settings_Title = styled.h3`
+  color: ${props => props.theme.white};
+  font-size: 2rem;
+  font-weight: ${props => props.theme.fontBold};
+  margin-top: ${props => props.theme.spacingM};
+
+  &.second {
+    margin-top: ${props => props.theme.spacingL};
+  }
+`
+
+const SettingsBlock = styled.div`
+  margin-top: ${props => props.theme.spacingS};
+  padding-left: ${props => props.theme.spacingXS};
+  position: relative;
+  min-height: 6rem;
+
+  .loading-spinner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+  }
+
+  .file-picker {
+    position: relative;
+    display: inline-block;
+
+    input {
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+
+    small {
+      position: absolute;
+      font-size: 1.3rem;
+      font-weight: ${props => props.theme.fontMedium};
+      color: ${props => props.theme.grey};
+      top: 2.7rem;
+      left: 0.5rem;
+    }
+  }
+
+  label {
+    color: ${props => props.theme.white};
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontBold};
+    display: block;
+  }
+
+  input {
+    background: transparent;
+    color: ${props => props.theme.white};
+    border: none;
+    font-size: 1.75rem;
+    font-weight: ${props => props.theme.fontExtraLight};
+    margin-top: ${props => props.theme.spacingXXS};
+  }
+
+  .image,
+  .new-password {
+    margin-top: ${props => props.theme.spacingS};
+  }
+
+  .file-picker label,
+  span {
+    color: ${props => props.theme.white};
+    font-weight: ${props => props.theme.fontExtraBold};
+    font-size: 1.5rem;
+    margin-right: ${props => props.theme.spacingS};
+    cursor: pointer;
+  }
+`
+
+const SettingsButton = styled.button`
+  color: ${props => props.theme.white};
+  background-color: ${props => props.theme.accent};
+  font-size: 1.4rem;
+  font-weight: ${props => props.theme.fontSemiBold};
+  border: none;
+  margin-top: 4rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: ${props => props.theme.smallBorderRadius};
+
+  &:disabled {
+    opacity: 0.5;
+  }
+`
+
 export const Styled = {
   PageContainer,
   PageTitle,
@@ -474,5 +567,8 @@ export const Styled = {
   SearchResults__Item,
   SearchResults__Item__Title,
   SearchResults__Item__Date,
-  SearchResults__Item__Value
+  SearchResults__Item__Value,
+  Settings_Title,
+  SettingsBlock,
+  SettingsButton
 }

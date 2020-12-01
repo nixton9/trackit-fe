@@ -13,6 +13,7 @@ import ResetPassword from './auth/ResetPassword'
 import Sidebar from './misc/Sidebar'
 import Search from './misc/Search'
 import Add from './misc/Add'
+import SettingsPage from './misc/SettingsPage'
 import { Notification } from './misc/Notification'
 import { Alert } from './misc/Alert'
 import { GlobalStyle } from '../styles/globalstyles'
@@ -37,6 +38,13 @@ const App: React.FC = () => {
   const logout = () => {
     setToken('')
     setUserInfo({})
+  }
+
+  const refreshUserInfo = () => {
+    const userInfo = window.localStorage.getItem('user')
+    if (userInfo) {
+      setUserInfo(JSON.parse(userInfo))
+    }
   }
 
   const client = new ApolloClient({
@@ -72,6 +80,12 @@ const App: React.FC = () => {
                 </Route>
                 <Route exact path="/habits">
                   <HabitsPage />
+                </Route>
+                <Route exact path="/settings">
+                  <SettingsPage
+                    user={userInfo}
+                    refreshUserInfo={refreshUserInfo}
+                  />
                 </Route>
                 <Route
                   exact

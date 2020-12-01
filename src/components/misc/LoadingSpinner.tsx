@@ -32,7 +32,7 @@ const DoubleBounce = styled.div`
 `
 
 export const LoadingSpinner: React.FC = () => (
-  <Spinner>
+  <Spinner className="loading-spinner">
     <DoubleBounce />
     <DoubleBounce className="doublebounce2" />
   </Spinner>

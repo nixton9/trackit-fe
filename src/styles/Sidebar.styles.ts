@@ -54,34 +54,6 @@ const SidebarOverlay = styled.div<SidebarContainerProps>`
   z-index: 1;
 `
 
-const SidebarUser = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
-`
-
-const SidebarUser__Img = styled.img`
-  border-radius: 50%;
-  width: 4.5rem;
-  object-fit: contain;
-`
-
-const SidebarUser__Info = styled.div`
-  margin-left: ${props => props.theme.spacingXXS};
-`
-
-const SidebarUser__Info__Name = styled.h3`
-  color: ${props => props.theme.white};
-  font-weight: ${props => props.theme.fontRegular};
-  font-size: 1.8rem;
-`
-
-const SidebarUser__Info__Email = styled.p`
-  color: ${props => props.theme.grey};
-  font-weight: ${props => props.theme.fontSemiBold};
-  font-size: 1.1rem;
-`
-
 const SidebarNav = styled.nav`
   height: 100%;
   display: flex;
@@ -123,11 +95,6 @@ export const Styled = {
   SidebarToggle,
   SidebarContainer,
   SidebarOverlay,
-  SidebarUser,
-  SidebarUser__Img,
-  SidebarUser__Info,
-  SidebarUser__Info__Name,
-  SidebarUser__Info__Email,
   SidebarNav,
   SidebarNavItem
 }

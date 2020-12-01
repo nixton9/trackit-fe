@@ -128,3 +128,22 @@ export const UPDATE_HABIT = gql`
     }
   }
 `
+
+export const UPDATE_USER_INFO = gql`
+  mutation UpdateUserInfo($name: String, $image: String) {
+    updateUserInfo(name: $name, image: $image) {
+      id: id_user
+      name: name_user
+      email: email_user
+      image: image_user
+    }
+  }
+`
+
+export const UPDATE_USER_PASSWORD = gql`
+  mutation UpdateUserPassword($password: String!, $newPassword: String!) {
+    updateUserPassword(password: $password, newPassword: $newPassword) {
+      id: id_user
+    }
+  }
+`

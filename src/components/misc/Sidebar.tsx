@@ -1,4 +1,6 @@
 import React from 'react'
+import { UserHeader } from './UserHeader'
+import { User } from '../../utils/ModuleTypes'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg'
 import { ReactComponent as HomeIcon } from '../../assets/icons/home.svg'
@@ -11,15 +13,8 @@ import { ReactComponent as LogoutIcon } from '../../assets/icons/logout.svg'
 import { Styled } from '../../styles/Sidebar.styles'
 import { NavLink } from 'react-router-dom'
 
-const defaultAvatar =
-  'https://everydaynutrition.co.uk/wp-content/uploads/2015/01/default-user-avatar.png'
-
 interface SidebarProps {
-  user: {
-    image: string
-    name: string
-    email: string
-  }
+  user: User
   logout: () => void
 }
 
@@ -41,21 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
       </Styled.SidebarToggle>
 
       <Styled.SidebarContainer open={open}>
-        <Styled.SidebarUser>
-          <Styled.SidebarUser__Img
-            alt={user.name}
-            src={user.image ? user.image : defaultAvatar}
-          />
-          <Styled.SidebarUser__Info>
-            <Styled.SidebarUser__Info__Name>
-              {user.name}
-            </Styled.SidebarUser__Info__Name>
-            <Styled.SidebarUser__Info__Email>
-              {user.email}
-            </Styled.SidebarUser__Info__Email>
-          </Styled.SidebarUser__Info>
-        </Styled.SidebarUser>
-
+        <UserHeader user={user} small />
         <Styled.SidebarNav>
           <div>
             <NavLink
