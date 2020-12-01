@@ -3,15 +3,15 @@
 exports[`Drawer matches snapshot 1`] = `
 <div>
   <div
-    class="sc-AxjAm khxSQh"
+    class="Drawerstyles__DrawerContainer-u5jgzg-0 lkcEUU"
   >
     <h2
-      class="sc-AxiKw jzoYkp"
+      class="Drawerstyles__DrawerTitle-u5jgzg-2 eCJKZq"
     >
       Settings
     </h2>
     <div
-      class="sc-AxhCb bCDkJU"
+      class="Drawerstyles__DrawerContent-u5jgzg-3 jAyGXs"
     >
       <div>
         <h3>
@@ -24,7 +24,7 @@ exports[`Drawer matches snapshot 1`] = `
     </div>
   </div>
   <div
-    class="sc-AxirZ gpexXZ"
+    class="Drawerstyles__DrawerOverlay-u5jgzg-1 jzRVJQ"
   />
 </div>
 `;

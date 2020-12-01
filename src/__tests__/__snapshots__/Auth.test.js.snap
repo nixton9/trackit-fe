@@ -3,15 +3,15 @@
 exports[`ForgotPassword matches snapshot 1`] = `
 <div>
   <nav
-    class="sc-AxjAm icODTr"
+    class="SignInSignUpstyles__SignInSignUpHeader-sc-1q2n97q-0 fbuZcG"
   >
     <h1
-      class="sc-AxirZ bosuDb"
+      class="SignInSignUpstyles__SignInSignUpHeader__Logo-sc-1q2n97q-1 fEiWIn"
     >
-      TrackIt
+      Trckr
     </h1>
     <div
-      class="sc-AxiKw cmYvTE"
+      class="SignInSignUpstyles__SignInSignUpHeader__Items-sc-1q2n97q-2 gNrHgk"
     >
       <a
         aria-current="page"
@@ -23,15 +23,15 @@ exports[`ForgotPassword matches snapshot 1`] = `
       <a
         href="/signup"
       >
-        Sign Up
+        Register
       </a>
     </div>
   </nav>
   <div
-    class="sc-AxhCb ivLleu"
+    class="SignInSignUpstyles__SignInSignUpContainer-sc-1q2n97q-3 gTvMFl"
   >
     <h2
-      class="sc-AxhUy JNaYu"
+      class="SignInSignUpstyles__SignInSignUpText-sc-1q2n97q-4 PNfTB"
     >
       Reset your password here, 
       <br />
@@ -40,10 +40,10 @@ exports[`ForgotPassword matches snapshot 1`] = `
       </span>
     </h2>
     <form
-      class="sc-AxgMl iZsHBs"
+      class="SignInSignUpstyles__SignInSignUpForm-sc-1q2n97q-5 gQpXzR"
     >
       <div
-        class="sc-AxheI fnSDUS"
+        class="SignInSignUpstyles__SignInSignUpForm__Input-sc-1q2n97q-6 fGIiv"
       >
         <input
           placeholder="Email address"
@@ -52,7 +52,7 @@ exports[`ForgotPassword matches snapshot 1`] = `
         />
       </div>
       <button
-        class="sc-Axmtr lgMnpa"
+        class="SignInSignUpstyles__SignInSignUpForm__Button-sc-1q2n97q-7 guaMLz"
       >
         Send
       </button>
@@ -65,15 +65,15 @@ exports[`ForgotPassword matches snapshot 1`] = `
 exports[`ResetPassword matches snapshot 1`] = `
 <div>
   <nav
-    class="sc-AxjAm icODTr"
+    class="SignInSignUpstyles__SignInSignUpHeader-sc-1q2n97q-0 fbuZcG"
   >
     <h1
-      class="sc-AxirZ bosuDb"
+      class="SignInSignUpstyles__SignInSignUpHeader__Logo-sc-1q2n97q-1 fEiWIn"
     >
-      TrackIt
+      Trckr
     </h1>
     <div
-      class="sc-AxiKw cmYvTE"
+      class="SignInSignUpstyles__SignInSignUpHeader__Items-sc-1q2n97q-2 gNrHgk"
     >
       <a
         aria-current="page"
@@ -85,15 +85,15 @@ exports[`ResetPassword matches snapshot 1`] = `
       <a
         href="/signup"
       >
-        Sign Up
+        Register
       </a>
     </div>
   </nav>
   <div
-    class="sc-AxhCb ivLleu"
+    class="SignInSignUpstyles__SignInSignUpContainer-sc-1q2n97q-3 gTvMFl"
   >
     <h2
-      class="sc-AxhUy JNaYu"
+      class="SignInSignUpstyles__SignInSignUpText-sc-1q2n97q-4 PNfTB"
     >
       Set your new password,
       <br />
@@ -102,10 +102,10 @@ exports[`ResetPassword matches snapshot 1`] = `
       </span>
     </h2>
     <form
-      class="sc-AxgMl iZsHBs"
+      class="SignInSignUpstyles__SignInSignUpForm-sc-1q2n97q-5 gQpXzR"
     >
       <div
-        class="sc-AxheI fnSDUS"
+        class="SignInSignUpstyles__SignInSignUpForm__Input-sc-1q2n97q-6 fGIiv"
       >
         <input
           placeholder="Password"
@@ -114,7 +114,7 @@ exports[`ResetPassword matches snapshot 1`] = `
         />
       </div>
       <button
-        class="sc-Axmtr lgMnpa"
+        class="SignInSignUpstyles__SignInSignUpForm__Button-sc-1q2n97q-7 guaMLz"
       >
         Update
       </button>
@@ -127,15 +127,15 @@ exports[`ResetPassword matches snapshot 1`] = `
 exports[`SignIn matches snapshot 1`] = `
 <div>
   <nav
-    class="sc-AxjAm icODTr"
+    class="SignInSignUpstyles__SignInSignUpHeader-sc-1q2n97q-0 fbuZcG"
   >
     <h1
-      class="sc-AxirZ bosuDb"
+      class="SignInSignUpstyles__SignInSignUpHeader__Logo-sc-1q2n97q-1 fEiWIn"
     >
-      TrackIt
+      Trckr
     </h1>
     <div
-      class="sc-AxiKw cmYvTE"
+      class="SignInSignUpstyles__SignInSignUpHeader__Items-sc-1q2n97q-2 gNrHgk"
     >
       <a
         aria-current="page"
@@ -147,15 +147,15 @@ exports[`SignIn matches snapshot 1`] = `
       <a
         href="/signup"
       >
-        Sign Up
+        Register
       </a>
     </div>
   </nav>
   <div
-    class="sc-AxhCb ivLleu"
+    class="SignInSignUpstyles__SignInSignUpContainer-sc-1q2n97q-3 gTvMFl"
   >
     <h2
-      class="sc-AxhUy JNaYu"
+      class="SignInSignUpstyles__SignInSignUpText-sc-1q2n97q-4 PNfTB"
     >
       Welcome back, 
       <br />
@@ -164,10 +164,10 @@ exports[`SignIn matches snapshot 1`] = `
       </span>
     </h2>
     <form
-      class="sc-AxgMl iZsHBs"
+      class="SignInSignUpstyles__SignInSignUpForm-sc-1q2n97q-5 gQpXzR"
     >
       <div
-        class="sc-AxheI fnSDUS"
+        class="SignInSignUpstyles__SignInSignUpForm__Input-sc-1q2n97q-6 fGIiv"
       >
         <input
           placeholder="Email address"
@@ -176,7 +176,7 @@ exports[`SignIn matches snapshot 1`] = `
         />
       </div>
       <div
-        class="sc-AxheI fnSDUS"
+        class="SignInSignUpstyles__SignInSignUpForm__Input-sc-1q2n97q-6 fGIiv"
       >
         <div
           class="input-wrapper"
@@ -199,7 +199,7 @@ exports[`SignIn matches snapshot 1`] = `
         </p>
       </div>
       <button
-        class="sc-Axmtr lgMnpa"
+        class="SignInSignUpstyles__SignInSignUpForm__Button-sc-1q2n97q-7 guaMLz"
       >
         Login
       </button>
@@ -211,15 +211,15 @@ exports[`SignIn matches snapshot 1`] = `
 exports[`SignUp matches snapshot 1`] = `
 <div>
   <nav
-    class="sc-AxjAm icODTr"
+    class="SignInSignUpstyles__SignInSignUpHeader-sc-1q2n97q-0 fbuZcG"
   >
     <h1
-      class="sc-AxirZ bosuDb"
+      class="SignInSignUpstyles__SignInSignUpHeader__Logo-sc-1q2n97q-1 fEiWIn"
     >
-      TrackIt
+      Trckr
     </h1>
     <div
-      class="sc-AxiKw cmYvTE"
+      class="SignInSignUpstyles__SignInSignUpHeader__Items-sc-1q2n97q-2 gNrHgk"
     >
       <a
         aria-current="page"
@@ -231,15 +231,15 @@ exports[`SignUp matches snapshot 1`] = `
       <a
         href="/signup"
       >
-        Sign Up
+        Register
       </a>
     </div>
   </nav>
   <div
-    class="sc-AxhCb ivLleu"
+    class="SignInSignUpstyles__SignInSignUpContainer-sc-1q2n97q-3 gTvMFl"
   >
     <h2
-      class="sc-AxhUy JNaYu"
+      class="SignInSignUpstyles__SignInSignUpText-sc-1q2n97q-4 PNfTB"
     >
       Hey there, 
       <br />
@@ -248,10 +248,10 @@ exports[`SignUp matches snapshot 1`] = `
       </span>
     </h2>
     <form
-      class="sc-AxgMl iZsHBs"
+      class="SignInSignUpstyles__SignInSignUpForm-sc-1q2n97q-5 gQpXzR"
     >
       <div
-        class="sc-AxheI fnSDUS"
+        class="SignInSignUpstyles__SignInSignUpForm__Input-sc-1q2n97q-6 fGIiv"
       >
         <input
           placeholder="Name"
@@ -261,7 +261,7 @@ exports[`SignUp matches snapshot 1`] = `
         />
       </div>
       <div
-        class="sc-AxheI fnSDUS"
+        class="SignInSignUpstyles__SignInSignUpForm__Input-sc-1q2n97q-6 fGIiv"
       >
         <input
           placeholder="Email address"
@@ -271,7 +271,7 @@ exports[`SignUp matches snapshot 1`] = `
         />
       </div>
       <div
-        class="sc-AxheI fnSDUS"
+        class="SignInSignUpstyles__SignInSignUpForm__Input-sc-1q2n97q-6 fGIiv"
       >
         <div
           class="input-wrapper"
@@ -288,11 +288,12 @@ exports[`SignUp matches snapshot 1`] = `
         </div>
       </div>
       <button
-        class="sc-Axmtr lgMnpa"
+        class="SignInSignUpstyles__SignInSignUpForm__Button-sc-1q2n97q-7 guaMLz"
       >
         Sign Up
       </button>
     </form>
+    
   </div>
 </div>
 `;

@@ -3,12 +3,14 @@
 exports[`Error matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fznZeY bSJaCI"
+    class="Pagestyles__PageError-sc-19pj6gm-14 hfccEd"
   >
     <svg>
       error.svg
     </svg>
-    Test
+    <p>
+      Test
+    </p>
   </div>
 </div>
 `;
@@ -16,10 +18,10 @@ exports[`Error matches snapshot 1`] = `
 exports[`Loading matches snapshot 1`] = `
 <div>
   <div
-    class="sc-fznKkj eGzyrh"
+    class="Pagestyles__PageLoading-sc-19pj6gm-13 feDNhr"
   >
     <div
-      class="sc-AxjAm gcvfvo"
+      class="sc-AxjAm gcvfvo loading-spinner"
     >
       <div
         class="sc-AxirZ emeNQI"

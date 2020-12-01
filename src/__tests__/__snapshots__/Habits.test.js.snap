@@ -3,25 +3,25 @@
 exports[`CalendarAll matches snapshot 1`] = `
 <div>
   <div
-    class="sc-AxjAm jfmAOU calendar"
+    class="Calendarstyles__CalendarContainer-w1nvhe-0 cWWXZC calendar"
   >
     <div
-      class="sc-AxirZ geEfWa"
+      class="Calendarstyles__CalendarHeader-w1nvhe-1 gnNPYu"
     >
       <span
-        class="sc-AxhCb hJMRfN"
+        class="Calendarstyles__CalendarHeader__Icon-w1nvhe-3 hAFknT"
       >
         <svg>
           chevron.svg
         </svg>
       </span>
       <h2
-        class="sc-AxiKw csrSaT"
+        class="Calendarstyles__CalendarHeader__Title-w1nvhe-2 bedlRa"
       >
-        September 2020
+        December 2020
       </h2>
       <span
-        class="sc-AxhCb hJMRfN right"
+        class="Calendarstyles__CalendarHeader__Icon-w1nvhe-3 hAFknT right"
       >
         <svg>
           chevron.svg
@@ -29,195 +29,195 @@ exports[`CalendarAll matches snapshot 1`] = `
       </span>
     </div>
     <div
-      class="sc-AxhUy hfeXDI"
+      class="Calendarstyles__CalendarDOW-w1nvhe-4 eNKwnW"
     >
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Sun
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Mon
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Tue
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Wed
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Thu
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Fri
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Sat
       </h5>
     </div>
     <div
-      class="sc-AxheI iGtvIU"
+      class="Calendarstyles__CalendarHabit-w1nvhe-6 cQtiZG"
     >
       <h4
-        class="sc-Axmtr hMVYMT"
+        class="Calendarstyles__CalendarHabit__Title-w1nvhe-7 fqwYPN"
       >
         Fazer exercício
       </h4>
       <div
-        class="sc-AxmLO bELhKU"
+        class="Calendarstyles__CalendarDays-w1nvhe-8 jLvILQ"
       >
          
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            27
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa today "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            28
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             29
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             30
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa not-done"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX today "
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             1
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             2
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             3
+          </span>
+        </div>
+        <div
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
+        >
+          <span
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
+          >
+            4
+          </span>
+        </div>
+        <div
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
+        >
+          <span
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
+          >
+            5
           </span>
         </div>
          
       </div>
     </div>
     <div
-      class="sc-AxheI iGtvIU"
+      class="Calendarstyles__CalendarHabit-w1nvhe-6 cQtiZG"
     >
       <h4
-        class="sc-Axmtr hMVYMT"
+        class="Calendarstyles__CalendarHabit__Title-w1nvhe-7 fqwYPN"
       >
         Fazer dieta
       </h4>
       <div
-        class="sc-AxmLO bELhKU"
+        class="Calendarstyles__CalendarDays-w1nvhe-8 jLvILQ"
       >
          
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            27
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa today "
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
-          >
-            28
-          </span>
-        </div>
-        <div
-          class="sc-fzozJi ccINIa"
-        >
-          <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             29
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             30
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX today "
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             1
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             2
           </span>
         </div>
         <div
-          class="sc-fzozJi ccINIa"
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
         >
           <span
-            class="sc-fzoLsD gOMKUi"
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
           >
             3
+          </span>
+        </div>
+        <div
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
+        >
+          <span
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
+          >
+            4
+          </span>
+        </div>
+        <div
+          class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
+        >
+          <span
+            class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
+          >
+            5
           </span>
         </div>
          
@@ -230,25 +230,25 @@ exports[`CalendarAll matches snapshot 1`] = `
 exports[`CalendarSingle matches snapshot 1`] = `
 <div>
   <div
-    class="sc-AxjAm jfmAOU calendar"
+    class="Calendarstyles__CalendarContainer-w1nvhe-0 cWWXZC calendar"
   >
     <div
-      class="sc-AxirZ geEfWa"
+      class="Calendarstyles__CalendarHeader-w1nvhe-1 gnNPYu"
     >
       <span
-        class="sc-AxhCb hJMRfN"
+        class="Calendarstyles__CalendarHeader__Icon-w1nvhe-3 hAFknT"
       >
         <svg>
           chevron.svg
         </svg>
       </span>
       <h2
-        class="sc-AxiKw csrSaT"
+        class="Calendarstyles__CalendarHeader__Title-w1nvhe-2 bedlRa"
       >
-        September 2020
+        December 2020
       </h2>
       <span
-        class="sc-AxhCb hJMRfN right"
+        class="Calendarstyles__CalendarHeader__Icon-w1nvhe-3 hAFknT right"
       >
         <svg>
           chevron.svg
@@ -256,107 +256,107 @@ exports[`CalendarSingle matches snapshot 1`] = `
       </span>
     </div>
     <div
-      class="sc-AxhUy hfeXDI"
+      class="Calendarstyles__CalendarDOW-w1nvhe-4 eNKwnW"
     >
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Sun
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Mon
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Tue
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Wed
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Thu
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Fri
       </h5>
       <h5
-        class="sc-AxgMl iLoYic"
+        class="Calendarstyles__CalendarDOW__Day-w1nvhe-5 caZTtC"
       >
         Sat
       </h5>
     </div>
     <div
-      class="sc-AxmLO bELhKU"
+      class="Calendarstyles__CalendarDays-w1nvhe-8 jLvILQ"
     >
        
       <div
-        class="sc-fzozJi ccINIa disabled "
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX disabled "
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
+        >
+          29
+        </span>
+      </div>
+      <div
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX disabled "
+      >
+        <span
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           30
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa disabled "
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX today "
       >
         <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          31
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa"
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           1
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           2
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           3
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           4
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           5
         </span>
@@ -364,68 +364,68 @@ exports[`CalendarSingle matches snapshot 1`] = `
        
     </div>
     <div
-      class="sc-AxmLO bELhKU"
+      class="Calendarstyles__CalendarDays-w1nvhe-8 jLvILQ"
     >
        
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           6
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           7
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           8
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           9
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           10
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           11
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           12
         </span>
@@ -433,68 +433,68 @@ exports[`CalendarSingle matches snapshot 1`] = `
        
     </div>
     <div
-      class="sc-AxmLO bELhKU"
+      class="Calendarstyles__CalendarDays-w1nvhe-8 jLvILQ"
     >
        
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           13
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           14
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           15
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           16
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           17
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           18
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           19
         </span>
@@ -502,68 +502,68 @@ exports[`CalendarSingle matches snapshot 1`] = `
        
     </div>
     <div
-      class="sc-AxmLO bELhKU"
+      class="Calendarstyles__CalendarDays-w1nvhe-8 jLvILQ"
     >
        
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           20
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           21
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           22
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           23
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           24
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           25
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           26
         </span>
@@ -571,421 +571,75 @@ exports[`CalendarSingle matches snapshot 1`] = `
        
     </div>
     <div
-      class="sc-AxmLO bELhKU"
+      class="Calendarstyles__CalendarDays-w1nvhe-8 jLvILQ"
     >
        
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           27
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa today "
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           28
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           29
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           30
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa disabled not-done"
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX"
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
+        >
+          31
+        </span>
+      </div>
+      <div
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX disabled "
+      >
+        <span
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           1
         </span>
       </div>
       <div
-        class="sc-fzozJi ccINIa disabled "
+        class="Calendarstyles__CalendarDays__Cell-w1nvhe-9 jaOflX disabled "
       >
         <span
-          class="sc-fzoLsD gOMKUi"
+          class="Calendarstyles__CalendarDays__Cell__Inner-w1nvhe-10 hsOCoE"
         >
           2
-        </span>
-      </div>
-      <div
-        class="sc-fzozJi ccINIa disabled "
-      >
-        <span
-          class="sc-fzoLsD gOMKUi"
-        >
-          3
         </span>
       </div>
        
     </div>
   </div>
-</div>
-`;
-
-exports[`Habits Page matches snapshot 1`] = `
-<div>
-  <div
-    class="sc-fzpjYC izvAVX"
-  >
-    <h1
-      class="sc-fznxsB iTQhax"
-    >
-      Habits
-    </h1>
-    <div
-      class="sc-fznJRM cBJzUp"
-    >
-      <div
-        class="sc-fznWqX dZCTFs"
-      >
-        <div
-          class="sc-fzoiQi gKygiC"
-        >
-          <div
-            class="MuiInputBase-root MuiInput-root"
-          >
-            <div
-              aria-haspopup="listbox"
-              aria-labelledby="habits-view"
-              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-              id="habits-view"
-              role="button"
-              tabindex="0"
-            >
-              All
-            </div>
-            <input
-              aria-hidden="true"
-              class="MuiSelect-nativeInput"
-              tabindex="-1"
-              value="all"
-            />
-            <svg
-              class="MuiSelect-icon"
-            >
-              chevron.svg
-            </svg>
-          </div>
-        </div>
-        <h3
-          class="sc-fzqARJ lfDBcG smaller"
-        >
-          2
-        </h3>
-      </div>
-      <div
-        class="sc-fzqNqU hQTkrp"
-      >
-        <svg
-          class="settings-icon"
-        >
-          settings.svg
-        </svg>
-        <div
-          class="sc-fzpans bizqXm"
-        >
-          <h2
-            class="sc-fznyAO eKnwhs"
-          >
-            Settings
-          </h2>
-          <div
-            class="sc-fznKkj dFiY"
-          >
-            <div
-              class="sc-fznZeY colRAS"
-            >
-              <label
-                class="sc-fzokOt kgBGLn"
-                for="sort-by"
-              >
-                Sort by
-              </label>
-              <div
-                class="sc-fzqBZW ddlYPz"
-              >
-                <div
-                  class="MuiInputBase-root MuiInput-root"
-                >
-                  <div
-                    aria-haspopup="listbox"
-                    aria-labelledby="sort-by"
-                    class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                    id="sort-by"
-                    role="button"
-                    tabindex="0"
-                  >
-                    Date
-                  </div>
-                  <input
-                    aria-hidden="true"
-                    class="MuiSelect-nativeInput"
-                    tabindex="-1"
-                    value="date"
-                  />
-                  <svg
-                    class="MuiSelect-icon"
-                  >
-                    chevron.svg
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="sc-fzplWN chjtWg"
-        />
-      </div>
-    </div>
-  </div>
-  <section
-    class="sc-fzoyTs gUbeoJ"
-  >
-    <div
-      class="sc-AxjAm jfmAOU calendar"
-    >
-      <div
-        class="sc-AxirZ geEfWa"
-      >
-        <span
-          class="sc-AxhCb hJMRfN"
-        >
-          <svg>
-            chevron.svg
-          </svg>
-        </span>
-        <h2
-          class="sc-AxiKw csrSaT"
-        >
-          September 2020
-        </h2>
-        <span
-          class="sc-AxhCb hJMRfN right"
-        >
-          <svg>
-            chevron.svg
-          </svg>
-        </span>
-      </div>
-      <div
-        class="sc-AxhUy hfeXDI"
-      >
-        <h5
-          class="sc-AxgMl iLoYic"
-        >
-          Sun
-        </h5>
-        <h5
-          class="sc-AxgMl iLoYic"
-        >
-          Mon
-        </h5>
-        <h5
-          class="sc-AxgMl iLoYic"
-        >
-          Tue
-        </h5>
-        <h5
-          class="sc-AxgMl iLoYic"
-        >
-          Wed
-        </h5>
-        <h5
-          class="sc-AxgMl iLoYic"
-        >
-          Thu
-        </h5>
-        <h5
-          class="sc-AxgMl iLoYic"
-        >
-          Fri
-        </h5>
-        <h5
-          class="sc-AxgMl iLoYic"
-        >
-          Sat
-        </h5>
-      </div>
-      <div
-        class="sc-AxheI iGtvIU"
-      >
-        <h4
-          class="sc-Axmtr hMVYMT"
-        >
-          Fazer exercício
-        </h4>
-        <div
-          class="sc-AxmLO bELhKU"
-        >
-           
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              27
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa today "
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              28
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              29
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              30
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa not-done"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              1
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              2
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              3
-            </span>
-          </div>
-           
-        </div>
-      </div>
-      <div
-        class="sc-AxheI iGtvIU"
-      >
-        <h4
-          class="sc-Axmtr hMVYMT"
-        >
-          Fazer dieta
-        </h4>
-        <div
-          class="sc-AxmLO bELhKU"
-        >
-           
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              27
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa today "
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              28
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              29
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              30
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              1
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              2
-            </span>
-          </div>
-          <div
-            class="sc-fzozJi ccINIa"
-          >
-            <span
-              class="sc-fzoLsD gOMKUi"
-            >
-              3
-            </span>
-          </div>
-           
-        </div>
-      </div>
-    </div>
-  </section>
 </div>
 `;
 
@@ -997,27 +651,27 @@ exports[`HabitsSettings matches snapshot 1`] = `
     settings.svg
   </svg>
   <div
-    class="sc-fzpans bizqXm"
+    class="Drawerstyles__DrawerContainer-u5jgzg-0 lkcEUU"
   >
     <h2
-      class="sc-fznyAO eKnwhs"
+      class="Drawerstyles__DrawerTitle-u5jgzg-2 eCJKZq"
     >
       Settings
     </h2>
     <div
-      class="sc-fznKkj dFiY"
+      class="Drawerstyles__DrawerContent-u5jgzg-3 jAyGXs"
     >
       <div
-        class="sc-fznZeY colRAS"
+        class="Settingsstyles__SettingsBlock-kn1k5n-0 lppunF"
       >
         <label
-          class="sc-fzokOt kgBGLn"
+          class="Settingsstyles__SettingsBlock__Label-kn1k5n-1 gEYzuB"
           for="sort-by"
         >
           Sort by
         </label>
         <div
-          class="sc-fzqBZW ddlYPz"
+          class="Settingsstyles__SettingsBlock__Input-kn1k5n-2 ixIXUL"
         >
           <div
             class="MuiInputBase-root MuiInput-root"
@@ -1049,7 +703,7 @@ exports[`HabitsSettings matches snapshot 1`] = `
     </div>
   </div>
   <div
-    class="sc-fzplWN chjtWg"
+    class="Drawerstyles__DrawerOverlay-u5jgzg-1 jzRVJQ"
   />
 </div>
 `;

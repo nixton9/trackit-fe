@@ -16,7 +16,7 @@ type SettingsProps = {
 
 const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
   const [name, setName] = useState(user.name)
-  const [image, setImage] = useState(user.image)
+  const [image] = useState(user.image)
   const [password, setPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [selectedFile, setSelectedFile] = useState('')

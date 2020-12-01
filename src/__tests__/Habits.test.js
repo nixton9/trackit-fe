@@ -7,20 +7,6 @@ import HabitsSettings from '../components/habits/HabitsSettings'
 import { habits } from '../assets/fakeData'
 import { format } from 'date-fns'
 
-describe('Habits Page', () => {
-  it('matches snapshot', () => {
-    const { container } = render(<HabitsPage />)
-
-    expect(container).toMatchSnapshot()
-  })
-
-  it('has the title', () => {
-    const { getByText } = render(<HabitsPage />)
-
-    expect(getByText('Habits')).toBeInTheDocument()
-  })
-})
-
 describe('CalendarAll', () => {
   it('matches snapshot', () => {
     const { container } = render(<CalendarAll habits={habits} />)
