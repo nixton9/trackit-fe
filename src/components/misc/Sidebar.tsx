@@ -34,7 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
         className="mbl-click"
         onClick={() => setOpen(!open)}
       >
-        <MenuIcon />
+        <MenuIcon data-test-id="sidebar-icon" />
       </Styled.SidebarToggle>
 
       <Styled.SidebarContainer open={open}>

@@ -40,7 +40,7 @@ const Search: React.FC = () => {
   return (
     <>
       <Styled.SearchIcon open={open} className="mbl-click">
-        <GlassIcon onClick={handleIconClick} />
+        <GlassIcon onClick={handleIconClick} data-test-id="search-icon" />
         <form onSubmit={handleSubmit}>
           <Styled.SearchInput
             ref={inputRef}
@@ -49,6 +49,7 @@ const Search: React.FC = () => {
             placeholder="Search for a note, task, habit or expense"
             value={inputVal}
             onChange={e => setInputVal(e.target.value)}
+            data-test-id="search-input"
           />
         </form>
       </Styled.SearchIcon>

@@ -105,6 +105,7 @@ const SignIn: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
               placeholder="Email address"
               value={emailVal}
               onChange={e => setEmailVal(e.target.value)}
+              data-test-id="signin-email"
             />
           </Styled.SignInSignUpForm__Input>
 
@@ -116,6 +117,7 @@ const SignIn: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
                 value={passwordVal}
                 onChange={e => setPasswordVal(e.target.value)}
                 ref={passwordEl}
+                data-test-id="signin-pw"
               />
               <EyeIcon onClick={togglePasswordVisibility} ref={iconEl} />
             </div>

@@ -164,7 +164,10 @@ const HabitsPage: React.FC = () => {
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
-      <Styled.PageAddItem onClick={() => setActiveContent(ModuleTypes.Habits)}>
+      <Styled.PageAddItem
+        onClick={() => setActiveContent(ModuleTypes.Habits)}
+        data-test-id="add-habit"
+      >
         <PlusIcon />
       </Styled.PageAddItem>
     </>

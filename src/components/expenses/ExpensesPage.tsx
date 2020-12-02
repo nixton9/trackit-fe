@@ -149,6 +149,7 @@ const ExpensesPage: React.FC = () => {
       </Styled.PageContent>
       <Styled.PageAddItem
         onClick={() => setActiveContent(ModuleTypes.Expenses)}
+        data-test-id="add-expense"
       >
         <PlusIcon />
       </Styled.PageAddItem>

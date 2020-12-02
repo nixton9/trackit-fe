@@ -103,7 +103,11 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
 
   return (
     <>
-      <SettingsIcon className="settings-icon" onClick={() => setOpen(true)} />
+      <SettingsIcon
+        className="settings-icon"
+        onClick={() => setOpen(true)}
+        data-test-id="expenses-settings-icon"
+      />
 
       <Drawer title="Settings" open={open} overlayRef={overlayEl}>
         <>
@@ -149,6 +153,7 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
               <Styled.SettingsBlock__Icon
                 className="mbl-click"
                 onClick={handlePlusClick}
+                data-test-id="expenses-add-icon"
               >
                 <PlusIcon />
               </Styled.SettingsBlock__Icon>

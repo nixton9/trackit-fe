@@ -19,7 +19,11 @@ const Drawer: React.FC<DrawerProps> = ({
       <Styled.DrawerTitle>{title}</Styled.DrawerTitle>
       <Styled.DrawerContent>{children}</Styled.DrawerContent>
     </Styled.DrawerContainer>
-    <Styled.DrawerOverlay ref={overlayRef} open={open} />
+    <Styled.DrawerOverlay
+      ref={overlayRef}
+      open={open}
+      data-test-id="drawer-overlay"
+    />
   </>
 )
 

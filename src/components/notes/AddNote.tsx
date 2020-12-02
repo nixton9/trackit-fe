@@ -152,6 +152,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
             value={title}
             onChange={e => setTitle(e.target.value)}
             ref={titleRef}
+            data-test-id="add-note-title-input"
           />
         </Styled.AddInputWrapper>
 

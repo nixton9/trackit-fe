@@ -39,7 +39,7 @@ export const AddSubmitButton: React.FC<{
   plusIcon?: boolean
   handleSubmit?: () => void
 }> = ({ plusIcon, handleSubmit }) => (
-  <Styled.AddWidget__Button onClick={handleSubmit}>
+  <Styled.AddWidget__Button onClick={handleSubmit} data-test-id="submit-btn">
     {plusIcon ? <PlusIcon /> : <ChevronIcon />}
   </Styled.AddWidget__Button>
 )

@@ -58,6 +58,7 @@ export const FluidInput = React.forwardRef(
           placeholder={placeholder}
           step="0.01"
           ref={ref}
+          data-test-id="fluid-input"
         />
       </FluidInputContainer>
     )

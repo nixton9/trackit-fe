@@ -148,6 +148,7 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
           value={name}
           placeholder={'Category name'}
           onChange={e => setName(e.target.value)}
+          data-test-id="categories-name-input"
         />
         <Styled.TagEditorSelect>
           <SelectMenu

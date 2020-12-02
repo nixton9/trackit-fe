@@ -184,6 +184,7 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             value={title}
             onChange={e => setTitle(e.target.value)}
             ref={titleRef}
+            data-test-id="add-habit-title-input"
           />
         </Styled.AddInputWrapper>
         <Styled.AddWidgetsContainer>

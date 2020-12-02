@@ -19,7 +19,11 @@ const HabitsSettings: React.FC = () => {
 
   return (
     <>
-      <SettingsIcon className="settings-icon" onClick={() => setOpen(true)} />
+      <SettingsIcon
+        className="settings-icon"
+        onClick={() => setOpen(true)}
+        data-test-id="habits-settings-icon"
+      />
 
       <Drawer title="Settings" open={open} overlayRef={overlayEl}>
         <Styled.SettingsBlock>

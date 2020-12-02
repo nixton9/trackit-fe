@@ -267,6 +267,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             placeholder="Ex: Dinner at mcdonalds"
             value={title}
             onChange={e => setTitle(e.target.value)}
+            data-test-id="add-expense-title-input"
           />
         </Styled.AddInputWrapper>
 
@@ -282,7 +283,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
           <Styled.AddWidget>
             <CustomAddSelect
-              id="add-type"
+              id="add-category"
               value={type}
               onChange={handleTypeChange}
               options={typeOptions}

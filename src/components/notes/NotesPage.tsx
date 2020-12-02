@@ -106,7 +106,10 @@ const NotesPage: React.FC = () => {
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
-      <Styled.PageAddItem onClick={() => setActiveContent(ModuleTypes.Notes)}>
+      <Styled.PageAddItem
+        onClick={() => setActiveContent(ModuleTypes.Notes)}
+        data-test-id="add-note"
+      >
         <PlusIcon />
       </Styled.PageAddItem>
     </Styled.PageContainer>

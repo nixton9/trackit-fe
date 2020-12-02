@@ -163,6 +163,7 @@ export const TagEditor: React.FC<TagEditorProps> = ({
           value={name}
           placeholder={'Tag name'}
           onChange={e => setName(e.target.value)}
+          data-test-id="tags-name-input"
         />
         <Styled.TagEditorSelect>
           <SelectMenu

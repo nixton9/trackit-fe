@@ -111,6 +111,7 @@ const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
               value={nameVal}
               onChange={e => setNameVal(e.target.value)}
               required
+              data-test-id="signup-name"
             />
           </Styled.SignInSignUpForm__Input>
 
@@ -121,6 +122,7 @@ const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
               value={emailVal}
               onChange={e => setEmailVal(e.target.value)}
               required
+              data-test-id="signup-email"
             />
           </Styled.SignInSignUpForm__Input>
 
@@ -133,6 +135,7 @@ const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
                 onChange={e => setPasswordVal(e.target.value)}
                 ref={passwordEl}
                 required
+                data-test-id="signup-pw"
               />
               <EyeIcon onClick={togglePasswordVisibility} ref={iconEl} />
             </div>

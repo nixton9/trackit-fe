@@ -99,7 +99,11 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
               arrow={false}
               direction={'up'}
             >
-              <Link to="/tasks/done" className="mbl-click">
+              <Link
+                to="/tasks/done"
+                className="mbl-click"
+                data-test-id="done-tasks-link"
+              >
                 <DoneTasksIcon />
               </Link>
             </Tooltip>
@@ -145,7 +149,10 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
           </Styled.PageContent__NoData>
         )}
       </Styled.PageContent>
-      <Styled.PageAddItem onClick={() => setActiveContent(ModuleTypes.Tasks)}>
+      <Styled.PageAddItem
+        onClick={() => setActiveContent(ModuleTypes.Tasks)}
+        data-test-id="add-task"
+      >
         <PlusIcon />
       </Styled.PageAddItem>
     </Styled.PageContainer>

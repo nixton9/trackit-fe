@@ -101,7 +101,11 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
 
   return (
     <>
-      <SettingsIcon className="settings-icon" onClick={() => setOpen(true)} />
+      <SettingsIcon
+        className="settings-icon"
+        onClick={() => setOpen(true)}
+        data-test-id="notes-settings-icon"
+      />
 
       <Drawer title="Settings" open={open} overlayRef={overlayEl}>
         <>
@@ -136,6 +140,7 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
               <Styled.SettingsBlock__Icon
                 onClick={handlePlusClick}
                 className="mbl-click"
+                data-test-id="tags-add-icon"
               >
                 <PlusIcon />
               </Styled.SettingsBlock__Icon>

@@ -165,6 +165,7 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
                   type="text"
                   value={name}
                   onChange={e => setName(e.target.value)}
+                  data-test-id="profile-name-input"
                 />
               </div>
 
@@ -186,6 +187,7 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
                   image === user.image &&
                   !Boolean(selectedFile)
                 }
+                data-test-id="change-profile-button"
               >
                 Apply changes
               </Styled.SettingsButton>
@@ -209,6 +211,7 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="********"
+                  data-test-id="profile-password-input"
                 />
               </div>
 
@@ -219,12 +222,14 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
                   value={newPassword}
                   onChange={e => setNewPassword(e.target.value)}
                   placeholder="********"
+                  data-test-id="profile-newpassword-input"
                 />
               </div>
 
               <Styled.SettingsButton
                 onClick={updateUserPW}
                 disabled={!password || !newPassword}
+                data-test-id="change-password-button"
               >
                 Confirm
               </Styled.SettingsButton>

@@ -102,7 +102,11 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
 
   return (
     <>
-      <SettingsIcon className="settings-icon" onClick={() => setOpen(true)} />
+      <SettingsIcon
+        className="settings-icon"
+        onClick={() => setOpen(true)}
+        data-test-id="tasks-settings-icon"
+      />
 
       <Drawer title="Settings" open={open} overlayRef={overlayEl}>
         <>
@@ -148,6 +152,7 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
               <Styled.SettingsBlock__Icon
                 className="mbl-click"
                 onClick={handlePlusClick}
+                data-test-id="categories-add-icon"
               >
                 <PlusIcon />
               </Styled.SettingsBlock__Icon>

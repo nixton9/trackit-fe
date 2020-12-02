@@ -109,7 +109,7 @@ export const ThreeDotsMenu: React.FC<ThreeDotsMenuProps> = ({ options }) => {
   return (
     <MenuContainer className="three-dots-menu">
       {' '}
-      <Icon onClick={() => setOpen(!open)}>
+      <Icon onClick={() => setOpen(!open)} data-test-id="three-dots-menu">
         <span></span>
         <span></span>
         <span></span>

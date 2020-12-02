@@ -278,6 +278,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             value={title}
             onChange={e => setTitle(e.target.value)}
             ref={titleRef}
+            data-test-id="add-task-title-input"
           />
           {isEdit && (
             <TaskStatus onClick={() => setDone(!done)} isDone={done} />
@@ -294,6 +295,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               value={dateSelect}
               onChange={handleDateSelectChange}
               disableUnderline
+              data-test-id="add-task-date-input"
             >
               <MenuItem value={'1'}>Today</MenuItem>
               <MenuItem value={'2'}>Tomorrow</MenuItem>
