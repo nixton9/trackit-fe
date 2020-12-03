@@ -21,7 +21,7 @@ const WidgetContainer = styled.div`
 
 const Widget = styled.div<WidgetProps>`
   position: relative;
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.alwaysWhite};
   border-radius: ${props => props.theme.bigBorderRadius};
   width: 100%;
   height: 100%;
@@ -51,10 +51,10 @@ const Widget = styled.div<WidgetProps>`
   }
 
   .svg-fill {
-    fill: ${props => props.theme.white};
+    fill: ${props => props.theme.alwaysWhite};
   }
   .svg-stroke {
-    stroke: ${props => props.theme.white};
+    stroke: ${props => props.theme.alwaysWhite};
   }
 
   &:before {
@@ -140,10 +140,10 @@ const WidgetPlus = styled.span`
   svg {
     width: 2.4rem;
     .svg-fill {
-      fill: ${props => props.theme.white};
+      fill: ${props => props.theme.alwaysWhite};
     }
     .svg-stroke {
-      stroke: ${props => props.theme.white};
+      stroke: ${props => props.theme.alwaysWhite};
     }
   }
 `

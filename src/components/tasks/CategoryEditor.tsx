@@ -6,7 +6,7 @@ import { NotificationTypes, notificationState } from '../misc/Notification'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { CATEGORIES } from '../../utils/queries'
 import { Styled } from '../../styles/TagEditor.styles'
-import theme from '../../styles/theme'
+import { theme } from '../../styles/theme'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 

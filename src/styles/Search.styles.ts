@@ -18,6 +18,13 @@ const SearchIcon = styled.div<SearchProps>`
     transform: ${props =>
       props.open ? 'scale(.6) translateX(-.6rem)' : 'scale(1) translateX(0)'};
     transition: transform 0.15s linear;
+
+    .svg-fill {
+      fill: ${props => props.theme.white};
+    }
+    .svg-stroke {
+      stroke: ${props => props.theme.white};
+    }
   }
 `
 
@@ -29,7 +36,7 @@ const SearchInput = styled.input<SearchProps>`
   right: 0;
   top: 0;
   border-radius: 20px;
-  color: white;
+  color: ${props => props.theme.white};
   border: none;
   padding: 0 3.8rem 0 2rem;
   font-size: 1.15rem;

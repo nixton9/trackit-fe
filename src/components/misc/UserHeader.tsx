@@ -32,7 +32,7 @@ const UserDefaultImg = styled.div<UserWrapperProps>`
   height: ${props => (props.small ? '4.5rem' : '6rem')};
   font-size: ${props => (props.small ? '2rem' : '2.7rem')};
   font-weight: ${props => props.theme.fontSemiBold};
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.alwaysWhite};
   background-color: ${props => props.theme.accent};
   text-transform: uppercase;
   border-radius: 50%;

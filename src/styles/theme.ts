@@ -1,4 +1,4 @@
-const theme = {
+export const theme = {
   spacingXXS: '1rem',
   spacingXS: '1.5rem',
   spacingS: '3rem',
@@ -18,16 +18,7 @@ const theme = {
   smallBorderRadius: '10px',
   mainBorderRadius: '20px',
   bigBorderRadius: '30px',
-  white: '#fff',
-  offWhite: '#dedede',
-  black: '#111111',
-  backgroundBlack: '#1F2128',
-  hoverBlack: '#1d1f25',
-  accent: '#7D41FF',
-  darkenAccent: '#3e2377',
-  grey: '#757575',
-  surfacesBlack: '#222733',
-  activeBackground: '#30323a;',
+  alwaysWhite: '#ffffff',
   habitsRed: '#fd1053',
   habitsGreen: '#23b14f',
   mainGradient:
@@ -52,7 +43,35 @@ const theme = {
   }
 }
 
-export default theme
+export const darkTheme = {
+  ...theme,
+  white: '#fff',
+  offWhite: '#dedede',
+  black: '#111111',
+  backgroundBlack: '#1F2128',
+  hoverBlack: '#1d1f25',
+  accent: '#7D41FF',
+  darkenAccent: '#3e2377',
+  grey: '#757575',
+  surfacesBlack: '#222733',
+  activeBackground: '#30323a',
+  widgetBg: '#1F2128'
+}
+
+export const lightTheme = {
+  ...theme,
+  white: '#333333',
+  offWhite: '#444444',
+  black: '#111111',
+  backgroundBlack: '#ffffff',
+  hoverBlack: '#ebecec',
+  accent: '#7D41FF',
+  darkenAccent: '#3e2377',
+  grey: '#9e9e9e',
+  surfacesBlack: '#e4e4e4',
+  activeBackground: '#cecece',
+  widgetBg: '#dadada'
+}
 
 const size = {
   mobileXS: '330px',

@@ -37,6 +37,7 @@ const CalendarHeader__Icon = styled.span`
   }
   svg {
     width: 1.6rem;
+    stroke: ${props => props.theme.white};
     transition: all 0.25s ease;
   }
 `
@@ -62,7 +63,7 @@ const CalendarHabit = styled.div`
 const CalendarHabit__Title = styled.h4`
   display: inline-block;
   background: ${props => props.theme.accent};
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.alwaysWhite};
   padding: 0.6rem 1.5rem;
   border-radius: 10px;
   font-size: 1.7rem;
@@ -93,21 +94,24 @@ const CalendarDays__Cell = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  color: ${props => props.theme.white};
 
   &:not(.disabled) {
     cursor: pointer;
   }
   &:active {
-    background-color: #31343e;
+    background-color: ${props => props.theme.activeBackground};
   }
   &.today {
     border: 3px solid ${props => props.theme.accent};
   }
   &.done {
     background-color: ${props => props.theme.habitsGreen};
+    color: ${props => props.theme.alwaysWhite};
   }
   &.not-done {
     background-color: ${props => props.theme.habitsRed};
+    color: ${props => props.theme.alwaysWhite};
   }
   &.disabled {
     opacity: 0.2;
@@ -166,7 +170,7 @@ const CalendarDays__Cell = styled.div`
 `
 
 const CalendarDays__Cell__Inner = styled.span`
-  color: ${props => props.theme.white};
+  color: inherit;
   font-weight: ${props => props.theme.fontMedium};
   font-size: 1.8rem;
   pointer-events: none;

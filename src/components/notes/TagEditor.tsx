@@ -7,7 +7,7 @@ import { NoteTag } from '../../utils/ModuleTypes'
 import { TAGS } from '../../utils/queries'
 import { ADD_TAG_TO_NOTE, CREATE_TAG } from '../../utils/mutations'
 import { Styled } from '../../styles/TagEditor.styles'
-import theme from '../../styles/theme'
+import { theme } from '../../styles/theme'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 

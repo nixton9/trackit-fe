@@ -92,7 +92,7 @@ const AddWidgetsContainer = styled.div`
 `
 
 const AddWidget = styled.div`
-  background-color: ${props => props.theme.backgroundBlack};
+  background-color: ${props => props.theme.widgetBg};
   padding: 1.3rem 1rem 1.3rem 1.5rem;
   border-radius: ${props => props.theme.smallBorderRadius};
   display: inline-flex;
@@ -104,7 +104,7 @@ const AddWidget = styled.div`
 
   &:hover,
   &:active {
-    background-color: #17181b;
+    background-color: ${props => props.theme.activeBackground};
   }
 
   &:last-of-type {
@@ -228,7 +228,7 @@ const AddWidget__Button = styled.button`
 
   svg {
     width: 2.5rem;
-    fill: ${props => props.theme.white};
+    stroke: ${props => props.theme.alwaysWhite};
     display: block;
     transform: rotate(-90deg);
   }

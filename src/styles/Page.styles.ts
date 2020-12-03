@@ -56,6 +56,7 @@ const PageHeader__View__Dropdown = styled.div`
   .input-wrapper {
     position: relative;
     background: ${props => props.theme.accent};
+    color: ${props => props.theme.alwaysWhite};
     border-radius: ${props => props.theme.smallBorderRadius};
     width: 11rem;
     cursor: pointer;
@@ -95,7 +96,7 @@ const PageHeader__View__Dropdown = styled.div`
   }
 
   .MuiSelect-select {
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.alwaysWhite};
     font-weight: ${props => props.theme.fontMedium};
     font-size: 1.7rem;
     min-height: 0;
@@ -103,6 +104,9 @@ const PageHeader__View__Dropdown = styled.div`
 
   .MuiSelect-icon {
     right: 1rem;
+    stroke: ${props => props.theme.alwaysWhite};
+    top: unset;
+    transform: unset;
   }
 
   svg {
@@ -285,6 +289,13 @@ const DetailBack = styled.span`
     transform: rotate(90deg);
     width: 3.2rem;
     margin-right: ${props => props.theme.spacingXS};
+
+    .svg-fill {
+      fill: ${props => props.theme.white};
+    }
+    .svg-stroke {
+      stroke: ${props => props.theme.white};
+    }
   }
 `
 
@@ -460,6 +471,10 @@ const SettingsBlock = styled.div`
   position: relative;
   min-height: 6rem;
 
+  &:last-child {
+    padding-bottom: ${props => props.theme.spacingS};
+  }
+
   .loading-spinner {
     position: absolute;
     left: 0;
@@ -491,7 +506,7 @@ const SettingsBlock = styled.div`
   }
 
   label {
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.offWhite};
     font-size: 1.5rem;
     font-weight: ${props => props.theme.fontBold};
     display: block;
@@ -519,10 +534,14 @@ const SettingsBlock = styled.div`
     margin-right: ${props => props.theme.spacingS};
     cursor: pointer;
   }
+
+  .toggle-button {
+    margin-top: ${props => props.theme.spacingXS};
+  }
 `
 
 const SettingsButton = styled.button`
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.alwaysWhite};
   background-color: ${props => props.theme.accent};
   font-size: 1.4rem;
   font-weight: ${props => props.theme.fontSemiBold};

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { UserHeader } from './UserHeader'
 import { NotificationTypes, notificationState } from './Notification'
 import { alertState } from './Alert'
+import { ToggleButton } from './ToggleButton'
 import { Styled } from '../../styles/Page.styles'
 import { User } from '../../utils/ModuleTypes'
 import { UPDATE_USER_INFO, UPDATE_USER_PASSWORD } from '../../utils/mutations'
@@ -12,9 +13,16 @@ import { LoadingSpinner } from './LoadingSpinner'
 type SettingsProps = {
   user: User
   refreshUserInfo: () => void
+  isDarkTheme: boolean
+  setIsDarkTheme: (checked: boolean) => void
 }
 
-const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
+const SettingsPage: React.FC<SettingsProps> = ({
+  user,
+  refreshUserInfo,
+  isDarkTheme,
+  setIsDarkTheme
+}) => {
   const [name, setName] = useState(user.name)
   const [image] = useState(user.image)
   const [password, setPassword] = useState('')
@@ -235,6 +243,20 @@ const SettingsPage: React.FC<SettingsProps> = ({ user, refreshUserInfo }) => {
               </Styled.SettingsButton>
             </>
           )}
+        </Styled.SettingsBlock>
+
+        <Styled.Settings_Title className="second">
+          Other Settings
+        </Styled.Settings_Title>
+
+        <Styled.SettingsBlock>
+          <div>
+            <label>Dark theme</label>
+            <ToggleButton
+              isChecked={isDarkTheme}
+              setIsChecked={setIsDarkTheme}
+            />
+          </div>
         </Styled.SettingsBlock>
       </Styled.PageContent>
     </Styled.PageContainer>

@@ -80,7 +80,7 @@ const SettingsBlock__Category = styled.div<SettingsBlock__CategoryProps>`
 
   .inner {
     background-color: ${props => props.color};
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.alwaysWhite};
     min-width: 5rem;
     text-align: center;
     padding: 0.3rem 0.9rem;

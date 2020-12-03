@@ -74,7 +74,7 @@ const Menu = styled.ul`
 `
 
 const MenuItem = styled.li`
-  color: #fff;
+  color: ${props => props.theme.white};
   font-size: 1.5rem;
   font-weight: ${props => props.theme.fontRegular};
   line-height: 1.5;

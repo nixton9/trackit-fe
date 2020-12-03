@@ -74,6 +74,7 @@ const DatePickerContainer = styled.div`
   }
   .react-datepicker__day--selected {
     background-color: ${props => props.theme.accent};
+    color: ${props => props.theme.alwaysWhite};
   }
   .react-datepicker__month {
     padding: 0 0.5rem 0.5rem 0.5rem;

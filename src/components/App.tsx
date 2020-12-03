@@ -19,7 +19,7 @@ import { Alert } from './misc/Alert'
 import { GlobalStyle } from '../styles/globalstyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import theme from '../styles/theme'
+import { darkTheme, lightTheme } from '../styles/theme'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { useLocalStorage } from '../utils/useLocalStorage'
 import { RecoilRoot } from 'recoil'
@@ -30,6 +30,7 @@ const App: React.FC = () => {
 
   const [token, setToken] = useLocalStorage('token', '')
   const [userInfo, setUserInfo] = useLocalStorage('user', {})
+  const [isDarkTheme, setIsDarkTheme] = useLocalStorage('isDarkTheme', true)
 
   useEffect(() => {
     token ? setLoggedIn(true) : setLoggedIn(false)
@@ -61,7 +62,7 @@ const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <GlobalStyle />
           {loggedIn ? (
             <RecoilRoot>
@@ -85,6 +86,8 @@ const App: React.FC = () => {
                   <SettingsPage
                     user={userInfo}
                     refreshUserInfo={refreshUserInfo}
+                    isDarkTheme={isDarkTheme}
+                    setIsDarkTheme={setIsDarkTheme}
                   />
                 </Route>
                 <Route

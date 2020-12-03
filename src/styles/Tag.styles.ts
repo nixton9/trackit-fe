@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 type TagChipProps = {
   color: string
@@ -15,7 +15,7 @@ const TagChip = styled.div<TagChipProps>`
 
   .inner {
     background-color: ${props => props.color};
-    color: ${props => props.theme.white};
+    color: ${props => props.theme.alwaysWhite};
     min-width: 5rem;
     text-align: center;
     padding: 0.3rem 0.9rem;
