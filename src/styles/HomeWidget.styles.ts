@@ -67,7 +67,7 @@ const Widget = styled.div<WidgetProps>`
     right: 0;
     margin: 0 auto;
     filter: blur(31px);
-    opacity: 70%;
+    opacity: 0.7;
     border-radius: ${props => props.theme.mainBorderRadius};
     background: ${props =>
       props.type === ModuleTypes.Notes

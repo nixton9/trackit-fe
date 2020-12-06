@@ -130,8 +130,8 @@ export const UPDATE_HABIT = gql`
 `
 
 export const UPDATE_USER_INFO = gql`
-  mutation UpdateUserInfo($name: String, $image: String) {
-    updateUserInfo(name: $name, image: $image) {
+  mutation UpdateUserInfo($name: String, $image: String, $imgToDelete: String) {
+    updateUserInfo(name: $name, image: $image, imgToDelete: $imgToDelete) {
       id: id_user
       name: name_user
       email: email_user

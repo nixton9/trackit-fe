@@ -76,6 +76,7 @@ const Alert__Buttons = styled.div`
 
     &.confirm {
       background-color: ${props => props.theme.accent};
+      color: ${props => props.theme.alwaysWhite};
     }
   }
 `

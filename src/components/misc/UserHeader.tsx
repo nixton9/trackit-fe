@@ -17,11 +17,12 @@ const UserWrapper = styled.div<UserWrapperProps>`
   padding: ${props => (props.small ? '0 2rem' : '0')};
 `
 
-const UserImg = styled.img<UserWrapperProps>`
+const UserImg = styled.div<UserWrapperProps>`
   border-radius: 50%;
   width: ${props => (props.small ? '4.5rem' : '6rem')};
   height: ${props => (props.small ? '4.5rem' : '6rem')};
-  object-fit: cover;
+  background-size: cover;
+  background-position: center center;
 `
 
 const UserDefaultImg = styled.div<UserWrapperProps>`
@@ -58,7 +59,10 @@ export const UserHeader: React.FC<UserHeaderProps> = ({ user, small }) => {
   return (
     <UserWrapper small={small}>
       {user.image ? (
-        <UserImg small={small} alt={user.name} src={user.image} />
+        <UserImg
+          small={small}
+          style={{ backgroundImage: `url(${user.image})` }}
+        />
       ) : (
         <UserDefaultImg small={small}>{user.name[0]}</UserDefaultImg>
       )}

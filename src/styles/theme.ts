@@ -55,6 +55,7 @@ export const darkTheme = {
   grey: '#757575',
   surfacesBlack: '#222733',
   activeBackground: '#30323a',
+  inputAutofill: '#757575',
   widgetBg: '#1F2128'
 }
 
@@ -70,6 +71,7 @@ export const lightTheme = {
   grey: '#9e9e9e',
   surfacesBlack: '#e4e4e4',
   activeBackground: '#cecece',
+  inputAutofill: '#E0E0E0',
   widgetBg: '#dadada'
 }
 

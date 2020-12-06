@@ -71,7 +71,7 @@ const SignInSignUpForm__Input = styled.div`
     width: 100%;
     height: 6rem;
     border-radius: ${props => props.theme.smallBorderRadius};
-    background-color: ${props => props.theme.grey};
+    background-color: ${props => props.theme.inputAutofill};
     border: none;
     color: ${props => props.theme.white};
     font-size: 1.4rem;
@@ -83,7 +83,7 @@ const SignInSignUpForm__Input = styled.div`
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
       -webkit-box-shadow: ${props =>
-        `0 0 0 30px ${props.theme.grey} inset !important`};
+        `0 0 0 30px ${props.theme.inputAutofill} inset !important`};
       -webkit-text-fill-color: ${props => props.theme.white};
     }
     &::placeholder {
@@ -141,7 +141,7 @@ const SignInSignUpForm__Button = styled.button`
   width: 20rem;
   height: 6rem;
   background-color: ${props => props.theme.accent};
-  color: ${props => props.theme.white};
+  color: ${props => props.theme.alwaysWhite};
   font-size: 1.9rem;
   font-weight: ${props => props.theme.fontSemiBold};
   border: none;

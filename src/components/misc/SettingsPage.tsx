@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { UserHeader } from './UserHeader'
 import { NotificationTypes, notificationState } from './Notification'
 import { alertState } from './Alert'
@@ -24,7 +24,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
   setIsDarkTheme
 }) => {
   const [name, setName] = useState(user.name)
-  const [image] = useState(user.image)
+  const [image, setImage] = useState(user.image)
   const [password, setPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [selectedFile, setSelectedFile] = useState('')
@@ -47,12 +47,10 @@ const SettingsPage: React.FC<SettingsProps> = ({
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
 
-  const imageFileRef = useRef<HTMLInputElement>(null)
-
   const updateUser = (img?: string, deleteImage?: boolean) => {
     updateUserInfo({
       variables: deleteImage
-        ? { image: null }
+        ? { image: null, imgToDelete: img }
         : {
             name: name || undefined,
             image: img || image || undefined
@@ -74,7 +72,10 @@ const SettingsPage: React.FC<SettingsProps> = ({
           type: NotificationTypes.Error
         })
       )
-      .finally(() => setIsLoadingProfile(false))
+      .finally(() => {
+        setIsLoadingProfile(false)
+        setSelectedFile('')
+      })
   }
 
   const updateProfile = () => {
@@ -95,7 +96,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
         options
       )
         .then(res => res.json())
-        .then(res => updateUser(res.secure_url))
+        .then(res => updateUser(res.public_id))
         .catch(err =>
           setNotification({
             text: 'There was a problem, please try again.',
@@ -108,7 +109,6 @@ const SettingsPage: React.FC<SettingsProps> = ({
   }
 
   const updateUserPW = () => {
-    console.log(newPassword.length)
     if (newPassword.length < 6) {
       setNotification({
         text: 'New password needs to have at least 6 characters',
@@ -135,25 +135,26 @@ const SettingsPage: React.FC<SettingsProps> = ({
       })
   }
 
+  const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0].name : ''
+    setSelectedFile(file)
+  }
+
   const handleDeleteImage = () => {
     setAlert({
       text: 'Are you sure you want to remove your picture?',
-      onConfirm: () => updateUser('', true)
+      onConfirm: () => {
+        updateUser(image, true)
+      }
     })
   }
 
   useEffect(() => {
-    if (imageFileRef && imageFileRef.current) {
-      imageFileRef.current.addEventListener('change', () => {
-        const file = imageFileRef?.current?.files
-          ? imageFileRef.current.files[0]
-            ? imageFileRef.current.files[0].name
-            : ''
-          : ''
-        setSelectedFile(file)
-      })
+    if (user) {
+      setName(user.name)
+      setImage(user.image)
     }
-  }, [imageFileRef])
+  }, [user])
 
   return (
     <Styled.PageContainer>
@@ -179,7 +180,11 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
               <div className="image">
                 <div className="file-picker">
-                  <input ref={imageFileRef} type="file" id="image-file" />
+                  <input
+                    type="file"
+                    id="image-file"
+                    onChange={handleChangeImage}
+                  />
                   <label htmlFor="image-file">Change picture</label>
                   <small>{selectedFile}</small>
                 </div>
