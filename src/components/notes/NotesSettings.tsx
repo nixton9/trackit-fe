@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from 'react'
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import Drawer from '../misc/Drawer'
 import Tag from './Tag'
 import { TagEditor } from './TagEditor'
@@ -14,6 +14,7 @@ import { NoteTag } from '../../utils/ModuleTypes'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { useSetRecoilState } from 'recoil'
 import { gql, useMutation, useQuery } from '@apollo/client'
+import { useHistory } from 'react-router-dom'
 
 const DELETE_TAG = gql`
   mutation DeleteTag($id: ID!) {
@@ -44,6 +45,8 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
+
+  const history = useHistory()
 
   const [open, setOpen, overlayEl] = useToggleElement(() =>
     setShowTagEditor(false)
@@ -98,6 +101,14 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
       onConfirm: () => handleDeleteTag(tagId)
     })
   }
+
+  useEffect(() => {
+    history.push(`#`)
+
+    window.onpopstate = (e: any) => {
+      setOpen(false)
+    }
+  }, [history, setOpen])
 
   return (
     <>

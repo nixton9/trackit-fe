@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Drawer from '../misc/Drawer'
 import { TypeEditor } from './TypeEditor'
 import { SelectMenu } from '../misc/SelectMenu'
@@ -17,6 +17,7 @@ import {
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { useSetRecoilState, useRecoilState, atom } from 'recoil'
 import { gql, useMutation, useQuery } from '@apollo/client'
+import { useHistory } from 'react-router-dom'
 
 export const currencyState = atom({
   key: 'currency',
@@ -44,6 +45,8 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
+
+  const history = useHistory()
 
   const [open, setOpen, overlayEl] = useToggleElement(() =>
     setShowTypeEditor(false)
@@ -100,6 +103,14 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
       onConfirm: () => handleDeleteType(typeId)
     })
   }
+
+  useEffect(() => {
+    history.push(`#`)
+
+    window.onpopstate = (e: any) => {
+      setOpen(false)
+    }
+  }, [history, setOpen])
 
   return (
     <>

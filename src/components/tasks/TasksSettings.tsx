@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from 'react'
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import Drawer from '../misc/Drawer'
 import { CategoryEditor } from './CategoryEditor'
 import { SelectMenu } from '../misc/SelectMenu'
@@ -13,6 +13,7 @@ import { TaskCategory } from '../../utils/ModuleTypes'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { useSetRecoilState } from 'recoil'
 import { gql, useMutation, useQuery } from '@apollo/client'
+import { useHistory } from 'react-router-dom'
 
 const DELETE_CATEGORY = gql`
   mutation DeleteCategory($id: ID!) {
@@ -45,6 +46,8 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
+
+  const history = useHistory()
 
   const [open, setOpen, overlayEl] = useToggleElement(() =>
     setShowCategoryEditor(false)
@@ -99,6 +102,14 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
       onConfirm: () => handleDeleteType(typeId)
     })
   }
+
+  useEffect(() => {
+    history.push(`#`)
+
+    window.onpopstate = (e: any) => {
+      setOpen(false)
+    }
+  }, [history, setOpen])
 
   return (
     <>
