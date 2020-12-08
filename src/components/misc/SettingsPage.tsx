@@ -160,7 +160,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
     <Styled.PageContainer>
       <UserHeader user={user} />
 
-      <Styled.PageContent style={{ paddingLeft: '2rem', overflowX: 'hidden' }}>
+      <Styled.PageContent className="settings-page">
         <Styled.Settings_Title>User Profile</Styled.Settings_Title>
 
         <Styled.SettingsBlock>

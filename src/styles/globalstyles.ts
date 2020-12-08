@@ -15,8 +15,20 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
         scroll-behavior: smooth;
 
+        @media ${device.tablet} {
+            font-size: 59%;
+        }
+
         @media ${device.mobile} {
             font-size: 50%;
+        }
+
+        @media ${device.mobileS} {
+            font-size: 46.5%;
+        }
+
+        @media ${device.mobileXS} {
+            font-size: 41%;
         }
     }
 

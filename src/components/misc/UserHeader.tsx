@@ -11,6 +11,9 @@ type UserWrapperProps = {
   small?: boolean
 }
 
+const CLOUDINARY_URL =
+  'https://res.cloudinary.com/trckr/image/upload/v1607329597/'
+
 const UserWrapper = styled.div<UserWrapperProps>`
   display: flex;
   align-items: center;
@@ -61,7 +64,7 @@ export const UserHeader: React.FC<UserHeaderProps> = ({ user, small }) => {
       {user.image ? (
         <UserImg
           small={small}
-          style={{ backgroundImage: `url(${user.image})` }}
+          style={{ backgroundImage: `url(${CLOUDINARY_URL}${user.image})` }}
         />
       ) : (
         <UserDefaultImg small={small}>{user.name[0]}</UserDefaultImg>

@@ -83,6 +83,7 @@ const PageHeader__View__Dropdown = styled.div`
     }
 
     svg {
+      stroke: ${props => props.theme.alwaysWhite};
       position: absolute;
       right: 1rem;
       top: 50%;
@@ -175,6 +176,23 @@ const PageContent = styled.section`
   }
   @media only screen and (max-height: 500px) {
     height: 59vh;
+  }
+
+  &.settings-page {
+    padding-left: 15rem;
+    overflow-x: hidden;
+
+    @media ${device.tablet} {
+      padding-left: 8rem;
+    }
+
+    @media ${device.tabletXS} {
+      padding-left: 4rem;
+    }
+
+    @media ${device.mobile} {
+      padding-left: 2rem;
+    }
   }
 `
 

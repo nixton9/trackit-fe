@@ -29,17 +29,29 @@ const HomeText = styled.h2`
 `
 
 const HomeGrid = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4rem;
-  margin-top: ${props => props.theme.spacingL};
+  display: flex;
+  justify-content: center;
+  grid-gap: 6rem;
+  margin-top: ${props => props.theme.spacingXL};
+
+  @media ${device.tabletXL} {
+    grid-gap: 4rem;
+  }
+
+  @media ${device.tablet} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: ${props => props.theme.spacingXL};
+  }
 
   > div:nth-child(odd) {
     justify-self: flex-end;
   }
 
   > div:nth-child(even) {
-    transform: translateY(${props => props.theme.spacingS});
+    @media ${device.tablet} {
+      transform: translateY(${props => props.theme.spacingS});
+    }
   }
 
   @media ${device.mobile} {

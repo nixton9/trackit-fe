@@ -122,7 +122,10 @@ const CalendarSingle: React.FC<CalendarProps> = ({ habit, handleDayClick }) => {
       }
 
       rows.push(
-        <Styled.CalendarDays key={day.toString()}> {days} </Styled.CalendarDays>
+        <Styled.CalendarDays key={day.toString()} className="calendar-single">
+          {' '}
+          {days}{' '}
+        </Styled.CalendarDays>
       )
       days = []
     }

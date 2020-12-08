@@ -76,10 +76,12 @@ export const lightTheme = {
 }
 
 const size = {
-  mobileXS: '330px',
-  mobile: '400px',
+  mobileXS: '320px',
+  mobileS: '360px',
+  mobile: '430px',
   tabletXS: '700px',
   tablet: '1000px',
+  tabletXL: '1200px',
   laptop: '1500px',
   laptopL: '1792px',
   desktop: '1920px',
@@ -89,9 +91,11 @@ const size = {
 
 export const device = {
   mobileXS: `(max-width: ${size.mobileXS})`,
+  mobileS: `(max-width: ${size.mobileS})`,
   mobile: `(max-width: ${size.mobile})`,
   tabletXS: `(max-width: ${size.tabletXS})`,
   tablet: `(max-width: ${size.tablet})`,
+  tabletXL: `(max-width: ${size.tabletXL})`,
   laptop: `(max-width: ${size.laptop})`,
   laptopL: `(max-width: ${size.laptopL})`,
   desktop: `(max-width: ${size.desktop})`,

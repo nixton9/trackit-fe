@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { device } from './theme'
 
 const CalendarContainer = styled.div`
   position: relative;
@@ -84,6 +85,18 @@ const CalendarDays = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   margin-bottom: ${props => props.theme.spacingS};
+
+  &.calendar-single {
+    margin-bottom: ${props => props.theme.spacingL};
+
+    @media ${device.tablet} {
+      margin-bottom: ${props => props.theme.spacingM};
+    }
+
+    @media ${device.tabletXS} {
+      margin-bottom: ${props => props.theme.spacingS};
+    }
+  }
 `
 
 const CalendarDays__Cell = styled.div`

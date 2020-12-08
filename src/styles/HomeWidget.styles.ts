@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import { ModuleTypes } from '../utils/ModuleTypes'
+import { device } from './theme'
 import wave1 from '../assets/wave1.svg'
 import wave2 from '../assets/wave2.svg'
 import wave3 from '../assets/wave3.svg'
@@ -37,6 +38,10 @@ const Widget = styled.div<WidgetProps>`
   background-size: 300px;
   background-position: 50% 50%;
   transition: all 0.25s ease;
+
+  @media ${device.mobileS} {
+    border-radius: ${props => props.theme.mainBorderRadius};
+  }
 
   &:hover {
     background-position: 70% 70%;
