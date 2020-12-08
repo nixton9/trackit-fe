@@ -59,6 +59,12 @@ export const GlobalStyle = createGlobalStyle`
         z-index: -1;
     }
 
+    .mbl-click.word:active:before {
+        width: 120%;
+        height: 120%;
+        border-radius:${props => props.theme.smallBorderRadius};
+    }
+
     input,
     textarea,
     button {

@@ -185,11 +185,21 @@ const SettingsPage: React.FC<SettingsProps> = ({
                     id="image-file"
                     onChange={handleChangeImage}
                   />
-                  <label htmlFor="image-file">Change picture</label>
+                  <label
+                    className="inline-btn mbl-click word"
+                    htmlFor="image-file"
+                  >
+                    Change picture
+                  </label>
                   <small>{selectedFile}</small>
                 </div>
                 {user.image && (
-                  <span onClick={handleDeleteImage}>Delete picture</span>
+                  <span
+                    className="inline-btn mbl-click word"
+                    onClick={handleDeleteImage}
+                  >
+                    Delete picture
+                  </span>
                 )}
               </div>
 

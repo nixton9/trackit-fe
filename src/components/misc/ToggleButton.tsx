@@ -7,7 +7,7 @@ const ToggleContainer = styled.div`
 const Toggle = styled.label`
   position: relative;
   display: inline-block;
-  width: 9.2rem;
+  width: 6.6rem;
   height: 3rem;
 
   input {

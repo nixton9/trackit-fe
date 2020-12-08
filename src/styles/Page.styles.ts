@@ -505,6 +505,7 @@ const SettingsBlock = styled.div`
   .file-picker {
     position: relative;
     display: inline-block;
+    margin-right: ${props => props.theme.spacingS};
 
     input {
       opacity: 0;
@@ -544,12 +545,11 @@ const SettingsBlock = styled.div`
     margin-top: ${props => props.theme.spacingS};
   }
 
-  .file-picker label,
-  span {
+  .inline-btn {
+    position: relative;
     color: ${props => props.theme.white};
     font-weight: ${props => props.theme.fontExtraBold};
     font-size: 1.5rem;
-    margin-right: ${props => props.theme.spacingS};
     cursor: pointer;
   }
 
@@ -568,8 +568,13 @@ const SettingsButton = styled.button`
   padding: 0.6rem 1.2rem;
   border-radius: ${props => props.theme.smallBorderRadius};
 
+  &:hover,
+  &:active {
+    background-color: ${props => props.theme.darkenAccent};
+  }
+
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 `
 
