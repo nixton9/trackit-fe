@@ -16,8 +16,18 @@ type WidgetInfo__ValueProps = {
 
 const WidgetContainer = styled.div`
   position: relative;
-  width: 19.2rem;
-  height: 20rem;
+  width: 24rem;
+  height: 25rem;
+
+  @media ${device.tabletXL} {
+    width: 21rem;
+    height: 22rem;
+  }
+
+  @media ${device.tablet} {
+    width: 19.2rem;
+    height: 20rem;
+  }
 `
 
 const Widget = styled.div<WidgetProps>`
@@ -100,55 +110,98 @@ const WidgetHeader__Title = styled.h3`
 
 const WidgetHeader__Icon = styled.span`
   svg {
-    width: 4rem;
+    width: 4.6rem;
+
+    @media ${device.tabletXL} {
+      width: 4rem;
   }
 `
 
 const WidgetInfo = styled.div`
   margin-top: ${props => props.theme.spacingXS};
-  padding-left: ${props => props.theme.spacingXXS};
+  padding-left: ${props => props.theme.spacingS};
   overflow: hidden;
+
+  @media ${device.tabletXL} {
+    padding-left: ${props => props.theme.spacingXS};
+  }
+
+  @media ${device.tablet} {
+    padding-left: ${props => props.theme.spacingXXS};
+  }
 `
 
 const WidgetInfo_Value = styled.h2<WidgetInfo__ValueProps>`
   font-weight: ${props => props.theme.fontExtraLight};
   font-size: ${props =>
     props.length < 2
-      ? '7.6rem'
+      ? '9rem'
       : props.length < 3
-      ? '6.9rem'
+      ? '8.2rem'
       : props.length < 4
-      ? '5.7rem'
-      : '4.8rem'};
+      ? '6.7rem'
+      : '5.7rem'};
   line-height: ${props =>
     props.length < 2
-      ? '7.2rem'
+      ? '8.3rem'
       : props.length < 3
-      ? '7rem'
+      ? '8rem'
       : props.length < 4
-      ? '6rem'
-      : '5.2rem'};
+      ? '6.9rem'
+      : '6rem'};
+
+  @media ${device.tabletXL} {
+    font-size: ${props =>
+      props.length < 2
+        ? '7.6rem'
+        : props.length < 3
+        ? '6.9rem'
+        : props.length < 4
+        ? '5.7rem'
+        : '4.8rem'};
+    line-height: ${props =>
+      props.length < 2
+        ? '7.2rem'
+        : props.length < 3
+        ? '7rem'
+        : props.length < 4
+        ? '6rem'
+        : '5.2rem'};
+  }
 `
 
 const WidgetInfo_Label = styled.p`
   font-weight: ${props => props.theme.fontRegular};
-  font-size: 1.2rem;
-  padding-left: 0.2rem;
+  font-size: 1.5rem;
+  padding-left: 0.7rem;
+
+  @media ${device.tabletXL} {
+    font-size: 1.2rem;
+    padding-left: 0.2rem;
+  }
 `
 
 const WidgetPlus = styled.span`
   position: absolute;
-  right: 1.1rem;
+  right: 1.4rem;
   bottom: 1rem;
   cursor: pointer;
 
   svg {
-    width: 2.4rem;
+    width: 2.9rem;
     .svg-fill {
       fill: ${props => props.theme.alwaysWhite};
     }
     .svg-stroke {
       stroke: ${props => props.theme.alwaysWhite};
+    }
+  }
+
+  @media ${device.tabletXL} {
+    right: 1.1rem;
+
+    svg {
+      width: 2.4rem;
     }
   }
 `

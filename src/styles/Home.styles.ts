@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { device } from './theme'
 
 const HomeLogo = styled.h1`
@@ -14,13 +14,22 @@ const HomeLogo = styled.h1`
 
 const HomeContainer = styled.div`
   width: 85%;
-  margin: ${props => props.theme.spacingXL} auto 0 auto;
+  margin: ${props => props.theme.spacingXXL} auto 0 auto;
+
+  @media ${device.tabletXL} {
+    margin: ${props => props.theme.spacingXL} auto 0 auto;
+  }
 `
 const HomeText = styled.h2`
   color: ${props => props.theme.white};
-  font-size: 3rem;
-  line-height: 4.5rem;
+  font-size: 3.7rem;
+  line-height: 5.2rem;
   font-weight: ${props => props.theme.fontSemiBold};
+
+  @media ${device.tabletXL} {
+    font-size: 3rem;
+    line-height: 4.5rem;
+  }
 
   strong {
     font-weight: ${props => props.theme.fontSemiBold};

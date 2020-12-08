@@ -77,7 +77,7 @@ export const lightTheme = {
 
 const size = {
   mobileXS: '320px',
-  mobileS: '360px',
+  mobileS: '380px',
   mobile: '430px',
   tabletXS: '700px',
   tablet: '1000px',
