@@ -151,7 +151,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
 
   return (
     <>
-      <Styled.PageHeader>
+      <Styled.PageHeader className="page-header">
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
             <SelectMenu
@@ -189,7 +189,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
-      <Styled.PageContent className="desktop-grid">
+      <Styled.PageContent className="overflow desktop-grid">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (

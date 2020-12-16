@@ -60,7 +60,7 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
     : 0
 
   return (
-    <Styled.PageContainer>
+    <Styled.PageContainer className="overflow">
       <Styled.PageTitle>Expenses {stats && 'Statistics'}</Styled.PageTitle>
 
       {stats ? (

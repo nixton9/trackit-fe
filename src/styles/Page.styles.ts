@@ -20,8 +20,34 @@ type SingleChart__ExpenseProps = {
 }
 
 const PageContainer = styled.div`
+  position: relative;
   width: 85%;
   margin: ${props => props.theme.spacingL} auto 0 auto;
+
+  &.overflow:before,
+  .page-header:after {
+    content: '';
+    width: 100%;
+    height: 4rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to top,
+      rgba(31, 33, 40, 1) 50%,
+      rgba(31, 33, 40, 0)
+    );
+    z-index: 1;
+  }
+
+  .page-header:after {
+    bottom: -4rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(31, 33, 40, 1) 50%,
+      rgba(31, 33, 40, 0)
+    );
+  }
 `
 
 const PageTitle = styled.h1`
@@ -35,6 +61,7 @@ const PageTitle = styled.h1`
 `
 
 const PageHeader = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -190,10 +217,17 @@ const PageHeader__Settings = styled.div`
 `
 
 const PageContent = styled.section`
+  position: relative;
   margin-top: ${props => props.theme.spacingS};
   overflow-y: auto;
   padding-right: ${props => props.theme.spacingXXS};
   height: 80vh;
+
+  &.overflow {
+    margin-top: 0;
+    padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS}
+      ${props => props.theme.spacingS} 0;
+  }
 
   @media only screen and (max-height: 850px) {
     height: 70vh;

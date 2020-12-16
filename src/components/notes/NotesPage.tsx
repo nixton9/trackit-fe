@@ -43,10 +43,10 @@ const NotesPage: React.FC = () => {
   const sortedNotes = sortData(visibleNotes, sortBy)
 
   return (
-    <Styled.PageContainer>
+    <Styled.PageContainer className="overflow">
       <Styled.PageTitle>Notes</Styled.PageTitle>
 
-      <Styled.PageHeader>
+      <Styled.PageHeader className="page-header">
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
             <SelectMenu
@@ -85,7 +85,7 @@ const NotesPage: React.FC = () => {
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
-      <Styled.PageContent>
+      <Styled.PageContent className="overflow">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (
