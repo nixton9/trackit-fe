@@ -6,6 +6,19 @@ type DetailHeaderProps = {
   editorActive?: boolean
 }
 
+type SingleChartProps = {
+  area?: string
+}
+
+type SingleChart__CategoryProps = {
+  bgColor: string
+}
+
+type SingleChart__ExpenseProps = {
+  color?: string
+  position: number
+}
+
 const PageContainer = styled.div`
   width: 85%;
   margin: ${props => props.theme.spacingL} auto 0 auto;
@@ -92,7 +105,15 @@ const PageHeader__View__Dropdown = styled.div`
     }
 
     @media ${device.mobile} {
-      width: 10rem;
+      width: 8.5rem;
+
+      &:last-child {
+        margin-left: 1rem;
+      }
+
+      input {
+        font-size: 1.3rem;
+      }
     }
   }
 
@@ -135,6 +156,7 @@ const PageHeader__View__Counter = styled.h3`
 const PageHeader__Settings = styled.div`
   display: flex;
   position: relative;
+  margin-left: auto;
 
   .settings-icon {
     cursor: pointer;
@@ -147,8 +169,16 @@ const PageHeader__Settings = styled.div`
     margin-right: ${props => props.theme.spacingXS};
   }
 
+  .tooltip {
+    display: flex;
+  }
+
   svg {
     width: 3.2rem;
+
+    &.stats-icon {
+      width: 2.6rem;
+    }
 
     .svg-fill {
       fill: ${props => props.theme.white};
@@ -163,8 +193,11 @@ const PageContent = styled.section`
   margin-top: ${props => props.theme.spacingS};
   overflow-y: auto;
   padding-right: ${props => props.theme.spacingXXS};
-  height: 70vh;
+  height: 80vh;
 
+  @media only screen and (max-height: 850px) {
+    height: 70vh;
+  }
   @media only screen and (max-height: 650px) {
     height: 67vh;
   }
@@ -192,6 +225,17 @@ const PageContent = styled.section`
 
     @media ${device.mobile} {
       padding-left: 2rem;
+    }
+  }
+
+  &.desktop-grid {
+    display: grid;
+    grid-template-areas: 'bar-chart bar-chart' 'pie-chart list';
+    grid-template-columns: 1fr 1fr;
+    grid-gap: ${props => props.theme.spacingS};
+
+    @media ${device.tablet} {
+      display: block;
     }
   }
 `
@@ -578,6 +622,154 @@ const SettingsButton = styled.button`
   }
 `
 
+const SingleChart = styled.div<SingleChartProps>`
+  margin-top: 0;
+  padding: ${props => props.theme.spacingS};
+  background-color: ${props => props.theme.surfacesBlack};
+  border-radius: ${props => props.theme.mainBorderRadius};
+  grid-area: ${props => props.area};
+  height: min-content;
+
+  &.no-data {
+    min-height: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      color: ${props => props.theme.white};
+      font-size: 1.4rem;
+      font-weight: ${props => props.theme.fontMedium};
+    }
+  }
+
+  @media ${device.tablet} {
+    margin-top: ${props => props.theme.spacingM};
+
+    &:first-child {
+      margin-top: ${props => props.theme.spacingS};
+    }
+  }
+`
+
+const SingleChart__Title = styled.h3`
+  color: ${props => props.theme.white};
+  font-size: 1.95rem;
+  font-weight: ${props => props.theme.fontExtraBold};
+  //margin: 1.5rem 0 0 2rem;
+`
+
+const SingleChart__Flex = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: ${props => props.theme.spacingXS};
+
+  @media ${device.mobile} {
+    flex-wrap: wrap;
+  }
+`
+
+const SingleChart__CategoriesList = styled.ul`
+  list-style: none;
+  width: 50%;
+  max-width: 25rem;
+  padding-left: ${props => props.theme.spacingS};
+
+  @media ${device.mobileL} {
+    width: 60%;
+  }
+
+  @media ${device.mobile} {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: ${props => props.theme.spacingXXS};
+  }
+`
+
+const SingleChart__Category = styled.li<SingleChart__CategoryProps>`
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  line-height: 1.4rem;
+
+  .name {
+    position: relative;
+    color: ${props => props.theme.white};
+    font-size: 1.2rem;
+    font-weight: ${props => props.theme.fontMedium};
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.7rem;
+      height: 0.7rem;
+      background-color: ${props => props.bgColor};
+      border-radius: 50%;
+    }
+  }
+
+  .percentage {
+    color: ${props => props.theme.lightBlue};
+    font-size: 1.1rem;
+    font-weight: ${props => props.theme.fontSemiBold};
+  }
+
+  .value {
+    color: ${props => props.theme.white};
+    font-size: 1.1rem;
+    font-weight: ${props => props.theme.fontSemiBold};
+  }
+`
+
+const SingleChart__TopExpenses = styled.ul`
+  list-style: none;
+  width: 90%;
+  margin: ${props => props.theme.spacingS} auto;
+  padding-left: ${props => props.theme.spacingXXS};
+`
+
+const SingleChart__Expense = styled.li<SingleChart__ExpenseProps>`
+  display: flex;
+  justify-content: space-between;
+  margin: 4rem auto 3rem auto;
+  line-height: 1.4rem;
+  min-height: 3.3rem;
+
+  .title {
+    position: relative;
+    color: ${props => props.theme.white};
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontLight};
+
+    &:before {
+      content: '${props => props.position}';
+      position: absolute;
+      left: -1.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.3rem;
+      font-weight: ${props => props.theme.fontBold};
+      color: ${props => props.theme.lightBlue};
+    }
+  }
+
+  .category {
+    color: ${props => props.color};
+    font-size: 1.3rem;
+    font-weight: ${props => props.theme.fontMedium};
+    margin-top: 0.7rem;
+  }
+
+  .value {
+    color: ${props => props.theme.white};
+    font-size: 1.3rem;
+    font-weight: ${props => props.theme.fontSemiBold};
+  }
+`
+
 export const Styled = {
   PageContainer,
   PageTitle,
@@ -612,5 +804,12 @@ export const Styled = {
   SearchResults__Item__Value,
   Settings_Title,
   SettingsBlock,
-  SettingsButton
+  SettingsButton,
+  SingleChart,
+  SingleChart__Title,
+  SingleChart__Flex,
+  SingleChart__CategoriesList,
+  SingleChart__Category,
+  SingleChart__TopExpenses,
+  SingleChart__Expense
 }

@@ -47,3 +47,16 @@ export const habitsViewOptions = (data: { habits: Habit[] }) => {
         { val: '-', label: 'No habits to display', disabled: true }
       ]
 }
+
+export const yearsViewOptions = (years: string[], currYear: string) => {
+  return years.length > 1
+    ? [
+        ...years
+          .sort((a, b) => b.localeCompare(a))
+          .map(year => ({
+            val: year,
+            label: year
+          }))
+      ]
+    : [{ val: currYear, label: currYear }]
+}

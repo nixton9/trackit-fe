@@ -110,6 +110,11 @@ const App: React.FC = () => {
                   path="/tasks/done"
                   render={props => <TasksPage {...props} done />}
                 />
+                <Route
+                  exact
+                  path="/expenses/stats"
+                  render={props => <ExpensesPage {...props} stats />}
+                />
               </Switch>
               <Notification />
               <Alert />

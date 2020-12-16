@@ -46,4 +46,14 @@ describe('Expenses', () => {
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
     cy.contains('You need to insert a value')
   })
+
+  it('shows expenses stats', () => {
+    cy.get('[data-test-id="expenses-stats-link"]').click()
+    cy.url().should('include', '/expenses/stats')
+    cy.contains('Expenses Statistics')
+    cy.contains(new Date().getFullYear().toString())
+    cy.contains('Monthly balance')
+    cy.contains('By categories')
+    cy.contains('Top expenses')
+  })
 })

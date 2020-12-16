@@ -8,7 +8,9 @@ import {
   addDays,
   format,
   isToday,
-  isPast
+  isPast,
+  getMonth,
+  getYear
 } from 'date-fns'
 import { Day, DayState } from './ModuleTypes'
 
@@ -123,3 +125,10 @@ export const getDayNextClass = (currState: DayState) => {
       return 'blank'
   }
 }
+
+export const isSameMonth = (date: string, month: number) =>
+  // getMonth starts counting months at 0 so we need add 1
+  getMonth(new Date(date)) + 1 === month
+
+export const isSameYear = (date: string, year: number) =>
+  getYear(new Date(date)) === year

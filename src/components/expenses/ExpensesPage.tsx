@@ -1,28 +1,21 @@
 import React, { useState } from 'react'
-import ExpensesSettings, { currencyState } from './ExpensesSettings'
-import SingleExpense from './SingleExpense'
-import DatePickerInput from '../misc/DatePickerInput'
-import Tooltip from 'react-tooltip-lite'
-import { PageLoading } from '../misc/PageLoading'
-import { PageError } from '../misc/PageError'
+import { ExpensesList } from './ExpensesList'
+import { ExpensesStats } from './ExpensesStats'
+import { currencyState } from './ExpensesSettings'
 import { activeContentState } from '../misc/Add'
 import { Styled } from '../../styles/Page.styles'
-import { Expense, ModuleTypes } from '../../utils/ModuleTypes'
+import { Expense } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
-import { showCurrencySym } from '../../utils/globalHelpers'
-import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
-import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
-import {
-  displayDateString,
-  parseDate,
-  parseDateInverse
-} from '../../utils/dateHelpers'
+import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState, useRecoilValue } from 'recoil'
 
-const ExpensesPage: React.FC = () => {
+type ExpensesPageProps = {
+  stats?: boolean
+}
+
+const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const currency = useRecoilValue(currencyState)
@@ -68,91 +61,31 @@ const ExpensesPage: React.FC = () => {
 
   return (
     <Styled.PageContainer>
-      <Styled.PageTitle>Expenses</Styled.PageTitle>
-      <Styled.PageHeader>
-        <Styled.PageHeader__View>
-          <Styled.PageHeader__View__Dropdown>
-            <div className="input-wrapper">
-              <DatePickerInput
-                date={startDate}
-                maxDate={endDate}
-                setDate={setStartDate}
-              />
-              <ChevronIcon />
-            </div>
-            <div className="input-wrapper">
-              <DatePickerInput
-                date={endDate}
-                minDate={startDate}
-                setDate={setEndDate}
-              />
-              <ChevronIcon />
-            </div>
-          </Styled.PageHeader__View__Dropdown>
+      <Styled.PageTitle>Expenses {stats && 'Statistics'}</Styled.PageTitle>
 
-          <Tooltip
-            content={'Spent on this period'}
-            arrow={false}
-            direction={'up'}
-          >
-            <Styled.PageHeader__View__Counter>
-              {totalExpensesVal} {currency && showCurrencySym(currency)}
-            </Styled.PageHeader__View__Counter>
-          </Tooltip>
-        </Styled.PageHeader__View>
-
-        <Styled.PageHeader__Settings className="mbl-click">
-          <Tooltip
-            eventOff={'onClick'}
-            content={'Settings'}
-            arrow={false}
-            direction={'up'}
-          >
-            <ExpensesSettings types={types ? types.types : []} />
-          </Tooltip>
-        </Styled.PageHeader__Settings>
-      </Styled.PageHeader>
-
-      <Styled.PageContent>
-        {error ? (
-          <PageError>Couldn't get data, check your connection.</PageError>
-        ) : loading ? (
-          <PageLoading />
-        ) : visibleExpensesDay.length ? (
-          (visibleExpensesDay as string[]).map(day => (
-            <Styled.PageContent__Day key={day}>
-              <Styled.PageContent__Day__Title>
-                {displayDateString(day)}
-              </Styled.PageContent__Day__Title>
-              <Styled.PageContent__Day__Expenses>
-                {(data.expenses as Expense[])
-                  .filter(expense => parseDateInverse(expense.date) === day)
-                  .map(expense => (
-                    <SingleExpense
-                      key={expense.id}
-                      id={expense.id}
-                      title={expense.title}
-                      date={expense.date}
-                      value={expense.value}
-                      type={expense.type}
-                      currency={currency}
-                    />
-                  ))}
-              </Styled.PageContent__Day__Expenses>
-            </Styled.PageContent__Day>
-          ))
-        ) : (
-          <Styled.PageContent__NoData>
-            <NoDataIcon />
-          </Styled.PageContent__NoData>
-        )}
-      </Styled.PageContent>
-      <Styled.PageAddItem
-        onClick={() => setActiveContent(ModuleTypes.Expenses)}
-        data-test-id="add-expense"
-      >
-        <PlusIcon />
-      </Styled.PageAddItem>
+      {stats ? (
+        <ExpensesStats
+          data={data}
+          categories={types}
+          error={error}
+          loading={loading}
+        />
+      ) : (
+        <ExpensesList
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          totalExpensesVal={totalExpensesVal}
+          visibleExpensesDay={visibleExpensesDay}
+          currency={currency}
+          data={data}
+          types={types}
+          error={error}
+          loading={loading}
+          setActiveContent={setActiveContent}
+        />
+      )}
     </Styled.PageContainer>
   )
 }
