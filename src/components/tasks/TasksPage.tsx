@@ -54,10 +54,10 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
   const sortedTasks = sortData(visibleTasks, sortBy, true)
 
   return (
-    <Styled.PageContainer>
+    <Styled.PageContainer className="overflow">
       <Styled.PageTitle>{done && 'Completed'} Tasks</Styled.PageTitle>
 
-      <Styled.PageHeader>
+      <Styled.PageHeader className="page-header">
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
             <SelectMenu
@@ -126,7 +126,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
-      <Styled.PageContent>
+      <Styled.PageContent className="overflow">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (

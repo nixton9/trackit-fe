@@ -92,11 +92,11 @@ const HabitsPage: React.FC = () => {
       : data.habits.find((habit: Habit) => Number(habit.id) === Number(view))
 
   return (
-    <>
+    <Styled.HabitsContainer className="overflow">
       <Styled.PageContainer>
         <Styled.PageTitle>Habits</Styled.PageTitle>
 
-        <Styled.PageHeader>
+        <Styled.PageHeader className="page-header">
           <Styled.PageHeader__View>
             <Styled.PageHeader__View__Dropdown>
               <SelectMenu
@@ -142,7 +142,7 @@ const HabitsPage: React.FC = () => {
         </Styled.PageHeader>
       </Styled.PageContainer>
 
-      <Styled.PageContent>
+      <Styled.PageContent className="overflow">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (
@@ -170,7 +170,7 @@ const HabitsPage: React.FC = () => {
       >
         <PlusIcon />
       </Styled.PageAddItem>
-    </>
+    </Styled.HabitsContainer>
   )
 }
 

@@ -52,7 +52,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
 }) => {
   return (
     <>
-      <Styled.PageHeader>
+      <Styled.PageHeader className="page-header">
         <Styled.PageHeader__View>
           <Styled.PageHeader__View__Dropdown>
             <div className="input-wrapper">
@@ -115,7 +115,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
-      <Styled.PageContent>
+      <Styled.PageContent className="overflow">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (

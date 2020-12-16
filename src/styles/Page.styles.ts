@@ -27,10 +27,10 @@ const PageContainer = styled.div`
   &.overflow:before,
   .page-header:after {
     content: '';
-    width: 100%;
+    width: 120vw;
     height: 4rem;
     position: absolute;
-    left: 0;
+    left: -10vw;
     bottom: 0;
     background: linear-gradient(
       to top,
@@ -47,6 +47,26 @@ const PageContainer = styled.div`
       rgba(31, 33, 40, 1) 50%,
       rgba(31, 33, 40, 0)
     );
+  }
+`
+
+const HabitsContainer = styled.div`
+  position: relative;
+
+  &.overflow:before,
+  &.overflow:after {
+    content: '';
+    width: 100%;
+    height: 4rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to top,
+      rgba(31, 33, 40, 1) 50%,
+      rgba(31, 33, 40, 0)
+    );
+    z-index: 1;
   }
 `
 
@@ -810,6 +830,7 @@ const SingleChart__Expense = styled.li<SingleChart__ExpenseProps>`
 
 export const Styled = {
   PageContainer,
+  HabitsContainer,
   PageTitle,
   PageHeader,
   PageHeader__View,
