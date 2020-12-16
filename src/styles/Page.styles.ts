@@ -649,6 +649,10 @@ const SingleChart = styled.div<SingleChartProps>`
     &:first-child {
       margin-top: ${props => props.theme.spacingS};
     }
+
+    &:last-child {
+      margin-bottom: ${props => props.theme.spacingS};
+    }
   }
 `
 

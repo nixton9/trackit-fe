@@ -14,11 +14,15 @@ export const ChartTooltip: React.FC<ChartTooltipProps> = ({
 }) => {
   if (active) {
     const dataKey = payload[0].dataKey
+    const categoryColor = payload[0].payload.payload
+      ? payload[0].payload.payload.color
+      : null
 
     return (
-      <Styled.Tooltip>
+      <Styled.Tooltip catColor={categoryColor}>
         <h5>
           {payload[0].payload.monthLabel || payload[0].payload.name || label}
+          {categoryColor && <span></span>}
         </h5>
         <h4>
           {payload[0].payload.displayValue || payload[0].payload[dataKey]}

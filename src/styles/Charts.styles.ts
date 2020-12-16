@@ -1,6 +1,10 @@
 import styled from 'styled-components/macro'
 import { device } from './theme'
 
+type TooltipProps = {
+  catColor?: string
+}
+
 const GraphContainer = styled.div`
   width: 100%;
   height: 20rem;
@@ -70,7 +74,7 @@ const GraphContainer = styled.div`
   }
 `
 
-const Tooltip = styled.div`
+const Tooltip = styled.div<TooltipProps>`
   min-width: 14rem;
   background: ${props => props.theme.darkBlue};
   color: ${props => props.theme.white};
@@ -79,6 +83,8 @@ const Tooltip = styled.div`
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
 
   h5 {
+    display: flex;
+    align-items: center;
     font-size: 1rem;
     font-weight: ${props => props.theme.fontBold};
   }
@@ -93,6 +99,14 @@ const Tooltip = styled.div`
   p {
     font-size: 0.95rem;
     font-weight: ${props => props.theme.fontRegular};
+  }
+
+  span {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: ${props => props.catColor};
+    border-radius: 50%;
+    margin-left: 0.7rem;
   }
 `
 
