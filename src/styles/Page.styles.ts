@@ -27,10 +27,10 @@ const PageContainer = styled.div`
   &.overflow:before,
   .page-header:after {
     content: '';
-    width: 120vw;
+    width: 100%;
     height: 4rem;
     position: absolute;
-    left: -10vw;
+    left: 0;
     bottom: 0;
     background: linear-gradient(
       to top,
@@ -52,8 +52,9 @@ const PageContainer = styled.div`
 
 const HabitsContainer = styled.div`
   position: relative;
+  max-width: 100vw;
+  overflow-x: hidden;
 
-  &.overflow:before,
   &.overflow:after {
     content: '';
     width: 100%;
@@ -67,6 +68,11 @@ const HabitsContainer = styled.div`
       rgba(31, 33, 40, 0)
     );
     z-index: 1;
+  }
+
+  .page-header:after {
+    width: 120vw;
+    left: -10rem;
   }
 `
 
