@@ -39,7 +39,7 @@ const DrawerOverlay = styled.div<DrawerContainerProps>`
   background-color: rgba(0, 0, 0, 0.4);
   overflow: hidden;
   display: ${props => (props.open ? 'block' : 'none')};
-  z-index: 1;
+  z-index: 11;
   animation: ${fadeIn} 0.5s ease;
 `
 
