@@ -25,7 +25,8 @@ const PageContainer = styled.div`
   margin: ${props => props.theme.spacingL} auto 0 auto;
 
   &.overflow:before,
-  .page-header:after {
+  .page-header:after,
+  .user-header:after {
     content: '';
     width: 100%;
     height: 4rem;
@@ -40,13 +41,18 @@ const PageContainer = styled.div`
     z-index: 1;
   }
 
-  .page-header:after {
+  .page-header:after,
+  .user-header:after {
     bottom: -4rem;
     background: linear-gradient(
       to bottom,
       rgba(31, 33, 40, 1) 50%,
       rgba(31, 33, 40, 0)
     );
+  }
+
+  .user-header:after {
+    bottom: -5rem;
   }
 `
 
@@ -595,6 +601,7 @@ const SettingsBlock = styled.div`
 
   &:last-child {
     padding-bottom: ${props => props.theme.spacingS};
+    margin-bottom: ${props => props.theme.spacingS};
   }
 
   .loading-spinner {

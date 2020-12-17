@@ -15,6 +15,7 @@ const CLOUDINARY_URL =
   'https://res.cloudinary.com/trckr/image/upload/v1607329597/'
 
 const UserWrapper = styled.div<UserWrapperProps>`
+  position: relative;
   display: flex;
   align-items: center;
   padding: ${props => (props.small ? '0 2rem' : '0')};
@@ -60,7 +61,10 @@ const UserInfoEmail = styled.p<UserWrapperProps>`
 
 export const UserHeader: React.FC<UserHeaderProps> = ({ user, small }) => {
   return (
-    <UserWrapper small={small}>
+    <UserWrapper
+      small={small}
+      className={small ? 'user-header-small' : 'user-header'}
+    >
       {user.image ? (
         <UserImg
           small={small}
