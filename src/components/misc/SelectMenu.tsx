@@ -6,8 +6,8 @@ import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import styled from 'styled-components'
 
 const StyledItemColor = styled.div`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
   margin-left: auto;
 `

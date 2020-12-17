@@ -9,6 +9,7 @@ import { useToggleElement } from '../../utils/useToggleElement'
 import { CATEGORIES, TASKS } from '../../utils/queries'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { useSetRecoilState } from 'recoil'
@@ -69,8 +70,12 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
   }
 
   const handlePlusClick = () => {
-    setActiveCategory(null)
-    setShowCategoryEditor(true)
+    if (showCategoryEditor) {
+      setShowCategoryEditor(false)
+    } else {
+      setActiveCategory(null)
+      setShowCategoryEditor(true)
+    }
   }
 
   const handleDeleteType = (categoryId: string | number) => {
@@ -165,7 +170,7 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
                 onClick={handlePlusClick}
                 data-test-id="categories-add-icon"
               >
-                <PlusIcon />
+                {showCategoryEditor ? <MinusIcon /> : <PlusIcon />}
               </Styled.SettingsBlock__Icon>
             </Styled.SettingsBlock__Categories>
           </Styled.SettingsBlock>

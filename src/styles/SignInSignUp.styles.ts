@@ -7,6 +7,10 @@ const SignInSignUpHeader = styled.nav`
   width: 90%;
   margin: ${props => props.theme.spacingS} auto ${props => props.theme.spacingL}
     auto;
+
+  @media only screen and (max-height: 630px) {
+    margin: ${props => props.theme.spacingS} auto 5rem auto;
+  }
 `
 
 const SignInSignUpHeader__Logo = styled.h1`
@@ -57,6 +61,10 @@ const SignInSignUpForm = styled.form`
     filter: blur(3px);
     opacity: 0.5;
   }
+
+  @media only screen and (max-height: 630px) {
+    margin-top: 5rem;
+  }
 `
 
 const SignInSignUpForm__Input = styled.div`
@@ -85,6 +93,7 @@ const SignInSignUpForm__Input = styled.div`
       -webkit-box-shadow: ${props =>
         `0 0 0 30px ${props.theme.inputAutofill} inset !important`};
       -webkit-text-fill-color: ${props => props.theme.white};
+      background-clip: content-box;
     }
     &::placeholder {
       color: ${props => props.theme.white};
@@ -153,6 +162,10 @@ const SignInSignUpForm__Button = styled.button`
 
   &:hover {
     filter: contrast(1.5);
+  }
+
+  @media only screen and (max-height: 630px) {
+    margin-top: 0;
   }
 `
 

@@ -9,6 +9,7 @@ import { TYPES, EXPENSES } from '../../utils/queries'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
 import {
   ExpenseType,
   Currencies,
@@ -70,8 +71,12 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
   }
 
   const handlePlusClick = () => {
-    setActiveType(null)
-    setShowTypeEditor(true)
+    if (showTypeEditor) {
+      setShowTypeEditor(false)
+    } else {
+      setActiveType(null)
+      setShowTypeEditor(true)
+    }
   }
 
   const handleDeleteType = (typeId: string | number) => {
@@ -166,7 +171,7 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
                 onClick={handlePlusClick}
                 data-test-id="expenses-add-icon"
               >
-                <PlusIcon />
+                {showTypeEditor ? <MinusIcon /> : <PlusIcon />}
               </Styled.SettingsBlock__Icon>
             </Styled.SettingsBlock__Categories>
           </Styled.SettingsBlock>

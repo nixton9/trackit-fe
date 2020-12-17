@@ -10,6 +10,7 @@ import { TAGS, NOTES } from '../../utils/queries'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
 import { NoteTag } from '../../utils/ModuleTypes'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { useSetRecoilState } from 'recoil'
@@ -68,8 +69,12 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
   }
 
   const handlePlusClick = () => {
-    setActiveTag(null)
-    setShowTagEditor(true)
+    if (showTagEditor) {
+      setShowTagEditor(false)
+    } else {
+      setActiveTag(null)
+      setShowTagEditor(true)
+    }
   }
 
   const handleDeleteTag = (tagId: string | number) => {
@@ -153,7 +158,7 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
                 className="mbl-click"
                 data-test-id="tags-add-icon"
               >
-                <PlusIcon />
+                {showTagEditor ? <MinusIcon /> : <PlusIcon />}
               </Styled.SettingsBlock__Icon>
             </Styled.SettingsBlock__Tags>
           </Styled.SettingsBlock>

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components/macro'
 
 const SlideDown = keyframes`
     0% {
@@ -17,7 +17,7 @@ const TagEditorContainer = styled.div`
 
   form {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
   }
 
   button {
@@ -31,15 +31,16 @@ const TagEditorContainer = styled.div`
 `
 
 const TagEditorInput = styled.input`
-  width: 12rem;
+  width: 14rem;
   background: transparent;
   border: none;
   font-weight: 300;
   font-size: 1.5rem;
   color: ${props => props.theme.white};
   margin-right: 4rem;
-  padding-bottom: 0.5rem;
+  padding: 6px 0 7px 3px;
   border-bottom: 1px solid ${props => props.theme.offWhite};
+  border-radius: 0 !important;
 
   ::placeholder {
     color: ${props => props.theme.offWhite};
@@ -51,7 +52,10 @@ const TagEditorSelect = styled.div`
     color: ${props => props.theme.white};
     font-weight: ${props => props.theme.fontLight};
     font-size: 1.5rem;
+    line-height: 1.6rem;
     min-width: 8rem;
+    padding-left: 5px;
+    padding-bottom: 9px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid ${props => props.theme.offWhite};
@@ -59,22 +63,12 @@ const TagEditorSelect = styled.div`
 
   .MuiSelect-icon {
     width: 1.4rem;
+    top: calc(50% - 5px);
   }
-`
-
-const TagEditorClose = styled.span`
-  color: ${props => props.theme.offWhite};
-  font-size: 2.3rem;
-  font-weight: ${props => props.theme.fontSemiBold};
-  margin-left: ${props => props.theme.spacingXXS};
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
-  transform: rotate(45deg);
 `
 
 export const Styled = {
   TagEditorContainer,
   TagEditorInput,
-  TagEditorSelect,
-  TagEditorClose
+  TagEditorSelect
 }
