@@ -74,6 +74,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
           </Styled.PageHeader__View__Dropdown>
 
           <Tooltip
+            tipContentClassName="visible-tooltip"
             content={'Spent on this period'}
             arrow={false}
             direction={'up'}

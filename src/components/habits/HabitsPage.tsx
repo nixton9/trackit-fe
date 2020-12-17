@@ -109,6 +109,7 @@ const HabitsPage: React.FC = () => {
             </Styled.PageHeader__View__Dropdown>
 
             <Tooltip
+              tipContentClassName="visible-tooltip"
               content={
                 showAll
                   ? data

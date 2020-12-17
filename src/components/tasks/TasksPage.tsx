@@ -70,6 +70,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
           </Styled.PageHeader__View__Dropdown>
 
           <Tooltip
+            tipContentClassName="visible-tooltip"
             content={`${visibleTasks.length} tasks in view`}
             arrow={false}
             direction={'up'}

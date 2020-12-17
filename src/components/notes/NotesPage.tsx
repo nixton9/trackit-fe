@@ -59,6 +59,7 @@ const NotesPage: React.FC = () => {
           </Styled.PageHeader__View__Dropdown>
 
           <Tooltip
+            tipContentClassName="visible-tooltip"
             content={`${data ? visibleNotes.length : '0'} notes`}
             arrow={false}
             direction={'up'}

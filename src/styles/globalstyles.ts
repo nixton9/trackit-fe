@@ -145,5 +145,14 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
     }
 
+    @media ${device.tablet} {
+        .react-tooltip-lite {
+            display: none !important;
+        }
+        .visible-tooltip .react-tooltip-lite {
+            display: inline-block !important;
+        }
+    }
+
     
 `
