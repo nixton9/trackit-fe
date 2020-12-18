@@ -31,24 +31,18 @@ const PageContainer = styled.div`
     width: 100%;
     height: 4rem;
     position: absolute;
-    left: 0;
+    right: 1rem;
     bottom: 0;
-    background: linear-gradient(
-      to top,
-      rgba(31, 33, 40, 1) 50%,
-      rgba(31, 33, 40, 0)
-    );
+    background: ${props =>
+      `linear-gradient(to top, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
     z-index: 1;
   }
 
   .page-header:after,
   .user-header:after {
     bottom: -4rem;
-    background: linear-gradient(
-      to bottom,
-      rgba(31, 33, 40, 1) 50%,
-      rgba(31, 33, 40, 0)
-    );
+    background: ${props =>
+      `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
   }
 
   .user-header:after {
@@ -66,13 +60,10 @@ const HabitsContainer = styled.div`
     width: 100%;
     height: 4rem;
     position: absolute;
-    left: 0;
+    right: 1rem;
     bottom: 0;
-    background: linear-gradient(
-      to top,
-      rgba(31, 33, 40, 1) 50%,
-      rgba(31, 33, 40, 0)
-    );
+    background: ${props =>
+      `linear-gradient(to top, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
     z-index: 1;
   }
 

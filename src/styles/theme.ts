@@ -58,7 +58,8 @@ export const darkTheme = {
   surfacesBlack: '#222733',
   activeBackground: '#30323a',
   inputAutofill: '#757575',
-  widgetBg: '#1F2128'
+  widgetBg: '#1F2128',
+  overflowBg: 'rgba(31, 33, 40, 1)'
 }
 
 export const lightTheme = {
@@ -68,13 +69,13 @@ export const lightTheme = {
   black: '#111111',
   backgroundBlack: '#ffffff',
   hoverBlack: '#ebecec',
-
   darkenAccent: '#3e2377',
   grey: '#9e9e9e',
   surfacesBlack: '#e4e4e4',
   activeBackground: '#cecece',
   inputAutofill: '#E0E0E0',
-  widgetBg: '#dadada'
+  widgetBg: '#dadada',
+  overflowBg: 'rgba(255, 255, 255, 1)'
 }
 
 const size = {
