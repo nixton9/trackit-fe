@@ -24,6 +24,10 @@ const PageContainer = styled.div`
   width: 85%;
   margin: ${props => props.theme.spacingL} auto 0 auto;
 
+  &.note-detail {
+    margin-top: ${props => props.theme.spacingXL};
+  }
+
   &.overflow:before,
   .page-header:after,
   .user-header:after {
@@ -400,9 +404,9 @@ const PageError = styled.div`
 `
 
 const DetailBack = styled.span`
-  position: absolute;
-  top: 3rem;
-  left: 2rem;
+  position: fixed;
+  top: 4rem;
+  left: 3rem;
 
   svg {
     transform: rotate(90deg);

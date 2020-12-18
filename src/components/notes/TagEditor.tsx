@@ -153,29 +153,30 @@ export const TagEditor: React.FC<TagEditorProps> = ({
   }, [tag])
 
   const isLoading = loading || loadingUpdate
-
-  return isLoading ? (
-    <LoadingSpinner />
-  ) : (
+  return (
     <Styled.TagEditorContainer>
-      <form onSubmit={handleSubmit}>
-        <Styled.TagEditorInput
-          value={name}
-          placeholder={'Tag name'}
-          onChange={e => setName(e.target.value)}
-          data-test-id="tags-name-input"
-        />
-        <Styled.TagEditorSelect>
-          <SelectMenu
-            id="tag-color"
-            value={color}
-            onChange={handleColorChange}
-            options={selectOptions}
-            isColorPicker
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <Styled.TagEditorInput
+            value={name}
+            placeholder={'Tag name'}
+            onChange={e => setName(e.target.value)}
+            data-test-id="tags-name-input"
           />
-        </Styled.TagEditorSelect>
-        <AddSubmitButton plusIcon={!isEdit} />
-      </form>
+          <Styled.TagEditorSelect>
+            <SelectMenu
+              id="tag-color"
+              value={color}
+              onChange={handleColorChange}
+              options={selectOptions}
+              isColorPicker
+            />
+          </Styled.TagEditorSelect>
+          <AddSubmitButton plusIcon={!isEdit} />
+        </form>
+      )}
     </Styled.TagEditorContainer>
   )
 }

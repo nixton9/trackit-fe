@@ -229,6 +229,7 @@ const AddWidget__Button = styled.button`
   svg {
     width: 2.5rem;
     stroke: ${props => props.theme.alwaysWhite};
+    fill: ${props => props.theme.alwaysWhite};
     display: block;
     transform: rotate(-90deg);
   }

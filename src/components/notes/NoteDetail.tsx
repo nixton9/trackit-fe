@@ -15,6 +15,7 @@ import { NoteTag } from '../../utils/ModuleTypes'
 import { SINGLE_NOTE } from '../../utils/queries'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
 import { Link, RouteComponentProps, useHistory } from 'react-router-dom'
 import { useQuery, useMutation, gql } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
@@ -170,8 +171,12 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   }
 
   const handlePlusClick = () => {
-    setActiveTag(null)
-    setShowTagEditor(true)
+    if (showTagEditor) {
+      setShowTagEditor(false)
+    } else {
+      setActiveTag(null)
+      setShowTagEditor(true)
+    }
   }
 
   useEffect(() => {
@@ -217,7 +222,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     : null
 
   return (
-    <Styled.PageContainer>
+    <Styled.PageContainer className="note-detail">
       <Styled.DetailBack>
         <Link to="/notes">
           <ChevronIcon />
@@ -275,7 +280,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               direction={'up'}
             >
               <div onClick={handlePlusClick} className="mbl-click">
-                <PlusIcon />
+                {showTagEditor ? <MinusIcon /> : <PlusIcon />}
               </div>
             </Tooltip>
           </Styled.DetailTags>

@@ -28,6 +28,10 @@ const TagEditorContainer = styled.div`
       width: 2rem;
     }
   }
+
+  .loading-spinner {
+    margin: ${props => props.theme.spacingXXS} auto 0 auto;
+  }
 `
 
 const TagEditorInput = styled.input`
