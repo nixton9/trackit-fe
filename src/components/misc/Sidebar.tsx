@@ -38,9 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
       </Styled.SidebarToggle>
 
       <Styled.SidebarContainer open={open}>
-        <NavLink to="/settings" className="user-anchor">
-          <UserHeader user={user} small />
-        </NavLink>
+        <UserHeader user={user} small />
 
         <Styled.SidebarNav>
           <div>
