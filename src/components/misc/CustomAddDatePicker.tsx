@@ -11,6 +11,7 @@ export const CustomAddDatePicker = forwardRef(
         onClick={onClick}
         onChange={onChange}
         ref={ref}
+        onFocus={e => (e.target.readOnly = true)}
       />
     </>
   )
