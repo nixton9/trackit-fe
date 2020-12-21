@@ -59,7 +59,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
 
       <Styled.PageHeader className="page-header">
         <Styled.PageHeader__View>
-          <Styled.PageHeader__View__Dropdown>
+          <Styled.PageHeader__View__Dropdown className="tasks">
             <SelectMenu
               id="tasks-view"
               value={view}

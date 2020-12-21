@@ -39,12 +39,12 @@ const Widget = styled.div<WidgetProps>`
   padding: 1.8rem;
   background: ${props =>
     props.type === ModuleTypes.Notes
-      ? `url(${wave1}), ${props.theme.blueGradient}`
+      ? `url(${wave1}), ${props.theme.pinkGradient}`
       : props.type === ModuleTypes.Tasks
       ? `url(${wave2}), ${props.theme.purpleGradient}`
       : props.type === ModuleTypes.Habits
-      ? `url(${wave3}), ${props.theme.pinkGradient}`
-      : `url(${wave4}), ${props.theme.greenGradient}`};
+      ? `url(${wave3}), ${props.theme.greenGradient}`
+      : `url(${wave4}), ${props.theme.blueGradient}`};
   background-size: 300px;
   background-position: 50% 50%;
   transition: all 0.25s ease;
@@ -86,12 +86,12 @@ const Widget = styled.div<WidgetProps>`
     border-radius: ${props => props.theme.mainBorderRadius};
     background: ${props =>
       props.type === ModuleTypes.Notes
-        ? props.theme.blueGradient
+        ? props.theme.pinkGradient
         : props.type === ModuleTypes.Tasks
         ? props.theme.purpleGradient
         : props.type === ModuleTypes.Habits
-        ? props.theme.pinkGradient
-        : props.theme.greenGradient};
+        ? props.theme.greenGradient
+        : props.theme.blueGradient};
     z-index: -1;
     transition: all 0.2s ease-in-out;
   }

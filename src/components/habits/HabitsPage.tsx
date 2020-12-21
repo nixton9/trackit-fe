@@ -98,7 +98,7 @@ const HabitsPage: React.FC = () => {
 
         <Styled.PageHeader className="page-header">
           <Styled.PageHeader__View>
-            <Styled.PageHeader__View__Dropdown>
+            <Styled.PageHeader__View__Dropdown className="habits">
               <SelectMenu
                 id="habits-view"
                 value={view}

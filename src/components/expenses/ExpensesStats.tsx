@@ -153,7 +153,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
     <>
       <Styled.PageHeader className="page-header">
         <Styled.PageHeader__View>
-          <Styled.PageHeader__View__Dropdown>
+          <Styled.PageHeader__View__Dropdown className="expenses">
             <SelectMenu
               id="year-view"
               value={selectedYear}

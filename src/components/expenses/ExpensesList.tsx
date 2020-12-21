@@ -54,7 +54,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
     <>
       <Styled.PageHeader className="page-header">
         <Styled.PageHeader__View>
-          <Styled.PageHeader__View__Dropdown>
+          <Styled.PageHeader__View__Dropdown className="expenses">
             <div className="input-wrapper">
               <DatePickerInput
                 date={startDate}

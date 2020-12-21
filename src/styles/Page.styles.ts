@@ -190,6 +190,17 @@ const PageHeader__View__Dropdown = styled.div`
     margin-left: 0.5rem;
     transform: translateY(0.4rem);
   }
+
+  &.notes .MuiInput-root {
+    background: ${props => props.theme.pinkColor};
+  }
+  &.habits .MuiInput-root {
+    background: ${props => props.theme.greenColor};
+  }
+  &.expenses .input-wrapper,
+  &.expenses .MuiInput-root {
+    background: ${props => props.theme.blueColor};
+  }
 `
 
 const PageHeader__View__Counter = styled.h3`
