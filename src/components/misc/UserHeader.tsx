@@ -25,6 +25,7 @@ const UserImg = styled.div<UserWrapperProps>`
   border-radius: 50%;
   width: ${props => (props.small ? '4.5rem' : '6rem')};
   height: ${props => (props.small ? '4.5rem' : '6rem')};
+  min-width: ${props => (props.small ? '4.5rem' : '6rem')};
   background-size: cover;
   background-position: center center;
 `
