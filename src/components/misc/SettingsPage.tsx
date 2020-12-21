@@ -138,11 +138,8 @@ const SettingsPage: React.FC<SettingsProps> = ({
   const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0].name : ''
     if (file.length > 10) {
-      var split = file.split('.')
-      var fileName = split[0].substring(0, 10)
-      var extension = split[1]
-      console.log('here')
-      setSelectedFile(fileName + '...' + extension)
+      const split = file.split('.')
+      setSelectedFile(split[0].substring(0, 10) + '...' + split[1])
     } else {
       setSelectedFile(file)
     }
