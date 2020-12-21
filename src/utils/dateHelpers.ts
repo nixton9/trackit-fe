@@ -117,6 +117,7 @@ export const getCurrentStrike = (days: Day[]) => {
 
 export const getDayNextClass = (currState: DayState) => {
   switch (currState) {
+    case null:
     case DayState.BLANK:
       return 'done'
     case DayState.DONE:
