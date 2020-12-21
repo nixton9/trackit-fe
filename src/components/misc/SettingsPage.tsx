@@ -137,7 +137,17 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
   const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0].name : ''
-    setSelectedFile(file)
+    if (file.length > 10) {
+      var split = file.split('.')
+      var fileName = split[0].substring(0, 10)
+      var extension = split[1]
+      console.log('here')
+      setSelectedFile(fileName + '...' + extension)
+    } else {
+      setSelectedFile(file)
+    }
+
+    console.log(file.length)
   }
 
   const handleDeleteImage = () => {
@@ -161,7 +171,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
       <UserHeader user={user} />
 
       <Styled.PageContent className="settings-page">
-        <Styled.Settings_Title>User Profile</Styled.Settings_Title>
+        <Styled.Settings__Title>User Profile</Styled.Settings__Title>
 
         <Styled.SettingsBlock>
           {isLoadingProfile || loadingUserInfo ? (
@@ -218,9 +228,9 @@ const SettingsPage: React.FC<SettingsProps> = ({
           )}
         </Styled.SettingsBlock>
 
-        <Styled.Settings_Title className="second">
+        <Styled.Settings__Title className="second">
           Change Password
-        </Styled.Settings_Title>
+        </Styled.Settings__Title>
 
         <Styled.SettingsBlock>
           {loadingPassword ? (
@@ -260,9 +270,9 @@ const SettingsPage: React.FC<SettingsProps> = ({
           )}
         </Styled.SettingsBlock>
 
-        <Styled.Settings_Title className="second">
+        <Styled.Settings__Title className="second">
           Other Settings
-        </Styled.Settings_Title>
+        </Styled.Settings__Title>
 
         <Styled.SettingsBlock>
           <div>

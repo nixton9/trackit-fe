@@ -588,14 +588,14 @@ const SearchResults__Item__Value = styled.span`
   margin-left: auto;
 `
 
-const Settings_Title = styled.h3`
+const Settings__Title = styled.h3`
   color: ${props => props.theme.white};
   font-size: 2rem;
   font-weight: ${props => props.theme.fontBold};
   margin-top: ${props => props.theme.spacingM};
 
   &.second {
-    margin-top: ${props => props.theme.spacingL};
+    margin-top: ${props => props.theme.spacingXL};
   }
 `
 
@@ -880,7 +880,7 @@ export const Styled = {
   SearchResults__Item__Title,
   SearchResults__Item__Date,
   SearchResults__Item__Value,
-  Settings_Title,
+  Settings__Title,
   SettingsBlock,
   SettingsButton,
   SingleChart,
