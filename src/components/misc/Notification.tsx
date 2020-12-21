@@ -7,6 +7,7 @@ import { useRecoilState, atom } from 'recoil'
 export enum NotificationTypes {
   Error = 'Error',
   Success = 'Success',
+  Blank = 'Blank',
   Null = 'Null'
 }
 
@@ -48,12 +49,14 @@ export const Notification: React.FC = () => {
     return (
       <Styled.NotificationContainer>
         <Styled.Notification>
-          {Icon}
-          <p>
+          {type !== NotificationTypes.Blank && Icon}
+          <p
+            className={type !== NotificationTypes.Blank ? '' : 'extra-padding'}
+          >
             {text}
-            {revert && <span onClick={revert}>Revert?</span>}
           </p>
         </Styled.Notification>
+        {revert && <Styled.UndoButton onClick={revert}>Undo</Styled.UndoButton>}
       </Styled.NotificationContainer>
     )
   } else {

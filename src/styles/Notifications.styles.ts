@@ -14,6 +14,7 @@ const NotificationContainer = styled.div`
   top: 0;
   left: 50%;
   width: max-content;
+  min-width: 70%;
   padding: 1rem 2.5rem 1rem 1.5rem;
   background-color: ${props => props.theme.surfacesBlack};
   color: ${props => props.theme.white};
@@ -35,13 +36,32 @@ const Notification = styled.div`
   p {
     font-weight: ${props => props.theme.fontSemiBold};
     font-size: 1.4rem;
+    margin: 0 auto;
 
-    span {
-      margin-left: 1rem;
-      color: ${props => props.theme.accent};
-      font-weight: ${props => props.theme.fontBold};
-      cursor: pointer;
+    &.extra-padding {
+      padding: 0.5rem;
     }
+  }
+`
+
+const UndoButton = styled.button`
+  font-size: 1.5rem;
+  border-radius: ${props => props.theme.smallBorderRadius};
+  font-weight: ${props => props.theme.fontBold};
+  padding: 0.6rem 2rem;
+  min-width: 8rem;
+  max-width: 9rem;
+  text-align: center;
+  margin: 0.5rem auto;
+  background-color: ${props => props.theme.accent};
+  color: ${props => props.theme.alwaysWhite};
+  border: none;
+  display: block;
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    background-color: ${props => props.theme.darkenAccent};
   }
 `
 
@@ -84,6 +104,7 @@ const Alert__Buttons = styled.div`
 export const Styled = {
   NotificationContainer,
   Notification,
+  UndoButton,
   Alert,
   Alert__Buttons
 }
