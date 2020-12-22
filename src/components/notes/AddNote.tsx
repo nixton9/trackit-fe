@@ -81,6 +81,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
               text: `New note created '${title}'`,
               type: NotificationTypes.Success
             })
+            setContent('')
             refetchNotes()
             closeModal()
           }
