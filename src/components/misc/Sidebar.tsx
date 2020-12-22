@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { UserHeader } from './UserHeader'
 import { User } from '../../utils/ModuleTypes'
 import { useToggleElement } from '../../utils/useToggleElement'
@@ -20,6 +20,26 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
   const [open, setOpen, overlayEl] = useToggleElement()
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+
+  const handleTouchStart = (e: any) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: any) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 150) {
+      setOpen(false)
+    }
+
+    if (touchStart - touchEnd < -150) {
+      console.log('adsad')
+    }
+  }
 
   const handleLogout = () => {
     setOpen(false)
@@ -37,7 +57,12 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
         <MenuIcon data-test-id="sidebar-icon" />
       </Styled.SidebarToggle>
 
-      <Styled.SidebarContainer open={open}>
+      <Styled.SidebarContainer
+        open={open}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <UserHeader user={user} small />
 
         <Styled.SidebarNav>
