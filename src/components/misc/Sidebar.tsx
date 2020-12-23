@@ -32,7 +32,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
   }
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 150) {
+    if (touchStart - touchEnd > 45) {
       setOpen(false)
     }
 
