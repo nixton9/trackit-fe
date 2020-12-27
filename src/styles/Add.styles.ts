@@ -1,6 +1,10 @@
 import styled from 'styled-components/macro'
 import { device } from './theme'
 
+type AddWidget__ButtonProps = {
+  rotateIcon?: boolean
+}
+
 const AddButton = styled.div`
   width: 100%;
   background-color: ${props => props.theme.accent};
@@ -211,7 +215,7 @@ const AddWidget = styled.div`
   }
 `
 
-const AddWidget__Button = styled.button`
+const AddWidget__Button = styled.button<AddWidget__ButtonProps>`
   background-color: ${props => props.theme.accent};
   color: ${props => props.theme.white};
   border: none;
@@ -231,7 +235,7 @@ const AddWidget__Button = styled.button`
     stroke: ${props => props.theme.alwaysWhite};
     fill: ${props => props.theme.alwaysWhite};
     display: block;
-    transform: rotate(-90deg);
+    transform: ${props => (props.rotateIcon ? 'rotate(-90deg)' : 'none')};
   }
 
   @media ${device.mobile} {

@@ -3,7 +3,7 @@ import Tag from './Tag'
 import Tooltip from 'react-tooltip-lite'
 import { NoteEditor } from './NoteEditor'
 import { TagEditor } from './TagEditor'
-import { AddSubmitButton } from '../misc/Add'
+import { SubmitButton } from '../misc/SubmitButton'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { NotificationTypes, notificationState } from '../misc/Notification'
@@ -236,17 +236,19 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
       ) : (
         <>
           <Styled.DetailHeader editorActive={showEditor}>
-            <Styled.DetailTitle
-              placeholder="Title for the note"
-              value={noteTitle}
-              onChange={e => setNoteTitle(e.target.value)}
-            />
+            <div>
+              <Styled.DetailTitle
+                placeholder="Title for the note"
+                value={noteTitle}
+                onChange={e => setNoteTitle(e.target.value)}
+              />
+              <Styled.DetailDate>
+                {displayDateString(parseDateInverse(data.singleNote.date))}
+              </Styled.DetailDate>
+            </div>
+
             <ThreeDotsMenu options={menuOptions} />
           </Styled.DetailHeader>
-
-          <Styled.DetailDate>
-            {displayDateString(parseDateInverse(data.singleNote.date))}
-          </Styled.DetailDate>
 
           <Styled.DetailTags>
             <Styled.DetailTags__Inner>
@@ -312,7 +314,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               ) : (
                 <>
                   <p>Save changes</p>
-                  <AddSubmitButton handleSubmit={handleSubmit} />
+                  <SubmitButton handleSubmit={handleSubmit} />
                 </>
               )}
             </Styled.DetailSave>

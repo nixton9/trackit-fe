@@ -25,7 +25,7 @@ const PageContainer = styled.div`
   margin: ${props => props.theme.spacingL} auto 0 auto;
 
   &.note-detail {
-    margin-top: ${props => props.theme.spacingXL};
+    margin-top: 10rem;
   }
 
   &.overflow:before,
@@ -439,6 +439,15 @@ const DetailHeader = styled.div<DetailHeaderProps>`
   align-items: center;
   justify-content: space-between;
 
+  .three-dots-menu {
+    top: 0;
+    right: 0;
+  }
+
+  .three-dots-menu div:first-child {
+    padding-right: 0.5rem;
+  }
+
   svg {
     width: 5rem;
     padding: 0.4rem;
@@ -475,7 +484,7 @@ const DetailTags = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${props => props.theme.spacingXS};
-  margin-top: ${props => props.theme.spacingS};
+  margin-top: 5rem;
   background-color: ${props => props.theme.surfacesBlack};
   border-radius: ${props => props.theme.smallBorderRadius};
 

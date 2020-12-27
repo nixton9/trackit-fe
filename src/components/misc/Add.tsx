@@ -6,9 +6,6 @@ import AddHabit from '../habits/AddHabit'
 import AddExpense from '../expenses/AddExpense'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ModuleTypes } from '../../utils/ModuleTypes'
-import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
-import { Styled } from '../../styles/Add.styles'
 import { atom, useRecoilState } from 'recoil'
 
 const notesTitle = 'Create a note'
@@ -34,15 +31,6 @@ export const isEditState = atom({
   key: 'isEdit',
   default: false
 })
-
-export const AddSubmitButton: React.FC<{
-  plusIcon?: boolean
-  handleSubmit?: () => void
-}> = ({ plusIcon, handleSubmit }) => (
-  <Styled.AddWidget__Button onClick={handleSubmit} data-test-id="submit-btn">
-    {plusIcon ? <PlusIcon /> : <ChevronIcon />}
-  </Styled.AddWidget__Button>
-)
 
 const Add: React.FC = () => {
   const [activeContent, setActiveContent] = useRecoilState<any>(
@@ -99,7 +87,12 @@ const Add: React.FC = () => {
 
   return (
     <>
-      <Drawer title={drawerTitle} open={open} overlayRef={overlayEl}>
+      <Drawer
+        title={drawerTitle}
+        open={open}
+        setOpen={closeModal}
+        overlayRef={overlayEl}
+      >
         {drawerContent}
       </Drawer>
     </>

@@ -3,7 +3,7 @@ import { currencyState } from './ExpensesSettings'
 import DatePickerInput from '../misc/DatePickerInput'
 import { Styled } from '../../styles/Add.styles'
 import { FluidInput } from '../misc/FluidInput'
-import { AddSubmitButton } from '../misc/Add'
+import { SubmitButton } from '../misc/SubmitButton'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
@@ -291,7 +291,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             />
           </Styled.AddWidget>
 
-          <AddSubmitButton />
+          <SubmitButton />
         </Styled.AddWidgetsContainer>
       </form>
     </>

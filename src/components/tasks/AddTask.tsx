@@ -4,7 +4,7 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { Styled } from '../../styles/Add.styles'
 import { TaskStatus } from './TaskStatus'
-import { AddSubmitButton } from '../misc/Add'
+import { SubmitButton } from '../misc/SubmitButton'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
@@ -327,7 +327,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
             />
           </Styled.AddWidget>
 
-          <AddSubmitButton />
+          <SubmitButton />
         </Styled.AddWidgetsContainer>
       </form>
     </>

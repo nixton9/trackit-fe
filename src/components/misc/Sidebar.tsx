@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { UserHeader } from './UserHeader'
 import { User } from '../../utils/ModuleTypes'
+import { useSwipeToClose } from '../../utils/useSwipeToClose'
 import { useToggleElement } from '../../utils/useToggleElement'
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg'
 import { ReactComponent as HomeIcon } from '../../assets/icons/home.svg'
@@ -20,26 +21,10 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
   const [open, setOpen, overlayEl] = useToggleElement()
-  const [touchStart, setTouchStart] = useState(0)
-  const [touchEnd, setTouchEnd] = useState(0)
 
-  const handleTouchStart = (e: any) => {
-    setTouchStart(e.targetTouches[0].clientX)
-  }
-
-  const handleTouchMove = (e: any) => {
-    setTouchEnd(e.targetTouches[0].clientX)
-  }
-
-  const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 45) {
-      setOpen(false)
-    }
-
-    if (touchStart - touchEnd < -150) {
-      console.log('adsad')
-    }
-  }
+  const [handleTouchStart, handleTouchMove, handleTouchEnd] = useSwipeToClose(
+    setOpen
+  )
 
   const handleLogout = () => {
     setOpen(false)

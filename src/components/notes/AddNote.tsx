@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NoteEditor } from './NoteEditor'
-import { AddSubmitButton } from '../misc/Add'
+import { SubmitButton } from '../misc/SubmitButton'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { Styled } from '../../styles/Add.styles'
@@ -171,7 +171,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
             <TagsInput tags={tags} setTags={setTags} />
           </Styled.AddWidget>
 
-          <AddSubmitButton />
+          <SubmitButton />
         </Styled.AddWidgetsContainer>
       </form>
     </>

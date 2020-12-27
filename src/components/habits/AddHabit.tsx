@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useRef } from 'react'
-import { AddSubmitButton } from '../misc/Add'
+import { SubmitButton } from '../misc/SubmitButton'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { DrawerAddModuleProps } from '../misc/Add'
@@ -188,7 +188,7 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
           />
         </Styled.AddInputWrapper>
         <Styled.AddWidgetsContainer>
-          <AddSubmitButton />
+          <SubmitButton />
         </Styled.AddWidgetsContainer>
       </form>
     </>

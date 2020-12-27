@@ -36,7 +36,12 @@ const HabitsSettings: React.FC = () => {
         data-test-id="habits-settings-icon"
       />
 
-      <Drawer title="Settings" open={open} overlayRef={overlayEl}>
+      <Drawer
+        title="Settings"
+        open={open}
+        setOpen={setOpen}
+        overlayRef={overlayEl}
+      >
         <Styled.SettingsBlock>
           <Styled.SettingsBlock__Label htmlFor="sort-by">
             Sort by

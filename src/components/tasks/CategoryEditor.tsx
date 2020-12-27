@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { SelectMenu } from '../misc/SelectMenu'
-import { AddSubmitButton } from '../misc/Add'
+import { SubmitButton, IconType } from '../misc/SubmitButton'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { TaskCategory } from '../../utils/ModuleTypes'
@@ -159,7 +159,7 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
             isColorPicker
           />
         </Styled.TagEditorSelect>
-        <AddSubmitButton plusIcon={!isEdit} />
+        <SubmitButton icon={IconType.CHECK} />
       </form>
     </Styled.TagEditorContainer>
   )

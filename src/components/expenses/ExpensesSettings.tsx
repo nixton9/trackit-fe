@@ -125,7 +125,12 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
         data-test-id="expenses-settings-icon"
       />
 
-      <Drawer title="Settings" open={open} overlayRef={overlayEl}>
+      <Drawer
+        title="Settings"
+        open={open}
+        setOpen={setOpen}
+        overlayRef={overlayEl}
+      >
         <>
           <Styled.SettingsBlock>
             <Styled.SettingsBlock__Label htmlFor="currency">

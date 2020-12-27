@@ -124,7 +124,12 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
         data-test-id="tasks-settings-icon"
       />
 
-      <Drawer title="Settings" open={open} overlayRef={overlayEl}>
+      <Drawer
+        title="Settings"
+        open={open}
+        setOpen={setOpen}
+        overlayRef={overlayEl}
+      >
         <>
           <Styled.SettingsBlock>
             <Styled.SettingsBlock__Label htmlFor="sort-by">

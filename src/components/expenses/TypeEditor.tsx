@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { SelectMenu } from '../misc/SelectMenu'
-import { AddSubmitButton } from '../misc/Add'
+import { SubmitButton, IconType } from '../misc/SubmitButton'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { ExpenseType } from '../../utils/ModuleTypes'
@@ -157,7 +157,7 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
             isColorPicker
           />
         </Styled.TagEditorSelect>
-        <AddSubmitButton plusIcon={!isEdit} />
+        <SubmitButton icon={IconType.CHECK} />
       </form>
     </Styled.TagEditorContainer>
   )

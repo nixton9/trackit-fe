@@ -123,7 +123,12 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
         data-test-id="notes-settings-icon"
       />
 
-      <Drawer title="Settings" open={open} overlayRef={overlayEl}>
+      <Drawer
+        title="Settings"
+        open={open}
+        setOpen={setOpen}
+        overlayRef={overlayEl}
+      >
         <>
           <Styled.SettingsBlock>
             <Styled.SettingsBlock__Label htmlFor="sort-by">
