@@ -504,6 +504,7 @@ const DetailTags = styled.div`
 
 const DetailTags__Inner = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
   p {
     color: ${props => props.theme.offWhite};
@@ -511,8 +512,12 @@ const DetailTags__Inner = styled.div`
     font-weight: ${props => props.theme.fontMedium};
   }
 
-  .single-tag .inner {
-    margin-bottom: 0;
+  .single-tag {
+    margin: 0.7rem 0;
+
+    .inner {
+      margin-bottom: 0;
+    }
   }
 `
 
