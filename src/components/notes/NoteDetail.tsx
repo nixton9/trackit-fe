@@ -312,10 +312,12 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               {message ? (
                 <p>{message}</p>
               ) : (
-                <>
-                  <p>Save changes</p>
-                  <SubmitButton handleSubmit={handleSubmit} />
-                </>
+                <Styled.DetailSave__Button
+                  onClick={handleSubmit}
+                  data-test-id="submit-btn"
+                >
+                  Save changes
+                </Styled.DetailSave__Button>
               )}
             </Styled.DetailSave>
           )}

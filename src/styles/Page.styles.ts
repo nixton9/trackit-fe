@@ -526,9 +526,7 @@ const DetailContent = styled.p`
 `
 
 const DetailSave = styled.div`
-  display: flex;
-  align-items: center;
-  float: right;
+  text-align: center;
   margin: ${props => props.theme.spacingM} 0;
   animation: ${fadeIn} 0.4s ease forwards;
 
@@ -537,6 +535,23 @@ const DetailSave = styled.div`
     font-size: 1.2rem;
     margin-right: 2.5rem;
     color: ${props => props.theme.grey};
+  }
+`
+
+const DetailSave__Button = styled.button`
+  background-color: ${props => props.theme.accent};
+  color: ${props => props.theme.alwaysWhite};
+  font-size: 1.2rem;
+  font-weight: ${props => props.theme.fontBold};
+  border: none;
+  padding: ${props => props.theme.spacingXS};
+  border-radius: ${props => props.theme.smallBorderRadius};
+  cursor: pointer;
+  transition: all 0.1s ease;
+
+  &:hover,
+  &:active {
+    background-color: ${props => props.theme.darkenAccent};
   }
 `
 
@@ -882,6 +897,7 @@ export const Styled = {
   DetailTagEditor,
   DetailContent,
   DetailSave,
+  DetailSave__Button,
   SearchResults,
   SearchResults__Module,
   SearchResults__Module__Title,
