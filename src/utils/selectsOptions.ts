@@ -33,8 +33,20 @@ export const tasksViewOptions = (categories: {
       ]
 }
 
-export const habitsViewOptions = (data: { habits: Habit[] }) => {
-  return data && data.habits.length
+export const habitsViewOptions = (
+  data: { habits: Habit[] },
+  onlyHabits?: boolean
+) => {
+  return onlyHabits
+    ? data && data.habits.length
+      ? [
+          ...data.habits.map(habit => ({
+            val: habit.id,
+            label: habit.title
+          }))
+        ]
+      : [{ val: '-', label: 'No habits to display', disabled: true }]
+    : data && data.habits.length
     ? [
         { val: 'all', label: 'All' },
         ...data.habits.map(habit => ({

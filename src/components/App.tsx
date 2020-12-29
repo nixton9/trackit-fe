@@ -115,6 +115,11 @@ const App: React.FC = () => {
                   path="/expenses/stats"
                   render={props => <ExpensesPage {...props} stats />}
                 />
+                <Route
+                  exact
+                  path="/habits/stats"
+                  render={props => <HabitsPage {...props} stats />}
+                />
               </Switch>
               <Notification />
               <Alert />

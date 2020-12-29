@@ -1,177 +1,29 @@
-import React, { useState } from 'react'
-import CalendarSingle from './CalendarSingle'
-import CalendarAll from './CalendarAll'
-import HabitsSettings from './HabitsSettings'
-import Tooltip from 'react-tooltip-lite'
-import { SelectMenu } from '../misc/SelectMenu'
-import { PageLoading } from '../misc/PageLoading'
-import { PageError } from '../misc/PageError'
+import React from 'react'
 import { activeContentState } from '../misc/Add'
-import { getCurrentStrike, parseDateInverse } from '../../utils/dateHelpers'
-import { Styled } from '../../styles/Page.styles'
-import { Habit, DayState, ModuleTypes } from '../../utils/ModuleTypes'
-import { habitsViewOptions } from '../../utils/selectsOptions'
 import { HABITS } from '../../utils/queries'
-import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
-import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
-import { gql, useMutation, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
+import { HabitsList } from './HabitsList'
+import { HabitsStats } from './HabitsStats'
 
-const ADD_DAY_TO_HABIT = gql`
-  mutation AddDayToHabit($habit: ID!, $date: String!, $state: DayState!) {
-    addDayToHabit(habit: $habit, date: $date, state: $state) {
-      id_day
-    }
-  }
-`
+type HabitsPageProps = {
+  stats?: boolean
+}
 
-const UPDATE_DAY = gql`
-  mutation UpdateHabit($id: ID!, $state: DayState!) {
-    updateDay(id: $id, state: $state) {
-      id_day
-    }
-  }
-`
-
-const HabitsPage: React.FC = () => {
+const HabitsPage: React.FC<HabitsPageProps> = ({ stats }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const { loading, error, data } = useQuery(HABITS)
-  const { refetch: refetchHabits } = useQuery(HABITS)
-  const [addDayToHabit] = useMutation(ADD_DAY_TO_HABIT)
-  const [updateDay] = useMutation(UPDATE_DAY)
 
-  const handleDayClick = (
-    habitId: string | number,
-    day: Date,
-    currState: DayState | null,
-    dayId: null | string | number
-  ) => {
-    if (currState && dayId) {
-      updateDay({
-        variables: {
-          id: dayId,
-          state: getNextState(currState)
-        }
-      })
-        .then(res => refetchHabits())
-        .catch(err => console.log(err.message))
-    } else {
-      addDayToHabit({
-        variables: {
-          habit: habitId,
-          date: parseDateInverse(day),
-          state: DayState.DONE
-        }
-      })
-        .then(res => refetchHabits())
-        .catch(err => console.log(err.message))
-    }
-  }
-
-  const getNextState = (state: DayState) => {
-    switch (state) {
-      case DayState.DONE:
-        return DayState.NOTDONE
-      case DayState.NOTDONE:
-        return DayState.BLANK
-      case DayState.BLANK:
-        return DayState.DONE
-    }
-  }
-
-  const [view, setView] = useState('all')
-
-  const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-    setView(e.target.value)
-
-  const showAll = view === 'all'
-  const currHabit =
-    showAll || !data
-      ? null
-      : data.habits.find((habit: Habit) => Number(habit.id) === Number(view))
-
-  return (
-    <Styled.HabitsContainer className="overflow">
-      <Styled.PageContainer>
-        <Styled.PageTitle>Habits</Styled.PageTitle>
-
-        <Styled.PageHeader className="page-header">
-          <Styled.PageHeader__View>
-            <Styled.PageHeader__View__Dropdown className="habits">
-              <SelectMenu
-                id="habits-view"
-                value={view}
-                onChange={handleViewChange}
-                options={habitsViewOptions(data)}
-                itemClass={'view-select-item'}
-              />
-            </Styled.PageHeader__View__Dropdown>
-
-            <Tooltip
-              tipContentClassName="visible-tooltip"
-              content={
-                showAll
-                  ? data
-                    ? `${data.habits.length} habits`
-                    : '0 days'
-                  : currHabit && 'Current streak'
-              }
-              arrow={false}
-              direction={'up'}
-            >
-              <Styled.PageHeader__View__Counter className="smaller">
-                {data
-                  ? showAll
-                    ? data.habits.length
-                    : currHabit && getCurrentStrike(currHabit.days) + ' days'
-                  : 0}
-              </Styled.PageHeader__View__Counter>
-            </Tooltip>
-          </Styled.PageHeader__View>
-
-          <Styled.PageHeader__Settings className="mbl-click">
-            <Tooltip
-              eventOff={'onClick'}
-              content={'Settings'}
-              arrow={false}
-              direction={'up'}
-            >
-              <HabitsSettings />
-            </Tooltip>
-          </Styled.PageHeader__Settings>
-        </Styled.PageHeader>
-      </Styled.PageContainer>
-
-      <Styled.PageContent className="overflow">
-        {error ? (
-          <PageError>Couldn't get data, check your connection.</PageError>
-        ) : loading ? (
-          <PageLoading />
-        ) : data.habits.length ? (
-          showAll ? (
-            <CalendarAll habits={data.habits} handleDayClick={handleDayClick} />
-          ) : (
-            currHabit && (
-              <CalendarSingle
-                habit={currHabit}
-                handleDayClick={handleDayClick}
-              />
-            )
-          )
-        ) : (
-          <Styled.PageContent__NoData>
-            <NoDataIcon />
-          </Styled.PageContent__NoData>
-        )}
-      </Styled.PageContent>
-      <Styled.PageAddItem
-        onClick={() => setActiveContent(ModuleTypes.Habits)}
-        data-test-id="add-habit"
-      >
-        <PlusIcon />
-      </Styled.PageAddItem>
-    </Styled.HabitsContainer>
+  return stats ? (
+    <HabitsStats data={data} error={error} loading={loading} />
+  ) : (
+    <HabitsList
+      data={data}
+      error={error}
+      loading={loading}
+      setActiveContent={setActiveContent}
+    />
   )
 }
 

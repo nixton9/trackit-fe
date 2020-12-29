@@ -129,6 +129,22 @@ export const UPDATE_HABIT = gql`
   }
 `
 
+export const ADD_DAY_TO_HABIT = gql`
+  mutation AddDayToHabit($habit: ID!, $date: String!, $state: DayState!) {
+    addDayToHabit(habit: $habit, date: $date, state: $state) {
+      id_day
+    }
+  }
+`
+
+export const UPDATE_DAY = gql`
+  mutation UpdateHabit($id: ID!, $state: DayState!) {
+    updateDay(id: $id, state: $state) {
+      id_day
+    }
+  }
+`
+
 export const UPDATE_USER_INFO = gql`
   mutation UpdateUserInfo($name: String, $image: String, $imgToDelete: String) {
     updateUserInfo(name: $name, image: $image, imgToDelete: $imgToDelete) {

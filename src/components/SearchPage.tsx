@@ -8,13 +8,10 @@ import { activeContentState, isEditState } from './misc/Add'
 import { SEARCH } from '../utils/queries'
 import { habitIdState } from '../utils/atoms'
 import { ModuleTypes } from '../utils/ModuleTypes'
-import { showCurrencySym } from '../utils/globalHelpers'
 import { taskIdState, expenseIdState } from '../utils/atoms'
-import {
-  displayDateString,
-  parseDateInverse,
-  getCurrentStrike
-} from '../utils/dateHelpers'
+import { showCurrencySym } from '../utils/globalHelpers'
+import { getCurrentStreak } from '../utils/statsHelpers'
+import { displayDateString, parseDateInverse } from '../utils/dateHelpers'
 import { RouteComponentProps } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
@@ -134,7 +131,7 @@ const SearchPage: React.FC<RouteComponentProps<SearchPageProps>> = ({
                         )}
                         {item.hasOwnProperty('days') && (
                           <Styled.SearchResults__Item__Value>
-                            {getCurrentStrike(item.days)} days
+                            {getCurrentStreak(item.days)} days
                           </Styled.SearchResults__Item__Value>
                         )}
                       </Styled.SearchResults__Item>

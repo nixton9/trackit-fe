@@ -134,6 +134,7 @@ export const HABITS = gql`
         date: date_day
         state: state_day
       }
+      createdAt
     }
   }
 `

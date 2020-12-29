@@ -1,6 +1,7 @@
 import React from 'react'
-import { ChartTooltip } from './ChartTooltip'
+import { ExpensesChartTooltip, HabitsChartTooltip } from './ChartTooltip'
 import { Styled } from '../../styles/Charts.styles'
+import { ModuleTypes } from '../../utils/ModuleTypes'
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
 type BarGraphProps = {
@@ -11,9 +12,10 @@ type BarGraphProps = {
     displayValue?: string
   }[]
   bars: { key: string; color: string }[]
+  type: ModuleTypes
 }
 
-export const BarGraph: React.FC<BarGraphProps> = ({ data, bars }) => {
+export const BarGraph: React.FC<BarGraphProps> = ({ data, bars, type }) => {
   const chartData = data.map(item => ({
     ...item,
     value: item.value === 0 ? 1 : item.value
@@ -24,7 +26,13 @@ export const BarGraph: React.FC<BarGraphProps> = ({ data, bars }) => {
       <ResponsiveContainer>
         <BarChart width={500} height={300} data={chartData}>
           <XAxis dataKey="name" />
-          <Tooltip content={ChartTooltip} />
+          <Tooltip
+            content={
+              type === ModuleTypes.Expenses
+                ? ExpensesChartTooltip
+                : HabitsChartTooltip
+            }
+          />
           {bars &&
             bars.length &&
             bars.map(bar => (

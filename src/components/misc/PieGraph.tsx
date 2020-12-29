@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { ChartTooltip } from './ChartTooltip'
+import { ExpensesChartTooltip, HabitsChartTooltip } from './ChartTooltip'
 import { Styled } from '../../styles/Charts.styles'
 import { useWindowDimensions } from '../../utils/useWindowDimensions'
+import { ModuleTypes } from '../../utils/ModuleTypes'
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from 'recharts'
 
 type PieGraphProps = {
   data: { name: string; value: number; color: string }[]
+  type: ModuleTypes
 }
 
-export const PieGraph: React.FC<PieGraphProps> = ({ data }) => {
+export const PieGraph: React.FC<PieGraphProps> = ({ data, type }) => {
   const [innerRadius, setInnerRadius] = useState(60)
   const [outerRadius, setOuterRadius] = useState(80)
 
@@ -46,7 +48,13 @@ export const PieGraph: React.FC<PieGraphProps> = ({ data }) => {
               />
             ))}
           </Pie>
-          <Tooltip content={ChartTooltip} />
+          <Tooltip
+            content={
+              type === ModuleTypes.Expenses
+                ? ExpensesChartTooltip
+                : HabitsChartTooltip
+            }
+          />
         </PieChart>
       </ResponsiveContainer>
     </Styled.GraphContainer>

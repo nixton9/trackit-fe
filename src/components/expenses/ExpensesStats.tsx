@@ -6,9 +6,10 @@ import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
-import { Expense, ExpenseType } from '../../utils/ModuleTypes'
-import { showCurrencySym, months } from '../../utils/globalHelpers'
-import { isSameMonth, isSameYear } from '../../utils/dateHelpers'
+import { theme } from '../../styles/theme'
+import { ModuleTypes, Expense, ExpenseType } from '../../utils/ModuleTypes'
+import { showCurrencySym } from '../../utils/globalHelpers'
+import { isSameYear } from '../../utils/dateHelpers'
 import { yearsViewOptions } from '../../utils/selectsOptions'
 import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
 import Tooltip from 'react-tooltip-lite'
@@ -16,6 +17,12 @@ import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import { ApolloError } from '@apollo/client'
 import { getYear } from 'date-fns'
+import {
+  getBarChartData,
+  getCategoriesData,
+  getExpensesPieChartData,
+  getTopExpenses
+} from '../../utils/statsHelpers'
 
 type ExpensesStatsProps = {
   data: { expenses: Expense[] }
@@ -48,94 +55,18 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
   const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setSelectedYear(e.target.value)
 
-  const barChartData = data
-    ? months
-        .map(month => ({
-          ...month,
-          name: month.name.substring(0, 3),
-          monthLabel: `${month.name} ${selectedYear}`,
-          value: data.expenses
-            .filter(
-              exp =>
-                isSameMonth(exp.date, month.id) &&
-                isSameYear(exp.date, Number(selectedYear))
-            )
-            .reduce((acc, obj) => acc + obj.value, 0)
-        }))
-        .map(month => ({
-          ...month,
-          displayValue: `${month.value}${showCurrencySym(currency)}`
-        }))
-    : []
-
-  const barChartBars = [{ key: 'value', color: '#7D41FF' }]
-
-  const categoriesData =
-    categories && data
-      ? data.expenses
-          .filter(exp => isSameYear(exp.date, Number(selectedYear)))
-          .some(exp => !exp.type)
-        ? [
-            ...categories.types.filter(cat =>
-              data.expenses.some(
-                exp =>
-                  exp.type &&
-                  exp.type.id === cat.id &&
-                  isSameYear(exp.date, Number(selectedYear))
-              )
-            ),
-            { id: '0', name: 'Other', color: '#757575' }
-          ]
-        : [
-            ...categories.types.filter(cat =>
-              data.expenses.some(
-                exp =>
-                  exp.type &&
-                  exp.type.id === cat.id &&
-                  isSameYear(exp.date, Number(selectedYear))
-              )
-            )
-          ]
-      : []
-
-  const pieChartData =
-    categories && data
-      ? categoriesData
-          .map(cat => ({
-            name: cat.name,
-            value:
-              cat.id === '0'
-                ? data.expenses
-                    .filter(
-                      exp =>
-                        !exp.type && isSameYear(exp.date, Number(selectedYear))
-                    )
-                    .reduce((acc, obj) => acc + obj.value, 0)
-                : data.expenses
-                    .filter(
-                      exp =>
-                        exp.type &&
-                        exp.type.id === cat.id &&
-                        isSameYear(exp.date, Number(selectedYear))
-                    )
-                    .reduce((acc, obj) => acc + obj.value, 0),
-            color: cat.color
-          }))
-          .map(cat => ({
-            ...cat,
-            displayValue: `${cat.value}${showCurrencySym(currency)}`,
-            per: totalExpensesVal
-              ? ((100 * cat.value) / totalExpensesVal).toFixed(1)
-              : 0
-          }))
-      : []
-
-  const topExpenses = data
-    ? [...data.expenses]
-        .filter(exp => isSameYear(exp.date, Number(selectedYear)))
-        .sort((a, b) => b.value - a.value)
-        .slice(0, 10)
-    : []
+  const barChartData = getBarChartData(data, selectedYear, currency)
+  const barChartBars = [{ key: 'value', color: theme.accent }]
+  const categoriesData = getCategoriesData(categories, data, selectedYear)
+  const topExpenses = getTopExpenses(data, selectedYear)
+  const pieChartData = getExpensesPieChartData(
+    categories,
+    data,
+    categoriesData,
+    selectedYear,
+    currency,
+    totalExpensesVal
+  )
 
   useEffect(() => {
     if (data) {
@@ -204,7 +135,11 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
               <Styled.SingleChart__Title>
                 Monthly balance
               </Styled.SingleChart__Title>
-              <BarGraph data={barChartData} bars={barChartBars} />
+              <BarGraph
+                data={barChartData}
+                bars={barChartBars}
+                type={ModuleTypes.Expenses}
+              />
             </Styled.SingleChart>
 
             <Styled.SingleChart area="pie-chart">
@@ -212,7 +147,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
                 By categories
               </Styled.SingleChart__Title>
               <Styled.SingleChart__Flex>
-                <PieGraph data={pieChartData} />
+                <PieGraph data={pieChartData} type={ModuleTypes.Expenses} />
                 <Styled.SingleChart__CategoriesList>
                   {pieChartData.map(cat => (
                     <Styled.SingleChart__Category

@@ -28,7 +28,7 @@ export const isDateToday = (date: string) =>
 export const isPastDate = (date: string) =>
   isToday(parseDate(date)) ? false : isPast(parseDate(date))
 
-export const displayDateString = (date: string) => {
+export const displayDateString = (date: string, withYear: boolean = false) => {
   if (isSameDay(parseDate(date), new Date())) {
     return 'Today'
   } else if (isSameDay(parseDate(date), addDays(new Date(), 1))) {
@@ -36,7 +36,9 @@ export const displayDateString = (date: string) => {
   } else if (isSameDay(parseDate(date), subDays(new Date(), 1))) {
     return 'Yesterday'
   } else {
-    return format(parseDate(date), 'dd MMM')
+    return withYear
+      ? format(parseDate(date), 'dd MMM yyyy')
+      : format(parseDate(date), 'dd MMM')
   }
 }
 
@@ -90,29 +92,6 @@ export const getCalendarDayInfo = (allHabitDays: Day[], day: Date) => {
     currState,
     dayId
   }
-}
-
-export const getCurrentStrike = (days: Day[]) => {
-  let counter = 0
-  const today = new Date()
-
-  if (
-    days.filter(
-      (hDay: Day) =>
-        isSameDay(parseDate(hDay.date), today) && hDay.state === DayState.DONE
-    )[0]
-  ) {
-    counter = 1
-
-    const checkHabitDays = (hDay: Day) =>
-      isSameDay(parseDate(hDay.date), subDays(today, counter)) &&
-      hDay.state === DayState.DONE
-
-    while (days.filter(checkHabitDays)[0]) {
-      counter++
-    }
-  }
-  return counter
 }
 
 export const getDayNextClass = (currState: DayState) => {

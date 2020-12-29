@@ -58,6 +58,7 @@ export type Habit = {
   id: string | number
   title: string
   days: Day[] | []
+  createdAt?: string
 }
 
 export type Day = {

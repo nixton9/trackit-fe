@@ -1,5 +1,5 @@
 import { SortBySettings } from './SettingsTypes'
-import { Note, Task, Currencies } from './ModuleTypes'
+import { Note, Task, Currencies, DayState } from './ModuleTypes'
 
 export const sortData = (
   data: Note[] | Task[],
@@ -58,3 +58,14 @@ export const months = [
   { id: 11, name: 'November' },
   { id: 12, name: 'December' }
 ]
+
+export const getNextDayState = (state: DayState) => {
+  switch (state) {
+    case DayState.DONE:
+      return DayState.NOTDONE
+    case DayState.NOTDONE:
+      return DayState.BLANK
+    case DayState.BLANK:
+      return DayState.DONE
+  }
+}

@@ -73,7 +73,7 @@ const HabitsContainer = styled.div`
 
   .page-header:after {
     width: 120vw;
-    left: -10rem;
+    left: -15rem;
   }
 `
 
@@ -821,12 +821,14 @@ const SingleChart__Category = styled.li<SingleChart__CategoryProps>`
     color: ${props => props.theme.lightBlue};
     font-size: 1.1rem;
     font-weight: ${props => props.theme.fontSemiBold};
+    margin-top: 0.4rem;
   }
 
   .value {
     color: ${props => props.theme.white};
     font-size: 1.1rem;
     font-weight: ${props => props.theme.fontSemiBold};
+    line-height: 2rem;
   }
 `
 
@@ -876,6 +878,24 @@ const SingleChart__Expense = styled.li<SingleChart__ExpenseProps>`
   }
 `
 
+const SingleChart__Stat = styled.li`
+  display: flex;
+  justify-content: space-between;
+  margin: ${props => props.theme.spacingS} auto;
+
+  .title {
+    color: ${props => props.theme.white};
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontSemiBold};
+  }
+
+  .value {
+    color: ${props => props.theme.lightBlue};
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontSemiBold};
+  }
+`
+
 export const Styled = {
   PageContainer,
   HabitsContainer,
@@ -919,5 +939,6 @@ export const Styled = {
   SingleChart__CategoriesList,
   SingleChart__Category,
   SingleChart__TopExpenses,
-  SingleChart__Expense
+  SingleChart__Expense,
+  SingleChart__Stat
 }
