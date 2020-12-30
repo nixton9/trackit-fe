@@ -65,6 +65,10 @@ export const GlobalStyle = createGlobalStyle`
         border-radius:${props => props.theme.smallBorderRadius};
     }
 
+    .nomargin {
+        margin: 0 !important;
+    }
+
     input,
     textarea,
     button {

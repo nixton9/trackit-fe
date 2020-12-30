@@ -79,9 +79,11 @@ const App: React.FC = () => {
                 <Route exact path="/expenses">
                   <ExpensesPage />
                 </Route>
-                <Route exact path="/habits">
-                  <HabitsPage />
-                </Route>
+                <Route
+                  exact
+                  path="/habits"
+                  render={props => <HabitsPage {...props} />}
+                />
                 <Route exact path="/settings">
                   <SettingsPage
                     user={userInfo}
@@ -116,8 +118,7 @@ const App: React.FC = () => {
                   render={props => <ExpensesPage {...props} stats />}
                 />
                 <Route
-                  exact
-                  path="/habits/stats"
+                  path="/habits/stats/:habit?"
                   render={props => <HabitsPage {...props} stats />}
                 />
               </Switch>

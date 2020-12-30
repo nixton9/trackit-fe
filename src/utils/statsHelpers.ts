@@ -14,24 +14,24 @@ import { subDays, isSameDay } from 'date-fns'
 // HABITS STATS
 
 type CurrentHabit = Habit | null | undefined
-type DayLength = number | undefined
+type DayLength = number
 
 export const getSuccessfulDays = (currHabit: CurrentHabit) => {
   return currHabit
     ? currHabit.days.filter(day => day.state === DayState.DONE).length
-    : undefined
+    : 0
 }
 
 export const getNotSuccessfulDays = (currHabit: CurrentHabit) => {
   return currHabit
     ? currHabit.days.filter(day => day.state === DayState.NOTDONE).length
-    : undefined
+    : 0
 }
 
 export const getBlankDays = (currHabit: CurrentHabit) => {
   return currHabit
     ? currHabit.days.filter(day => day.state === DayState.BLANK).length
-    : undefined
+    : 0
 }
 
 export const getSuccessRate = (
@@ -49,7 +49,7 @@ export const getHabitsPieChartData = (
   notSuccessfulDays: DayLength,
   blankDays: DayLength
 ) => {
-  return currHabit && successfulDays && notSuccessfulDays && blankDays
+  return currHabit
     ? [
         {
           name: 'Done',
@@ -97,21 +97,20 @@ export const getCurrentStreak = (days: Day[]) => {
 }
 
 export const getLongestStreak = (days: Day[]) => {
-  const orderedDays = days
-    .slice()
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-
   let chunks: any = []
 
-  orderedDays.forEach((day, i) => {
-    if (
-      day.state === DayState.DONE &&
-      orderedDays[i - 1] &&
-      orderedDays[i - 1].state === DayState.DONE
-    ) {
-      chunks[chunks.length - 1].push(day)
-    } else if (day.state === DayState.DONE) {
-      chunks.push([day])
+  days.forEach((day, i) => {
+    if (days[i + 1] && days[i + 1].date === day.date) {
+    } else {
+      if (
+        day.state === DayState.DONE &&
+        days[i - 1] &&
+        days[i - 1].state === DayState.DONE
+      ) {
+        chunks[chunks.length - 1].push(day)
+      } else if (day.state === DayState.DONE) {
+        chunks.push([day])
+      }
     }
   })
 

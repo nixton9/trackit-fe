@@ -125,7 +125,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
               className="tooltip"
             >
               <Link
-                to="/habits/stats"
+                to={showAll ? `/habits/stats` : `/habits/stats/${Number(view)}`}
                 className="mbl-click"
                 data-test-id="habits-stats-link"
               >

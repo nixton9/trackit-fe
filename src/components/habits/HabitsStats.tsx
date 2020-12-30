@@ -25,12 +25,14 @@ type HabitsStatsProps = {
   data: { habits: Habit[] }
   error: ApolloError | undefined
   loading: boolean
+  preSelectedHabit?: string | undefined
 }
 
 export const HabitsStats: React.FC<HabitsStatsProps> = ({
   data,
   error,
-  loading
+  loading,
+  preSelectedHabit
 }) => {
   const [selectedHabit, setSelectedHabit] = useState<string>('')
 
@@ -70,9 +72,11 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
 
   useEffect(() => {
     if (data) {
-      setSelectedHabit(data.habits[0].id.toString())
+      setSelectedHabit(
+        preSelectedHabit ? preSelectedHabit : data.habits[0].id.toString()
+      )
     }
-  }, [data])
+  }, [data, preSelectedHabit])
 
   return (
     <Styled.PageContainer className="overflow">
@@ -99,7 +103,7 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
             direction={'up'}
             className="tooltip"
           >
-            <Link to="/habits" className="mbl-click">
+            <Link to="/habits" className="mbl-click nomargin">
               <HabitsIcon />
             </Link>
           </Tooltip>

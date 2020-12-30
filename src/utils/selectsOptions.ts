@@ -40,19 +40,23 @@ export const habitsViewOptions = (
   return onlyHabits
     ? data && data.habits.length
       ? [
-          ...data.habits.map(habit => ({
-            val: habit.id,
-            label: habit.title
-          }))
+          ...data.habits
+            .map(habit => ({
+              val: habit.id,
+              label: habit.title
+            }))
+            .sort((a, b) => a.label.localeCompare(b.label))
         ]
       : [{ val: '-', label: 'No habits to display', disabled: true }]
     : data && data.habits.length
     ? [
         { val: 'all', label: 'All' },
-        ...data.habits.map(habit => ({
-          val: habit.id,
-          label: habit.title
-        }))
+        ...data.habits
+          .map(habit => ({
+            val: habit.id,
+            label: habit.title
+          }))
+          .sort((a, b) => a.label.localeCompare(b.label))
       ]
     : [
         { val: 'all', label: 'All' },
