@@ -302,9 +302,24 @@ const PageContent = styled.section`
 
   &.desktop-grid {
     display: grid;
-    grid-template-areas: 'bar-chart bar-chart' 'pie-chart list';
     grid-template-columns: 1fr 1fr;
     grid-gap: ${props => props.theme.spacingS};
+
+    &.expenses {
+      grid-template-areas: 'bar-chart bar-chart' 'pie-chart list';
+    }
+
+    &.habits {
+      grid-template-areas: 'pie-chart list';
+
+      .pie-chart {
+        min-height: 384px;
+      }
+
+      .pie-chart-flex {
+        margin-top: 4rem;
+      }
+    }
 
     @media ${device.tablet} {
       display: block;

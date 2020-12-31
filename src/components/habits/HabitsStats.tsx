@@ -110,7 +110,7 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
-      <Styled.PageContent className="overflow desktop-grid">
+      <Styled.PageContent className="overflow desktop-grid habits">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (
@@ -125,11 +125,11 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
           </Styled.SingleChart>
         ) : (
           <>
-            <Styled.SingleChart area="pie-chart">
+            <Styled.SingleChart area="pie-chart" className="pie-chart">
               <Styled.SingleChart__Title>
                 Days balance
               </Styled.SingleChart__Title>
-              <Styled.SingleChart__Flex>
+              <Styled.SingleChart__Flex className="pie-chart-flex">
                 <PieGraph data={pieChartData} type={ModuleTypes.Habits} />
                 <Styled.SingleChart__CategoriesList>
                   {pieChartData.map(cat => (
@@ -148,7 +148,7 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
               </Styled.SingleChart__Flex>
             </Styled.SingleChart>
 
-            <Styled.SingleChart>
+            <Styled.SingleChart area="list">
               <Styled.SingleChart__Title>Other stats</Styled.SingleChart__Title>
 
               <Styled.SingleChart__TopExpenses>
@@ -163,6 +163,10 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
                 <Styled.SingleChart__Stat>
                   <p className="title">Current streak</p>{' '}
                   <p className="value">{currentStreak}</p>
+                </Styled.SingleChart__Stat>
+                <Styled.SingleChart__Stat>
+                  <p className="title">Days since start</p>{' '}
+                  <p className="value">412 days</p>
                 </Styled.SingleChart__Stat>
                 <Styled.SingleChart__Stat>
                   <p className="title">Start date</p>{' '}

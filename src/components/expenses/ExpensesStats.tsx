@@ -120,7 +120,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
         </Styled.PageHeader__Settings>
       </Styled.PageHeader>
 
-      <Styled.PageContent className="overflow desktop-grid">
+      <Styled.PageContent className="overflow desktop-grid expenses">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (
