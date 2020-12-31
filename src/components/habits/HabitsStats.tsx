@@ -14,7 +14,7 @@ import { ApolloError } from '@apollo/client'
 import {
   getSuccessfulDays,
   getNotSuccessfulDays,
-  getBlankDays,
+  getTotalDays,
   getSuccessRate,
   getCurrentStreak,
   getLongestStreak,
@@ -45,18 +45,13 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
       )
     : null
 
+  const totalDays = getTotalDays(currHabit)
   const successfulDays = getSuccessfulDays(currHabit)
   const notSuccessfulDays = getNotSuccessfulDays(currHabit)
-  const blankDays = getBlankDays(currHabit)
-  const successRate = getSuccessRate(currHabit, successfulDays)
-
-  const longestStreak = currHabit
-    ? `${getLongestStreak(currHabit.days)} days`
-    : '-'
-
-  const currentStreak = currHabit
-    ? `${getCurrentStreak(currHabit.days)} days`
-    : '-'
+  const blankDays = totalDays - (successfulDays + notSuccessfulDays)
+  const successRate = getSuccessRate(successfulDays, totalDays)
+  const longestStreak = currHabit ? getLongestStreak(currHabit.days) : 0
+  const currentStreak = currHabit ? getCurrentStreak(currHabit.days) : 0
 
   const startDate =
     currHabit && currHabit.date
@@ -67,7 +62,8 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
     currHabit,
     successfulDays,
     notSuccessfulDays,
-    blankDays
+    blankDays,
+    totalDays
   )
 
   useEffect(() => {
@@ -158,15 +154,15 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
                 </Styled.SingleChart__Stat>
                 <Styled.SingleChart__Stat>
                   <p className="title">Longest streak</p>{' '}
-                  <p className="value">{longestStreak}</p>
+                  <p className="value">{longestStreak} days</p>
                 </Styled.SingleChart__Stat>
                 <Styled.SingleChart__Stat>
                   <p className="title">Current streak</p>{' '}
-                  <p className="value">{currentStreak}</p>
+                  <p className="value">{currentStreak} days</p>
                 </Styled.SingleChart__Stat>
                 <Styled.SingleChart__Stat>
                   <p className="title">Days since start</p>{' '}
-                  <p className="value">412 days</p>
+                  <p className="value">{totalDays} days</p>
                 </Styled.SingleChart__Stat>
                 <Styled.SingleChart__Stat>
                   <p className="title">Start date</p>{' '}

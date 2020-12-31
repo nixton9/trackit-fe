@@ -8,8 +8,18 @@ import {
 } from './ModuleTypes'
 import { theme } from '../styles/theme'
 import { showCurrencySym, months } from './globalHelpers'
-import { isSameMonth, isSameYear, parseDate } from './dateHelpers'
-import { subDays, isSameDay } from 'date-fns'
+import {
+  isSameMonth,
+  isSameYear,
+  parseDate,
+  parseDateInverse
+} from './dateHelpers'
+import {
+  subDays,
+  isSameDay,
+  differenceInCalendarDays,
+  isBefore
+} from 'date-fns'
 
 // HABITS STATS
 
@@ -34,12 +44,40 @@ export const getBlankDays = (currHabit: CurrentHabit) => {
     : 0
 }
 
+export const getTotalDays = (currHabit: CurrentHabit) => {
+  if (currHabit && currHabit.days.length) {
+    const firstDay = currHabit.days[0].date
+    if (
+      isBefore(
+        parseDate(parseDateInverse(firstDay)),
+        parseDate(parseDateInverse(currHabit.date))
+      )
+    ) {
+      return differenceInCalendarDays(
+        new Date(),
+        parseDate(parseDateInverse(firstDay))
+      )
+    } else {
+      return differenceInCalendarDays(
+        new Date(),
+        parseDate(parseDateInverse(currHabit.date))
+      )
+    }
+  } else if (currHabit) {
+    return differenceInCalendarDays(
+      new Date(),
+      parseDate(parseDateInverse(currHabit.date))
+    )
+  }
+  return 0
+}
+
 export const getSuccessRate = (
-  currHabit: CurrentHabit,
-  successfulDays: DayLength
+  successfulDays: DayLength,
+  totalDays: DayLength
 ) => {
-  return currHabit && successfulDays
-    ? `${((100 * successfulDays) / currHabit.days.length).toFixed(0)}%`
+  return totalDays && successfulDays
+    ? `${((100 * successfulDays) / totalDays).toFixed(0)}%`
     : '-'
 }
 
@@ -47,7 +85,8 @@ export const getHabitsPieChartData = (
   currHabit: CurrentHabit,
   successfulDays: DayLength,
   notSuccessfulDays: DayLength,
-  blankDays: DayLength
+  blankDays: DayLength,
+  totalDays: DayLength
 ) => {
   return currHabit
     ? [
@@ -68,7 +107,7 @@ export const getHabitsPieChartData = (
         }
       ].map(cat => ({
         ...cat,
-        per: ((100 * cat.value) / currHabit.days.length).toFixed(0)
+        per: ((100 * cat.value) / totalDays).toFixed(0)
       }))
     : []
 }
