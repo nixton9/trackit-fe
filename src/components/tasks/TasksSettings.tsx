@@ -11,7 +11,7 @@ import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
 import { TaskCategory } from '../../utils/ModuleTypes'
-import { SortBySettings } from '../../utils/SettingsTypes'
+import { SortBySettings, sortByOptions } from '../../utils/SettingsTypes'
 import { useSetRecoilState } from 'recoil'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
@@ -23,11 +23,6 @@ const DELETE_CATEGORY = gql`
     }
   }
 `
-
-const sortByOptions = [
-  { val: SortBySettings.DATE, label: 'Date' },
-  { val: SortBySettings.ALPHABETICAL, label: 'Alphabetical Order' }
-]
 
 type TasksSettingsProps = {
   categories: TaskCategory[]

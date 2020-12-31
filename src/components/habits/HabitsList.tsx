@@ -7,10 +7,11 @@ import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { parseDateInverse } from '../../utils/dateHelpers'
-import { getNextDayState } from '../../utils/globalHelpers'
+import { getNextDayState, sortData } from '../../utils/globalHelpers'
 import { getCurrentStreak } from '../../utils/statsHelpers'
 import { Styled } from '../../styles/Page.styles'
 import { ModuleTypes, Habit, DayState } from '../../utils/ModuleTypes'
+import { SortBySettings } from '../../utils/SettingsTypes'
 import { HABITS } from '../../utils/queries'
 import { ADD_DAY_TO_HABIT, UPDATE_DAY } from '../../utils/mutations'
 import { habitsViewOptions } from '../../utils/selectsOptions'
@@ -34,6 +35,9 @@ export const HabitsList: React.FC<HabitsListProps> = ({
   setActiveContent
 }) => {
   const [view, setView] = useState('all')
+  const [sortBy, setSortBy] = useState<SortBySettings>(
+    SortBySettings.ALPHABETICAL
+  )
 
   const { refetch: refetchHabits } = useQuery(HABITS)
   const [addDayToHabit] = useMutation(ADD_DAY_TO_HABIT)
@@ -76,6 +80,9 @@ export const HabitsList: React.FC<HabitsListProps> = ({
     showAll || !data
       ? null
       : data.habits.find((habit: Habit) => Number(habit.id) === Number(view))
+
+  const sortedHabits =
+    data && data.habits ? (sortData(data.habits, sortBy) as Habit[]) : []
 
   return (
     <Styled.HabitsContainer className="overflow">
@@ -141,7 +148,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
               className="tooltip"
             >
               <div className="mbl-click tooltip">
-                <HabitsSettings />
+                <HabitsSettings sortBy={sortBy} setSortBy={setSortBy} />
               </div>
             </Tooltip>
           </Styled.PageHeader__Settings>
@@ -155,7 +162,10 @@ export const HabitsList: React.FC<HabitsListProps> = ({
           <PageLoading />
         ) : data.habits.length ? (
           showAll ? (
-            <CalendarAll habits={data.habits} handleDayClick={handleDayClick} />
+            <CalendarAll
+              habits={sortedHabits}
+              handleDayClick={handleDayClick}
+            />
           ) : (
             currHabit && (
               <CalendarSingle

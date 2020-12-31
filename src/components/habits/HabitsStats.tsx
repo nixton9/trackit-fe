@@ -59,8 +59,8 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
     : '-'
 
   const startDate =
-    currHabit && currHabit.createdAt
-      ? displayDateString(parseDateInverse(currHabit.createdAt), true)
+    currHabit && currHabit.date
+      ? displayDateString(parseDateInverse(currHabit.date), true)
       : '-'
 
   const pieChartData = getHabitsPieChartData(

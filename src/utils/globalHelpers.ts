@@ -1,15 +1,15 @@
 import { SortBySettings } from './SettingsTypes'
-import { Note, Task, Currencies, DayState } from './ModuleTypes'
+import { Note, Task, Habit, Currencies, DayState } from './ModuleTypes'
 
 export const sortData = (
-  data: Note[] | Task[],
+  data: Note[] | Task[] | Habit[],
   sortBy: SortBySettings,
   invertedDate: boolean = false
 ) => {
   return sortBy === SortBySettings.DATE
     ? data
         .slice()
-        .sort((a: Note | Task, b: Note | Task) =>
+        .sort((a: Note | Task | Habit, b: Note | Task | Habit) =>
           invertedDate
             ? new Date(a.date).getTime() - new Date(b.date).getTime()
             : new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -17,7 +17,7 @@ export const sortData = (
     : sortBy === SortBySettings.ALPHABETICAL
     ? data
         .slice()
-        .sort((a: Note, b: Note) =>
+        .sort((a: Note | Task | Habit, b: Note | Task | Habit) =>
           a.title.toUpperCase() < b.title.toUpperCase()
             ? -1
             : a.title.toUpperCase() > b.title.toUpperCase()

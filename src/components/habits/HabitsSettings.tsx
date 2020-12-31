@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, Dispatch, SetStateAction } from 'react'
 import Drawer from '../misc/Drawer'
 import { SelectMenu } from '../misc/SelectMenu'
 import { Styled } from '../../styles/Settings.styles'
 import { useToggleElement } from '../../utils/useToggleElement'
+import { SortBySettings, sortByOptions } from '../../utils/SettingsTypes'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import { useHistory } from 'react-router-dom'
 
-const sortByOptions = [
-  { val: 'date', label: 'Date' },
-  { val: 'alphabetical', label: 'Alphabetical Order' }
-]
+type HabitsSettingsProps = {
+  sortBy: string
+  setSortBy: Dispatch<SetStateAction<SortBySettings>>
+}
 
-const HabitsSettings: React.FC = () => {
+const HabitsSettings: React.FC<HabitsSettingsProps> = ({
+  sortBy,
+  setSortBy
+}) => {
   const [open, setOpen, overlayEl] = useToggleElement()
-  const [sortBy, setSortBy] = useState('date')
 
   const history = useHistory()
 
   const handleSortByChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-    setSortBy(e.target.value)
+    setSortBy(e.target.value as SortBySettings)
 
   useEffect(() => {
     history.push(`#`)
