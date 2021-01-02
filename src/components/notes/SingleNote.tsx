@@ -12,7 +12,9 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
       <NavLink to={`notes/${id}`}>
         <Styled.SingleFlex>
           <div>
-            <Styled.SingleTitle>{title}</Styled.SingleTitle>
+            <Styled.SingleTitle className="note-title">
+              {title}
+            </Styled.SingleTitle>
             <Styled.SingleDate>
               <CalendarIcon />
               <p>{displayDateString(parseDateInverse(date))}</p>

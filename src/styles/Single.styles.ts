@@ -47,6 +47,11 @@ const SingleTitle = styled.h5`
   color: ${props => props.theme.white};
   font-weight: ${props => props.theme.fontLight};
   font-size: 1.4rem;
+
+  &.note-title {
+    width: max-content;
+    margin-right: ${props => props.theme.spacingXS};
+  }
 `
 
 const SingleDate = styled.div<SingleDateProps>`
@@ -84,6 +89,7 @@ const SingleCategory = styled.h6<SingleCategoryProps>`
 const SingleNote__Tags = styled.div`
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
 `
 
 const SingleExpense__Container = styled.article`
