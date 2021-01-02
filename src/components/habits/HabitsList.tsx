@@ -86,76 +86,80 @@ export const HabitsList: React.FC<HabitsListProps> = ({
 
   return (
     <Styled.HabitsContainer className="overflow">
-      <Styled.PageContainer>
-        <Styled.PageTitle>Habits</Styled.PageTitle>
+      <Styled.PageContainer className="habits">
+        <div className="page-header-wrapper">
+          <Styled.PageTitle>Habits</Styled.PageTitle>
 
-        <Styled.PageHeader className="page-header">
-          <Styled.PageHeader__View>
-            <Styled.PageHeader__View__Dropdown className="habits">
-              <SelectMenu
-                id="habits-view"
-                value={view}
-                onChange={handleViewChange}
-                options={habitsViewOptions(data)}
-                itemClass={'view-select-item'}
-              />
-            </Styled.PageHeader__View__Dropdown>
+          <Styled.PageHeader>
+            <Styled.PageHeader__View>
+              <Styled.PageHeader__View__Dropdown className="habits">
+                <SelectMenu
+                  id="habits-view"
+                  value={view}
+                  onChange={handleViewChange}
+                  options={habitsViewOptions(data)}
+                  itemClass={'view-select-item'}
+                />
+              </Styled.PageHeader__View__Dropdown>
 
-            <Tooltip
-              tipContentClassName="visible-tooltip"
-              content={
-                showAll
-                  ? data
-                    ? `${data.habits.length} habits`
-                    : '0 days'
-                  : currHabit && 'Current streak'
-              }
-              arrow={false}
-              direction={'up'}
-            >
-              <Styled.PageHeader__View__Counter className="smaller">
-                {data
-                  ? showAll
-                    ? data.habits.length
-                    : currHabit && getCurrentStreak(currHabit.days) + ' days'
-                  : 0}
-              </Styled.PageHeader__View__Counter>
-            </Tooltip>
-          </Styled.PageHeader__View>
-
-          <Styled.PageHeader__Settings>
-            <Tooltip
-              eventOff={'onClick'}
-              content={'Statistics'}
-              arrow={false}
-              direction={'up'}
-              className="tooltip"
-            >
-              <Link
-                to={showAll ? `/habits/stats` : `/habits/stats/${Number(view)}`}
-                className="mbl-click"
-                data-test-id="habits-stats-link"
+              <Tooltip
+                tipContentClassName="visible-tooltip"
+                content={
+                  showAll
+                    ? data
+                      ? `${data.habits.length} habits`
+                      : '0 days'
+                    : currHabit && 'Current streak'
+                }
+                arrow={false}
+                direction={'up'}
               >
-                <StatsIcon className="stats-icon" />
-              </Link>
-            </Tooltip>
+                <Styled.PageHeader__View__Counter className="smaller">
+                  {data
+                    ? showAll
+                      ? data.habits.length
+                      : currHabit && getCurrentStreak(currHabit.days) + ' days'
+                    : 0}
+                </Styled.PageHeader__View__Counter>
+              </Tooltip>
+            </Styled.PageHeader__View>
 
-            <Tooltip
-              eventOff={'onClick'}
-              content={'Settings'}
-              arrow={false}
-              direction={'up'}
-              className="tooltip"
-            >
-              <div className="mbl-click tooltip">
-                <HabitsSettings sortBy={sortBy} setSortBy={setSortBy} />
-              </div>
-            </Tooltip>
-          </Styled.PageHeader__Settings>
-        </Styled.PageHeader>
+            <Styled.PageHeader__Settings>
+              <Tooltip
+                eventOff={'onClick'}
+                content={'Statistics'}
+                arrow={false}
+                direction={'up'}
+                className="tooltip"
+              >
+                <Link
+                  to={
+                    showAll ? `/habits/stats` : `/habits/stats/${Number(view)}`
+                  }
+                  className="mbl-click"
+                  data-test-id="habits-stats-link"
+                >
+                  <StatsIcon className="stats-icon" />
+                </Link>
+              </Tooltip>
+
+              <Tooltip
+                eventOff={'onClick'}
+                content={'Settings'}
+                arrow={false}
+                direction={'up'}
+                className="tooltip"
+              >
+                <div className="mbl-click tooltip">
+                  <HabitsSettings sortBy={sortBy} setSortBy={setSortBy} />
+                </div>
+              </Tooltip>
+            </Styled.PageHeader__Settings>
+          </Styled.PageHeader>
+        </div>
       </Styled.PageContainer>
 
-      <Styled.PageContent className="overflow">
+      <Styled.PageContent>
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (

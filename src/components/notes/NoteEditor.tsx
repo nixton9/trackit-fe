@@ -79,7 +79,11 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
   setValue
 }) => {
   return (
-    <EditorContainer readMode={readMode} showEditor={showEditor}>
+    <EditorContainer
+      readMode={readMode}
+      showEditor={showEditor}
+      className="editor-container"
+    >
       <ReactQuill
         value={value}
         onChange={setValue}

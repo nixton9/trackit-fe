@@ -21,60 +21,46 @@ type SingleChart__ExpenseProps = {
 
 const PageContainer = styled.div`
   position: relative;
-  width: 85%;
-  margin: ${props => props.theme.spacingL} auto 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: 4rem;
+  width: 100vw;
+  height: 100vh;
+  padding: 9rem 4rem 4rem;
+  overflow: hidden;
+
+  .page-header-wrapper {
+    position: relative;
+  }
 
   &.note-detail {
-    margin-top: 10rem;
+    grid-template-rows: auto auto 1fr;
+    width: unset;
+    height: unset;
+    overflow: auto;
+
+    .editor-container {
+      margin-top: 0;
+    }
   }
 
-  &.overflow:before,
-  .page-header:after,
-  .user-header:after {
-    content: '';
-    width: 100%;
-    height: 4rem;
-    position: absolute;
-    right: 1rem;
-    bottom: 0;
-    background: ${props =>
-      `linear-gradient(to top, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
-    z-index: 1;
-  }
-
-  .page-header:after,
-  .user-header:after {
-    bottom: -4rem;
-    background: ${props =>
-      `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
-  }
-
-  .user-header:after {
-    bottom: -5rem;
+  &.habits {
+    display: block;
+    width: unset;
+    height: unset;
+    overflow: unset;
   }
 `
 
 const HabitsContainer = styled.div`
   position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100vw;
+  height: 100vh;
   max-width: 100vw;
+  padding-bottom: 4rem;
   overflow-x: hidden;
-
-  &.overflow:after {
-    content: '';
-    width: 100%;
-    height: 4rem;
-    position: absolute;
-    right: 1rem;
-    bottom: 0;
-    background: ${props =>
-      `linear-gradient(to top, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
-    z-index: 1;
-  }
-
-  .page-header:after {
-    width: 120vw;
-    left: -15rem;
-  }
 `
 
 const PageTitle = styled.h1`
@@ -256,32 +242,8 @@ const PageHeader__Settings = styled.div`
 
 const PageContent = styled.section`
   position: relative;
-  margin-top: ${props => props.theme.spacingS};
   overflow-y: auto;
   padding-right: ${props => props.theme.spacingXXS};
-  height: 80vh;
-
-  &.overflow {
-    margin-top: 0;
-    padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS}
-      ${props => props.theme.spacingS} 0;
-  }
-
-  @media only screen and (max-height: 850px) {
-    height: 70vh;
-  }
-  @media only screen and (max-height: 650px) {
-    height: 67vh;
-  }
-  @media only screen and (max-height: 600px) {
-    height: 64vh;
-  }
-  @media only screen and (max-height: 550px) {
-    height: 61vh;
-  }
-  @media only screen and (max-height: 500px) {
-    height: 59vh;
-  }
 
   &.settings-page {
     padding-left: 15rem;
@@ -455,8 +417,8 @@ const DetailHeader = styled.div<DetailHeaderProps>`
   justify-content: space-between;
 
   .three-dots-menu {
-    top: 0;
-    right: 0;
+    top: 2.5rem;
+    right: 3rem;
   }
 
   .three-dots-menu div:first-child {
@@ -499,7 +461,6 @@ const DetailTags = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${props => props.theme.spacingXS};
-  margin-top: 5rem;
   background-color: ${props => props.theme.surfacesBlack};
   border-radius: ${props => props.theme.smallBorderRadius};
 
@@ -540,14 +501,13 @@ const DetailTagEditor = styled.div`
   margin-top: ${props => props.theme.spacingXS};
 `
 
-const DetailContent = styled.p`
-  margin-top: ${props => props.theme.spacingS};
+const DetailContent = styled.div`
   color: ${props => props.theme.white};
 `
 
 const DetailSave = styled.div`
   text-align: center;
-  margin: ${props => props.theme.spacingM} 0;
+  margin: ${props => props.theme.spacingS} 0 ${props => props.theme.spacingM} 0;
   animation: ${fadeIn} 0.4s ease forwards;
 
   p {

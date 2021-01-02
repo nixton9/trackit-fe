@@ -82,45 +82,48 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
 
   return (
     <>
-      <Styled.PageHeader className="page-header">
-        <Styled.PageHeader__View>
-          <Styled.PageHeader__View__Dropdown className="expenses">
-            <SelectMenu
-              id="year-view"
-              value={selectedYear}
-              onChange={handleYearChange}
-              options={yearsViewOptions(yearsWithData, CURRYEAR)}
-              itemClass={'view-select-item'}
-            />
-          </Styled.PageHeader__View__Dropdown>
+      <div className="page-header-wrapper">
+        <Styled.PageTitle>Expenses Statistics</Styled.PageTitle>
+        <Styled.PageHeader>
+          <Styled.PageHeader__View>
+            <Styled.PageHeader__View__Dropdown className="expenses">
+              <SelectMenu
+                id="year-view"
+                value={selectedYear}
+                onChange={handleYearChange}
+                options={yearsViewOptions(yearsWithData, CURRYEAR)}
+                itemClass={'view-select-item'}
+              />
+            </Styled.PageHeader__View__Dropdown>
 
-          <Tooltip
-            content={`Spent on ${selectedYear}`}
-            arrow={false}
-            direction={'up'}
-          >
-            <Styled.PageHeader__View__Counter>
-              {totalExpensesVal} {currency && showCurrencySym(currency)}
-            </Styled.PageHeader__View__Counter>
-          </Tooltip>
-        </Styled.PageHeader__View>
+            <Tooltip
+              content={`Spent on ${selectedYear}`}
+              arrow={false}
+              direction={'up'}
+            >
+              <Styled.PageHeader__View__Counter>
+                {totalExpensesVal} {currency && showCurrencySym(currency)}
+              </Styled.PageHeader__View__Counter>
+            </Tooltip>
+          </Styled.PageHeader__View>
 
-        <Styled.PageHeader__Settings>
-          <Tooltip
-            eventOff={'onClick'}
-            content={'Expenses'}
-            arrow={false}
-            direction={'up'}
-            className="tooltip"
-          >
-            <Link to="/expenses" className="mbl-click">
-              <ExpensesIcon />
-            </Link>
-          </Tooltip>
-        </Styled.PageHeader__Settings>
-      </Styled.PageHeader>
+          <Styled.PageHeader__Settings>
+            <Tooltip
+              eventOff={'onClick'}
+              content={'Expenses'}
+              arrow={false}
+              direction={'up'}
+              className="tooltip"
+            >
+              <Link to="/expenses" className="mbl-click">
+                <ExpensesIcon />
+              </Link>
+            </Tooltip>
+          </Styled.PageHeader__Settings>
+        </Styled.PageHeader>
+      </div>
 
-      <Styled.PageContent className="overflow desktop-grid expenses">
+      <Styled.PageContent className="desktop-grid expenses">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (

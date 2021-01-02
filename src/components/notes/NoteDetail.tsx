@@ -299,6 +299,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
 
           <Styled.DetailContent>
             <NoteEditor
+              placeholder="Type here"
               value={noteContent}
               setValue={setNoteContent}
               showEditor={showEditor}

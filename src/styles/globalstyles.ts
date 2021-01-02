@@ -158,5 +158,24 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-    
+
+    &.overflow:after,
+    .page-header-wrapper:after {
+        content: '';
+        width: 100%;
+        height: 4rem;
+        position: absolute;
+        right: 1rem;
+        bottom: 1.5rem;
+        background: ${props =>
+          `linear-gradient(to top, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+        z-index: 1;
+    }
+
+    .page-header-wrapper:after {
+        bottom: -5.5rem;
+        background: ${props =>
+          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+    }
+        
 `

@@ -76,37 +76,39 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
 
   return (
     <Styled.PageContainer className="overflow">
-      <Styled.PageTitle>Habits Statistics</Styled.PageTitle>
+      <div className="page-header-wrapper">
+        <Styled.PageTitle>Habits Statistics</Styled.PageTitle>
 
-      <Styled.PageHeader className="page-header">
-        <Styled.PageHeader__View>
-          <Styled.PageHeader__View__Dropdown className="habits">
-            <SelectMenu
-              id="habit-view"
-              value={selectedHabit}
-              onChange={handleHabitChange}
-              options={habitsViewOptions(data, true)}
-              itemClass={'view-select-item'}
-            />
-          </Styled.PageHeader__View__Dropdown>
-        </Styled.PageHeader__View>
+        <Styled.PageHeader className="page-header">
+          <Styled.PageHeader__View>
+            <Styled.PageHeader__View__Dropdown className="habits">
+              <SelectMenu
+                id="habit-view"
+                value={selectedHabit}
+                onChange={handleHabitChange}
+                options={habitsViewOptions(data, true)}
+                itemClass={'view-select-item'}
+              />
+            </Styled.PageHeader__View__Dropdown>
+          </Styled.PageHeader__View>
 
-        <Styled.PageHeader__Settings>
-          <Tooltip
-            eventOff={'onClick'}
-            content={'Habits'}
-            arrow={false}
-            direction={'up'}
-            className="tooltip"
-          >
-            <Link to="/habits" className="mbl-click nomargin">
-              <HabitsIcon />
-            </Link>
-          </Tooltip>
-        </Styled.PageHeader__Settings>
-      </Styled.PageHeader>
+          <Styled.PageHeader__Settings>
+            <Tooltip
+              eventOff={'onClick'}
+              content={'Habits'}
+              arrow={false}
+              direction={'up'}
+              className="tooltip"
+            >
+              <Link to="/habits" className="mbl-click nomargin">
+                <HabitsIcon />
+              </Link>
+            </Tooltip>
+          </Styled.PageHeader__Settings>
+        </Styled.PageHeader>
+      </div>
 
-      <Styled.PageContent className="overflow desktop-grid habits">
+      <Styled.PageContent className="desktop-grid habits">
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (

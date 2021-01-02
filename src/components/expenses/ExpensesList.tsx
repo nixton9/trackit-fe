@@ -52,71 +52,74 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
 }) => {
   return (
     <>
-      <Styled.PageHeader className="page-header">
-        <Styled.PageHeader__View>
-          <Styled.PageHeader__View__Dropdown className="expenses">
-            <div className="input-wrapper">
-              <DatePickerInput
-                date={startDate}
-                maxDate={endDate}
-                setDate={setStartDate}
-              />
-              <ChevronIcon />
-            </div>
-            <div className="input-wrapper">
-              <DatePickerInput
-                date={endDate}
-                minDate={startDate}
-                setDate={setEndDate}
-              />
-              <ChevronIcon />
-            </div>
-          </Styled.PageHeader__View__Dropdown>
+      <div className="page-header-wrapper">
+        <Styled.PageTitle>Expenses</Styled.PageTitle>
+        <Styled.PageHeader>
+          <Styled.PageHeader__View>
+            <Styled.PageHeader__View__Dropdown className="expenses">
+              <div className="input-wrapper">
+                <DatePickerInput
+                  date={startDate}
+                  maxDate={endDate}
+                  setDate={setStartDate}
+                />
+                <ChevronIcon />
+              </div>
+              <div className="input-wrapper">
+                <DatePickerInput
+                  date={endDate}
+                  minDate={startDate}
+                  setDate={setEndDate}
+                />
+                <ChevronIcon />
+              </div>
+            </Styled.PageHeader__View__Dropdown>
 
-          <Tooltip
-            tipContentClassName="visible-tooltip"
-            content={'Spent on this period'}
-            arrow={false}
-            direction={'up'}
-          >
-            <Styled.PageHeader__View__Counter>
-              {totalExpensesVal} {currency && showCurrencySym(currency)}
-            </Styled.PageHeader__View__Counter>
-          </Tooltip>
-        </Styled.PageHeader__View>
-
-        <Styled.PageHeader__Settings>
-          <Tooltip
-            eventOff={'onClick'}
-            content={'Statistics'}
-            arrow={false}
-            direction={'up'}
-            className="tooltip"
-          >
-            <Link
-              to="/expenses/stats"
-              className="mbl-click"
-              data-test-id="expenses-stats-link"
+            <Tooltip
+              tipContentClassName="visible-tooltip"
+              content={'Spent on this period'}
+              arrow={false}
+              direction={'up'}
             >
-              <StatsIcon className="stats-icon" />
-            </Link>
-          </Tooltip>
+              <Styled.PageHeader__View__Counter>
+                {totalExpensesVal} {currency && showCurrencySym(currency)}
+              </Styled.PageHeader__View__Counter>
+            </Tooltip>
+          </Styled.PageHeader__View>
 
-          <Tooltip
-            eventOff={'onClick'}
-            content={'Settings'}
-            arrow={false}
-            direction={'up'}
-            className="tooltip"
-          >
-            <div className="mbl-click tooltip">
-              <ExpensesSettings types={types ? types.types : []} />
-            </div>
-          </Tooltip>
-        </Styled.PageHeader__Settings>
-      </Styled.PageHeader>
+          <Styled.PageHeader__Settings>
+            <Tooltip
+              eventOff={'onClick'}
+              content={'Statistics'}
+              arrow={false}
+              direction={'up'}
+              className="tooltip"
+            >
+              <Link
+                to="/expenses/stats"
+                className="mbl-click"
+                data-test-id="expenses-stats-link"
+              >
+                <StatsIcon className="stats-icon" />
+              </Link>
+            </Tooltip>
 
-      <Styled.PageContent className="overflow">
+            <Tooltip
+              eventOff={'onClick'}
+              content={'Settings'}
+              arrow={false}
+              direction={'up'}
+              className="tooltip"
+            >
+              <div className="mbl-click tooltip">
+                <ExpensesSettings types={types ? types.types : []} />
+              </div>
+            </Tooltip>
+          </Styled.PageHeader__Settings>
+        </Styled.PageHeader>
+      </div>
+
+      <Styled.PageContent>
         {error ? (
           <PageError>Couldn't get data, check your connection.</PageError>
         ) : loading ? (

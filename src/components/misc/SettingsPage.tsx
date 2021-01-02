@@ -165,7 +165,9 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
   return (
     <Styled.PageContainer className="overflow">
-      <UserHeader user={user} />
+      <div className="page-header-wrapper">
+        <UserHeader user={user} />
+      </div>
 
       <Styled.PageContent className="settings-page">
         <Styled.Settings__Title>User Profile</Styled.Settings__Title>
