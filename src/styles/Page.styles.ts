@@ -35,6 +35,7 @@ const PageContainer = styled.div`
 
   &.note-detail {
     grid-template-rows: auto auto 1fr;
+    grid-template-columns: 100%;
     width: unset;
     height: unset;
     overflow: auto;
