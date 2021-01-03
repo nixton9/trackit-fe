@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+const chevronUrl = process.env.PUBLIC_URL + '/chevron.svg'
+
 const DatePickerContainer = styled.div`
   display: inline-block;
 
@@ -46,7 +48,7 @@ const DatePickerContainer = styled.div`
     width: 15px;
     height: 15px;
     border: none;
-    background-image: url(./chevron.svg);
+    background-image: url(${chevronUrl});
     background-repeat: no-repeat;
     transform: rotate(90deg);
     background-size: 15px;
