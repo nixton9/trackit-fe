@@ -6,6 +6,7 @@ import Tooltip from 'react-tooltip-lite'
 import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
+import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { parseDateInverse } from '../../utils/dateHelpers'
 import { getNextDayState, sortData } from '../../utils/globalHelpers'
 import { getCurrentStreak } from '../../utils/statsHelpers'
@@ -86,6 +87,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
 
   return (
     <Styled.HabitsContainer className="overflow">
+      <Walkthrough page={Pages.HABITS} />
       <Styled.PageContainer className="habits">
         <div className="page-header-wrapper">
           <Styled.PageTitle>Habits</Styled.PageTitle>
@@ -114,7 +116,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
                 arrow={false}
                 direction={'up'}
               >
-                <Styled.PageHeader__View__Counter className="smaller">
+                <Styled.PageHeader__View__Counter className="smaller habits-counter">
                   {data
                     ? showAll
                       ? data.habits.length
@@ -188,7 +190,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
         onClick={() => setActiveContent(ModuleTypes.Habits)}
         data-test-id="add-habit"
       >
-        <PlusIcon />
+        <PlusIcon className="add-habit-icon" />
       </Styled.PageAddItem>
     </Styled.HabitsContainer>
   )

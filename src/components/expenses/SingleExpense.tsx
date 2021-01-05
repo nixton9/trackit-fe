@@ -28,7 +28,10 @@ const SingleExpense: React.FC<SingleExpenseProps> = ({
   }
 
   return (
-    <Styled.SingleExpense__Container onClick={handleExpenseEdit}>
+    <Styled.SingleExpense__Container
+      onClick={handleExpenseEdit}
+      className="single-expense"
+    >
       <Styled.SingleFlex>
         <Styled.SingleTitle>{title ? title : '-'}</Styled.SingleTitle>
         {type && (

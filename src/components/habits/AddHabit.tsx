@@ -180,7 +180,7 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
           <Styled.AddInput__Label>Title</Styled.AddInput__Label>
           <Styled.AddInput
             type="text"
-            placeholder="Ex: Eat healthy"
+            placeholder="Ex: Exercise for 30 min"
             value={title}
             onChange={e => setTitle(e.target.value)}
             ref={titleRef}

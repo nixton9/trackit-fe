@@ -114,7 +114,7 @@ const CalendarAll: React.FC<CalendarProps> = ({ habits, handleDayClick }) => {
       }
 
       rows.push(
-        <Styled.CalendarHabit key={habit.id}>
+        <Styled.CalendarHabit key={habit.id} className="single-habit">
           <HabitHeader id={habit.id} title={habit.title} />
           <Styled.CalendarDays key={day.toString()}>
             {' '}

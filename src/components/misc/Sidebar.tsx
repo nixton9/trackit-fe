@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, logout }) => {
   return hasUser ? (
     <>
       <Styled.SidebarToggle
-        className="mbl-click"
+        className="mbl-click menu-icon"
         onClick={() => setOpen(!open)}
       >
         <MenuIcon data-test-id="sidebar-icon" />

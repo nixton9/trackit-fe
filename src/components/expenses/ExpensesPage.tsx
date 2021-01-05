@@ -3,6 +3,7 @@ import { ExpensesList } from './ExpensesList'
 import { ExpensesStats } from './ExpensesStats'
 import { currencyState } from './ExpensesSettings'
 import { activeContentState } from '../misc/Add'
+import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
@@ -69,20 +70,23 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
           loading={loading}
         />
       ) : (
-        <ExpensesList
-          startDate={startDate}
-          setStartDate={setStartDate}
-          endDate={endDate}
-          setEndDate={setEndDate}
-          totalExpensesVal={totalExpensesVal}
-          visibleExpensesDay={visibleExpensesDay}
-          currency={currency}
-          data={data}
-          types={types}
-          error={error}
-          loading={loading}
-          setActiveContent={setActiveContent}
-        />
+        <>
+          <Walkthrough page={Pages.EXPENSES} />
+          <ExpensesList
+            startDate={startDate}
+            setStartDate={setStartDate}
+            endDate={endDate}
+            setEndDate={setEndDate}
+            totalExpensesVal={totalExpensesVal}
+            visibleExpensesDay={visibleExpensesDay}
+            currency={currency}
+            data={data}
+            types={types}
+            error={error}
+            loading={loading}
+            setActiveContent={setActiveContent}
+          />
+        </>
       )}
     </Styled.PageContainer>
   )

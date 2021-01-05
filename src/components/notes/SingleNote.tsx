@@ -8,7 +8,7 @@ import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 
 const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
   return (
-    <Styled.SingleContainer>
+    <Styled.SingleContainer className="single-note">
       <NavLink to={`notes/${id}`}>
         <Styled.SingleFlex>
           <div>

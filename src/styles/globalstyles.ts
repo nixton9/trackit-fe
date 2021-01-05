@@ -177,5 +177,95 @@ export const GlobalStyle = createGlobalStyle`
         background: ${props =>
           `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
     }
-        
+
+
+    // Stuff for React Joyride (Walkthrough)
+    .react-joyride {
+        position: absolute;
+    }
+    
+    .react-joyride__tooltip {
+        position: relative !important;
+        max-width: 55rem !important;
+        min-width: 36rem !important;
+        background-color: ${props => props.theme.backgroundBlack} !important;
+        color: ${props => props.theme.offWhite} !important;
+        padding: 4rem ${props => props.theme.spacingS} 2.5rem !important;
+        border-radius: ${props => props.theme.smallBorderRadius} !important;
+        box-shadow: 0 -23px 16px 0 rgba(0, 0, 0, 0.07);
+        font-size: 1.5rem !important;
+        line-height: 3.2rem ;
+        font-weight: ${props => props.theme.fontLight};
+
+        > div:nth-child(1) {
+                margin-bottom: ${props => props.theme.spacingS};
+            }
+
+        div {
+            font-size: inherit !important;
+            line-height: inherit !important;
+            font-weight: inherit !important;
+            padding: 0 !important;
+            text-align: left;
+        }
+
+        h4 {
+            color: ${props => props.theme.white} !important;
+            font-size: 2rem !important;
+            font-weight: ${props => props.theme.fontSemiBold} !important;
+            text-align: center !important;
+            margin-bottom: ${props => props.theme.spacingS} !important;
+        }
+
+        button[data-action="primary"], button[data-action="back"] {
+            color: ${props => props.theme.alwaysWhite}!important;
+            background-color: ${props => props.theme.accent}!important;
+            font-size: 1.5rem !important;
+            font-weight: ${props => props.theme.fontSemiBold} !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: ${props => props.theme.smallBorderRadius} !important;
+            border: none !important;
+            cursor: pointer;
+
+            &:hover,
+            &:active {
+                background-color: ${props =>
+                  props.theme.darkenAccent} !important;;
+            }
+        }
+
+        button[data-action="back"] {
+            background-color: transparent !important;
+            margin-right: 1rem !important;
+        }
+
+        button[data-action="skip"] {
+            color: ${props => props.theme.lightBlue} !important;
+            font-size: 1.5rem !important;
+            font-weight: ${props => props.theme.fontSemiBold} !important;
+            cursor: pointer;
+            text-transform: lowercase;
+            padding-left: 0 !important;
+        }
+
+        button[data-action="close"] {
+            svg {
+                width: 1.3rem;
+
+                path {
+                    fill: ${props => props.theme.lightBlue};
+                    stroke: ${props => props.theme.lightBlue};
+                    stroke-width: 3px;
+                }
+            }
+        }
+    }
+
+    .__floater__arrow polygon{
+        fill: ${props => props.theme.backgroundBlack} !important;
+    }
+
+    #react-joyride-step-0 > span {
+        display: none !important;
+    }
 `

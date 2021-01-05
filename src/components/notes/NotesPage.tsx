@@ -6,6 +6,7 @@ import { SelectMenu } from '../misc/SelectMenu'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { activeContentState } from '../misc/Add'
+import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Page.styles'
 import { Note, ModuleTypes } from '../../utils/ModuleTypes'
 import { NOTES, TAGS } from '../../utils/queries'
@@ -43,80 +44,83 @@ const NotesPage: React.FC = () => {
   const sortedNotes = sortData(visibleNotes, sortBy)
 
   return (
-    <Styled.PageContainer className="overflow">
-      <div className="page-header-wrapper">
-        <Styled.PageTitle>Notes</Styled.PageTitle>
+    <>
+      <Walkthrough page={Pages.NOTES} />
+      <Styled.PageContainer className="overflow">
+        <div className="page-header-wrapper">
+          <Styled.PageTitle>Notes</Styled.PageTitle>
 
-        <Styled.PageHeader>
-          <Styled.PageHeader__View>
-            <Styled.PageHeader__View__Dropdown className="notes">
-              <SelectMenu
-                id="notes-view"
-                value={view}
-                onChange={handleViewChange}
-                options={notesViewOptions(tags)}
-                itemClass={'view-select-item'}
+          <Styled.PageHeader>
+            <Styled.PageHeader__View>
+              <Styled.PageHeader__View__Dropdown className="notes">
+                <SelectMenu
+                  id="notes-view"
+                  value={view}
+                  onChange={handleViewChange}
+                  options={notesViewOptions(tags)}
+                  itemClass={'view-select-item'}
+                />
+              </Styled.PageHeader__View__Dropdown>
+
+              <Tooltip
+                tipContentClassName="visible-tooltip"
+                content={`${data ? visibleNotes.length : '0'} notes`}
+                arrow={false}
+                direction={'up'}
+              >
+                <Styled.PageHeader__View__Counter className="notes-counter">
+                  {data ? visibleNotes.length : '0'}
+                </Styled.PageHeader__View__Counter>
+              </Tooltip>
+            </Styled.PageHeader__View>
+
+            <Styled.PageHeader__Settings className="mbl-click">
+              <Tooltip
+                eventOff={'onClick'}
+                content={'Settings'}
+                arrow={false}
+                direction={'up'}
+              >
+                <NotesSettings
+                  tags={tags ? tags.tags : []}
+                  sortBy={sortBy}
+                  setSortBy={setSortBy}
+                />
+              </Tooltip>
+            </Styled.PageHeader__Settings>
+          </Styled.PageHeader>
+        </div>
+
+        <Styled.PageContent>
+          {error ? (
+            <PageError>Couldn't get data, check your connection.</PageError>
+          ) : loading ? (
+            <PageLoading />
+          ) : sortedNotes.length ? (
+            (sortedNotes as Note[]).map(note => (
+              <SingleNote
+                key={note.id}
+                id={note.id}
+                title={note.title}
+                date={note.date}
+                tags={note.tags}
               />
-            </Styled.PageHeader__View__Dropdown>
+            ))
+          ) : (
+            <Styled.PageContent__NoData>
+              <NoDataIcon />
+            </Styled.PageContent__NoData>
+          )}
+        </Styled.PageContent>
 
-            <Tooltip
-              tipContentClassName="visible-tooltip"
-              content={`${data ? visibleNotes.length : '0'} notes`}
-              arrow={false}
-              direction={'up'}
-            >
-              <Styled.PageHeader__View__Counter>
-                {data ? visibleNotes.length : '0'}
-              </Styled.PageHeader__View__Counter>
-            </Tooltip>
-          </Styled.PageHeader__View>
-
-          <Styled.PageHeader__Settings className="mbl-click">
-            <Tooltip
-              eventOff={'onClick'}
-              content={'Settings'}
-              arrow={false}
-              direction={'up'}
-            >
-              <NotesSettings
-                tags={tags ? tags.tags : []}
-                sortBy={sortBy}
-                setSortBy={setSortBy}
-              />
-            </Tooltip>
-          </Styled.PageHeader__Settings>
-        </Styled.PageHeader>
-      </div>
-
-      <Styled.PageContent>
-        {error ? (
-          <PageError>Couldn't get data, check your connection.</PageError>
-        ) : loading ? (
-          <PageLoading />
-        ) : sortedNotes.length ? (
-          (sortedNotes as Note[]).map(note => (
-            <SingleNote
-              key={note.id}
-              id={note.id}
-              title={note.title}
-              date={note.date}
-              tags={note.tags}
-            />
-          ))
-        ) : (
-          <Styled.PageContent__NoData>
-            <NoDataIcon />
-          </Styled.PageContent__NoData>
-        )}
-      </Styled.PageContent>
-
-      <Styled.PageAddItem
-        onClick={() => setActiveContent(ModuleTypes.Notes)}
-        data-test-id="add-note"
-      >
-        <PlusIcon />
-      </Styled.PageAddItem>
-    </Styled.PageContainer>
+        <Styled.PageAddItem
+          onClick={() => setActiveContent(ModuleTypes.Notes)}
+          data-test-id="add-note"
+        >
+          <PlusIcon className="add-note-icon" />
+        </Styled.PageAddItem>
+      </Styled.PageContainer>
+    </>
   )
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import HomeWidget from './misc/HomeWidget'
 import { LoadingSpinner } from './misc/LoadingSpinner'
 import { PageError } from './misc/PageError'
+import { Walkthrough, Pages } from './misc/Walkthrough/Walkthrough'
 import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
@@ -57,6 +58,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
 
   return (
     <>
+      <Walkthrough page={Pages.HOME} />
       <Styled.HomeLogo>Trckr</Styled.HomeLogo>
 
       <Styled.HomeContainer>

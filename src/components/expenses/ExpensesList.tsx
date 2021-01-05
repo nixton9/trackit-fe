@@ -56,7 +56,10 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
         <Styled.PageTitle>Expenses</Styled.PageTitle>
         <Styled.PageHeader>
           <Styled.PageHeader__View>
-            <Styled.PageHeader__View__Dropdown className="expenses">
+            <Styled.PageHeader__View__Dropdown
+              className="expenses"
+              id="expenses-view"
+            >
               <div className="input-wrapper">
                 <DatePickerInput
                   date={startDate}
@@ -81,7 +84,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
               arrow={false}
               direction={'up'}
             >
-              <Styled.PageHeader__View__Counter>
+              <Styled.PageHeader__View__Counter className="expenses-counter">
                 {totalExpensesVal} {currency && showCurrencySym(currency)}
               </Styled.PageHeader__View__Counter>
             </Tooltip>
@@ -157,7 +160,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
         onClick={() => setActiveContent(ModuleTypes.Expenses)}
         data-test-id="add-expense"
       >
-        <PlusIcon />
+        <PlusIcon className="add-expense-icon" />
       </Styled.PageAddItem>
     </>
   )
