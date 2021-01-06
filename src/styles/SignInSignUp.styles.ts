@@ -11,6 +11,10 @@ const SignInSignUpHeader = styled.nav`
   @media only screen and (max-height: 630px) {
     margin: ${props => props.theme.spacingS} auto 5rem auto;
   }
+
+  @media only screen and (max-height: 600px) {
+    margin: ${props => props.theme.spacingS} auto;
+  }
 `
 
 const SignInSignUpHeader__Logo = styled.h1`
@@ -45,6 +49,11 @@ const SignInSignUpText = styled.h2`
   font-size: 3.7rem;
   line-height: 5.2rem;
   font-weight: ${props => props.theme.fontSemiBold};
+
+  @media only screen and (max-width: 310px) {
+    font-size: 3.4rem;
+    line-height: 5rem;
+  }
 
   span {
     color: ${props => props.theme.grey};
