@@ -370,7 +370,6 @@ const PageLoading = styled.div`
   right: 0;
   display: flex;
   justify-content: center;
-  margin-top: ${props => props.theme.spacingL};
 `
 
 const PageError = styled.div`
@@ -384,7 +383,6 @@ const PageError = styled.div`
   color: ${props => props.theme.white};
   font-size: 1.5rem;
   font-weight: ${props => props.theme.fontMedium};
-  margin-top: ${props => props.theme.spacingL};
 
   svg {
     width: 4rem;
