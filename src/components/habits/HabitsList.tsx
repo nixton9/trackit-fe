@@ -16,6 +16,7 @@ import { SortBySettings } from '../../utils/SettingsTypes'
 import { HABITS } from '../../utils/queries'
 import { ADD_DAY_TO_HABIT, UPDATE_DAY } from '../../utils/mutations'
 import { habitsViewOptions } from '../../utils/selectsOptions'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as StatsIcon } from '../../assets/icons/stats.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
@@ -39,6 +40,8 @@ export const HabitsList: React.FC<HabitsListProps> = ({
   const [sortBy, setSortBy] = useState<SortBySettings>(
     SortBySettings.ALPHABETICAL
   )
+
+  const [showHabWT, setShowHabWT] = useLocalStorage('showHabWT', true)
 
   const { refetch: refetchHabits } = useQuery(HABITS)
   const [addDayToHabit] = useMutation(ADD_DAY_TO_HABIT)
@@ -85,9 +88,14 @@ export const HabitsList: React.FC<HabitsListProps> = ({
   const sortedHabits =
     data && data.habits ? (sortData(data.habits, sortBy) as Habit[]) : []
 
+  const showWalkthrough = showHabWT && !error && !loading
+
   return (
     <Styled.HabitsContainer className="overflow">
-      <Walkthrough page={Pages.HABITS} />
+      {showWalkthrough && (
+        <Walkthrough page={Pages.HABITS} setShow={setShowHabWT} />
+      )}
+
       <Styled.PageContainer className="habits">
         <div className="page-header-wrapper">
           <Styled.PageTitle>Habits</Styled.PageTitle>

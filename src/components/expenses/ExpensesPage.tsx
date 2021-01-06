@@ -7,6 +7,7 @@ import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Page.styles'
 import { Expense } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { useQuery } from '@apollo/client'
@@ -18,6 +19,8 @@ type ExpensesPageProps = {
 
 const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
+
+  const [showExpWT, setShowExpWT] = useLocalStorage('showExpWT', true)
 
   const currency = useRecoilValue(currencyState)
 
@@ -60,6 +63,8 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
         .toFixed(2)
     : 0
 
+  const showWalkthrough = showExpWT && !error && !loading
+
   return (
     <Styled.PageContainer className="overflow">
       {stats ? (
@@ -71,7 +76,10 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
         />
       ) : (
         <>
-          <Walkthrough page={Pages.EXPENSES} />
+          {showWalkthrough && (
+            <Walkthrough page={Pages.EXPENSES} setShow={setShowExpWT} />
+          )}
+
           <ExpensesList
             startDate={startDate}
             setStartDate={setStartDate}

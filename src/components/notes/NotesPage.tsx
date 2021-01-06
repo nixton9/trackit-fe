@@ -13,6 +13,7 @@ import { NOTES, TAGS } from '../../utils/queries'
 import { SortBySettings } from '../../utils/SettingsTypes'
 import { sortData } from '../../utils/globalHelpers'
 import { notesViewOptions } from '../../utils/selectsOptions'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { useQuery } from '@apollo/client'
@@ -20,6 +21,8 @@ import { useSetRecoilState } from 'recoil'
 
 const NotesPage: React.FC = () => {
   const setActiveContent = useSetRecoilState(activeContentState)
+
+  const [showNotesWT, setShowNotesWT] = useLocalStorage('showNotesWT', true)
 
   const { loading, error, data } = useQuery(NOTES)
   const { data: tags } = useQuery(TAGS, {
@@ -43,9 +46,14 @@ const NotesPage: React.FC = () => {
 
   const sortedNotes = sortData(visibleNotes, sortBy)
 
+  const showWalkthrough = showNotesWT && !error && !loading
+
   return (
     <>
-      <Walkthrough page={Pages.NOTES} />
+      {showWalkthrough && (
+        <Walkthrough page={Pages.NOTES} setShow={setShowNotesWT} />
+      )}
+
       <Styled.PageContainer className="overflow">
         <div className="page-header-wrapper">
           <Styled.PageTitle>Notes</Styled.PageTitle>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Dispatch, SetStateAction } from 'react'
 import Joyride, { CallBackProps } from 'react-joyride'
 
 const pagesSteps: { [key: string]: any } = {
@@ -206,18 +206,25 @@ export enum Pages {
 
 type WalkthroughProps = {
   page: Pages
+  setShow?: Dispatch<SetStateAction<boolean>>
 }
 
-export const Walkthrough: React.FC<WalkthroughProps> = ({ page }) => {
-  const [show, setShow] = useState(true)
+export const Walkthrough: React.FC<WalkthroughProps> = ({ page, setShow }) => {
+  const [run, setRun] = useState(true)
   const [steps] = useState(pagesSteps[page])
 
   const handleWTCallback = (data: CallBackProps) => {
     const { action } = data
 
     if (action === 'close') {
-      setShow(false)
+      setRun(false)
     }
+
+    // If the user finishes this WT, we will make sure we never show it again by using this to handle Local Storage
+    if (action === 'reset' || action === 'close' || action === 'skip') {
+      setShow && setShow(false)
+    }
+    console.log(action)
   }
 
   return (
@@ -225,7 +232,7 @@ export const Walkthrough: React.FC<WalkthroughProps> = ({ page }) => {
       steps={steps}
       continuous
       showSkipButton={true}
-      run={show}
+      run={run}
       callback={handleWTCallback}
     />
   )

@@ -14,6 +14,7 @@ import { TASKS, CATEGORIES } from '../../utils/queries'
 import { isDateToday, parseDateInverse } from '../../utils/dateHelpers'
 import { tasksViewOptions } from '../../utils/selectsOptions'
 import { sortData } from '../../utils/globalHelpers'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { ReactComponent as TasksIcon } from '../../assets/icons/tasks.svg'
@@ -28,6 +29,8 @@ type TasksPageProps = {
 
 const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
+
+  const [showTasksWT, setShowTasksWT] = useLocalStorage('showTasksWT', true)
 
   const { loading, error, data } = useQuery(TASKS, {
     variables: { done: done }
@@ -54,9 +57,14 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
 
   const sortedTasks = sortData(visibleTasks, sortBy, true)
 
+  const showWalkthrough = showTasksWT && !error && !loading
+
   return (
     <>
-      <Walkthrough page={Pages.TASKS} />
+      {showWalkthrough && (
+        <Walkthrough page={Pages.TASKS} setShow={setShowTasksWT} />
+      )}
+
       <Styled.PageContainer className="overflow">
         <div className="page-header-wrapper">
           <Styled.PageTitle>{done && 'Completed'} Tasks</Styled.PageTitle>

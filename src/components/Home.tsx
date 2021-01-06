@@ -7,6 +7,7 @@ import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
 import { parseDate, isDateToday, parseDateInverse } from '../utils/dateHelpers'
+import { useLocalStorage } from '../utils/useLocalStorage'
 import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../assets/icons/habits.svg'
@@ -15,6 +16,8 @@ import { useQuery } from '@apollo/client'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 
 const Home: React.FC<{ userName: string }> = ({ userName }) => {
+  const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', true)
+
   const { loading: loadingNotes, error: errorNotes, data: notes } = useQuery(
     NOTES
   )
@@ -56,9 +59,14 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
       ).length
     : 0
 
+  const showWalkthrough = showHomeWT && !hasError && !isLoading
+
   return (
     <>
-      <Walkthrough page={Pages.HOME} />
+      {showWalkthrough && (
+        <Walkthrough page={Pages.HOME} setShow={setShowHomeWT} />
+      )}
+
       <Styled.HomeLogo>Trckr</Styled.HomeLogo>
 
       <Styled.HomeContainer>
