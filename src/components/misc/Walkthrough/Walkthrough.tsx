@@ -224,7 +224,6 @@ export const Walkthrough: React.FC<WalkthroughProps> = ({ page, setShow }) => {
     if (action === 'reset' || action === 'close' || action === 'skip') {
       setShow && setShow(false)
     }
-    console.log(action)
   }
 
   return (

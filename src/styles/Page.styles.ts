@@ -661,7 +661,8 @@ const SettingsBlock = styled.div`
   }
 
   .image,
-  .new-password {
+  .new-password,
+  .walkthrough {
     margin-top: ${props => props.theme.spacingS};
   }
 
@@ -687,6 +688,10 @@ const SettingsButton = styled.button`
   margin-top: 4rem;
   padding: 0.6rem 1.2rem;
   border-radius: ${props => props.theme.smallBorderRadius};
+
+  &.wt-button  {
+    margin-top: ${props => props.theme.spacingXS};
+  }
 
   &:hover,
   &:active {

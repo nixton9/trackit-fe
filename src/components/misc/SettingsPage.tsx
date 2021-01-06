@@ -5,6 +5,7 @@ import { alertState } from './Alert'
 import { ToggleButton } from './ToggleButton'
 import { Styled } from '../../styles/Page.styles'
 import { User } from '../../utils/ModuleTypes'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { UPDATE_USER_INFO, UPDATE_USER_PASSWORD } from '../../utils/mutations'
 import { useMutation } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
@@ -29,6 +30,12 @@ const SettingsPage: React.FC<SettingsProps> = ({
   const [newPassword, setNewPassword] = useState('')
   const [selectedFile, setSelectedFile] = useState('')
   const [isLoadingProfile, setIsLoadingProfile] = useState(false)
+
+  const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', false)
+  const [showNotesWT, setShowNotesWT] = useLocalStorage('showNotesWT', false)
+  const [showTasksWT, setShowTasksWT] = useLocalStorage('showTasksWT', false)
+  const [showExpWT, setShowExpWT] = useLocalStorage('showExpWT', false)
+  const [showHabWT, setShowHabWT] = useLocalStorage('showHabWT', false)
 
   const [updateUserInfo, { loading: loadingUserInfo }] = useMutation(
     UPDATE_USER_INFO
@@ -143,8 +150,6 @@ const SettingsPage: React.FC<SettingsProps> = ({
     } else {
       setSelectedFile(file)
     }
-
-    console.log(file.length)
   }
 
   const handleDeleteImage = () => {
@@ -152,6 +157,27 @@ const SettingsPage: React.FC<SettingsProps> = ({
       text: 'Are you sure you want to remove your picture?',
       onConfirm: () => {
         updateUser(image, true)
+      }
+    })
+  }
+
+  const showWalkthrough = () => {
+    setShowHomeWT(true)
+    setShowNotesWT(true)
+    setShowTasksWT(true)
+    setShowExpWT(true)
+    setShowHabWT(true)
+    setNotification({
+      text: `You will now see the walkthrough on each page`,
+      type: NotificationTypes.Success
+    })
+  }
+
+  const handleShowWalkthrough = () => {
+    setAlert({
+      text: 'Do you wish to see the walkthrough again?',
+      onConfirm: () => {
+        showWalkthrough()
       }
     })
   }
@@ -280,6 +306,23 @@ const SettingsPage: React.FC<SettingsProps> = ({
               isChecked={isDarkTheme}
               setIsChecked={setIsDarkTheme}
             />
+          </div>
+
+          <div className="walkthrough">
+            <label>Show walkthrough</label>
+            <Styled.SettingsButton
+              onClick={handleShowWalkthrough}
+              className="wt-button"
+              disabled={
+                showNotesWT &&
+                showTasksWT &&
+                showExpWT &&
+                showHabWT &&
+                showHomeWT
+              }
+            >
+              Show
+            </Styled.SettingsButton>
           </div>
         </Styled.SettingsBlock>
       </Styled.PageContent>

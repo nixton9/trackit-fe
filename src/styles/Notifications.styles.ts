@@ -2,25 +2,27 @@ import styled, { keyframes } from 'styled-components/macro'
 
 const SlideDown = keyframes`
     0% {
-        transform: translate(-50%, 0);
+        transform: translate(-50%, -6rem);
+        opacity: 0;
     }
     100% {
-        transform: translate(-50%, 2rem);
+        transform: translate(-50%, 0);
+        opacity: 1;
     }
 `
 
 const NotificationContainer = styled.div`
   position: fixed;
-  top: 0;
+  top: 7%;
   left: 50%;
   width: max-content;
   min-width: 70%;
-  padding: 1rem 2.5rem 1rem 1.5rem;
+  padding: 1.5rem 2.5rem 1.5rem 1.5rem;
   background-color: ${props => props.theme.surfacesBlack};
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.smallBorderRadius};
   z-index: 111;
-  animation: ${SlideDown} 0.15s linear forwards;
+  animation: ${SlideDown} 0.2s ease forwards;
 `
 
 const Notification = styled.div`
@@ -80,7 +82,7 @@ const Alert__Buttons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: ${props => props.theme.spacingXS};
+  margin-top: 2rem;
 
   button {
     font-size: 1.5rem;
