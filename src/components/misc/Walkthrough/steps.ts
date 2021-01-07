@@ -155,7 +155,7 @@ export const pagesSteps: { [key: string]: any } = {
       disableBeacon: true
     },
     {
-      target: '.calendar',
+      target: '.calendar-header',
       content:
         'This is the calendar where you see all of your habits. Use the arrows next to the month to navigate through it.',
       disableBeacon: true

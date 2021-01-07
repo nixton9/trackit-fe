@@ -34,7 +34,7 @@ const CalendarSingle: React.FC<CalendarProps> = ({ habit, handleDayClick }) => {
     const dateFormat = 'MMMM yyyy'
 
     return (
-      <Styled.CalendarHeader>
+      <Styled.CalendarHeader className="calendar-header">
         <Styled.CalendarHeader__Icon onClick={prevMonth}>
           <ChevronIcon />
         </Styled.CalendarHeader__Icon>

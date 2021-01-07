@@ -36,6 +36,9 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${props => props.theme.fontFamily};
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    #root {
         background: ${props => props.theme.backgroundBlack};
     }
 
