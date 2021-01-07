@@ -51,7 +51,11 @@ const NotesPage: React.FC = () => {
   return (
     <>
       {showWalkthrough && (
-        <Walkthrough page={Pages.NOTES} setShow={setShowNotesWT} />
+        <Walkthrough
+          page={Pages.NOTES}
+          setShow={setShowNotesWT}
+          selectLastButOneSingle={sortedNotes.length > 1}
+        />
       )}
 
       <Styled.PageContainer className="overflow">

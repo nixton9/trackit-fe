@@ -62,7 +62,11 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
   return (
     <>
       {showWalkthrough && (
-        <Walkthrough page={Pages.TASKS} setShow={setShowTasksWT} />
+        <Walkthrough
+          page={Pages.TASKS}
+          setShow={setShowTasksWT}
+          selectLastButOneSingle={sortedTasks.length > 1}
+        />
       )}
 
       <Styled.PageContainer className="overflow">

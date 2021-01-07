@@ -93,7 +93,11 @@ export const HabitsList: React.FC<HabitsListProps> = ({
   return (
     <Styled.HabitsContainer className="overflow">
       {showWalkthrough && (
-        <Walkthrough page={Pages.HABITS} setShow={setShowHabWT} />
+        <Walkthrough
+          page={Pages.HABITS}
+          setShow={setShowHabWT}
+          selectLastButOneSingle={sortedHabits.length > 1}
+        />
       )}
 
       <Styled.PageContainer className="habits">

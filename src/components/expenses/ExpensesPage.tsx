@@ -77,7 +77,11 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
       ) : (
         <>
           {showWalkthrough && (
-            <Walkthrough page={Pages.EXPENSES} setShow={setShowExpWT} />
+            <Walkthrough
+              page={Pages.EXPENSES}
+              setShow={setShowExpWT}
+              selectLastButOneSingle={visibleExpensesDay.length > 1}
+            />
           )}
 
           <ExpensesList
