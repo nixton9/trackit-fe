@@ -1,6 +1,5 @@
 import React, { useState, Dispatch, SetStateAction } from 'react'
-import CalendarSingle from './CalendarSingle'
-import CalendarAll from './CalendarAll'
+import CalendarContainer from './CalendarContainer'
 import HabitsSettings from './HabitsSettings'
 import Tooltip from 'react-tooltip-lite'
 import { SelectMenu } from '../misc/SelectMenu'
@@ -179,19 +178,12 @@ export const HabitsList: React.FC<HabitsListProps> = ({
         ) : loading ? (
           <PageLoading />
         ) : data.habits.length ? (
-          showAll ? (
-            <CalendarAll
-              habits={sortedHabits}
-              handleDayClick={handleDayClick}
-            />
-          ) : (
-            currHabit && (
-              <CalendarSingle
-                habit={currHabit}
-                handleDayClick={handleDayClick}
-              />
-            )
-          )
+          <CalendarContainer
+            showAll={showAll}
+            sortedHabits={sortedHabits}
+            currHabit={currHabit}
+            handleDayClick={handleDayClick}
+          />
         ) : (
           <Styled.PageContent__NoData>
             <NoDataIcon />
