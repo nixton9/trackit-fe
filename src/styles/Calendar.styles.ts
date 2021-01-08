@@ -6,7 +6,7 @@ const CalendarContainer = styled.div`
   width: 95%;
   max-width: 100rem;
   height: auto;
-  margin: ${props => props.theme.spacingS} auto 0 auto;
+  margin: 0 auto;
   overflow: hidden;
 `
 const CalendarHeader = styled.div`
@@ -44,10 +44,11 @@ const CalendarHeader__Icon = styled.span`
 `
 
 const CalendarDOW = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
-  margin: ${props => props.theme.spacingXS} 0 ${props => props.theme.spacingS} 0;
+  margin: ${props => props.theme.spacingXS} 0 0 0;
 `
 
 const CalendarDOW__Day = styled.h5`
@@ -55,6 +56,14 @@ const CalendarDOW__Day = styled.h5`
   font-weight: ${props => props.theme.fontLight};
   font-size: 1.4rem;
   padding: ${props => props.theme.spacingXXS};
+`
+
+const CalendarContent = styled.div`
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  padding: ${props => props.theme.spacingS} ${props => props.theme.spacingXXS}
+    ${props => props.theme.spacingS} 0;
 `
 
 const CalendarHabit = styled.div`
@@ -196,6 +205,7 @@ export const Styled = {
   CalendarHeader__Title,
   CalendarDOW,
   CalendarDOW__Day,
+  CalendarContent,
   CalendarHabit,
   CalendarHabit__Title,
   CalendarDays,

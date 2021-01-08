@@ -77,7 +77,11 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
       )
     }
 
-    return <Styled.CalendarDOW>{days}</Styled.CalendarDOW>
+    return (
+      <Styled.CalendarDOW className="calendar-days-wrapper">
+        {days}
+      </Styled.CalendarDOW>
+    )
   }
 
   useEffect(() => {
@@ -86,35 +90,39 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
 
   return (
     <Styled.CalendarContainer className="calendar">
-      <Styled.CalendarHeader className="calendar-header">
-        <Styled.CalendarHeader__Icon onClick={prevMonth}>
-          <ChevronIcon />
-        </Styled.CalendarHeader__Icon>
-        <Styled.CalendarHeader__Title>
-          {format(currentDate, dateFormat)}
-        </Styled.CalendarHeader__Title>
-        <Styled.CalendarHeader__Icon className="right" onClick={nextMonth}>
-          <ChevronIcon />
-        </Styled.CalendarHeader__Icon>
-      </Styled.CalendarHeader>
+      <div className="calendar-header">
+        <Styled.CalendarHeader>
+          <Styled.CalendarHeader__Icon onClick={prevMonth}>
+            <ChevronIcon />
+          </Styled.CalendarHeader__Icon>
+          <Styled.CalendarHeader__Title>
+            {format(currentDate, dateFormat)}
+          </Styled.CalendarHeader__Title>
+          <Styled.CalendarHeader__Icon className="right" onClick={nextMonth}>
+            <ChevronIcon />
+          </Styled.CalendarHeader__Icon>
+        </Styled.CalendarHeader>
 
-      {daysOfWeek()}
+        {daysOfWeek()}
+      </div>
 
-      {showAll ? (
-        <CalendarAll
-          habits={sortedHabits}
-          currentDate={currentDate}
-          handleClickDay={handleClickDay}
-        />
-      ) : (
-        currHabit && (
-          <CalendarSingle
+      <Styled.CalendarContent>
+        {showAll ? (
+          <CalendarAll
+            habits={sortedHabits}
             currentDate={currentDate}
-            habit={currHabit}
             handleClickDay={handleClickDay}
           />
-        )
-      )}
+        ) : (
+          currHabit && (
+            <CalendarSingle
+              currentDate={currentDate}
+              habit={currHabit}
+              handleClickDay={handleClickDay}
+            />
+          )
+        )}
+      </Styled.CalendarContent>
     </Styled.CalendarContainer>
   )
 }

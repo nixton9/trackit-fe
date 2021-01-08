@@ -163,8 +163,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 
-    &.overflow:after,
-    .page-header-wrapper:after {
+    .overflow:after,
+    .page-header-wrapper:after,
+    .calendar-days-wrapper:after {
         content: '';
         width: 100%;
         height: 4rem;
@@ -180,6 +181,17 @@ export const GlobalStyle = createGlobalStyle`
         bottom: -5.5rem;
         background: ${props =>
           `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+    }
+
+    .calendar-days-wrapper:after {
+        bottom: unset;
+        top: 95%;
+        background: ${props =>
+          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+    }
+
+    .overflow-calendar:after{
+        right: 3rem;
     }
 
 

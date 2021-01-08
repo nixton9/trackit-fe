@@ -13,8 +13,10 @@ const HomeLogo = styled.h1`
 `
 
 const HomeContainer = styled.div`
+  position: relative;
   width: 85%;
   margin: ${props => props.theme.spacingXXL} auto 0 auto;
+  z-index: 1;
 
   @media ${device.tabletXL} {
     margin: ${props => props.theme.spacingXL} auto 0 auto;
