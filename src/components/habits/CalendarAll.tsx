@@ -22,22 +22,6 @@ export const CalendarAll: React.FC<CalendarProps> = ({
   currentDate,
   handleClickDay
 }) => {
-  const daysOfWeek = () => {
-    const dateFormat = 'E'
-    const days = []
-    let startDate = startOfWeek(currentDate)
-
-    for (let i = 0; i < 7; i++) {
-      days.push(
-        <Styled.CalendarDOW__Day key={i}>
-          {format(addDays(startDate, i), dateFormat)}
-        </Styled.CalendarDOW__Day>
-      )
-    }
-
-    return <Styled.CalendarDOW>{days}</Styled.CalendarDOW>
-  }
-
   const cells = (habit: Habit) => {
     const rows = []
     let days = []
@@ -89,10 +73,5 @@ export const CalendarAll: React.FC<CalendarProps> = ({
     return rows
   }
 
-  return (
-    <>
-      {daysOfWeek()}
-      {habits.map(habit => cells(habit))}
-    </>
-  )
+  return <>{habits.map(habit => cells(habit))}</>
 }

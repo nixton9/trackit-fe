@@ -30,22 +30,6 @@ export const CalendarSingle: React.FC<CalendarProps> = ({
   currentDate,
   handleClickDay
 }) => {
-  const daysOfWeek = () => {
-    const dateFormat = 'E'
-    const days = []
-    let startDate = startOfWeek(currentDate)
-
-    for (let i = 0; i < 7; i++) {
-      days.push(
-        <Styled.CalendarDOW__Day key={i}>
-          {format(addDays(startDate, i), dateFormat)}
-        </Styled.CalendarDOW__Day>
-      )
-    }
-
-    return <Styled.CalendarDOW>{days}</Styled.CalendarDOW>
-  }
-
   const cells = () => {
     const monthStart = startOfMonth(currentDate)
     const rows = []
@@ -100,10 +84,5 @@ export const CalendarSingle: React.FC<CalendarProps> = ({
     return rows
   }
 
-  return (
-    <>
-      {daysOfWeek()}
-      {cells()}
-    </>
-  )
+  return <>{cells()}</>
 }

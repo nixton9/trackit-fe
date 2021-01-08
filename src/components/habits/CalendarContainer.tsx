@@ -5,9 +5,18 @@ import { Habit, DayState } from '../../utils/ModuleTypes'
 import { getDayNextClass } from '../../utils/dateHelpers'
 import { Styled } from '../../styles/Calendar.styles'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { format, addWeeks, subWeeks, addMonths, subMonths } from 'date-fns'
+import {
+  format,
+  addWeeks,
+  subWeeks,
+  addMonths,
+  subMonths,
+  addDays,
+  startOfWeek
+} from 'date-fns'
 
 const dateFormat = 'MMMM yyyy'
+const weekDateFormat = 'E'
 
 type CalendarContainerProps = {
   showAll: boolean
@@ -56,6 +65,21 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
     handleDayClick(habit, clonedDay, currState, dayId)
   }
 
+  const daysOfWeek = () => {
+    const days = []
+    let startDate = startOfWeek(currentDate)
+
+    for (let i = 0; i < 7; i++) {
+      days.push(
+        <Styled.CalendarDOW__Day key={i}>
+          {format(addDays(startDate, i), weekDateFormat)}
+        </Styled.CalendarDOW__Day>
+      )
+    }
+
+    return <Styled.CalendarDOW>{days}</Styled.CalendarDOW>
+  }
+
   useEffect(() => {
     setCurrentDate(new Date())
   }, [showAll])
@@ -73,6 +97,8 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
           <ChevronIcon />
         </Styled.CalendarHeader__Icon>
       </Styled.CalendarHeader>
+
+      {daysOfWeek()}
 
       {showAll ? (
         <CalendarAll
