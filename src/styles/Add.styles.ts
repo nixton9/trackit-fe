@@ -51,6 +51,7 @@ const AddInput = styled.input`
   font-weight: ${props => props.theme.fontLight};
   background: transparent;
   border: none;
+  margin-right: ${props => props.theme.spacingXXS};
 
   ::placeholder {
     color: inherit;

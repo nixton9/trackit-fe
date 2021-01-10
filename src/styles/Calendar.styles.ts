@@ -163,6 +163,9 @@ const CalendarDays__Cell = styled.div`
     right: unset;
     left: 100%;
   }
+  &.disabled.strike:before {
+    background: #203e30;
+  }
 
   @media (min-width: 550px) {
     &.strike:before {

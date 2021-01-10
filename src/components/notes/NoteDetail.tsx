@@ -235,7 +235,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
       ) : (
         <>
           <Styled.DetailHeader editorActive={showEditor}>
-            <div>
+            <div className="title-wrapper">
               <Styled.DetailTitle
                 placeholder="Title for the note"
                 value={noteTitle}

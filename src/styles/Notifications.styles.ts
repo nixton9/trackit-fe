@@ -16,8 +16,9 @@ const NotificationContainer = styled.div`
   top: 7%;
   left: 50%;
   width: max-content;
-  min-width: 70%;
-  padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+  min-width: 20rem;
+  max-width: 90%;
+  padding: 2rem 2.5rem;
   background-color: ${props => props.theme.surfacesBlack};
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.smallBorderRadius};
@@ -70,7 +71,6 @@ const UndoButton = styled.button`
 
 const Alert = styled.div`
   color: ${props => props.theme.white};
-  padding: 1rem 4rem;
 
   p {
     font-weight: ${props => props.theme.fontSemiBold};

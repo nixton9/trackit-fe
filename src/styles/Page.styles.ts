@@ -26,7 +26,10 @@ const PageContainer = styled.div`
   grid-gap: 4rem;
   width: 100vw;
   height: 100vh;
+  max-width: 110rem;
+  margin: 0 auto;
   padding: 9rem 4rem 4rem;
+  background: ${props => props.theme.backgroundBlack};
   overflow: hidden;
 
   .page-header-wrapper {
@@ -39,6 +42,7 @@ const PageContainer = styled.div`
     width: unset;
     height: unset;
     overflow: auto;
+    padding-top: 10rem;
 
     .editor-container {
       margin-top: 0;
@@ -47,7 +51,6 @@ const PageContainer = styled.div`
 
   &.habits {
     display: block;
-    width: unset;
     height: unset;
     overflow: unset;
   }
@@ -267,6 +270,7 @@ const PageContent = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: ${props => props.theme.spacingS};
+    padding-top: 2rem;
 
     &.expenses {
       grid-template-areas: 'bar-chart bar-chart' 'pie-chart list';
@@ -444,6 +448,10 @@ const DetailHeader = styled.div<DetailHeaderProps>`
       stroke: ${props => props.theme.white};
     }
   }
+
+  .title-wrapper {
+    width: 100%;
+  }
 `
 
 const DetailTitle = styled.input`
@@ -452,6 +460,7 @@ const DetailTitle = styled.input`
   font-weight: ${props => props.theme.fontSemiBold};
   background: transparent;
   border: none;
+  width: 100%;
 `
 
 const DetailDate = styled.h5`

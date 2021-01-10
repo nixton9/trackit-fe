@@ -39,10 +39,6 @@ export const GlobalStyle = createGlobalStyle`
         background: ${props => props.theme.backgroundBlack};
     }
 
-    #root {
-        background: ${props => props.theme.backgroundBlack};
-    }
-
     a {
         text-decoration: none;
         color: inherit;

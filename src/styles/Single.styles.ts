@@ -49,7 +49,6 @@ const SingleTitle = styled.h5`
   font-size: 1.4rem;
 
   &.note-title {
-    width: max-content;
     margin-right: ${props => props.theme.spacingXS};
   }
 `

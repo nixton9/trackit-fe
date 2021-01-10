@@ -182,7 +182,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
                     position={i + 1}
                   >
                     <div>
-                      <p className="title">{exp.title}</p>
+                      <p className="title">{exp.title ? exp.title : '-'}</p>
                       {exp.type && <p className="category">{exp.type.name}</p>}
                     </div>
                     <p className="value">

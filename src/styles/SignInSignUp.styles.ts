@@ -42,6 +42,7 @@ const SignInSignUpContainer = styled.div`
   width: 75%;
   margin: 0 auto;
   position: relative;
+  max-width: 60rem;
 `
 
 const SignInSignUpText = styled.h2`
