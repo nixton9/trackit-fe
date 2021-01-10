@@ -231,7 +231,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
       {errors ? (
         <PageError>{errors.message}</PageError>
       ) : isLoading ? (
-        <PageLoading />
+        <PageLoading centered />
       ) : (
         <>
           <Styled.DetailHeader editorActive={showEditor}>

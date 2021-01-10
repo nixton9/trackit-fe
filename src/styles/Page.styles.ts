@@ -370,6 +370,12 @@ const PageLoading = styled.div`
   right: 0;
   display: flex;
   justify-content: center;
+
+  &.centered {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `
 
 const PageError = styled.div`
