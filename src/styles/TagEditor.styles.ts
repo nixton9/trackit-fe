@@ -13,7 +13,8 @@ const SlideDown = keyframes`
 
 const TagEditorContainer = styled.div`
   width: 100%;
-  animation: ${SlideDown} 0.2s ease forwards;
+  padding-bottom: ${props => props.theme.spacingXS};
+  animation: ${SlideDown} 0.2s linear forwards;
 
   form {
     display: flex;

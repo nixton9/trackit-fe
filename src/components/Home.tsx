@@ -7,6 +7,7 @@ import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
 import { parseDate, isDateToday, parseDateInverse } from '../utils/dateHelpers'
+import { formatUserName } from '../utils/globalHelpers'
 import { useLocalStorage } from '../utils/useLocalStorage'
 import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
@@ -71,7 +72,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
 
       <Styled.HomeContainer>
         <Styled.HomeText>
-          Hello <strong>{userName}</strong>,<br />
+          Hello <strong>{userName && formatUserName(userName)}</strong>,<br />
           what will you track today?
         </Styled.HomeText>
 

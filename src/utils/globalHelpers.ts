@@ -69,3 +69,16 @@ export const getNextDayState = (state: DayState) => {
       return DayState.DONE
   }
 }
+
+export const formatUserName = (name: string) => {
+  if (name.split(' ').length > 1) {
+    return capitalize(name.split(' ')[0])
+  }
+  return capitalize(name)
+}
+
+export const formatFullUserName = (name: string) =>
+  name
+    .split(' ')
+    .map(word => capitalize(word))
+    .join(' ')

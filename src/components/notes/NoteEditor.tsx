@@ -84,12 +84,7 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
       showEditor={showEditor}
       className="editor-container"
     >
-      <ReactQuill
-        value={value}
-        onChange={setValue}
-        placeholder={placeholder}
-        data-test-id="asdad"
-      />
+      <ReactQuill value={value} onChange={setValue} placeholder={placeholder} />
     </EditorContainer>
   )
 }

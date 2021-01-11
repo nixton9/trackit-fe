@@ -1,5 +1,6 @@
 import React from 'react'
 import { User } from '../../utils/ModuleTypes'
+import { formatFullUserName } from '../../utils/globalHelpers'
 import styled from 'styled-components/macro'
 
 type UserHeaderProps = {
@@ -75,7 +76,9 @@ export const UserHeader: React.FC<UserHeaderProps> = ({ user, small }) => {
         <UserDefaultImg small={small}>{user.name[0]}</UserDefaultImg>
       )}
       <UserInfo small={small}>
-        <UserInfoName small={small}>{user.name}</UserInfoName>
+        <UserInfoName small={small}>
+          {formatFullUserName(user.name)}
+        </UserInfoName>
         <UserInfoEmail small={small}>{user.email}</UserInfoEmail>
       </UserInfo>
     </UserWrapper>

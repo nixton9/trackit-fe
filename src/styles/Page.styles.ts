@@ -26,7 +26,7 @@ const PageContainer = styled.div`
   grid-gap: 4rem;
   width: 100vw;
   height: 100vh;
-  max-width: 110rem;
+  max-width: 120rem;
   margin: 0 auto;
   padding: 9rem 4rem 4rem;
   background: ${props => props.theme.backgroundBlack};
@@ -274,6 +274,7 @@ const PageContent = styled.section`
 
     &.expenses {
       grid-template-areas: 'bar-chart bar-chart' 'pie-chart list';
+      grid-template-rows: fit-content(1rem) auto;
     }
 
     &.habits {
@@ -622,6 +623,8 @@ const SettingsBlock = styled.div`
   padding-left: ${props => props.theme.spacingXS};
   position: relative;
   min-height: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
   &:last-child {
     padding-bottom: ${props => props.theme.spacingS};
@@ -675,12 +678,6 @@ const SettingsBlock = styled.div`
     margin-top: ${props => props.theme.spacingXXS};
   }
 
-  .image,
-  .new-password,
-  .walkthrough {
-    margin-top: ${props => props.theme.spacingS};
-  }
-
   .inline-btn {
     position: relative;
     color: ${props => props.theme.white};
@@ -691,6 +688,16 @@ const SettingsBlock = styled.div`
 
   .toggle-button {
     margin-top: ${props => props.theme.spacingXS};
+  }
+
+  @media ${device.tabletXL} {
+    display: block;
+
+    .image,
+    .new-password,
+    .walkthrough {
+      margin-top: ${props => props.theme.spacingS};
+    }
   }
 `
 
@@ -703,6 +710,8 @@ const SettingsButton = styled.button`
   margin-top: 4rem;
   padding: 0.6rem 1.2rem;
   border-radius: ${props => props.theme.smallBorderRadius};
+  margin-right: auto;
+  cursor: pointer;
 
   &.wt-button  {
     margin-top: ${props => props.theme.spacingXS};

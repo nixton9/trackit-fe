@@ -15,19 +15,32 @@ export const fadeIn = keyframes`
 
 const DrawerContainer = styled.div<DrawerContainerProps>`
   position: fixed;
-  bottom: 0;
+  top: 15%;
   left: 0;
   right: 0;
-  min-height: 20vh;
+  max-width: 75rem;
   max-height: 90vh;
+  margin: 0 auto;
   padding: ${props => props.theme.spacingS} 4rem;
   background: ${props => props.theme.surfacesBlack};
-  border-top-left-radius: ${props => props.theme.mainBorderRadius};
-  border-top-right-radius: ${props => props.theme.mainBorderRadius};
-  box-shadow: 0 -23px 16px 0 rgba(0, 0, 0, 0.07);
-  transform: ${props => (props.open ? 'unset;' : 'translateY(101%);')};
-  transition: transform 0.15s linear;
+  display: ${props => (props.open ? 'block' : 'none')};
+  opacity: ${props => (props.open ? '1' : '0')};
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+  border-radius: ${props => props.theme.mainBorderRadius};
+  transition: all 0.15s linear;
   z-index: 111;
+
+  @media ${device.tablet} {
+    top: unset;
+    bottom: 0;
+    max-width: unset;
+    transform: ${props => (props.open ? 'unset;' : 'translateY(102%);')};
+    display: block;
+    box-shadow: 0 -23px 16px 0 rgba(0, 0, 0, 0.07);
+    border-radius: unset;
+    border-top-left-radius: ${props => props.theme.mainBorderRadius};
+    border-top-right-radius: ${props => props.theme.mainBorderRadius};
+  }
 `
 
 const DrawerOverlay = styled.div<DrawerContainerProps>`
@@ -47,7 +60,11 @@ const DrawerTitle = styled.h2`
   color: ${props => props.theme.white};
   font-size: 2rem;
   font-weight: ${props => props.theme.fontBold};
-  margin: ${props => props.theme.spacingS} 0 ${props => props.theme.spacingS} -0.8rem;
+  margin: 0 0 ${props => props.theme.spacingS} -0.8rem;
+
+  @media ${device.tablet} {
+    margin: ${props => props.theme.spacingS} 0 ${props => props.theme.spacingS} -0.8rem;
+  }
 
   @media ${device.mobile} {
     margin: ${props => props.theme.spacingXS} 0 ${props => props.theme.spacingS} -0.8rem;
