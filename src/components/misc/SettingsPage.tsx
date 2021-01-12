@@ -256,9 +256,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
           )}
         </Styled.SettingsBlock>
 
-        <Styled.Settings__Title className="second">
-          Change Password
-        </Styled.Settings__Title>
+        <Styled.Settings__Title>Change Password</Styled.Settings__Title>
 
         <Styled.SettingsBlock>
           {loadingPassword ? (
@@ -298,9 +296,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
           )}
         </Styled.SettingsBlock>
 
-        <Styled.Settings__Title className="second">
-          Other Settings
-        </Styled.Settings__Title>
+        <Styled.Settings__Title>Other Settings</Styled.Settings__Title>
 
         <Styled.SettingsBlock>
           <div>
@@ -327,6 +323,18 @@ const SettingsPage: React.FC<SettingsProps> = ({
               Show
             </Styled.SettingsButton>
           </div>
+        </Styled.SettingsBlock>
+
+        <Styled.Settings__Title>Support</Styled.Settings__Title>
+
+        <Styled.SettingsBlock className="no-grid">
+          <p>
+            Having a problem with the app? Or you're wanting to request a new
+            feature? Just send a message{' '}
+            <a href="mailto:eduardojoaoaraujo@gmail.com?subject=TRCKR Support">
+              here
+            </a>
+          </p>
         </Styled.SettingsBlock>
       </Styled.PageContent>
     </Styled.PageContainer>

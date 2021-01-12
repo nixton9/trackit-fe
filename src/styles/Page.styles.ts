@@ -617,10 +617,10 @@ const Settings__Title = styled.h3`
   color: ${props => props.theme.white};
   font-size: 2rem;
   font-weight: ${props => props.theme.fontBold};
-  margin-top: ${props => props.theme.spacingM};
+  margin-top: ${props => props.theme.spacingXL};
 
-  &.second {
-    margin-top: ${props => props.theme.spacingXL};
+  &:first-of-type {
+    margin-top: ${props => props.theme.spacingM};
   }
 `
 
@@ -631,6 +631,10 @@ const SettingsBlock = styled.div`
   min-height: 6rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  &.no-grid {
+    display: block;
+  }
 
   &:last-child {
     padding-bottom: ${props => props.theme.spacingS};
@@ -740,6 +744,19 @@ const SettingsBlock = styled.div`
 
   .toggle-button {
     margin-top: ${props => props.theme.spacingXS};
+  }
+
+  p {
+    color: ${props => props.theme.white};
+    font-size: 1.5rem;
+    font-weight: ${props => props.theme.fontLight};
+    line-height: 3.1rem;
+    max-width: 90%;
+
+    a {
+      color: ${props => props.theme.accent};
+      font-weight: ${props => props.theme.fontMedium};
+    }
   }
 
   @media ${device.tabletXL} {
