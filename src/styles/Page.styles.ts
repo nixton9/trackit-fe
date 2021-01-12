@@ -75,6 +75,10 @@ const PageTitle = styled.h1`
   &.smaller {
     font-size: 1.9rem;
   }
+
+  &.search-title {
+    position: relative;
+  }
 `
 
 const PageHeader = styled.div`
@@ -551,7 +555,8 @@ const DetailSave__Button = styled.button`
 `
 
 const SearchResults = styled.div`
-  margin-top: ${props => props.theme.spacingM};
+  overflow-y: auto;
+  padding-top: ${props => props.theme.spacingXS};
 `
 
 const SearchResults__Module = styled.div`
@@ -591,6 +596,7 @@ const SearchResults__Item__Title = styled.p`
   color: ${props => props.theme.white};
   font-size: 1.6rem;
   font-weight: ${props => props.theme.fontLight};
+  max-width: 85%;
 `
 
 const SearchResults__Item__Date = styled.span`
@@ -640,6 +646,12 @@ const SettingsBlock = styled.div`
     margin: auto;
   }
 
+  .image {
+    align-self: center;
+    position: relative;
+    top: 1.5rem;
+  }
+
   .file-picker {
     position: relative;
     display: inline-block;
@@ -670,20 +682,60 @@ const SettingsBlock = styled.div`
   }
 
   input {
-    background: transparent;
+    background: ${props => props.theme.surfacesBlack};
     color: ${props => props.theme.white};
     border: none;
     font-size: 1.75rem;
     font-weight: ${props => props.theme.fontExtraLight};
-    margin-top: ${props => props.theme.spacingXXS};
+    min-width: 25rem;
+    margin-top: ${props => props.theme.spacingXS};
+    padding: ${props => props.theme.spacingXXS};
+    text-indent: 5px;
+    border-radius: ${props => props.theme.smallBorderRadius};
   }
 
   .inline-btn {
     position: relative;
+    padding: 0.8rem 1.5rem;
+    margin: 1rem 0 0 0;
+    background-color: ${props => props.theme.surfacesBlack};
     color: ${props => props.theme.white};
-    font-weight: ${props => props.theme.fontExtraBold};
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: ${props => props.theme.fontSemiBold};
+    border: none;
+    border-radius: ${props => props.theme.smallBorderRadius};
+    transition: all 0.15s linear;
     cursor: pointer;
+
+    &:hover,
+    &:active {
+      filter: contrast(1.1);
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    span {
+      display: flex;
+    }
+
+    svg {
+      width: 1.4rem;
+      margin-left: 1rem;
+
+      .svg-fill {
+        fill: ${props => props.theme.white};
+      }
+      .svg-stroke {
+        stroke: ${props => props.theme.white};
+      }
+    }
   }
 
   .toggle-button {
@@ -697,6 +749,14 @@ const SettingsBlock = styled.div`
     .new-password,
     .walkthrough {
       margin-top: ${props => props.theme.spacingS};
+    }
+
+    .image {
+      top: unset;
+    }
+
+    .file-picker {
+      margin-right: ${props => props.theme.spacingXS};
     }
   }
 `

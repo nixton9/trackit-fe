@@ -161,7 +161,9 @@ export const GlobalStyle = createGlobalStyle`
 
     .overflow:after,
     .page-header-wrapper:after,
-    .calendar-days-wrapper:after {
+    .calendar-days-wrapper:after,
+    .search-page:after,
+    .search-title:after {
         content: '';
         width: 100%;
         height: 4rem;
@@ -188,6 +190,13 @@ export const GlobalStyle = createGlobalStyle`
 
     .overflow-calendar:after{
         right: 3rem;
+    }
+
+    .search-title:after {
+        bottom: unset;
+        top: 5rem;
+        background: ${props =>
+          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
     }
 
 

@@ -7,6 +7,8 @@ import { Styled } from '../../styles/Page.styles'
 import { User } from '../../utils/ModuleTypes'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { UPDATE_USER_INFO, UPDATE_USER_PASSWORD } from '../../utils/mutations'
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as TrashIcon } from '../../assets/icons/trash.svg'
 import { useMutation } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import { LoadingSpinner } from './LoadingSpinner'
@@ -220,21 +222,22 @@ const SettingsPage: React.FC<SettingsProps> = ({
                     id="image-file"
                     onChange={handleChangeImage}
                   />
-                  <label
-                    className="inline-btn mbl-click word"
-                    htmlFor="image-file"
-                  >
-                    Change picture
-                  </label>
+                  <button className="inline-btn word">
+                    <label htmlFor="image-file">
+                      Change picture <PlusIcon />
+                    </label>
+                  </button>
                   <small>{selectedFile}</small>
                 </div>
                 {user.image && (
-                  <span
-                    className="inline-btn mbl-click word"
+                  <button
+                    className="inline-btn word"
                     onClick={handleDeleteImage}
                   >
-                    Delete picture
-                  </span>
+                    <span>
+                      Delete picture <TrashIcon />
+                    </span>
+                  </button>
                 )}
               </div>
 

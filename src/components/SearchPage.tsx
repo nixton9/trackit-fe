@@ -88,8 +88,8 @@ const SearchPage: React.FC<RouteComponentProps<SearchPageProps>> = ({
   }
 
   return (
-    <Styled.PageContainer>
-      <Styled.PageTitle className="smaller">
+    <Styled.PageContainer className="search-page">
+      <Styled.PageTitle className="search-title smaller">
         Search results for "{match.params.query}"
       </Styled.PageTitle>
 
