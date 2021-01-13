@@ -62,7 +62,8 @@ export const darkTheme = {
   activeBackground: '#30323a',
   inputAutofill: '#757575',
   widgetBg: '#1F2128',
-  overflowBg: 'rgba(31, 33, 40, 1)'
+  overflowBg: 'rgba(31, 33, 40, 1)',
+  overflowBgTransparent: 'rgba(31, 33, 40, 0)'
 }
 
 export const lightTheme = {
@@ -78,7 +79,8 @@ export const lightTheme = {
   activeBackground: '#cecece',
   inputAutofill: '#E0E0E0',
   widgetBg: '#dadada',
-  overflowBg: 'rgba(255, 255, 255, 1)'
+  overflowBg: 'rgba(255, 255, 255, 1)',
+  overflowBgTransparent: 'rgba(255, 255, 255, 0)'
 }
 
 const size = {

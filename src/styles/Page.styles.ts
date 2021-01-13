@@ -234,6 +234,7 @@ const PageHeader__Settings = styled.div`
 
   svg {
     width: 3.2rem;
+    height: 100%;
 
     &.stats-icon {
       width: 2.6rem;
@@ -727,10 +728,12 @@ const SettingsBlock = styled.div`
 
     span {
       display: flex;
+      align-items: center;
     }
 
     svg {
       width: 1.4rem;
+      height: 100%;
       margin-left: 1rem;
 
       .svg-fill {

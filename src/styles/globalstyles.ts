@@ -171,21 +171,21 @@ export const GlobalStyle = createGlobalStyle`
         right: 1rem;
         bottom: 1.5rem;
         background: ${props =>
-          `linear-gradient(to top, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+          `linear-gradient(to top, ${props.theme.overflowBg} 50%, ${props.theme.overflowBgTransparent})`};
         z-index: 1;
     }
 
     .page-header-wrapper:after {
         bottom: -5.5rem;
         background: ${props =>
-          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, ${props.theme.overflowBgTransparent})`};
     }
 
     .calendar-days-wrapper:after {
         bottom: unset;
         top: 95%;
         background: ${props =>
-          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, ${props.theme.overflowBgTransparent})`};
     }
 
     .overflow-calendar:after{
@@ -196,7 +196,7 @@ export const GlobalStyle = createGlobalStyle`
         bottom: unset;
         top: 5rem;
         background: ${props =>
-          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, rgba(255, 255, 255, 0))`};
+          `linear-gradient(to bottom, ${props.theme.overflowBg} 50%, ${props.theme.overflowBgTransparent})`};
     }
 
 
