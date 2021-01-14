@@ -18,9 +18,41 @@ export const ADD_TAG_TO_NOTE = gql`
   }
 `
 
+export const UPDATE_NOTE = gql`
+  mutation UpdateNote($id: ID!, $title: String, $content: String) {
+    updateNote(id: $id, title: $title, content: $content) {
+      id_note
+    }
+  }
+`
+
+export const DELETE_NOTE = gql`
+  mutation DeleteNote($id: ID!) {
+    deleteNote(id: $id) {
+      id_note
+    }
+  }
+`
+
+export const REMOVE_TAG_FROM_NOTE = gql`
+  mutation RemoveTagFromNote($note: ID!, $tag: ID!) {
+    removeTagFromNote(note: $note, tag: $tag) {
+      id_note
+    }
+  }
+`
+
 export const CREATE_TAG = gql`
   mutation CreateTag($name: String!, $color: String!) {
     createTag(name: $name, color: $color) {
+      id_tag
+    }
+  }
+`
+
+export const UPDATE_TAG = gql`
+  mutation UpdateTag($id: ID!, $name: String, $color: String) {
+    updateTag(id: $id, name: $name, color: $color) {
       id_tag
     }
   }

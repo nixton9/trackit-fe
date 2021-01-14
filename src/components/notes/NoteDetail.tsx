@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import Tag from './Tag'
+import { TagChip } from './TagChip'
 import Tooltip from 'react-tooltip-lite'
 import { NoteEditor } from './NoteEditor'
 import { TagEditor } from './TagEditor'
+import { TagsInput, Tag } from './TagsInput'
 import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { NotificationTypes, notificationState } from '../misc/Notification'
@@ -10,43 +11,26 @@ import { alertState } from '../misc/Alert'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { Styled } from '../../styles/Page.styles'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
+import { pickRandomColor } from '../../utils/globalHelpers'
 import { NoteTag } from '../../utils/ModuleTypes'
 import { SINGLE_NOTE } from '../../utils/queries'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
+import {
+  UPDATE_NOTE,
+  ADD_TAG_TO_NOTE,
+  DELETE_NOTE,
+  REMOVE_TAG_FROM_NOTE,
+  CREATE_TAG
+} from '../../utils/mutations'
 import { Link, RouteComponentProps, useHistory } from 'react-router-dom'
-import { useQuery, useMutation, gql } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
-
-const UPDATE_NOTE = gql`
-  mutation UpdateNote($id: ID!, $title: String, $content: String) {
-    updateNote(id: $id, title: $title, content: $content) {
-      id_note
-    }
-  }
-`
-
-const DELETE_NOTE = gql`
-  mutation DeleteNote($id: ID!) {
-    deleteNote(id: $id) {
-      id_note
-    }
-  }
-`
-
-const REMOVE_TAG_FROM_NOTE = gql`
-  mutation RemoveTagFromNote($note: ID!, $tag: ID!) {
-    removeTagFromNote(note: $note, tag: $tag) {
-      id_note
-    }
-  }
-`
 
 type MatchParams = {
   id: string
 }
-
 interface MatchProps extends RouteComponentProps<MatchParams> {
   setWidgets: any
 }
@@ -54,10 +38,13 @@ interface MatchProps extends RouteComponentProps<MatchParams> {
 const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const [noteTitle, setNoteTitle] = useState('')
   const [noteContent, setNoteContent] = useState('')
+  const [noteTags, setNoteTags] = useState<NoteTag[]>([])
+  const [inputTags, setInputTags] = useState<Tag[]>([])
   const [showEditor, setShowEditor] = useState(false)
   const [message, setMessage] = useState('')
   const [noteWasEdited, setNoteWasEdited] = useState(false)
 
+  const [showTagsInput, setShowTagsInput] = useState(false)
   const [showTagEditor, setShowTagEditor] = useState(false)
   const [activeTag, setActiveTag] = useState<NoteTag | null>(null)
 
@@ -67,17 +54,17 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const { loading, error, data } = useQuery(SINGLE_NOTE, {
     variables: { id: match.params.id }
   })
-
   const { refetch: refetchNote } = useQuery(SINGLE_NOTE, {
     variables: { id: match.params.id }
   })
-
   const [updateNote, { error: errorEdit, loading: loadingEdit }] = useMutation(
     UPDATE_NOTE,
     {
       variables: { id: match.params.id, title: noteTitle, content: noteContent }
     }
   )
+  const [addTagToNote] = useMutation(ADD_TAG_TO_NOTE)
+  const [createTag] = useMutation(CREATE_TAG)
 
   const [
     deleteNote,
@@ -93,6 +80,14 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     { error: errorRemove, loading: loadingRemove }
   ] = useMutation(REMOVE_TAG_FROM_NOTE)
 
+  const attachTagToNote = (note: string, tag: string) => {
+    addTagToNote({
+      variables: { note: note, tag: tag }
+    })
+      .then(() => setInputTags([]))
+      .catch(err => console.log(err.message))
+  }
+
   const history = useHistory()
 
   const toggleEditor = () => {
@@ -100,6 +95,23 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   }
 
   const handleSubmit = () => {
+    if (inputTags.length) {
+      inputTags.forEach((tag: Tag) => {
+        if (isNaN(Number(tag.id))) {
+          createTag({
+            variables: { name: tag.text, color: pickRandomColor() }
+          })
+            .then(res => {
+              res.data &&
+                attachTagToNote(match.params.id, res.data.createTag.id_tag)
+            })
+            .catch(err => console.log(err))
+        } else {
+          attachTagToNote(match.params.id, tag.id)
+        }
+      })
+    }
+
     updateNote()
       .then(res => {
         setNotification({
@@ -114,6 +126,10 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
           type: NotificationTypes.Error
         })
       )
+      .finally(() => {
+        setShowTagEditor(false)
+        setShowTagsInput(false)
+      })
   }
 
   const handleDeleteConfirm = () => {
@@ -169,15 +185,6 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     setShowTagEditor(true)
   }
 
-  const handlePlusClick = () => {
-    if (showTagEditor) {
-      setShowTagEditor(false)
-    } else {
-      setActiveTag(null)
-      setShowTagEditor(true)
-    }
-  }
-
   useEffect(() => {
     setWidgets(false)
     return () => setWidgets(true)
@@ -187,6 +194,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     if (data) {
       setNoteContent(data.singleNote.content)
       setNoteTitle(data.singleNote.title)
+      setNoteTags(data.singleNote.tags)
     }
   }, [data])
 
@@ -194,10 +202,11 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     if (data && noteTitle && noteContent) {
       setNoteWasEdited(
         data.singleNote.content !== noteContent ||
-          data.singleNote.title !== noteTitle
+          data.singleNote.title !== noteTitle ||
+          Boolean(inputTags.length)
       )
     }
-  }, [data, noteTitle, noteContent])
+  }, [data, noteTitle, noteContent, inputTags])
 
   useEffect(() => {
     if (message) setTimeout(() => setMessage(''), 1500)
@@ -249,53 +258,70 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
             <ThreeDotsMenu options={menuOptions} />
           </Styled.DetailHeader>
 
-          <Styled.DetailTags>
-            <Styled.DetailTags__Inner>
-              {data.singleNote.tags && data.singleNote.tags.length ? (
-                data.singleNote.tags.map((tag: NoteTag) => (
-                  <Tooltip
-                    eventOff={'onClick'}
-                    content={'Click to edit tag'}
-                    arrow={false}
-                    direction={'up'}
-                    className="tag-tooltip"
-                  >
-                    <Tag
-                      key={tag.id}
-                      id={tag.id}
-                      name={tag.name}
-                      color={tag.color}
-                      onClick={() => handleTagClick(tag)}
-                      onDelete={() => handleRemoveTagConfirm(tag.id)}
-                    />
-                  </Tooltip>
-                ))
-              ) : (
-                <p>No tags</p>
-              )}
-            </Styled.DetailTags__Inner>
-            <Tooltip
-              eventOff={'onClick'}
-              content={'Add tag'}
-              arrow={false}
-              direction={'up'}
-            >
-              <div onClick={handlePlusClick} className="mbl-click">
-                {showTagEditor ? <MinusIcon /> : <PlusIcon />}
-              </div>
-            </Tooltip>
-          </Styled.DetailTags>
+          <Styled.DetailTagsContainer>
+            <Styled.DetailTags>
+              <Styled.DetailTags__Inner>
+                {data.singleNote.tags && data.singleNote.tags.length ? (
+                  data.singleNote.tags.map((tag: NoteTag, i: number) => (
+                    <Tooltip
+                      key={i}
+                      eventOff={'onClick'}
+                      content={'Click to edit tag'}
+                      arrow={false}
+                      direction={'up'}
+                      className="tag-tooltip"
+                    >
+                      <TagChip
+                        key={tag.id}
+                        id={tag.id}
+                        name={tag.name}
+                        color={tag.color}
+                        onClick={() => handleTagClick(tag)}
+                        onDelete={() => handleRemoveTagConfirm(tag.id)}
+                      />
+                    </Tooltip>
+                  ))
+                ) : (
+                  <p>No tags</p>
+                )}
+              </Styled.DetailTags__Inner>
+              <Tooltip
+                eventOff={'onClick'}
+                content={'Add tag'}
+                arrow={false}
+                direction={'up'}
+              >
+                <div
+                  onClick={() => setShowTagsInput(!showTagsInput)}
+                  className="mbl-click"
+                >
+                  {showTagsInput ? <MinusIcon /> : <PlusIcon />}
+                </div>
+              </Tooltip>
+            </Styled.DetailTags>
 
-          {showTagEditor && (
-            <Styled.DetailTagEditor>
-              <TagEditor
-                tag={activeTag}
-                noteId={match.params.id}
-                closeEditor={() => setShowTagEditor(false)}
-                refetchQuery={refetchNote}
-              />
-            </Styled.DetailTagEditor>
-          )}
+            {showTagEditor && (
+              <Styled.DetailTagEditor className="editor">
+                <TagEditor
+                  tag={activeTag}
+                  noteId={match.params.id}
+                  closeEditor={() => setShowTagEditor(false)}
+                  refetchQuery={refetchNote}
+                  showClose
+                />
+              </Styled.DetailTagEditor>
+            )}
+
+            {showTagsInput && (
+              <Styled.DetailTagEditor>
+                <TagsInput
+                  tags={inputTags}
+                  excludedTags={noteTags.map(tag => tag.id)}
+                  setTags={setInputTags}
+                />
+              </Styled.DetailTagEditor>
+            )}
+          </Styled.DetailTagsContainer>
 
           <Styled.DetailContent>
             <NoteEditor

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import Drawer from '../misc/Drawer'
-import Tag from './Tag'
+import { TagChip } from './TagChip'
 import { TagEditor } from './TagEditor'
 import { SelectMenu } from '../misc/SelectMenu'
 import { NotificationTypes, notificationState } from '../misc/Notification'
@@ -144,7 +144,7 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
             <Styled.SettingsBlock__Tags>
               {tags &&
                 tags.map(tag => (
-                  <Tag
+                  <TagChip
                     key={tag.id}
                     id={tag.id}
                     name={tag.name}

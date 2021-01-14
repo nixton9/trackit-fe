@@ -7,7 +7,12 @@ interface NoteTagProps extends NoteTag {
   onClick?: () => void
 }
 
-const Tag: React.FC<NoteTagProps> = ({ name, color, onDelete, onClick }) => {
+export const TagChip: React.FC<NoteTagProps> = ({
+  name,
+  color,
+  onDelete,
+  onClick
+}) => {
   return (
     <Styled.TagChip
       className="single-tag"
@@ -25,5 +30,3 @@ const Tag: React.FC<NoteTagProps> = ({ name, color, onDelete, onClick }) => {
     </Styled.TagChip>
   )
 }
-
-export default Tag

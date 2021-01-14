@@ -1,5 +1,6 @@
 import { SortBySettings } from './SettingsTypes'
 import { Note, Task, Habit, Currencies, DayState } from './ModuleTypes'
+import { theme } from '../styles/theme'
 
 export const sortData = (
   data: Note[] | Task[] | Habit[],
@@ -82,3 +83,11 @@ export const formatFullUserName = (name: string) =>
     .split(' ')
     .map(word => capitalize(word))
     .join(' ')
+
+export const pickRandomColor = () => {
+  const { categories } = theme
+  const randomColor = Object.keys(categories)[
+    Math.floor(Math.random() * Object.keys(categories).length)
+  ]
+  return (categories as any)[randomColor]
+}

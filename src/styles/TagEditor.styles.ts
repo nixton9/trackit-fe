@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components/macro'
 
-const SlideDown = keyframes`
+export const SlideDown = keyframes`
     0% {
         transform: translateY(-50%);
         opacity: 0;
@@ -18,7 +18,7 @@ const TagEditorContainer = styled.div`
 
   form {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
 
   button {
@@ -69,6 +69,8 @@ const TagEditorSelect = styled.div`
   .MuiSelect-icon {
     width: 1.4rem;
     top: calc(50% - 5px);
+    stroke: ${props => props.theme.white};
+    height: unset;
   }
 `
 

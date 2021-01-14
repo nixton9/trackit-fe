@@ -7,9 +7,8 @@ import { Styled } from '../../styles/Add.styles'
 import { TagsInput, Tag } from './TagsInput'
 import { NOTES } from '../../utils/queries'
 import { CREATE_NOTE, ADD_TAG_TO_NOTE, CREATE_TAG } from '../../utils/mutations'
-import { theme } from '../../styles/theme'
+import { pickRandomColor } from '../../utils/globalHelpers'
 import { DrawerAddModuleProps } from '../misc/Add'
-import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg'
 import { useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import { useHistory } from 'react-router-dom'
@@ -111,19 +110,6 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     }).catch(err => console.log(err.message))
   }
 
-  const pickRandomColor = () => {
-    const { categories } = theme
-    const randomColor = Object.keys(categories)[
-      Math.floor(Math.random() * Object.keys(categories).length)
-    ]
-    return (categories as any)[randomColor]
-  }
-
-  const focusTagInput = () => {
-    const input = document.querySelector('.ReactTags__tagInputField') as any
-    input && input.focus()
-  }
-
   useEffect(() => {
     if (titleRef && titleRef.current) {
       titleRef.current.focus()
@@ -166,10 +152,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
         </Styled.AddEditor>
 
         <Styled.AddWidgetsContainer>
-          <Styled.AddWidget onClick={focusTagInput}>
-            <CategoriesIcon />
-            <TagsInput tags={tags} setTags={setTags} />
-          </Styled.AddWidget>
+          <TagsInput tags={tags} setTags={setTags} />
 
           <SubmitButton />
         </Styled.AddWidgetsContainer>

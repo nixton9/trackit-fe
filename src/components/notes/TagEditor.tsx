@@ -5,32 +5,26 @@ import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { NoteTag } from '../../utils/ModuleTypes'
 import { TAGS } from '../../utils/queries'
-import { ADD_TAG_TO_NOTE, CREATE_TAG } from '../../utils/mutations'
+import { ADD_TAG_TO_NOTE, CREATE_TAG, UPDATE_TAG } from '../../utils/mutations'
 import { Styled } from '../../styles/TagEditor.styles'
 import { theme } from '../../styles/theme'
-import { gql, useMutation, useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
-
-const UPDATE_TAG = gql`
-  mutation UpdateTag($id: ID!, $name: String, $color: String) {
-    updateTag(id: $id, name: $name, color: $color) {
-      id_tag
-    }
-  }
-`
 
 type TagEditorProps = {
   tag: NoteTag | null
   closeEditor: () => void
   noteId?: string | number
   refetchQuery?: any
+  showClose?: boolean
 }
 
 export const TagEditor: React.FC<TagEditorProps> = ({
   tag,
   noteId,
   closeEditor,
-  refetchQuery
+  refetchQuery,
+  showClose
 }) => {
   const [name, setName] = useState('')
   const [color, setColor] = useState(theme.categories.blue)
@@ -175,6 +169,11 @@ export const TagEditor: React.FC<TagEditorProps> = ({
             />
           </Styled.TagEditorSelect>
           <SubmitButton icon={IconType.CHECK} />
+          {showClose && (
+            <span className="close" onClick={closeEditor}>
+              +
+            </span>
+          )}
         </form>
       )}
     </Styled.TagEditorContainer>

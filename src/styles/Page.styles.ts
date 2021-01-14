@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import { fadeIn } from './Drawer.styles'
+import { SlideDown } from './TagEditor.styles'
 import { device } from './theme'
 
 type DetailHeaderProps = {
@@ -476,13 +477,16 @@ const DetailDate = styled.h5`
   margin-top: 0.4rem;
 `
 
+const DetailTagsContainer = styled.div`
+  padding: ${props => props.theme.spacingXS};
+  background-color: ${props => props.theme.surfacesBlack};
+  border-radius: ${props => props.theme.smallBorderRadius};
+`
+
 const DetailTags = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${props => props.theme.spacingXS};
-  background-color: ${props => props.theme.surfacesBlack};
-  border-radius: ${props => props.theme.smallBorderRadius};
 
   .mbl-click:before {
     z-index: 0 !important;
@@ -518,7 +522,22 @@ const DetailTags__Inner = styled.div`
 `
 
 const DetailTagEditor = styled.div`
-  margin-top: ${props => props.theme.spacingXS};
+  margin-top: ${props => props.theme.spacingS};
+  animation: ${SlideDown} 0.2s linear forwards;
+
+  &.editor {
+    padding-left: ${props => props.theme.spacingXS};
+  }
+
+  .close {
+    font-size: 2.5rem;
+    font-weight: ${props => props.theme.fontMedium};
+    color: ${props => props.theme.white};
+    margin-left: ${props => props.theme.spacingXS};
+    padding: 0.5rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
 `
 
 const DetailContent = styled.div`
@@ -1000,6 +1019,7 @@ export const Styled = {
   DetailHeader,
   DetailTitle,
   DetailDate,
+  DetailTagsContainer,
   DetailTags,
   DetailTags__Inner,
   DetailTagEditor,

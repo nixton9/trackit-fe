@@ -1,5 +1,5 @@
 import React from 'react'
-import Tag from './Tag'
+import { TagChip } from './TagChip'
 import { Styled } from '../../styles/Single.styles'
 import { Note } from '../../utils/ModuleTypes'
 import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar.svg'
@@ -23,7 +23,7 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
           <Styled.SingleNote__Tags>
             {tags &&
               tags.map(tag => (
-                <Tag
+                <TagChip
                   key={tag.id}
                   id={tag.id}
                   name={tag.name}
