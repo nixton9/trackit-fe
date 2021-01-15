@@ -17,7 +17,12 @@ import SettingsPage from './misc/SettingsPage'
 import { Notification } from './misc/Notification'
 import { Alert } from './misc/Alert'
 import { GlobalStyle } from '../styles/globalstyles'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from '../styles/theme'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
@@ -148,6 +153,7 @@ const App: React.FC = () => {
                 path="/reset/:email/:token"
                 component={ResetPassword}
               />
+              <Route path="/*" render={() => <Redirect to="/" />} />
             </Switch>
           )}
         </ThemeProvider>
