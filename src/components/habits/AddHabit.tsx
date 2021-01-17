@@ -102,7 +102,7 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const handleDeleteConfirm = () => {
     setAlert({
-      text: 'This habit will be removed.',
+      text: 'This habit will be removed',
       onConfirm: handleDeleteHabit
     })
   }
@@ -111,7 +111,7 @@ const AddHabit: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     deleteHabit()
       .then(res => {
         setNotification({
-          text: `Habit was deleted`,
+          text: `Habit '${title}' was deleted`,
           type: NotificationTypes.Success
         })
         refetchHabits()

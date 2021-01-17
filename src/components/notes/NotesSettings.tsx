@@ -72,7 +72,7 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
     }
   }
 
-  const handleDeleteTag = (tagId: string | number) => {
+  const handleDeleteTag = (tagId: string | number, tagName: string) => {
     deleteTag({
       variables: {
         id: tagId
@@ -80,7 +80,7 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
     })
       .then(res => {
         setNotification({
-          text: 'Tag was deleted',
+          text: `Tag '${tagName}' was deleted`,
           type: NotificationTypes.Success
         })
         refetchTags()
@@ -94,11 +94,11 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
       )
   }
 
-  const handleDeleteTagConfirm = (tagId: string | number) => {
+  const handleDeleteTagConfirm = (tagId: string | number, tagName: string) => {
     setShowTagEditor(false)
     setAlert({
       text: 'This tag will be removed.',
-      onConfirm: () => handleDeleteTag(tagId)
+      onConfirm: () => handleDeleteTag(tagId, tagName)
     })
   }
 
@@ -150,7 +150,7 @@ const NotesSettings: React.FC<NotesSettingsProps> = ({
                     name={tag.name}
                     color={tag.color}
                     onClick={() => handleTagClick(tag)}
-                    onDelete={() => handleDeleteTagConfirm(tag.id)}
+                    onDelete={() => handleDeleteTagConfirm(tag.id, tag.name)}
                   />
                 ))}
               <Styled.SettingsBlock__Icon

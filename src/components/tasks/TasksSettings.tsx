@@ -73,7 +73,10 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
     }
   }
 
-  const handleDeleteType = (categoryId: string | number) => {
+  const handleDeleteType = (
+    categoryId: string | number,
+    categoryName: string
+  ) => {
     deleteCategory({
       variables: {
         id: categoryId
@@ -81,7 +84,7 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
     })
       .then(res => {
         setNotification({
-          text: 'Type was deleted',
+          text: `Category '${categoryName}' was deleted`,
           type: NotificationTypes.Success
         })
         refetchCategories()
@@ -95,11 +98,14 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
       )
   }
 
-  const handleDeleteTypeConfirm = (typeId: string | number) => {
+  const handleDeleteTypeConfirm = (
+    categoryId: string | number,
+    categoryName: string
+  ) => {
     setShowCategoryEditor(false)
     setAlert({
-      text: 'This type will be removed.',
-      onConfirm: () => handleDeleteType(typeId)
+      text: 'This category will be removed',
+      onConfirm: () => handleDeleteType(categoryId, categoryName)
     })
   }
 
@@ -159,7 +165,7 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
                     </div>
                     <span
                       className="delete"
-                      onClick={() => handleDeleteTypeConfirm(cat.id)}
+                      onClick={() => handleDeleteTypeConfirm(cat.id, cat.name)}
                     >
                       +
                     </span>

@@ -161,7 +161,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const handleDeleteConfirm = () => {
     setAlert({
-      text: 'This expense will be removed.',
+      text: 'This expense will be removed',
       onConfirm: handleDeleteExpense
     })
   }
@@ -170,7 +170,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     deleteExpense()
       .then(res => {
         setNotification({
-          text: `Expense was deleted`,
+          text: `Expense '${title}' was deleted`,
           type: NotificationTypes.Success
         })
         refetchExpenses()

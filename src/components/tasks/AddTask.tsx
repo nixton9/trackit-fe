@@ -170,7 +170,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const handleDeleteConfirm = () => {
     setAlert({
-      text: 'This task will be removed.',
+      text: 'This task will be removed',
       onConfirm: handleDeleteTask
     })
   }
@@ -179,7 +179,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     deleteTask()
       .then(res => {
         setNotification({
-          text: `Task was deleted`,
+          text: `Task '${title}' was deleted`,
           type: NotificationTypes.Success
         })
         refetchTasks()

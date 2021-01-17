@@ -23,7 +23,7 @@ const NotificationContainer = styled.div`
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.smallBorderRadius};
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
-  z-index: 111;
+  z-index: 1111;
   animation: ${SlideDown} 0.2s ease forwards;
 `
 

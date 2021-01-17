@@ -79,7 +79,7 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
     }
   }
 
-  const handleDeleteType = (typeId: string | number) => {
+  const handleDeleteType = (typeId: string | number, typeName: string) => {
     deleteType({
       variables: {
         id: typeId
@@ -87,7 +87,7 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
     })
       .then(res => {
         setNotification({
-          text: 'Type was deleted',
+          text: `Category '${typeName}' was deleted`,
           type: NotificationTypes.Success
         })
         refetchTypes()
@@ -101,11 +101,14 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
       )
   }
 
-  const handleDeleteTypeConfirm = (typeId: string | number) => {
+  const handleDeleteTypeConfirm = (
+    typeId: string | number,
+    typeName: string
+  ) => {
     setShowTypeEditor(false)
     setAlert({
-      text: 'This type will be removed.',
-      onConfirm: () => handleDeleteType(typeId)
+      text: 'This category will be removed',
+      onConfirm: () => handleDeleteType(typeId, typeName)
     })
   }
 
@@ -165,7 +168,9 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
                     </div>
                     <span
                       className="delete"
-                      onClick={() => handleDeleteTypeConfirm(type.id)}
+                      onClick={() =>
+                        handleDeleteTypeConfirm(type.id, type.name)
+                      }
                     >
                       +
                     </span>

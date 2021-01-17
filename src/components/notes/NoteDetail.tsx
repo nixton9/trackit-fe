@@ -141,7 +141,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
 
   const handleDeleteConfirm = () => {
     setAlert({
-      text: 'This note will be removed.',
+      text: 'This note will be removed',
       onConfirm: handleDeleteNote
     })
   }
@@ -151,7 +151,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
       .then(res => {
         history.push(`/notes`)
         setNotification({
-          text: `Note was deleted`,
+          text: `Note '${noteTitle}' was deleted`,
           type: NotificationTypes.Success
         })
       })
