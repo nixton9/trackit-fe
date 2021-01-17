@@ -170,7 +170,9 @@ export const HabitsList: React.FC<HabitsListProps> = ({
 
       {error ? (
         <Styled.PageContent>
-          <PageError>Couldn't get data, check your connection.</PageError>
+          <PageError>
+            We're sorry but it seems there was a problem reaching the server.
+          </PageError>
         </Styled.PageContent>
       ) : loading ? (
         <Styled.PageContent>

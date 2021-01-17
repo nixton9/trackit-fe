@@ -124,7 +124,9 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
 
       <Styled.PageContent>
         {error ? (
-          <PageError>Couldn't get data, check your connection.</PageError>
+          <PageError>
+            We're sorry but it seems there was a problem reaching the server.
+          </PageError>
         ) : loading ? (
           <PageLoading />
         ) : visibleExpensesDay.length ? (

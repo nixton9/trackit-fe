@@ -376,7 +376,7 @@ const PageAddItem = styled.div`
 
 const PageLoading = styled.div`
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 0;
   right: 0;
   display: flex;
@@ -391,7 +391,7 @@ const PageLoading = styled.div`
 
 const PageError = styled.div`
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 0;
   right: 0;
   display: flex;

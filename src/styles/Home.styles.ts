@@ -18,6 +18,7 @@ const HomeContainer = styled.div`
   margin: ${props => props.theme.spacingXXL} auto 0 auto;
   z-index: 1;
   max-width: 150rem;
+  min-height: 60vh;
 
   @media ${device.tabletXL} {
     margin: ${props => props.theme.spacingXL} auto 0 auto;

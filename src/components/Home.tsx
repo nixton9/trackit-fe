@@ -81,7 +81,9 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
             <LoadingSpinner />
           </Styled.HomeLoading>
         ) : hasError ? (
-          <PageError>Couldn't get data, check your connection.</PageError>
+          <PageError>
+            We're sorry but it seems there was a problem reaching the server.
+          </PageError>
         ) : (
           <Styled.HomeGrid>
             <HomeWidget

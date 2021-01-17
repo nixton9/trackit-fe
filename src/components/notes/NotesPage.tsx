@@ -105,7 +105,9 @@ const NotesPage: React.FC = () => {
 
         <Styled.PageContent>
           {error ? (
-            <PageError>Couldn't get data, check your connection.</PageError>
+            <PageError>
+              We're sorry but it seems there was a problem reaching the server.
+            </PageError>
           ) : loading ? (
             <PageLoading />
           ) : sortedNotes.length ? (

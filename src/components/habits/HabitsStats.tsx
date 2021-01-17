@@ -110,7 +110,9 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
 
       <Styled.PageContent className="desktop-grid habits">
         {error ? (
-          <PageError>Couldn't get data, check your connection.</PageError>
+          <PageError>
+            We're sorry but it seems there was a problem reaching the server.
+          </PageError>
         ) : loading ? (
           <PageLoading />
         ) : data && data.habits.length === 0 ? (
