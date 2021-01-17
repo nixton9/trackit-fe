@@ -41,6 +41,10 @@ const SingleFlex = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .note-info {
+    min-width: 40%;
+  }
 `
 
 const SingleTitle = styled.h5`

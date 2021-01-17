@@ -11,7 +11,7 @@ const SingleNote: React.FC<Note> = ({ id, title, date, tags }) => {
     <Styled.SingleContainer className="single-note">
       <NavLink to={`notes/${id}`}>
         <Styled.SingleFlex>
-          <div>
+          <div className="note-info">
             <Styled.SingleTitle className="note-title">
               {title}
             </Styled.SingleTitle>
