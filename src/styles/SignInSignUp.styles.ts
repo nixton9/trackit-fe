@@ -103,7 +103,6 @@ const SignInSignUpForm__Input = styled.div`
       -webkit-box-shadow: ${props =>
         `0 0 0 30px ${props.theme.inputAutofill} inset !important`};
       -webkit-text-fill-color: ${props => props.theme.white};
-      background-clip: content-box;
     }
     &::placeholder {
       color: ${props => props.theme.white};

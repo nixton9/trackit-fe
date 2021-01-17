@@ -153,7 +153,6 @@ const App: React.FC = () => {
                 path="/reset/:email/:token"
                 component={ResetPassword}
               />
-              <Route path="/*" render={() => <Redirect to="/" />} />
             </Switch>
           )}
         </ThemeProvider>

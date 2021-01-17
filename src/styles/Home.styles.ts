@@ -43,17 +43,27 @@ const HomeText = styled.h2`
 const HomeGrid = styled.section`
   display: flex;
   justify-content: center;
-  grid-gap: 6rem;
   margin-top: ${props => props.theme.spacingXL};
 
+  .widget-container {
+    margin: 0 2rem;
+  }
+
   @media ${device.tabletXL} {
-    grid-gap: 4rem;
+    .widget-container {
+      margin: 0 1rem;
+    }
   }
 
   @media ${device.tablet} {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 4rem;
     margin-top: ${props => props.theme.spacingXL};
+
+    .widget-container {
+      margin: 0;
+    }
   }
 
   > div:nth-child(odd) {
