@@ -83,7 +83,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
   return (
     <>
       <div className="page-header-wrapper">
-        <Styled.PageTitle>Expenses Statistics</Styled.PageTitle>
+        <Styled.PageTitle>Expenses Stats</Styled.PageTitle>
         <Styled.PageHeader>
           <Styled.PageHeader__View>
             <Styled.PageHeader__View__Dropdown className="expenses">

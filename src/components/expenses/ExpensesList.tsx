@@ -93,7 +93,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
           <Styled.PageHeader__Settings>
             <Tooltip
               eventOff={'onClick'}
-              content={'Statistics'}
+              content={'Stats'}
               arrow={false}
               direction={'up'}
               className="tooltip"

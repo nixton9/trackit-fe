@@ -129,7 +129,7 @@ export const pagesSteps: { [key: string]: any } = {
     {
       target: '.stats-icon',
       content:
-        'In here you can check some statistics on your spendings - in what months did you spend the most, see expenses by categories, etc.',
+        'In here you can check some stats on your spendings - in what months did you spend the most, see expenses by categories, etc.',
       disableBeacon: true
     },
     {
@@ -175,7 +175,7 @@ export const pagesSteps: { [key: string]: any } = {
     {
       target: '.stats-icon',
       content:
-        'In here you can check some statistics on your habits - what is your success rate, what was your longest streak, etc.',
+        'In here you can check some stats on your habits - what is your success rate, what was your longest streak, etc.',
       disableBeacon: true
     },
     {

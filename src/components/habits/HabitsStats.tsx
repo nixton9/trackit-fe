@@ -77,7 +77,7 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
   return (
     <Styled.PageContainer className="overflow">
       <div className="page-header-wrapper">
-        <Styled.PageTitle>Habits Statistics</Styled.PageTitle>
+        <Styled.PageTitle>Habits Stats</Styled.PageTitle>
 
         <Styled.PageHeader className="page-header">
           <Styled.PageHeader__View>

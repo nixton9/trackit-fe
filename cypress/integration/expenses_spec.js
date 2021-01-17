@@ -50,7 +50,7 @@ describe('Expenses', () => {
   it('shows expenses stats', () => {
     cy.get('[data-test-id="expenses-stats-link"]').click()
     cy.url().should('include', '/expenses/stats')
-    cy.contains('Expenses Statistics')
+    cy.contains('Expenses Stats')
     cy.contains(new Date().getFullYear().toString())
     cy.contains('Monthly balance')
     cy.contains('By categories')

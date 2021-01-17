@@ -139,7 +139,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
           <Styled.PageHeader__Settings>
             <Tooltip
               eventOff={'onClick'}
-              content={'Statistics'}
+              content={'Stats'}
               arrow={false}
               direction={'up'}
               className="tooltip"
