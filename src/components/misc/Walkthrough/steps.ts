@@ -190,5 +190,34 @@ export const pagesSteps: { [key: string]: any } = {
         'This shows the number of active habits you have when seeing all habits. When you are only seeing one single habit this will show what is your current streak.',
       disableBeacon: true
     }
+  ],
+  ADDNOTES: [
+    {
+      target: '.tags-input',
+      content:
+        "To insert tags on a note start typing and your existing tags will appear for you to select. To create a new one just type the name for it and press 'Enter'.",
+      disableBeacon: true
+    }
+  ],
+  DETAILNOTE: [
+    {
+      target: '#root',
+      placement: 'center' as 'center',
+      title: 'Note Detail',
+      content:
+        'This is where you see your note in detail. Whenever you edit the title, content or tags make sure you save the changes by clickig on the button that will appear.',
+      disableBeacon: true
+    },
+    {
+      target: '.detail-title',
+      content: 'You can edit the title here.',
+      disableBeacon: true
+    },
+    {
+      target: '.detail-tags',
+      content:
+        'Add or edit tags on this section. To edit or delete a tag, simply click on it.',
+      disableBeacon: true
+    }
   ]
 }

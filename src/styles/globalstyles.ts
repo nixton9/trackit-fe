@@ -282,6 +282,15 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .__floater__open {
+        z-index: 200 !important;
+        filter: none !important;
+    }
+
+    .react-joyride__overlay {
+        z-index: 199 !important;
+    }
+
     .__floater__arrow polygon{
         fill: ${props => props.theme.backgroundBlack} !important;
     }

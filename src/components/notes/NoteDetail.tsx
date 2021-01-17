@@ -9,11 +9,13 @@ import { PageError } from '../misc/PageError'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { alertState } from '../misc/Alert'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
+import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Page.styles'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 import { pickRandomColor } from '../../utils/globalHelpers'
 import { NoteTag } from '../../utils/ModuleTypes'
 import { SINGLE_NOTE } from '../../utils/queries'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
@@ -50,6 +52,11 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
+
+  const [showDetailNoteWT, setShowDetailNoteWT] = useLocalStorage(
+    'showDetailNoteWT',
+    true
+  )
 
   const { loading, error, data } = useQuery(SINGLE_NOTE, {
     variables: { id: match.params.id }
@@ -243,12 +250,22 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
         <PageLoading centered />
       ) : (
         <>
-          <Styled.DetailHeader editorActive={showEditor}>
+          {showDetailNoteWT && (
+            <Walkthrough
+              page={Pages.DETAILNOTE}
+              setShow={setShowDetailNoteWT}
+            />
+          )}
+          <Styled.DetailHeader
+            editorActive={showEditor}
+            className="note-detail-header"
+          >
             <div className="title-wrapper">
               <Styled.DetailTitle
                 placeholder="Title for the note"
                 value={noteTitle}
                 onChange={e => setNoteTitle(e.target.value)}
+                className="detail-title"
               />
               <Styled.DetailDate>
                 {displayDateString(parseDateInverse(data.singleNote.date))}
@@ -258,7 +275,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
             <ThreeDotsMenu options={menuOptions} />
           </Styled.DetailHeader>
 
-          <Styled.DetailTagsContainer>
+          <Styled.DetailTagsContainer className="detail-tags">
             <Styled.DetailTags>
               <Styled.DetailTags__Inner>
                 {data.singleNote.tags && data.singleNote.tags.length ? (

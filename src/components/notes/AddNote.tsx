@@ -3,11 +3,13 @@ import { NoteEditor } from './NoteEditor'
 import { SubmitButton } from '../misc/SubmitButton'
 import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
+import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Add.styles'
 import { TagsInput, Tag } from './TagsInput'
 import { NOTES } from '../../utils/queries'
 import { CREATE_NOTE, ADD_TAG_TO_NOTE, CREATE_TAG } from '../../utils/mutations'
 import { pickRandomColor } from '../../utils/globalHelpers'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { useMutation, useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
@@ -42,6 +44,12 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   const [tags, setTags] = useState<Tag[] | []>([])
 
   const setNotification = useSetRecoilState(notificationState)
+
+  const [showWalkthrough, setShowWalkthrough] = useState(false)
+  const [showAddNotesWT, setShowAddNotesWT] = useLocalStorage(
+    'showAddNotesWT',
+    true
+  )
 
   const { refetch: refetchNotes } = useQuery(NOTES)
   const [addTagToNote] = useMutation<AddTagToNoteData>(ADD_TAG_TO_NOTE)
@@ -111,6 +119,14 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
   }
 
   useEffect(() => {
+    let wtTimeOut = setTimeout(() => setShowWalkthrough(true), 500)
+    return () => {
+      clearTimeout(wtTimeOut)
+      setShowWalkthrough(false)
+    }
+  }, [])
+
+  useEffect(() => {
     if (titleRef && titleRef.current) {
       titleRef.current.focus()
     }
@@ -130,6 +146,9 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
     </Styled.AddLoading>
   ) : (
     <>
+      {showAddNotesWT && showWalkthrough && (
+        <Walkthrough page={Pages.ADDNOTES} setShow={setShowAddNotesWT} />
+      )}
       <form onSubmit={handleSubmit}>
         <Styled.AddInputWrapper>
           <Styled.AddInput__Label>Title</Styled.AddInput__Label>

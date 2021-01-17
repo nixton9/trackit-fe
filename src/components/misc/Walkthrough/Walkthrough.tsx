@@ -7,7 +7,9 @@ export enum Pages {
   NOTES = 'NOTES',
   TASKS = 'TASKS',
   EXPENSES = 'EXPENSES',
-  HABITS = 'HABITS'
+  HABITS = 'HABITS',
+  ADDNOTES = 'ADDNOTES',
+  DETAILNOTE = 'DETAILNOTE'
 }
 
 type WalkthroughProps = {

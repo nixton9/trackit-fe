@@ -65,36 +65,35 @@ export const TagsInput: React.FC<TagsInputProps> = ({
     setInputTags(newTags)
   }, [tags])
 
-  return loading ? (
-    <Styled.AddTags_Loading>
-      <LoadingSpinner />
-    </Styled.AddTags_Loading>
-  ) : error ? (
-    <Styled.AddMessage>
-      <ErrorIcon />
-      <p>{error.message}</p>
-    </Styled.AddMessage>
-  ) : (
-    <Styled.AddWidget onClick={focusTagInput}>
-      <CategoriesIcon />
-      <Styled.AddTags>
-        <ReactTags
-          tags={inputTags}
-          suggestions={
-            excludedTags
-              ? suggestions.filter(
-                  (sugg: Tag) => !excludedTags.includes(sugg.id)
-                )
-              : suggestions
-          }
-          handleDelete={handleDelete}
-          handleAddition={handleAddition}
-          delimiters={delimiters}
-          placeholder="Tags"
-          minQueryLength={1}
-          allowDragDrop={false}
-        />
-      </Styled.AddTags>
+  return (
+    <Styled.AddWidget onClick={focusTagInput} className="tags-input">
+      {loading ? (
+        <LoadingSpinner />
+      ) : error ? (
+        <ErrorIcon />
+      ) : (
+        <>
+          <CategoriesIcon />
+          <Styled.AddTags>
+            <ReactTags
+              tags={inputTags}
+              suggestions={
+                excludedTags
+                  ? suggestions.filter(
+                      (sugg: Tag) => !excludedTags.includes(sugg.id)
+                    )
+                  : suggestions
+              }
+              handleDelete={handleDelete}
+              handleAddition={handleAddition}
+              delimiters={delimiters}
+              placeholder="Tags"
+              minQueryLength={1}
+              allowDragDrop={false}
+            />
+          </Styled.AddTags>
+        </>
+      )}
     </Styled.AddWidget>
   )
 }

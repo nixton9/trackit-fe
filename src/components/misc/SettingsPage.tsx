@@ -38,6 +38,14 @@ const SettingsPage: React.FC<SettingsProps> = ({
   const [showTasksWT, setShowTasksWT] = useLocalStorage('showTasksWT', false)
   const [showExpWT, setShowExpWT] = useLocalStorage('showExpWT', false)
   const [showHabWT, setShowHabWT] = useLocalStorage('showHabWT', false)
+  const [showDetailNoteWT, setShowDetailNoteWT] = useLocalStorage(
+    'showDetailNoteWT',
+    false
+  )
+  const [showAddNotesWT, setShowAddNotesWT] = useLocalStorage(
+    'showAddNotesWT',
+    false
+  )
 
   const [updateUserInfo, { loading: loadingUserInfo }] = useMutation(
     UPDATE_USER_INFO
@@ -169,6 +177,8 @@ const SettingsPage: React.FC<SettingsProps> = ({
     setShowTasksWT(true)
     setShowExpWT(true)
     setShowHabWT(true)
+    setShowDetailNoteWT(true)
+    setShowAddNotesWT(true)
     setNotification({
       text: `You will now see the walkthrough on each page`,
       type: NotificationTypes.Success
@@ -317,7 +327,9 @@ const SettingsPage: React.FC<SettingsProps> = ({
                 showTasksWT &&
                 showExpWT &&
                 showHabWT &&
-                showHomeWT
+                showHomeWT &&
+                showDetailNoteWT &&
+                showAddNotesWT
               }
             >
               Show
