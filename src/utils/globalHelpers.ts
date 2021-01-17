@@ -38,6 +38,21 @@ export const showCurrencySym = (currency: Currencies) => {
 
     case Currencies.DOLLAR:
       return '$'
+
+    case Currencies.POUND:
+      return '£'
+
+    case Currencies.YEN:
+      return '¥'
+
+    case Currencies.RUPEE:
+      return '₹'
+
+    case Currencies.FRANC:
+      return 'Fr'
+
+    case Currencies.REAL:
+      return 'R$'
   }
 }
 

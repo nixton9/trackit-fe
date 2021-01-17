@@ -22,7 +22,7 @@ import { useHistory } from 'react-router-dom'
 
 export const currencyState = atom({
   key: 'currency',
-  default: Currencies.EURO
+  default: Currencies.DOLLAR
 })
 
 const DELETE_TYPE = gql`
@@ -41,7 +41,7 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
   const [showTypeEditor, setShowTypeEditor] = useState(false)
   const [activeType, setActiveType] = useState<ExpenseType | null>(null)
 
-  const [, setLSCurrency] = useLocalStorage('currency', Currencies.EURO)
+  const [, setLSCurrency] = useLocalStorage('currency', Currencies.DOLLAR)
   const [currency, setCurrency] = useRecoilState(currencyState)
 
   const setNotification = useSetRecoilState(notificationState)

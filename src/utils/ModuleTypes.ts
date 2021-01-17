@@ -74,11 +74,21 @@ export enum DayState {
 }
 
 export enum Currencies {
+  DOLLAR = 'DOLLAR',
   EURO = 'EURO',
-  DOLLAR = 'DOLLAR'
+  POUND = 'POUND',
+  YEN = 'YEN',
+  RUPEE = 'RUPEE',
+  FRANC = 'FRANC',
+  REAL = 'REAL'
 }
 
 export const currencyOptions = [
+  { val: Currencies.DOLLAR, label: 'Dollar ($)' },
   { val: Currencies.EURO, label: 'Euro (€)' },
-  { val: Currencies.DOLLAR, label: 'Dollar ($)' }
+  { val: Currencies.POUND, label: 'Pound (£)' },
+  { val: Currencies.YEN, label: 'Yen (¥)' },
+  { val: Currencies.RUPEE, label: 'Rupee (₹)' },
+  { val: Currencies.FRANC, label: 'Franc (Fr)' },
+  { val: Currencies.REAL, label: 'Real (R$)' }
 ]
