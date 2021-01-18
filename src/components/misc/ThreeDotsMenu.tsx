@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components/macro'
 
 type ThreeDotsMenuProps = {
   options?: { label: string; onClick: () => void }[]
+  componentItem?: React.ReactNode
 }
 
 type MenuOverlayProps = {
@@ -100,7 +101,10 @@ const MenuOverlay = styled.div<MenuOverlayProps>`
   z-index: 1;
 `
 
-export const ThreeDotsMenu: React.FC<ThreeDotsMenuProps> = ({ options }) => {
+export const ThreeDotsMenu: React.FC<ThreeDotsMenuProps> = ({
+  options,
+  componentItem
+}) => {
   const [open, setOpen, overlayEl] = useToggleElement()
   const itemClick = (fn: () => void) => {
     fn()
@@ -126,6 +130,7 @@ export const ThreeDotsMenu: React.FC<ThreeDotsMenuProps> = ({ options }) => {
               {item.label}
             </MenuItem>
           ))}
+          <MenuItem onClick={() => setOpen(false)}>{componentItem}</MenuItem>
         </Menu>
       )}
       <MenuOverlay open={open} ref={overlayEl} />

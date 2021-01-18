@@ -18,7 +18,7 @@ const NotificationContainer = styled.div`
   width: max-content;
   min-width: 20rem;
   max-width: 90%;
-  padding: 2rem 2.5rem;
+  padding: 2rem 3rem 2rem 2.5rem;
   background-color: ${props => props.theme.surfacesBlack};
   color: ${props => props.theme.white};
   border-radius: ${props => props.theme.smallBorderRadius};

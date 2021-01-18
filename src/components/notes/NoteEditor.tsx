@@ -68,6 +68,7 @@ type NoteEditorProps = {
   placeholder?: string
   readMode?: boolean
   showEditor?: boolean
+  editorRef?: React.Ref<any>
   setValue?: Dispatch<SetStateAction<string>>
 }
 
@@ -76,6 +77,7 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
   placeholder,
   readMode,
   showEditor = true,
+  editorRef,
   setValue
 }) => {
   return (
@@ -84,7 +86,12 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
       showEditor={showEditor}
       className="editor-container"
     >
-      <ReactQuill value={value} onChange={setValue} placeholder={placeholder} />
+      <ReactQuill
+        value={value}
+        onChange={setValue}
+        placeholder={placeholder}
+        ref={editorRef}
+      />
     </EditorContainer>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { TagChip } from './TagChip'
 import Tooltip from 'react-tooltip-lite'
 import { NoteEditor } from './NoteEditor'
@@ -9,6 +9,7 @@ import { PageError } from '../misc/PageError'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { alertState } from '../misc/Alert'
 import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
+import { CopyToClipboard } from '../misc/CopyToClipboard'
 import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Page.styles'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
@@ -40,6 +41,7 @@ interface MatchProps extends RouteComponentProps<MatchParams> {
 const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const [noteTitle, setNoteTitle] = useState('')
   const [noteContent, setNoteContent] = useState('')
+  const [parsedContent, setParsedContent] = useState('')
   const [noteTags, setNoteTags] = useState<NoteTag[]>([])
   const [inputTags, setInputTags] = useState<Tag[]>([])
   const [showEditor, setShowEditor] = useState(false)
@@ -72,6 +74,8 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   )
   const [addTagToNote] = useMutation(ADD_TAG_TO_NOTE)
   const [createTag] = useMutation(CREATE_TAG)
+
+  const editorRef = useRef<any>(null)
 
   const [
     deleteNote,
@@ -192,6 +196,12 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     setShowTagEditor(true)
   }
 
+  const onCopyNote = () =>
+    setNotification({
+      text: `Content was copied!`,
+      type: NotificationTypes.Success
+    })
+
   useEffect(() => {
     setWidgets(false)
     return () => setWidgets(true)
@@ -218,6 +228,11 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   useEffect(() => {
     if (message) setTimeout(() => setMessage(''), 1500)
   }, [message])
+
+  useEffect(() => {
+    editorRef.current &&
+      setParsedContent(editorRef.current?.unprivilegedEditor.getText())
+  }, [noteContent])
 
   const menuOptions = [
     { label: 'Delete note', onClick: handleDeleteConfirm },
@@ -272,7 +287,12 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               </Styled.DetailDate>
             </div>
 
-            <ThreeDotsMenu options={menuOptions} />
+            <ThreeDotsMenu
+              options={menuOptions}
+              componentItem={
+                <CopyToClipboard onCopy={onCopyNote} text={parsedContent} />
+              }
+            />
           </Styled.DetailHeader>
 
           <Styled.DetailTagsContainer className="detail-tags">
@@ -347,9 +367,9 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               setValue={setNoteContent}
               showEditor={showEditor}
               readMode
+              editorRef={editorRef}
             />
           </Styled.DetailContent>
-
           {(noteWasEdited || message) && (
             <Styled.DetailSave>
               {message ? (
