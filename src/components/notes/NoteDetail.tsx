@@ -15,7 +15,7 @@ import { Styled } from '../../styles/Page.styles'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 import { pickRandomColor } from '../../utils/globalHelpers'
 import { NoteTag } from '../../utils/ModuleTypes'
-import { SINGLE_NOTE } from '../../utils/queries'
+import { SINGLE_NOTE, TAGS } from '../../utils/queries'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
@@ -66,6 +66,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const { refetch: refetchNote } = useQuery(SINGLE_NOTE, {
     variables: { id: match.params.id }
   })
+  const { refetch: refetchTags } = useQuery(TAGS)
   const [updateNote, { error: errorEdit, loading: loadingEdit }] = useMutation(
     UPDATE_NOTE,
     {
@@ -95,7 +96,10 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     addTagToNote({
       variables: { note: note, tag: tag }
     })
-      .then(() => setInputTags([]))
+      .then(() => {
+        setInputTags([])
+        refetchTags()
+      })
       .catch(err => console.log(err.message))
   }
 
