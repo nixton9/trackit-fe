@@ -67,6 +67,7 @@ const SignIn: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
     login()
       .then(results => {
         if (results && results.data && results.data.login) {
+          console.log(results.data.login)
           setToken(results.data.login.token)
           setUserInfo({
             id: results.data.login.user.id_user,

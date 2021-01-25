@@ -3,8 +3,10 @@ import HomeWidget from './misc/HomeWidget'
 import { LoadingSpinner } from './misc/LoadingSpinner'
 import { PageError } from './misc/PageError'
 import { Walkthrough, Pages } from './misc/Walkthrough/Walkthrough'
+import { NotificationTypes, notificationState } from './misc/Notification'
 import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
+import { UPDATE_USER_NOT_TOKEN } from '../utils/mutations'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
 import { parseDate, isDateToday, parseDateInverse } from '../utils/dateHelpers'
 import { formatUserName } from '../utils/globalHelpers'
@@ -13,11 +15,14 @@ import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../assets/icons/habits.svg'
 import { ReactComponent as ExpensesIcon } from '../assets/icons/expenses.svg'
-import { useQuery } from '@apollo/client'
+import { askNotificationPermission } from '../push-notification'
+import { useQuery, useMutation } from '@apollo/client'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
+import { useSetRecoilState } from 'recoil'
 
 const Home: React.FC<{ userName: string }> = ({ userName }) => {
   const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', true)
+  const [notToken, setNotToken] = useLocalStorage('notToken', '')
 
   const { loading: loadingNotes, error: errorNotes, data: notes } = useQuery(
     NOTES
@@ -36,6 +41,30 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
   const { loading: loadingHabits, error: errorHabits, data: habits } = useQuery(
     HABITS
   )
+
+  const [updateNotificationToken] = useMutation(UPDATE_USER_NOT_TOKEN)
+
+  const setNotification = useSetRecoilState(notificationState)
+
+  const handleNotificationPermission = () => {
+    askNotificationPermission().then(token =>
+      updateNotificationToken({ variables: { token: token } })
+        .then(() => {
+          setNotToken(token)
+          setNotification({
+            text: `Notifications have been turned on!`,
+            type: NotificationTypes.Success
+          })
+        })
+        .catch(err =>
+          setNotification({
+            text:
+              'There was a problem turning on the notifications, please try again',
+            type: NotificationTypes.Error
+          })
+        )
+    )
+  }
 
   const isLoading =
     loadingNotes || loadingTasks || loadingExpenses || loadingHabits
@@ -112,6 +141,7 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
             />
           </Styled.HomeGrid>
         )}
+        <button onClick={handleNotificationPermission}>notificação</button>
       </Styled.HomeContainer>
     </>
   )

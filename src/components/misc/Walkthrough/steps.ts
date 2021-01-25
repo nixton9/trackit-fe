@@ -5,7 +5,7 @@ export const pagesSteps: { [key: string]: any } = {
       placement: 'center' as 'center',
       title: 'Welcome to TRCKR!',
       content:
-        'Seems like it’s your first time here. Follow this quick walkthrough to learn all the basic features so you can start tracking everything in your life like a pro!',
+        "Seems like it’s your first time here. Follow this quick walkthrough to learn all the basic features so you can start tracking everything in your life like a pro! And if you're on your smartphone, you can install TRCKR on your homescreen by going to your browser's settings. ",
       disableBeacon: true
     },
     {

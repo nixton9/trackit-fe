@@ -195,3 +195,12 @@ export const UPDATE_USER_PASSWORD = gql`
     }
   }
 `
+
+export const UPDATE_USER_NOT_TOKEN = gql`
+  mutation UpdateUserNotToken($token: String!) {
+    updateUserNotToken(token: $token) {
+      id: id_user
+      notToken: not_token
+    }
+  }
+`
