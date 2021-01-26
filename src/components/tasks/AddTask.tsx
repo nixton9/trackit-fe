@@ -144,8 +144,9 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
           .then(res => {
             setNotification({
               text: `New task added ${
-                dateSelect !== '4' &&
-                displayDateString(parseDateInverse(dueDate))
+                dateSelect !== '4'
+                  ? `for ${displayDateString(parseDateInverse(dueDate))}`
+                  : ''
               }`,
               type: NotificationTypes.Success
             })

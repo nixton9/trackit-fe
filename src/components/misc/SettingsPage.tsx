@@ -6,9 +6,14 @@ import { ToggleButton } from './ToggleButton'
 import { Styled } from '../../styles/Page.styles'
 import { User } from '../../utils/ModuleTypes'
 import { useLocalStorage } from '../../utils/useLocalStorage'
-import { UPDATE_USER_INFO, UPDATE_USER_PASSWORD } from '../../utils/mutations'
+import {
+  UPDATE_USER_INFO,
+  UPDATE_USER_PASSWORD,
+  UPDATE_USER_NOT_TOKEN
+} from '../../utils/mutations'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as TrashIcon } from '../../assets/icons/trash.svg'
+import { askNotificationPermission } from '../../push-notification'
 import { useMutation } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import { LoadingSpinner } from './LoadingSpinner'
@@ -16,6 +21,8 @@ import { LoadingSpinner } from './LoadingSpinner'
 type SettingsProps = {
   user: User
   refreshUserInfo: () => void
+  notToken: string | null
+  setNotToken: (not_token: string | null) => void
   isDarkTheme: boolean
   setIsDarkTheme: (checked: boolean) => void
 }
@@ -23,6 +30,8 @@ type SettingsProps = {
 const SettingsPage: React.FC<SettingsProps> = ({
   user,
   refreshUserInfo,
+  notToken,
+  setNotToken,
   isDarkTheme,
   setIsDarkTheme
 }) => {
@@ -59,6 +68,10 @@ const SettingsPage: React.FC<SettingsProps> = ({
         newPassword: newPassword
       }
     }
+  )
+
+  const [updateNotificationToken, { loading: loadingUserNot }] = useMutation(
+    UPDATE_USER_NOT_TOKEN
   )
 
   const setNotification = useSetRecoilState(notificationState)
@@ -194,6 +207,52 @@ const SettingsPage: React.FC<SettingsProps> = ({
     })
   }
 
+  const updateUserNotification = (token?: string, disable?: boolean) => {
+    const keyword = disable ? 'off' : 'on'
+
+    updateNotificationToken({ variables: { token: token, disable: disable } })
+      .then(() => {
+        setNotToken(disable || !token ? null : token)
+        setNotification({
+          text: `Notifications have been turned ${keyword}!`,
+          type: NotificationTypes.Success
+        })
+      })
+      .catch(err =>
+        setNotification({
+          text: `There was a problem turning ${keyword} the notifications, please try again`,
+          type: NotificationTypes.Error
+        })
+      )
+  }
+
+  const handleNotificationPermission = (e: any, disable?: boolean) => {
+    if (disable) {
+      updateUserNotification('', true)
+    } else {
+      askNotificationPermission().then(res => {
+        if (res instanceof Error) {
+          setNotification({
+            text:
+              "Unfortunately seems like this browser doesn't support notifications.",
+            type: NotificationTypes.Error
+          })
+        } else if (typeof res === 'string') {
+          updateUserNotification(res)
+        }
+      })
+    }
+  }
+
+  const handleShowNotifications = () => {
+    setAlert({
+      text: 'Are you sure you want to disable notifications?',
+      onConfirm: () => {
+        handleNotificationPermission(null, true)
+      }
+    })
+  }
+
   useEffect(() => {
     if (user) {
       setName(user.name)
@@ -308,33 +367,53 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
         <Styled.Settings__Title>Other Settings</Styled.Settings__Title>
 
-        <Styled.SettingsBlock>
-          <div>
-            <label>Dark theme</label>
-            <ToggleButton
-              isChecked={isDarkTheme}
-              setIsChecked={setIsDarkTheme}
-            />
-          </div>
+        <Styled.SettingsBlock className="cols-3">
+          {loadingUserNot ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <div>
+                <label>Dark theme</label>
+                <ToggleButton
+                  isChecked={isDarkTheme}
+                  setIsChecked={setIsDarkTheme}
+                />
+              </div>
 
-          <div className="walkthrough">
-            <label>Show walkthrough</label>
-            <Styled.SettingsButton
-              onClick={handleShowWalkthrough}
-              className="wt-button"
-              disabled={
-                showNotesWT &&
-                showTasksWT &&
-                showExpWT &&
-                showHabWT &&
-                showHomeWT &&
-                showDetailNoteWT &&
-                showAddNotesWT
-              }
-            >
-              Show
-            </Styled.SettingsButton>
-          </div>
+              <div className="notifications">
+                <label>Notifications</label>
+                <Styled.SettingsButton
+                  className="nm-button"
+                  onClick={
+                    notToken
+                      ? handleShowNotifications
+                      : handleNotificationPermission
+                  }
+                >
+                  {notToken ? 'Disable' : 'Enable'}
+                </Styled.SettingsButton>
+              </div>
+
+              <div className="walkthrough">
+                <label>Show walkthrough</label>
+                <Styled.SettingsButton
+                  onClick={handleShowWalkthrough}
+                  className="nm-button"
+                  disabled={
+                    showNotesWT &&
+                    showTasksWT &&
+                    showExpWT &&
+                    showHabWT &&
+                    showHomeWT &&
+                    showDetailNoteWT &&
+                    showAddNotesWT
+                  }
+                >
+                  Show
+                </Styled.SettingsButton>
+              </div>
+            </>
+          )}
         </Styled.SettingsBlock>
 
         <Styled.Settings__Title>Support</Styled.Settings__Title>

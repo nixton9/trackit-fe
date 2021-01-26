@@ -75,6 +75,11 @@ export const GlobalStyle = createGlobalStyle`
         outline: none;
         font-family: ${props => props.theme.fontFamily};
     }
+
+    input {
+        // Remove ugly background color when input is auto-filled on Firefox
+        filter: none;
+    }
     
     .MuiInput-root,
     .MuiMenuItem-root {

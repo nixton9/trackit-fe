@@ -33,7 +33,11 @@ type SignUpData = {
   }
 }
 
-const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
+const SignUp: React.FC<SignInSignUpProps> = ({
+  setToken,
+  setUserInfo,
+  setNotToken
+}) => {
   const [nameVal, setNameVal] = useState('')
   const [emailVal, setEmailVal] = useState('')
   const [passwordVal, setPasswordVal] = useState('')
@@ -77,6 +81,7 @@ const SignUp: React.FC<SignInSignUpProps> = ({ setToken, setUserInfo }) => {
               email: results.data.signup.user.email_user,
               image: results.data.signup.user.image_user
             })
+            setNotToken(null)
             history.push('/')
           }
         })

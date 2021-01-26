@@ -21,6 +21,6 @@ export const askNotificationPermission = async () => {
     const token = await messaging.getToken()
     return token
   } catch (error) {
-    throw new Error(error)
+    return new Error(error)
   }
 }

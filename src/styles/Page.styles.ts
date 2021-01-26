@@ -652,6 +652,10 @@ const SettingsBlock = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  &.cols-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
   &.no-grid {
     display: block;
   }
@@ -786,7 +790,8 @@ const SettingsBlock = styled.div`
 
     .image,
     .new-password,
-    .walkthrough {
+    .walkthrough,
+    .notifications {
       margin-top: ${props => props.theme.spacingS};
     }
 
@@ -812,7 +817,7 @@ const SettingsButton = styled.button`
   margin-right: auto;
   cursor: pointer;
 
-  &.wt-button  {
+  &.nm-button  {
     margin-top: ${props => props.theme.spacingXS};
   }
 
