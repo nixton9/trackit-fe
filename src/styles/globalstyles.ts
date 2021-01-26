@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background: ${props => props.theme.backgroundBlack};
+        scrollbar-color: ${props => `${props.theme.accent} rgba(0,0,0,0)`};
     }
 
     a {
