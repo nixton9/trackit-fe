@@ -1,14 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 435">
   <defs>
-    <clipPath id="clip-Prancheta_28">
+    <clipPath id="clip-Prancheta_49">
       <rect width="400" height="435"/>
     </clipPath>
   </defs>
-  <g id="Prancheta_28" data-name="Prancheta – 28" clip-path="url(#clip-Prancheta_28)">
-    <g id="Retângulo_346" data-name="Retângulo 346" transform="translate(24 26)" fill="none" class="svg-stroke" stroke-width="32">
+  <g id="Prancheta_49" data-name="Prancheta – 49" clip-path="url(#clip-Prancheta_49)">
+    <g id="Retângulo_346" data-name="Retângulo 346" transform="translate(24 26)" fill="none" class="svg-stroke" stroke-linejoin="round" stroke-width="32">
       <rect width="352" height="384" rx="80" stroke="none"/>
       <rect x="16" y="16" width="320" height="352" rx="64" fill="none"/>
     </g>
-    <path id="Caminho_337" data-name="Caminho 337" d="M14618.141-12578.1l55.915-89.009,71.259,111.22,66.277-161" transform="translate(-14514.641 12854.386)" fill="none" class="svg-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+    <g id="Grupo_206" data-name="Grupo 206" transform="translate(-0.5 -10.742)">
+      <path id="Caminho_351" data-name="Caminho 351" d="M0,0V81" transform="translate(123.5 236.5)" fill="none" class="svg-stroke" stroke-linecap="round" stroke-width="44"/>
+      <path id="Caminho_350" data-name="Caminho 350" d="M0,6.939V128" transform="translate(200.5 189.5)" fill="none" class="svg-stroke" stroke-linecap="round" stroke-width="44"/>
+      <path id="Caminho_349" data-name="Caminho 349" d="M0,9.441V188.2" transform="translate(277.5 129.301)" fill="none" class="svg-stroke" stroke-linecap="round" stroke-width="44"/>
+    </g>
   </g>
 </svg>
