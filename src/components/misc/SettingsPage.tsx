@@ -232,9 +232,11 @@ const SettingsPage: React.FC<SettingsProps> = ({
     } else {
       askNotificationPermission().then(res => {
         if (res instanceof Error) {
+          const isBrowserError = res.message.includes("browser doesn't support")
           setNotification({
-            text:
-              "Unfortunately seems like this browser doesn't support notifications.",
+            text: isBrowserError
+              ? "Unfortunately, it seems like this browser doesn't support notifications."
+              : 'There was a problem enabling notifications, please try again later.',
             type: NotificationTypes.Error
           })
         } else if (typeof res === 'string') {
