@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import '@firebase/messaging'
+import 'firebase/analytics'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 export const startFirebase = () => {
   firebase.initializeApp(firebaseConfig)
+  firebase.analytics()
 }
 
 export const askNotificationPermission = async () => {
