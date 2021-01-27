@@ -25,6 +25,10 @@ const NotificationContainer = styled.div`
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
   z-index: 1111;
   animation: ${SlideDown} 0.2s ease forwards;
+
+  &.alert {
+    padding: 2rem 2.5rem;
+  }
 `
 
 const Notification = styled.div`

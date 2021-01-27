@@ -59,6 +59,7 @@ const PageContainer = styled.div`
 
 const HabitsContainer = styled.div`
   position: relative;
+  background-color: ${props => props.theme.backgroundBlack};
   display: grid;
   grid-template-rows: auto 1fr;
   width: 100vw;
@@ -791,7 +792,7 @@ const SettingsBlock = styled.div`
     .image,
     .new-password,
     .walkthrough,
-    .notifications {
+    .theme {
       margin-top: ${props => props.theme.spacingS};
     }
 

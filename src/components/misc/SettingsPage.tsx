@@ -375,14 +375,6 @@ const SettingsPage: React.FC<SettingsProps> = ({
           ) : (
             <>
               <div>
-                <label>Dark theme</label>
-                <ToggleButton
-                  isChecked={isDarkTheme}
-                  setIsChecked={setIsDarkTheme}
-                />
-              </div>
-
-              <div className="notifications">
                 <label>Notifications</label>
                 <Styled.SettingsButton
                   className="nm-button"
@@ -413,6 +405,14 @@ const SettingsPage: React.FC<SettingsProps> = ({
                 >
                   Show
                 </Styled.SettingsButton>
+              </div>
+
+              <div className="theme">
+                <label>Dark theme</label>
+                <ToggleButton
+                  isChecked={isDarkTheme}
+                  setIsChecked={setIsDarkTheme}
+                />
               </div>
             </>
           )}

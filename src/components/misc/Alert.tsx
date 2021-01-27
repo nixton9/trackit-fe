@@ -26,7 +26,7 @@ export const Alert: React.FC = () => {
     }
 
     return (
-      <Styled.NotificationContainer>
+      <Styled.NotificationContainer className="alert">
         <Styled.Alert>
           <p>{text}</p>
           <Styled.Alert__Buttons>
