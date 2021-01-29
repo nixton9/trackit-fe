@@ -84,7 +84,7 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
     })
       .then(res => {
         setNotification({
-          text: `Category '${categoryName}' was deleted`,
+          text: `Inbox '${categoryName}' was deleted`,
           type: NotificationTypes.Success
         })
         refetchCategories()
@@ -104,7 +104,7 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
   ) => {
     setShowCategoryEditor(false)
     setAlert({
-      text: 'This category will be removed',
+      text: 'This inbox will be removed',
       onConfirm: () => handleDeleteType(categoryId, categoryName)
     })
   }
@@ -147,9 +147,7 @@ const TasksSettings: React.FC<TasksSettingsProps> = ({
           </Styled.SettingsBlock>
 
           <Styled.SettingsBlock>
-            <Styled.SettingsBlock__Label>
-              Categories
-            </Styled.SettingsBlock__Label>
+            <Styled.SettingsBlock__Label>Inboxes</Styled.SettingsBlock__Label>
             <Styled.SettingsBlock__Categories>
               {categories &&
                 categories.map(cat => (

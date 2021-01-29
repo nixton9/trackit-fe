@@ -146,7 +146,7 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
       <form onSubmit={handleSubmit}>
         <Styled.TagEditorInput
           value={name}
-          placeholder={'Category name'}
+          placeholder={'Inbox name'}
           onChange={e => setName(e.target.value)}
           data-test-id="categories-name-input"
         />
