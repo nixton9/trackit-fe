@@ -184,26 +184,20 @@ const SettingsPage: React.FC<SettingsProps> = ({
     })
   }
 
-  const showWalkthrough = () => {
-    setShowHomeWT(true)
-    setShowNotesWT(true)
-    setShowTasksWT(true)
-    setShowExpWT(true)
-    setShowHabWT(true)
-    setShowDetailNoteWT(true)
-    setShowAddNotesWT(true)
+  const showWalkthrough = (show: boolean) => {
+    console.log(show)
+    setShowHomeWT(show)
+    setShowNotesWT(show)
+    setShowTasksWT(show)
+    setShowExpWT(show)
+    setShowHabWT(show)
+    setShowDetailNoteWT(show)
+    setShowAddNotesWT(show)
     setNotification({
-      text: `You will now see the walkthrough on each page`,
+      text: show
+        ? `You will now see the walkthrough on each page`
+        : `Walkthrough was disabled`,
       type: NotificationTypes.Success
-    })
-  }
-
-  const handleShowWalkthrough = () => {
-    setAlert({
-      text: 'Do you wish to see the walkthrough again?',
-      onConfirm: () => {
-        showWalkthrough()
-      }
     })
   }
 
@@ -246,21 +240,21 @@ const SettingsPage: React.FC<SettingsProps> = ({
     }
   }
 
-  const handleShowNotifications = () => {
-    setAlert({
-      text: 'Are you sure you want to disable notifications?',
-      onConfirm: () => {
-        handleNotificationPermission(null, true)
-      }
-    })
-  }
-
   useEffect(() => {
     if (user) {
       setName(user.name)
       setImage(user.image)
     }
   }, [user])
+
+  const isWalkthroughOn =
+    showNotesWT &&
+    showTasksWT &&
+    showExpWT &&
+    showHabWT &&
+    showHomeWT &&
+    showDetailNoteWT &&
+    showAddNotesWT
 
   return (
     <Styled.PageContainer className="overflow">
@@ -374,37 +368,22 @@ const SettingsPage: React.FC<SettingsProps> = ({
             <LoadingSpinner />
           ) : (
             <>
-              <div>
-                <label>Notifications</label>
-                <Styled.SettingsButton
-                  className="nm-button"
-                  onClick={
-                    notToken
-                      ? handleShowNotifications
-                      : handleNotificationPermission
+              <div className="notifications">
+                <label>Push Notifications</label>
+                <ToggleButton
+                  isChecked={Boolean(notToken)}
+                  setIsChecked={e =>
+                    handleNotificationPermission(e, Boolean(notToken))
                   }
-                >
-                  {notToken ? 'Disable' : 'Enable'}
-                </Styled.SettingsButton>
+                />
               </div>
 
               <div className="walkthrough">
                 <label>Show walkthrough</label>
-                <Styled.SettingsButton
-                  onClick={handleShowWalkthrough}
-                  className="nm-button"
-                  disabled={
-                    showNotesWT &&
-                    showTasksWT &&
-                    showExpWT &&
-                    showHabWT &&
-                    showHomeWT &&
-                    showDetailNoteWT &&
-                    showAddNotesWT
-                  }
-                >
-                  Show
-                </Styled.SettingsButton>
+                <ToggleButton
+                  isChecked={isWalkthroughOn}
+                  setIsChecked={showWalkthrough}
+                />
               </div>
 
               <div className="theme">
