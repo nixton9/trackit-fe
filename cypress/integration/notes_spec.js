@@ -12,6 +12,7 @@ describe('Notes', () => {
     cy.contains('Notes')
     cy.visit('http://localhost:3000/notes')
     cy.contains('Notes')
+    cy.get('[aria-label="Skip"]').click()
   })
 
   it('creates tags on settings & displays on view', () => {

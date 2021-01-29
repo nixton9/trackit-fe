@@ -12,6 +12,7 @@ describe('Habits', () => {
     cy.contains('Habits')
     cy.visit('http://localhost:3000/habits')
     cy.contains('Habits')
+    cy.get('[aria-label="Skip"]').click()
   })
 
   it('settings open and show sort', () => {

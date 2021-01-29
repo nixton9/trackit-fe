@@ -12,6 +12,7 @@ describe('Tasks', () => {
     cy.contains('Tasks')
     cy.visit('http://localhost:3000/tasks')
     cy.contains('Tasks')
+    cy.get('[aria-label="Skip"]').click()
   })
 
   it('creates categories on settings & displays on view', () => {
