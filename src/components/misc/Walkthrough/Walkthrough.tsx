@@ -44,16 +44,16 @@ export const Walkthrough: React.FC<WalkthroughProps> = ({
       const newSteps = [...steps]
 
       if (page === Pages.NOTES) {
-        newSteps[1].target = '.single-note:nth-last-child(2)'
+        newSteps[0].target = '.single-note:nth-last-child(2)'
         setSteps(newSteps)
       } else if (page === Pages.TASKS) {
-        newSteps[1].target = '.single-task:nth-last-child(2)'
+        newSteps[0].target = '.single-task:nth-last-child(2)'
         setSteps(newSteps)
       } else if (page === Pages.EXPENSES) {
-        newSteps[1].target = '.single-expense:nth-last-child(2)'
+        newSteps[0].target = '.single-expense:nth-last-child(2)'
         setSteps(newSteps)
       } else if (page === Pages.HABITS) {
-        newSteps[2].target = '.single-habit:nth-last-child(2)'
+        newSteps[1].target = '.single-habit:nth-last-child(2)'
         setSteps(newSteps)
       }
     }

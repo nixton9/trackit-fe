@@ -264,7 +264,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
           <Styled.AddInput__Label>Title</Styled.AddInput__Label>
           <Styled.AddInput
             type="text"
-            placeholder="Ex: Dinner at mcdonalds"
+            placeholder="Ex: Fancy dinner"
             value={title}
             onChange={e => setTitle(e.target.value)}
             data-test-id="add-expense-title-input"

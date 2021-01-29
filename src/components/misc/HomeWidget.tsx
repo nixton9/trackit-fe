@@ -25,7 +25,9 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
   const currency = useRecoilValue(currencyState)
 
   return (
-    <Styled.WidgetContainer className="widget-container">
+    <Styled.WidgetContainer
+      className={`widget-container widget-${type.toLowerCase()}`}
+    >
       <Link to={`/${type.toLowerCase()}`}>
         <Styled.Widget type={type} className="widget">
           <Styled.WidgetHeader>

@@ -5,189 +5,154 @@ export const pagesSteps: { [key: string]: any } = {
       placement: 'center' as 'center',
       title: 'Welcome to TRCKR!',
       content:
-        "Seems like it’s your first time here. Follow this quick walkthrough to learn all the basic features so you can start tracking everything in your life like a pro! And if you're on your smartphone, you can install TRCKR on your homescreen by going to your browser's settings. ",
+        "Seems like it’s your first time here. Follow this quick walkthrough to learn all the basic features so you can start tracking everything in your life like a pro! Smartphone users can install TRCKR on their homescreen through the browser's settings. ",
       disableBeacon: true
     },
     {
-      target: 'body',
-      placement: 'center' as 'center',
+      target: '.widget-notes',
       content:
-        'TRCKR is divided in four pages: Notes, Tasks, Expenses and Habits. On this dashboard you can access each of these tools, add something or simply check some stats.',
+        'Create all sorts of notes you want. On each note you can add tags, so you can easily organize them.',
+      disableBeacon: true
+    },
+    {
+      target: '.widget-tasks',
+      content:
+        'Your advanced To-do list for all your tasks. Create inboxes so you can keep everything in place.',
+      disableBeacon: true
+    },
+    {
+      target: '.widget-habits',
+      content:
+        'Track all of your habits in a really simple way and check your progress.',
+      disableBeacon: true
+    },
+    {
+      target: '.widget-expenses',
+      content:
+        'Control all of your expenses. Know exactly on what you are spending and how you are spending.',
       disableBeacon: true
     }
   ],
   NOTES: [
     {
-      target: 'body',
-      placement: 'center' as 'center',
-      title: 'Notes',
-      content:
-        'Here you can create whatever notes you want to. On each note you can add the tags that you want, so you can easily organize them.',
-      disableBeacon: true
-    },
-    {
       target: '.single-note:first-child',
       content:
-        'This is a single note. Each note has a title, the date when it was created and it may have tags associated to it. You can click on it to open it and see its content.',
+        'This is an awesome note. You can tap on it to view and edit it or, if you’re done with it, delete it.',
       disableBeacon: true
     },
     {
       target: '.add-note-icon',
       content:
-        'Click here to add a new note. Simply write a title, write the content of your note, and add tags on the bottom left corner.',
+        'Add a new note. Simply write a title, the content and add the tags you wish to.',
       disableBeacon: true
     },
     {
       target: '.settings-icon',
-      content:
-        "On the settings you'll be able to sort your notes and you can also create, edit and delete your tags.",
+      content: 'Sort your notes and create, edit or delete tags.',
       disableBeacon: true
     },
     {
       target: '#notes-view',
       content:
-        'On this dropdown is where you can filter all the notes you are seeing. You can see them all at once, or only from a specific tag.',
-      disableBeacon: true
-    },
-    {
-      target: '.notes-counter',
-      content: 'This number shows you how many notes you have.',
+        'Filter all the notes you are seeing. You can see them all at once or select a specific tag.',
       disableBeacon: true
     }
   ],
   TASKS: [
     {
-      target: 'body',
-      placement: 'center' as 'center',
-      title: 'Tasks',
-      content:
-        'This is your advanced To-do list for all your tasks. Once you create a task, you can then conclude it here by clicking on the status circle of each task.',
-      disableBeacon: true
-    },
-    {
       target: '.single-task:first-child',
       content:
-        'This is a single task. Each task has a title, the due date and it may be associated with a category. To mark the task as completed, simply click on the circle on the right side. To edit the task, just click on it.',
+        'You can tap on each task to edit it. To mark the task as completed, simply tap the purple circle.',
       disableBeacon: true
     },
     {
       target: '.add-task-icon',
       content:
-        'Click here to add a new task. Simply write a title for your task, select the due date and associate it with a category if you want to keep things organized.',
+        'Add a new task. Simply insert a title, select the due date and select an inbox for it if you wish to.',
       disableBeacon: true
     },
     {
       target: '.settings-icon',
-      content:
-        "On the settings you'll be able to sort your tasks and you can also create, edit and delete your categories.",
+      content: 'Sort your tasks and create, edit or delete your inboxes.',
       disableBeacon: true
     },
     {
       target: '.done-tasks',
-      content: 'This is where you can see all of your completed tasks.',
+      content: 'Check all of the tasks you completed.',
       disableBeacon: true
     },
     {
       target: '#tasks-view',
       content:
-        'On this dropdown you can filter what tasks you are seeing. You can see all, only see the ones that due for today, the ones that are due for tomorrow or simply see by category.',
-      disableBeacon: true
-    },
-    {
-      target: '.tasks-counter',
-      content: 'This is number of tasks you have on the current view.',
+        'Filter what tasks you are seeing. Everytime you create a new inbox, it will show up here.',
       disableBeacon: true
     }
   ],
   EXPENSES: [
     {
-      target: '#root',
-      placement: 'center' as 'center',
-      title: 'Expenses',
-      content:
-        'This is where you control all of your expenses. Everytime you buy something, make sure you track it here.',
-      disableBeacon: true
-    },
-    {
       target: '.single-expense:first-child',
       content:
-        'This is a single expense. Each expense has a value, a title, the date of said expense and it may be associated with a category. To edit the expense, just click on it.',
+        'Each expenses will show up beneath the date where it was made. Tap on it to edit it.',
       disableBeacon: true
     },
     {
       target: '.add-expense-icon',
       content:
-        'Click here to add a new expense. Simply input the value of your expense, write a title for it, select the expense date and associate it with a category to keep things organized.',
+        'Add new expenses. Just insert the value, a title, the date when it was made and associate it with a category.',
       disableBeacon: true
     },
     {
       target: '.settings-icon',
       content:
-        "On the settings you'll be able to sort your tasks and you can also create, edit and delete your categories.",
+        'Select your preferred currency and create, edit or delete your categories.',
       disableBeacon: true
     },
     {
       target: '.stats-icon',
       content:
-        'In here you can check some stats on your spendings - in what months did you spend the most, see expenses by categories, etc.',
+        'Analyse your spendings - in what months did you spend the most, what categories are you spending more, etc.',
       disableBeacon: true
     },
     {
       target: '#expenses-view',
       content:
-        'Select here the period that you want to see. You will only see expenses that were made in this time frame.',
-      disableBeacon: true
-    },
-    {
-      target: '.expenses-counter',
-      content:
-        'This is the sum of all the expenses you have for the selected period.',
+        'Set the time frame that you want to see. You will only see expenses that were made during this time.',
       disableBeacon: true
     }
   ],
   HABITS: [
     {
-      target: '#root',
-      placement: 'center' as 'center',
-      title: 'Habits',
-      content:
-        'Here you can track all of your habits in a really simple way. Just add whatever habits you want to start implementing and mark the days where you follow or not follow each one.',
-      disableBeacon: true
-    },
-    {
       target: '.calendar-header',
       content:
-        'This is the calendar where you see all of your habits. Use the arrows next to the month to navigate through it.',
+        'Use the calendar header to navigate between dates by tapping the arrows.',
       disableBeacon: true
     },
     {
       target: '.single-habit',
       content:
-        "This is an habit. Everyday you follow the habit successfully, just click on that day to mark it as done. If you didn't follow it, click twice to mark it as not done. You can click on the habit itself to edit it.",
+        'When tracking an habit, tap once on the days you were successful and double tap on the ones that you weren’t.',
       disableBeacon: true
     },
     {
       target: '.add-habit-icon',
-      content:
-        "Click here to add a new habit. Just give it a name and you're done!",
+      content: "Add a new habit. Just give it a title and you're done!",
       disableBeacon: true
     },
     {
       target: '.stats-icon',
       content:
-        'In here you can check some stats on your habits - what is your success rate, what was your longest streak, etc.',
+        'Analyse you habits and keep an eye on your success rate, your streaks, etc',
       disableBeacon: true
     },
     {
       target: '#habits-view',
-      content:
-        'Select here if you want to see all habits at once or only one at a time.',
+      content: 'Choose here to see all habits at once or only one at a time.',
       disableBeacon: true
     },
     {
       target: '.habits-counter',
       content:
-        'This shows the number of active habits you have when seeing all habits. When you are only seeing one single habit this will show what is your current streak.',
+        "Number of habits you have when seeing all habits at once. If you choose a specific habit you'll find here your current success streak for that habit.",
       disableBeacon: true
     }
   ],
@@ -196,27 +161,6 @@ export const pagesSteps: { [key: string]: any } = {
       target: '.tags-input',
       content:
         "To insert tags on a note start typing and your existing tags will appear for you to select. To create a new one just type the name for it and press 'Enter'.",
-      disableBeacon: true
-    }
-  ],
-  DETAILNOTE: [
-    {
-      target: '#root',
-      placement: 'center' as 'center',
-      title: 'Note Detail',
-      content:
-        'This is where you see your note in detail. Whenever you edit the title, content or tags make sure you save the changes by clickig on the button that will appear.',
-      disableBeacon: true
-    },
-    {
-      target: '.detail-title',
-      content: 'You can edit the title here.',
-      disableBeacon: true
-    },
-    {
-      target: '.detail-tags',
-      content:
-        'Add or edit tags on this section. To edit or delete a tag, simply click on it.',
       disableBeacon: true
     }
   ]
