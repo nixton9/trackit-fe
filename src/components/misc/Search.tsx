@@ -50,6 +50,7 @@ const Search: React.FC = () => {
             value={inputVal}
             onChange={e => setInputVal(e.target.value)}
             data-test-id="search-input"
+            data-lpignore="true"
           />
         </form>
       </Styled.SearchIcon>

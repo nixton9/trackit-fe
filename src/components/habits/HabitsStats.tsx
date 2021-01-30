@@ -67,7 +67,7 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
   )
 
   useEffect(() => {
-    if (data) {
+    if (data && data.habits.length) {
       setSelectedHabit(
         preSelectedHabit ? preSelectedHabit : data.habits[0].id.toString()
       )

@@ -137,21 +137,25 @@ export const HabitsList: React.FC<HabitsListProps> = ({
           </Styled.PageHeader__View>
 
           <Styled.PageHeader__Settings>
-            <Tooltip
-              eventOff={'onClick'}
-              content={'Stats'}
-              arrow={false}
-              direction={'up'}
-              className="tooltip"
-            >
-              <Link
-                to={showAll ? `/habits/stats` : `/habits/stats/${Number(view)}`}
-                className="mbl-click"
-                data-test-id="habits-stats-link"
+            {data && data.habits.length && (
+              <Tooltip
+                eventOff={'onClick'}
+                content={'Stats'}
+                arrow={false}
+                direction={'up'}
+                className="tooltip"
               >
-                <StatsIcon className="stats-icon" />
-              </Link>
-            </Tooltip>
+                <Link
+                  to={
+                    showAll ? `/habits/stats` : `/habits/stats/${Number(view)}`
+                  }
+                  className="mbl-click"
+                  data-test-id="habits-stats-link"
+                >
+                  <StatsIcon className="stats-icon" />
+                </Link>
+              </Tooltip>
+            )}
 
             <Tooltip
               eventOff={'onClick'}
