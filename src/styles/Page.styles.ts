@@ -698,8 +698,8 @@ const SettingsBlock = styled.div`
       font-size: 1.3rem;
       font-weight: ${props => props.theme.fontMedium};
       color: ${props => props.theme.grey};
-      top: 2.7rem;
-      left: 0.5rem;
+      top: 5rem;
+      left: 1rem;
     }
   }
 

@@ -24,11 +24,11 @@ export const GlobalStyle = createGlobalStyle`
         }
 
         @media ${device.mobileS} {
-            font-size: 8px;
+            font-size: 7.5px;
         }
 
         @media ${device.mobileXS} {
-            font-size: 7px;
+            font-size: 6.5px;
         }
     }
 
