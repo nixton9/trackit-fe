@@ -23,7 +23,7 @@ type SingleChart__ExpenseProps = {
 const PageContainer = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(100px, 1fr);
   grid-gap: 4rem;
   width: 100vw;
   height: 100vh;
@@ -38,7 +38,7 @@ const PageContainer = styled.div`
   }
 
   &.note-detail {
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto auto minmax(100px, 1fr);
     grid-template-columns: 100%;
     width: unset;
     height: unset;
@@ -61,7 +61,7 @@ const HabitsContainer = styled.div`
   position: relative;
   background-color: ${props => props.theme.backgroundBlack};
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(100px, 1fr);
   width: 100vw;
   height: 100vh;
   max-width: 100vw;
@@ -254,6 +254,7 @@ const PageHeader__Settings = styled.div`
 const PageContent = styled.section`
   position: relative;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-right: ${props => props.theme.spacingXXS};
 
   &.settings-page {
