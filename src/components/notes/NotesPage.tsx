@@ -58,7 +58,7 @@ const NotesPage: React.FC = () => {
         />
       )}
 
-      <Styled.PageContainer className="overflow">
+      <Styled.PageContainer className="overflow page-container">
         <div className="page-header-wrapper">
           <Styled.PageTitle>Notes</Styled.PageTitle>
 

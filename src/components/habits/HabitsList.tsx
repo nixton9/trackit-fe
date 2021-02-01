@@ -90,7 +90,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
   const showWalkthrough = showHabWT && !error && !loading
 
   return (
-    <Styled.HabitsContainer className="overflow overflow-calendar">
+    <Styled.HabitsContainer className="overflow overflow-calendar page-container">
       {showWalkthrough && (
         <Walkthrough
           page={Pages.HABITS}

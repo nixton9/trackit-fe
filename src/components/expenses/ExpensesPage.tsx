@@ -66,7 +66,7 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
   const showWalkthrough = showExpWT && !error && !loading
 
   return (
-    <Styled.PageContainer className="overflow">
+    <Styled.PageContainer className="overflow page-container">
       {stats ? (
         <ExpensesStats
           data={data}

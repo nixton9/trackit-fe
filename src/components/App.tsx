@@ -34,6 +34,28 @@ const App: React.FC = () => {
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage('isDarkTheme', true)
 
   useEffect(() => {
+    // Hack for IOS scroll issue
+    const body = document.querySelector('body')
+    if (window) {
+      const isIos = () => {
+        const userAgent = window.navigator.userAgent.toLowerCase()
+        return /iphone|ipad|ipod/.test(userAgent)
+      }
+      const isInStandaloneMode = () =>
+        // @ts-ignore
+        'standalone' in window.navigator && window.navigator.standalone
+
+      if (isIos() && body) {
+        body.classList.add('is-ios')
+
+        if (!isInStandaloneMode()) {
+          body.classList.add('ios-padding')
+        }
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     token ? setLoggedIn(true) : setLoggedIn(false)
   }, [token])
 

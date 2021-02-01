@@ -69,7 +69,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
         />
       )}
 
-      <Styled.PageContainer className="overflow">
+      <Styled.PageContainer className="overflow page-container">
         <div className="page-header-wrapper">
           <Styled.PageTitle>{done && 'Completed'} Tasks</Styled.PageTitle>
 

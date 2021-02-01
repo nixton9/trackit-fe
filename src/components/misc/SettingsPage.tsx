@@ -257,7 +257,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
     showAddNotesWT
 
   return (
-    <Styled.PageContainer className="overflow">
+    <Styled.PageContainer className="overflow page-container">
       <div className="page-header-wrapper">
         <UserHeader user={user} />
       </div>
