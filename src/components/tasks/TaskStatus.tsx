@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const TaskStatusDiv = styled.div`
+  position: relative;
   width: 2rem;
   height: 2rem;
   border: solid 2px ${props => props.theme.accent};
@@ -17,6 +18,16 @@ const TaskStatusDiv = styled.div`
 
   &.done {
     background-color: ${props => props.theme.accent};
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `
 
