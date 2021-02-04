@@ -85,7 +85,12 @@ const EditorContainer = styled.div<EditorContainerProps>`
     color: ${props => props.theme.white};
   }
 
-  .ql-editor p {
+  .ql-editor ul {
+    padding-left: 0;
+  }
+
+  .ql-editor p,
+  .ql-editor li {
     color: ${props => props.theme.white};
     font-size: 1.6rem;
     line-height: 3rem;
