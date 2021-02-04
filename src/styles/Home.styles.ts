@@ -2,7 +2,7 @@ import styled from 'styled-components/macro'
 import { device } from './theme'
 
 const HomeLogo = styled.h1`
-  position: absolute;
+  position: fixed;
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);

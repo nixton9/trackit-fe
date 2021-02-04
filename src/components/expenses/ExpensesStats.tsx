@@ -13,6 +13,7 @@ import { isSameYear } from '../../utils/dateHelpers'
 import { yearsViewOptions } from '../../utils/selectsOptions'
 import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
 import Tooltip from 'react-tooltip-lite'
+import { TouchScrollable } from 'react-scrolllock'
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import { ApolloError } from '@apollo/client'
@@ -123,80 +124,84 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
         </Styled.PageHeader>
       </div>
 
-      <Styled.PageContent className="desktop-grid expenses">
-        {error ? (
-          <PageError>
-            We're sorry but it seems there was a problem reaching the server.
-          </PageError>
-        ) : loading ? (
-          <PageLoading />
-        ) : data && data.expenses.length === 0 ? (
-          <Styled.SingleChart className="no-data">
-            <p>There aren't any expenses to analyse.</p>
-          </Styled.SingleChart>
-        ) : (
-          <>
-            <Styled.SingleChart area="bar-chart">
-              <Styled.SingleChart__Title>
-                Monthly balance
-              </Styled.SingleChart__Title>
-              <BarGraph
-                data={barChartData}
-                bars={barChartBars}
-                type={ModuleTypes.Expenses}
-              />
+      <TouchScrollable>
+        <Styled.PageContent className="desktop-grid expenses">
+          {error ? (
+            <PageError>
+              We're sorry but it seems there was a problem reaching the server.
+            </PageError>
+          ) : loading ? (
+            <PageLoading />
+          ) : data && data.expenses.length === 0 ? (
+            <Styled.SingleChart className="no-data">
+              <p>There aren't any expenses to analyse.</p>
             </Styled.SingleChart>
+          ) : (
+            <>
+              <Styled.SingleChart area="bar-chart">
+                <Styled.SingleChart__Title>
+                  Monthly balance
+                </Styled.SingleChart__Title>
+                <BarGraph
+                  data={barChartData}
+                  bars={barChartBars}
+                  type={ModuleTypes.Expenses}
+                />
+              </Styled.SingleChart>
 
-            <Styled.SingleChart area="pie-chart">
-              <Styled.SingleChart__Title>
-                By categories
-              </Styled.SingleChart__Title>
-              <Styled.SingleChart__Flex>
-                <PieGraph data={pieChartData} type={ModuleTypes.Expenses} />
-                <Styled.SingleChart__CategoriesList>
-                  {pieChartData.map(cat => (
-                    <Styled.SingleChart__Category
-                      bgColor={cat.color}
-                      key={cat.name}
+              <Styled.SingleChart area="pie-chart">
+                <Styled.SingleChart__Title>
+                  By categories
+                </Styled.SingleChart__Title>
+                <Styled.SingleChart__Flex>
+                  <PieGraph data={pieChartData} type={ModuleTypes.Expenses} />
+                  <Styled.SingleChart__CategoriesList>
+                    {pieChartData.map(cat => (
+                      <Styled.SingleChart__Category
+                        bgColor={cat.color}
+                        key={cat.name}
+                      >
+                        <div>
+                          <p className="name">{cat.name}</p>
+                          <p className="percentage">{cat.per}%</p>
+                        </div>
+                        <p className="value">
+                          {cat.value} {showCurrencySym(currency)}
+                        </p>
+                      </Styled.SingleChart__Category>
+                    ))}
+                  </Styled.SingleChart__CategoriesList>
+                </Styled.SingleChart__Flex>
+              </Styled.SingleChart>
+
+              <Styled.SingleChart area="list">
+                <Styled.SingleChart__Title>
+                  Top expenses
+                </Styled.SingleChart__Title>
+                <Styled.SingleChart__TopExpenses>
+                  {topExpenses.map((exp, i) => (
+                    <Styled.SingleChart__Expense
+                      key={exp.id}
+                      color={exp.type && exp.type.color}
+                      position={i + 1}
                     >
                       <div>
-                        <p className="name">{cat.name}</p>
-                        <p className="percentage">{cat.per}%</p>
+                        <p className="title">{exp.title ? exp.title : '-'}</p>
+                        {exp.type && (
+                          <p className="category">{exp.type.name}</p>
+                        )}
                       </div>
                       <p className="value">
-                        {cat.value} {showCurrencySym(currency)}
+                        {exp.value} {showCurrencySym(currency)}
                       </p>
-                    </Styled.SingleChart__Category>
+                    </Styled.SingleChart__Expense>
                   ))}
-                </Styled.SingleChart__CategoriesList>
-              </Styled.SingleChart__Flex>
-            </Styled.SingleChart>
-
-            <Styled.SingleChart area="list">
-              <Styled.SingleChart__Title>
-                Top expenses
-              </Styled.SingleChart__Title>
-              <Styled.SingleChart__TopExpenses>
-                {topExpenses.map((exp, i) => (
-                  <Styled.SingleChart__Expense
-                    key={exp.id}
-                    color={exp.type && exp.type.color}
-                    position={i + 1}
-                  >
-                    <div>
-                      <p className="title">{exp.title ? exp.title : '-'}</p>
-                      {exp.type && <p className="category">{exp.type.name}</p>}
-                    </div>
-                    <p className="value">
-                      {exp.value} {showCurrencySym(currency)}
-                    </p>
-                  </Styled.SingleChart__Expense>
-                ))}
-              </Styled.SingleChart__TopExpenses>
-            </Styled.SingleChart>
-          </>
-        )}
-      </Styled.PageContent>
+                </Styled.SingleChart__TopExpenses>
+              </Styled.SingleChart>
+            </>
+          )}
+        </Styled.PageContent>
+      </TouchScrollable>
     </>
   )
 }

@@ -19,6 +19,7 @@ import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as StatsIcon } from '../../assets/icons/stats.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
+import ScrollLock from 'react-scrolllock'
 import { useQuery, useMutation, ApolloError } from '@apollo/client'
 import { Link } from 'react-router-dom'
 
@@ -27,13 +28,15 @@ type HabitsListProps = {
   error: ApolloError | undefined
   loading: boolean
   setActiveContent: Dispatch<SetStateAction<string>>
+  isIos?: boolean
 }
 
 export const HabitsList: React.FC<HabitsListProps> = ({
   data,
   error,
   loading,
-  setActiveContent
+  setActiveContent,
+  isIos
 }) => {
   const [view, setView] = useState('all')
   const [sortBy, setSortBy] = useState<SortBySettings>(
@@ -90,116 +93,122 @@ export const HabitsList: React.FC<HabitsListProps> = ({
   const showWalkthrough = showHabWT && !error && !loading
 
   return (
-    <Styled.HabitsContainer className="overflow overflow-calendar">
-      {showWalkthrough && (
-        <Walkthrough
-          page={Pages.HABITS}
-          setShow={setShowHabWT}
-          selectLastButOneSingle={sortedHabits.length > 1}
-        />
-      )}
+    <>
+      <ScrollLock isActive={isIos} />
 
-      <Styled.PageContainer className="habits">
-        <Styled.PageTitle>Habits</Styled.PageTitle>
+      <Styled.HabitsContainer className="overflow overflow-calendar page-container">
+        {showWalkthrough && (
+          <Walkthrough
+            page={Pages.HABITS}
+            setShow={setShowHabWT}
+            selectLastButOneSingle={sortedHabits.length > 1}
+          />
+        )}
 
-        <Styled.PageHeader>
-          <Styled.PageHeader__View>
-            <Styled.PageHeader__View__Dropdown className="habits">
-              <SelectMenu
-                id="habits-view"
-                value={view}
-                onChange={handleViewChange}
-                options={habitsViewOptions(data)}
-                itemClass={'view-select-item'}
-              />
-            </Styled.PageHeader__View__Dropdown>
+        <Styled.PageContainer className="habits">
+          <Styled.PageTitle>Habits</Styled.PageTitle>
 
-            <Tooltip
-              tipContentClassName="visible-tooltip"
-              content={
-                showAll
-                  ? data
-                    ? `${data.habits.length} habits`
-                    : '0 days'
-                  : currHabit && 'Current streak'
-              }
-              arrow={false}
-              direction={'up'}
-            >
-              <Styled.PageHeader__View__Counter className="smaller habits-counter">
-                {data
-                  ? showAll
-                    ? data.habits.length
-                    : currHabit && getCurrentStreak(currHabit.days) + ' days'
-                  : 0}
-              </Styled.PageHeader__View__Counter>
-            </Tooltip>
-          </Styled.PageHeader__View>
+          <Styled.PageHeader>
+            <Styled.PageHeader__View>
+              <Styled.PageHeader__View__Dropdown className="habits">
+                <SelectMenu
+                  id="habits-view"
+                  value={view}
+                  onChange={handleViewChange}
+                  options={habitsViewOptions(data)}
+                  itemClass={'view-select-item'}
+                />
+              </Styled.PageHeader__View__Dropdown>
 
-          <Styled.PageHeader__Settings>
-            {data && data.habits.length && (
+              <Tooltip
+                tipContentClassName="visible-tooltip"
+                content={
+                  showAll
+                    ? data
+                      ? `${data.habits.length} habits`
+                      : '0 days'
+                    : currHabit && 'Current streak'
+                }
+                arrow={false}
+                direction={'up'}
+              >
+                <Styled.PageHeader__View__Counter className="smaller habits-counter">
+                  {data
+                    ? showAll
+                      ? data.habits.length
+                      : currHabit && getCurrentStreak(currHabit.days) + ' days'
+                    : 0}
+                </Styled.PageHeader__View__Counter>
+              </Tooltip>
+            </Styled.PageHeader__View>
+
+            <Styled.PageHeader__Settings>
+              {data && data.habits.length && (
+                <Tooltip
+                  eventOff={'onClick'}
+                  content={'Stats'}
+                  arrow={false}
+                  direction={'up'}
+                  className="tooltip"
+                >
+                  <Link
+                    to={
+                      showAll
+                        ? `/habits/stats`
+                        : `/habits/stats/${Number(view)}`
+                    }
+                    className="mbl-click"
+                    data-test-id="habits-stats-link"
+                  >
+                    <StatsIcon className="stats-icon" />
+                  </Link>
+                </Tooltip>
+              )}
+
               <Tooltip
                 eventOff={'onClick'}
-                content={'Stats'}
+                content={'Settings'}
                 arrow={false}
                 direction={'up'}
                 className="tooltip"
               >
-                <Link
-                  to={
-                    showAll ? `/habits/stats` : `/habits/stats/${Number(view)}`
-                  }
-                  className="mbl-click"
-                  data-test-id="habits-stats-link"
-                >
-                  <StatsIcon className="stats-icon" />
-                </Link>
+                <div className="mbl-click tooltip">
+                  <HabitsSettings sortBy={sortBy} setSortBy={setSortBy} />
+                </div>
               </Tooltip>
-            )}
+            </Styled.PageHeader__Settings>
+          </Styled.PageHeader>
+        </Styled.PageContainer>
 
-            <Tooltip
-              eventOff={'onClick'}
-              content={'Settings'}
-              arrow={false}
-              direction={'up'}
-              className="tooltip"
-            >
-              <div className="mbl-click tooltip">
-                <HabitsSettings sortBy={sortBy} setSortBy={setSortBy} />
-              </div>
-            </Tooltip>
-          </Styled.PageHeader__Settings>
-        </Styled.PageHeader>
-      </Styled.PageContainer>
-
-      {error ? (
-        <Styled.PageContent>
-          <PageError>
-            We're sorry but it seems there was a problem reaching the server.
-          </PageError>
-        </Styled.PageContent>
-      ) : loading ? (
-        <Styled.PageContent>
-          <PageLoading />
-        </Styled.PageContent>
-      ) : data.habits.length ? (
-        <CalendarContainer
-          showAll={showAll}
-          sortedHabits={sortedHabits}
-          currHabit={currHabit}
-          handleDayClick={handleDayClick}
-        />
-      ) : (
-        <Styled.PageContent__NoData>
-          <NoDataIcon />
-        </Styled.PageContent__NoData>
-      )}
-      <Styled.PageAddItem
-        onClick={() => setActiveContent(ModuleTypes.Habits)}
-        data-test-id="add-habit"
-      >
-        <PlusIcon className="add-habit-icon" />
-      </Styled.PageAddItem>
-    </Styled.HabitsContainer>
+        {error ? (
+          <Styled.PageContent>
+            <PageError>
+              We're sorry but it seems there was a problem reaching the server.
+            </PageError>
+          </Styled.PageContent>
+        ) : loading ? (
+          <Styled.PageContent>
+            <PageLoading />
+          </Styled.PageContent>
+        ) : data.habits.length ? (
+          <CalendarContainer
+            showAll={showAll}
+            sortedHabits={sortedHabits}
+            currHabit={currHabit}
+            handleDayClick={handleDayClick}
+          />
+        ) : (
+          <Styled.PageContent__NoData>
+            <NoDataIcon />
+          </Styled.PageContent__NoData>
+        )}
+        <Styled.PageAddItem
+          onClick={() => setActiveContent(ModuleTypes.Habits)}
+          data-test-id="add-habit"
+        >
+          <PlusIcon className="add-habit-icon" />
+        </Styled.PageAddItem>
+      </Styled.HabitsContainer>
+    </>
   )
 }

@@ -14,6 +14,7 @@ import {
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as TrashIcon } from '../../assets/icons/trash.svg'
 import { askNotificationPermission } from '../../push-notification'
+import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import { useMutation } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import { LoadingSpinner } from './LoadingSpinner'
@@ -25,6 +26,7 @@ type SettingsProps = {
   setNotToken: (not_token: string | null) => void
   isDarkTheme: boolean
   setIsDarkTheme: (checked: boolean) => void
+  isIos?: boolean
 }
 
 const SettingsPage: React.FC<SettingsProps> = ({
@@ -33,7 +35,8 @@ const SettingsPage: React.FC<SettingsProps> = ({
   notToken,
   setNotToken,
   isDarkTheme,
-  setIsDarkTheme
+  setIsDarkTheme,
+  isIos
 }) => {
   const [name, setName] = useState(user.name)
   const [image, setImage] = useState(user.image)
@@ -257,159 +260,164 @@ const SettingsPage: React.FC<SettingsProps> = ({
     showAddNotesWT
 
   return (
-    <Styled.PageContainer className="overflow">
-      <div className="page-header-wrapper">
-        <UserHeader user={user} />
-      </div>
+    <>
+      <ScrollLock isActive={isIos} />
+      <Styled.PageContainer className="overflow page-container">
+        <div className="page-header-wrapper">
+          <UserHeader user={user} />
+        </div>
 
-      <Styled.PageContent className="settings-page">
-        <Styled.Settings__Title>User Profile</Styled.Settings__Title>
+        <TouchScrollable>
+          <Styled.PageContent className="settings-page">
+            <Styled.Settings__Title>User Profile</Styled.Settings__Title>
 
-        <Styled.SettingsBlock>
-          {isLoadingProfile || loadingUserInfo ? (
-            <LoadingSpinner />
-          ) : (
-            <>
-              <div>
-                <label>Name</label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  data-test-id="profile-name-input"
-                />
-              </div>
+            <Styled.SettingsBlock>
+              {isLoadingProfile || loadingUserInfo ? (
+                <LoadingSpinner />
+              ) : (
+                <>
+                  <div>
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={e => setName(e.target.value)}
+                      data-test-id="profile-name-input"
+                    />
+                  </div>
 
-              <div className="image">
-                <div className="file-picker">
-                  <input
-                    type="file"
-                    id="image-file"
-                    onChange={handleChangeImage}
-                  />
-                  <button className="inline-btn word">
-                    <label htmlFor="image-file">
-                      Change picture <PlusIcon />
-                    </label>
-                  </button>
-                  <small>{selectedFile}</small>
-                </div>
-                {user.image && (
-                  <button
-                    className="inline-btn word"
-                    onClick={handleDeleteImage}
+                  <div className="image">
+                    <div className="file-picker">
+                      <input
+                        type="file"
+                        id="image-file"
+                        onChange={handleChangeImage}
+                      />
+                      <button className="inline-btn word">
+                        <label htmlFor="image-file">
+                          Change picture <PlusIcon />
+                        </label>
+                      </button>
+                      <small>{selectedFile}</small>
+                    </div>
+                    {user.image && (
+                      <button
+                        className="inline-btn word"
+                        onClick={handleDeleteImage}
+                      >
+                        <span>
+                          Delete picture <TrashIcon />
+                        </span>
+                      </button>
+                    )}
+                  </div>
+
+                  <Styled.SettingsButton
+                    onClick={updateProfile}
+                    disabled={
+                      name === user.name &&
+                      image === user.image &&
+                      !Boolean(selectedFile)
+                    }
+                    data-test-id="change-profile-button"
                   >
-                    <span>
-                      Delete picture <TrashIcon />
-                    </span>
-                  </button>
-                )}
-              </div>
+                    Apply changes
+                  </Styled.SettingsButton>
+                </>
+              )}
+            </Styled.SettingsBlock>
 
-              <Styled.SettingsButton
-                onClick={updateProfile}
-                disabled={
-                  name === user.name &&
-                  image === user.image &&
-                  !Boolean(selectedFile)
-                }
-                data-test-id="change-profile-button"
-              >
-                Apply changes
-              </Styled.SettingsButton>
-            </>
-          )}
-        </Styled.SettingsBlock>
+            <Styled.Settings__Title>Change Password</Styled.Settings__Title>
 
-        <Styled.Settings__Title>Change Password</Styled.Settings__Title>
+            <Styled.SettingsBlock>
+              {loadingPassword ? (
+                <LoadingSpinner />
+              ) : (
+                <>
+                  <div>
+                    <label>Current password</label>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
+                      placeholder="********"
+                      data-test-id="profile-password-input"
+                    />
+                  </div>
 
-        <Styled.SettingsBlock>
-          {loadingPassword ? (
-            <LoadingSpinner />
-          ) : (
-            <>
-              <div>
-                <label>Current password</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  placeholder="********"
-                  data-test-id="profile-password-input"
-                />
-              </div>
+                  <div className="new-password">
+                    <label>New password</label>
+                    <input
+                      type="password"
+                      value={newPassword}
+                      onChange={e => setNewPassword(e.target.value)}
+                      placeholder="********"
+                      data-test-id="profile-newpassword-input"
+                    />
+                  </div>
 
-              <div className="new-password">
-                <label>New password</label>
-                <input
-                  type="password"
-                  value={newPassword}
-                  onChange={e => setNewPassword(e.target.value)}
-                  placeholder="********"
-                  data-test-id="profile-newpassword-input"
-                />
-              </div>
+                  <Styled.SettingsButton
+                    onClick={updateUserPW}
+                    disabled={!password || !newPassword}
+                    data-test-id="change-password-button"
+                  >
+                    Confirm
+                  </Styled.SettingsButton>
+                </>
+              )}
+            </Styled.SettingsBlock>
 
-              <Styled.SettingsButton
-                onClick={updateUserPW}
-                disabled={!password || !newPassword}
-                data-test-id="change-password-button"
-              >
-                Confirm
-              </Styled.SettingsButton>
-            </>
-          )}
-        </Styled.SettingsBlock>
+            <Styled.Settings__Title>Other Settings</Styled.Settings__Title>
 
-        <Styled.Settings__Title>Other Settings</Styled.Settings__Title>
+            <Styled.SettingsBlock className="cols-3">
+              {loadingUserNot ? (
+                <LoadingSpinner />
+              ) : (
+                <>
+                  <div className="notifications">
+                    <label>Push Notifications</label>
+                    <ToggleButton
+                      isChecked={Boolean(notToken)}
+                      setIsChecked={e =>
+                        handleNotificationPermission(e, Boolean(notToken))
+                      }
+                    />
+                  </div>
 
-        <Styled.SettingsBlock className="cols-3">
-          {loadingUserNot ? (
-            <LoadingSpinner />
-          ) : (
-            <>
-              <div className="notifications">
-                <label>Push Notifications</label>
-                <ToggleButton
-                  isChecked={Boolean(notToken)}
-                  setIsChecked={e =>
-                    handleNotificationPermission(e, Boolean(notToken))
-                  }
-                />
-              </div>
+                  <div className="walkthrough">
+                    <label>Show walkthrough</label>
+                    <ToggleButton
+                      isChecked={isWalkthroughOn}
+                      setIsChecked={showWalkthrough}
+                    />
+                  </div>
 
-              <div className="walkthrough">
-                <label>Show walkthrough</label>
-                <ToggleButton
-                  isChecked={isWalkthroughOn}
-                  setIsChecked={showWalkthrough}
-                />
-              </div>
+                  <div className="theme">
+                    <label>Dark theme</label>
+                    <ToggleButton
+                      isChecked={isDarkTheme}
+                      setIsChecked={setIsDarkTheme}
+                    />
+                  </div>
+                </>
+              )}
+            </Styled.SettingsBlock>
 
-              <div className="theme">
-                <label>Dark theme</label>
-                <ToggleButton
-                  isChecked={isDarkTheme}
-                  setIsChecked={setIsDarkTheme}
-                />
-              </div>
-            </>
-          )}
-        </Styled.SettingsBlock>
+            <Styled.Settings__Title>Support</Styled.Settings__Title>
 
-        <Styled.Settings__Title>Support</Styled.Settings__Title>
-
-        <Styled.SettingsBlock className="no-grid">
-          <p>
-            Having a problem with the app? Or you're wanting to request a new
-            feature? Just send a message{' '}
-            <a href="mailto:eduardojoaoaraujo@gmail.com?subject=TRCKR Support">
-              here
-            </a>
-          </p>
-        </Styled.SettingsBlock>
-      </Styled.PageContent>
-    </Styled.PageContainer>
+            <Styled.SettingsBlock className="no-grid">
+              <p>
+                Having a problem with the app? Or you're wanting to request a
+                new feature? Just send a message{' '}
+                <a href="mailto:eduardojoaoaraujo@gmail.com?subject=TRCKR Support">
+                  here
+                </a>
+              </p>
+            </Styled.SettingsBlock>
+          </Styled.PageContent>
+        </TouchScrollable>
+      </Styled.PageContainer>
+    </>
   )
 }
 

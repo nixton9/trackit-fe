@@ -75,7 +75,7 @@ export const lightTheme = {
   hoverBlack: '#ebecec',
   darkenAccent: '#3e2377',
   grey: '#9e9e9e',
-  surfacesBlack: '#e4e4e4',
+  surfacesBlack: '#eaeaea',
   activeBackground: '#cecece',
   inputAutofill: '#E0E0E0',
   widgetBg: '#dadada',

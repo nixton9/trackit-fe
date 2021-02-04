@@ -33,10 +33,6 @@ const App: React.FC = () => {
   const [notToken, setNotToken] = useLocalStorage('notToken', '')
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage('isDarkTheme', true)
 
-  useEffect(() => {
-    token ? setLoggedIn(true) : setLoggedIn(false)
-  }, [token])
-
   const logout = () => {
     setToken('')
     setUserInfo({})
@@ -60,6 +56,29 @@ const App: React.FC = () => {
     }
   })
 
+  const isIos = () => {
+    if (window) {
+      const userAgent = window.navigator.userAgent.toLowerCase()
+      return /iphone|ipad|ipod/.test(userAgent)
+    }
+    return false
+  }
+
+  useEffect(() => {
+    const body = document.querySelector('body')
+    const isInStandaloneMode = () =>
+      // @ts-ignore
+      'standalone' in window.navigator && window.navigator.standalone
+
+    if (isIos() && body && !isInStandaloneMode()) {
+      body.classList.add('ios-padding')
+    }
+  }, [])
+
+  useEffect(() => {
+    token ? setLoggedIn(true) : setLoggedIn(false)
+  }, [token])
+
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -69,21 +88,21 @@ const App: React.FC = () => {
             <RecoilRoot>
               <Switch>
                 <Route exact path="/">
-                  <Home userName={userInfo.name} />
+                  <Home userName={userInfo.name} isIos={isIos()} />
                 </Route>
                 <Route exact path="/notes">
-                  <NotesPage />
+                  <NotesPage isIos={isIos()} />
                 </Route>
                 <Route exact path="/tasks">
-                  <TasksPage />
+                  <TasksPage isIos={isIos()} />
                 </Route>
                 <Route exact path="/expenses">
-                  <ExpensesPage />
+                  <ExpensesPage isIos={isIos()} />
                 </Route>
                 <Route
                   exact
                   path="/habits"
-                  render={props => <HabitsPage {...props} />}
+                  render={props => <HabitsPage {...props} isIos={isIos()} />}
                 />
                 <Route exact path="/settings">
                   <SettingsPage
@@ -93,12 +112,13 @@ const App: React.FC = () => {
                     setNotToken={setNotToken}
                     isDarkTheme={isDarkTheme}
                     setIsDarkTheme={setIsDarkTheme}
+                    isIos={isIos()}
                   />
                 </Route>
                 <Route
                   exact
                   path="/search/:query"
-                  render={props => <SearchPage {...props} />}
+                  render={props => <SearchPage {...props} isIos={isIos()} />}
                 />
                 <Route
                   exact
@@ -107,22 +127,29 @@ const App: React.FC = () => {
                     <NoteDetail
                       {...props}
                       setWidgets={(bool: boolean) => setShowWidgets(bool)}
+                      isIos={isIos()}
                     />
                   )}
                 />
                 <Route
                   exact
                   path="/tasks/done"
-                  render={props => <TasksPage {...props} done />}
+                  render={props => (
+                    <TasksPage {...props} isIos={isIos()} done />
+                  )}
                 />
                 <Route
                   exact
                   path="/expenses/stats"
-                  render={props => <ExpensesPage {...props} stats />}
+                  render={props => (
+                    <ExpensesPage {...props} stats isIos={isIos()} />
+                  )}
                 />
                 <Route
                   path="/habits/stats/:habit?"
-                  render={props => <HabitsPage {...props} stats />}
+                  render={props => (
+                    <HabitsPage {...props} isIos={isIos()} stats />
+                  )}
                 />
               </Switch>
               <Notification />

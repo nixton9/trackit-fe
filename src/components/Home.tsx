@@ -13,10 +13,14 @@ import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../assets/icons/habits.svg'
 import { ReactComponent as ExpensesIcon } from '../assets/icons/expenses.svg'
+import ScrollLock from 'react-scrolllock'
 import { useQuery } from '@apollo/client'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 
-const Home: React.FC<{ userName: string }> = ({ userName }) => {
+const Home: React.FC<{ userName: string; isIos?: boolean }> = ({
+  userName,
+  isIos
+}) => {
   const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', true)
 
   const { loading: loadingNotes, error: errorNotes, data: notes } = useQuery(
@@ -64,6 +68,8 @@ const Home: React.FC<{ userName: string }> = ({ userName }) => {
 
   return (
     <>
+      <ScrollLock isActive={isIos && !showWalkthrough} />
+
       {showWalkthrough && (
         <Walkthrough page={Pages.HOME} setShow={setShowHomeWT} />
       )}

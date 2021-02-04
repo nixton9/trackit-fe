@@ -44,6 +44,7 @@ const PageContainer = styled.div`
     height: unset;
     overflow: auto;
     padding-top: 10rem;
+    grid-gap: 2rem;
 
     .editor-container {
       margin-top: 0;
@@ -560,12 +561,17 @@ const DetailSave = styled.div`
 `
 
 const DetailSave__Button = styled.button`
+  position: absolute;
+  top: 3.2rem;
+  right: 7rem;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1rem 0.7rem 1.5rem;
   background-color: ${props => props.theme.accent};
   color: ${props => props.theme.alwaysWhite};
   font-size: 1.2rem;
   font-weight: ${props => props.theme.fontBold};
   border: none;
-  padding: ${props => props.theme.spacingXS};
   border-radius: ${props => props.theme.smallBorderRadius};
   cursor: pointer;
   transition: all 0.1s ease;
@@ -573,6 +579,17 @@ const DetailSave__Button = styled.button`
   &:hover,
   &:active {
     background-color: ${props => props.theme.darkenAccent};
+  }
+
+  svg {
+    width: 2.7rem;
+    margin-left: 0.5rem;
+    background: transparent;
+    fill: ${props => props.theme.accent};
+
+    .svg-stroke {
+      stroke: ${props => props.theme.alwaysWhite};
+    }
   }
 `
 

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import ReactQuill from 'react-quill'
 import styled from 'styled-components'
 import { device } from '../../styles/theme'
@@ -15,22 +15,62 @@ const EditorContainer = styled.div<EditorContainerProps>`
   .ql-toolbar {
     border: 2px solid ${props => props.theme.white};
     border-radius: ${props => props.theme.smallBorderRadius};
-    display: ${props => (props.showEditor ? 'block' : 'none')};
+    display: ${props => (props.showEditor ? 'flex' : 'none')};
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
     @media ${device.mobile} {
       .ql-formats {
         margin-right: 0.5rem;
       }
     }
+
+    @media ${device.mobileS} {
+      .ql-formats .ql-picker.ql-header {
+        width: 80px;
+
+        .ql-picker-label {
+          font-size: 1.5rem;
+        }
+      }
+
+      .ql-formats button {
+        width: 24px;
+
+        svg {
+          width: 2rem;
+        }
+      }
+    }
+
+    @media ${device.mobileXS} {
+      .ql-formats .ql-picker.ql-header {
+        width: 75px;
+
+        .ql-picker-label {
+          font-size: 1.4rem;
+        }
+      }
+
+      .ql-formats button {
+        width: 20px;
+
+        svg {
+          width: 1.8rem;
+        }
+      }
+    }
   }
 
   .ql-container {
-    min-height: ${props => (props.readMode ? 'unset' : '40vh')};
-    max-height: ${props => (props.readMode ? 'unset' : '55vh')};
+    -webkit-overflow-scrolling: touch;
     overflow-y: auto;
     border: none;
     margin: ${props => props.theme.spacingXXS} 0;
     font-family: ${props => props.theme.fontFamily};
+    min-height: 200px;
+    max-height: 40vh;
   }
 
   .ql-editor {
@@ -68,6 +108,7 @@ type NoteEditorProps = {
   placeholder?: string
   readMode?: boolean
   showEditor?: boolean
+  onDrawer?: boolean
   editorRef?: React.Ref<any>
   setValue?: Dispatch<SetStateAction<string>>
 }
@@ -77,9 +118,62 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
   placeholder,
   readMode,
   showEditor = true,
+  onDrawer,
   editorRef,
   setValue
 }) => {
+  const listenerOptions = {
+    capture: false,
+    passive: false
+  }
+
+  const preventInertiaScroll = (e: any) => {
+    const top = e.scrollTop
+    const totalScroll = e.scrollHeight
+    const currentScroll = top + e.offsetHeight
+    if (top === 0) {
+      e.scrollTop = 1
+    } else if (currentScroll === totalScroll) {
+      e.scrollTop = top - 1
+    }
+  }
+
+  const allowTouchMove = (e: any) => {
+    const target = e.currentTarget
+    if (target.scrollHeight > target.clientHeight) {
+      e.stopPropagation()
+      return true
+    }
+
+    e.preventDefault()
+    return false
+  }
+
+  useEffect(() => {
+    const editor = document.querySelector('.ql-container')
+    const vh = Math.max(
+      document.documentElement.clientHeight || 0,
+      window.innerHeight || 0
+    )
+    const gap = onDrawer ? 150 : 40
+
+    if (editor) {
+      // @ts-ignore
+      editor.style.maxHeight = `${vh - editor.offsetTop - gap}px`
+    }
+  })
+
+  useEffect(() => {
+    const editor = document.querySelector('.ql-container')
+    editor?.addEventListener(
+      'touchstart',
+      preventInertiaScroll,
+      listenerOptions
+    )
+
+    editor?.addEventListener('touchmove', allowTouchMove, listenerOptions)
+  }, [listenerOptions])
+
   return (
     <EditorContainer
       readMode={readMode}

@@ -167,6 +167,7 @@ const AddNote: React.FC<DrawerAddModuleProps> = ({ closeModal }) => {
             value={content}
             setValue={setContent}
             placeholder="Start writing your note here"
+            onDrawer
           />
         </Styled.AddEditor>
 

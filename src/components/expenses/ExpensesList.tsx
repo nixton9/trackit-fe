@@ -18,6 +18,7 @@ import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { ReactComponent as StatsIcon } from '../../assets/icons/stats.svg'
 import Tooltip from 'react-tooltip-lite'
+import { TouchScrollable } from 'react-scrolllock'
 import { Link } from 'react-router-dom'
 import { ApolloError } from '@apollo/client'
 
@@ -122,42 +123,45 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
         </Styled.PageHeader>
       </div>
 
-      <Styled.PageContent>
-        {error ? (
-          <PageError>
-            We're sorry but it seems there was a problem reaching the server.
-          </PageError>
-        ) : loading ? (
-          <PageLoading />
-        ) : visibleExpensesDay.length ? (
-          (visibleExpensesDay as string[]).map(day => (
-            <Styled.PageContent__Day key={day}>
-              <Styled.PageContent__Day__Title>
-                {displayDateString(day)}
-              </Styled.PageContent__Day__Title>
-              <Styled.PageContent__Day__Expenses>
-                {(data.expenses as Expense[])
-                  .filter(expense => parseDateInverse(expense.date) === day)
-                  .map(expense => (
-                    <SingleExpense
-                      key={expense.id}
-                      id={expense.id}
-                      title={expense.title}
-                      date={expense.date}
-                      value={expense.value}
-                      type={expense.type}
-                      currency={currency}
-                    />
-                  ))}
-              </Styled.PageContent__Day__Expenses>
-            </Styled.PageContent__Day>
-          ))
-        ) : (
-          <Styled.PageContent__NoData>
-            <NoDataIcon />
-          </Styled.PageContent__NoData>
-        )}
-      </Styled.PageContent>
+      <TouchScrollable>
+        <Styled.PageContent>
+          {error ? (
+            <PageError>
+              We're sorry but it seems there was a problem reaching the server.
+            </PageError>
+          ) : loading ? (
+            <PageLoading />
+          ) : visibleExpensesDay.length ? (
+            (visibleExpensesDay as string[]).map(day => (
+              <Styled.PageContent__Day key={day}>
+                <Styled.PageContent__Day__Title>
+                  {displayDateString(day)}
+                </Styled.PageContent__Day__Title>
+                <Styled.PageContent__Day__Expenses>
+                  {(data.expenses as Expense[])
+                    .filter(expense => parseDateInverse(expense.date) === day)
+                    .map(expense => (
+                      <SingleExpense
+                        key={expense.id}
+                        id={expense.id}
+                        title={expense.title}
+                        date={expense.date}
+                        value={expense.value}
+                        type={expense.type}
+                        currency={currency}
+                      />
+                    ))}
+                </Styled.PageContent__Day__Expenses>
+              </Styled.PageContent__Day>
+            ))
+          ) : (
+            <Styled.PageContent__NoData>
+              <NoDataIcon />
+            </Styled.PageContent__NoData>
+          )}
+        </Styled.PageContent>
+      </TouchScrollable>
+
       <Styled.PageAddItem
         onClick={() => setActiveContent(ModuleTypes.Expenses)}
         data-test-id="add-expense"

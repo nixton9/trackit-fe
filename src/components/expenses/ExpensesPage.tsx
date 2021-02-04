@@ -9,15 +9,17 @@ import { Expense } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
+import ScrollLock from 'react-scrolllock'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState, useRecoilValue } from 'recoil'
 
 type ExpensesPageProps = {
   stats?: boolean
+  isIos?: boolean
 }
 
-const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
+const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats, isIos }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showExpWT, setShowExpWT] = useLocalStorage('showExpWT', true)
@@ -66,41 +68,44 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
   const showWalkthrough = showExpWT && !error && !loading
 
   return (
-    <Styled.PageContainer className="overflow">
-      {stats ? (
-        <ExpensesStats
-          data={data}
-          categories={types}
-          error={error}
-          loading={loading}
-        />
-      ) : (
-        <>
-          {showWalkthrough && (
-            <Walkthrough
-              page={Pages.EXPENSES}
-              setShow={setShowExpWT}
-              selectLastButOneSingle={visibleExpensesDay.length > 1}
-            />
-          )}
-
-          <ExpensesList
-            startDate={startDate}
-            setStartDate={setStartDate}
-            endDate={endDate}
-            setEndDate={setEndDate}
-            totalExpensesVal={totalExpensesVal}
-            visibleExpensesDay={visibleExpensesDay}
-            currency={currency}
+    <>
+      <ScrollLock isActive={isIos} />
+      <Styled.PageContainer className="overflow page-container">
+        {stats ? (
+          <ExpensesStats
             data={data}
-            types={types}
+            categories={types}
             error={error}
             loading={loading}
-            setActiveContent={setActiveContent}
           />
-        </>
-      )}
-    </Styled.PageContainer>
+        ) : (
+          <>
+            {showWalkthrough && (
+              <Walkthrough
+                page={Pages.EXPENSES}
+                setShow={setShowExpWT}
+                selectLastButOneSingle={visibleExpensesDay.length > 1}
+              />
+            )}
+
+            <ExpensesList
+              startDate={startDate}
+              setStartDate={setStartDate}
+              endDate={endDate}
+              setEndDate={setEndDate}
+              totalExpensesVal={totalExpensesVal}
+              visibleExpensesDay={visibleExpensesDay}
+              currency={currency}
+              data={data}
+              types={types}
+              error={error}
+              loading={loading}
+              setActiveContent={setActiveContent}
+            />
+          </>
+        )}
+      </Styled.PageContainer>
+    </>
   )
 }
 

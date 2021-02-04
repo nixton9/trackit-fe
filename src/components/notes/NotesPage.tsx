@@ -16,10 +16,11 @@ import { notesViewOptions } from '../../utils/selectsOptions'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
+import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 
-const NotesPage: React.FC = () => {
+const NotesPage: React.FC<{ isIos?: boolean }> = ({ isIos }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showNotesWT, setShowNotesWT] = useLocalStorage('showNotesWT', true)
@@ -50,6 +51,8 @@ const NotesPage: React.FC = () => {
 
   return (
     <>
+      <ScrollLock isActive={isIos} />
+
       {showWalkthrough && (
         <Walkthrough
           page={Pages.NOTES}
@@ -58,7 +61,7 @@ const NotesPage: React.FC = () => {
         />
       )}
 
-      <Styled.PageContainer className="overflow">
+      <Styled.PageContainer className="overflow page-container">
         <div className="page-header-wrapper">
           <Styled.PageTitle>Notes</Styled.PageTitle>
 
@@ -103,29 +106,32 @@ const NotesPage: React.FC = () => {
           </Styled.PageHeader>
         </div>
 
-        <Styled.PageContent>
-          {error ? (
-            <PageError>
-              We're sorry but it seems there was a problem reaching the server.
-            </PageError>
-          ) : loading ? (
-            <PageLoading />
-          ) : sortedNotes.length ? (
-            (sortedNotes as Note[]).map(note => (
-              <SingleNote
-                key={note.id}
-                id={note.id}
-                title={note.title}
-                date={note.date}
-                tags={note.tags}
-              />
-            ))
-          ) : (
-            <Styled.PageContent__NoData>
-              <NoDataIcon />
-            </Styled.PageContent__NoData>
-          )}
-        </Styled.PageContent>
+        <TouchScrollable>
+          <Styled.PageContent>
+            {error ? (
+              <PageError>
+                We're sorry but it seems there was a problem reaching the
+                server.
+              </PageError>
+            ) : loading ? (
+              <PageLoading />
+            ) : sortedNotes.length ? (
+              (sortedNotes as Note[]).map(note => (
+                <SingleNote
+                  key={note.id}
+                  id={note.id}
+                  title={note.title}
+                  date={note.date}
+                  tags={note.tags}
+                />
+              ))
+            ) : (
+              <Styled.PageContent__NoData>
+                <NoDataIcon />
+              </Styled.PageContent__NoData>
+            )}
+          </Styled.PageContent>
+        </TouchScrollable>
 
         <Styled.PageAddItem
           onClick={() => setActiveContent(ModuleTypes.Notes)}

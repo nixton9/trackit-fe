@@ -19,15 +19,17 @@ import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { ReactComponent as TasksIcon } from '../../assets/icons/tasks.svg'
 import { ReactComponent as DoneTasksIcon } from '../../assets/icons/donetasks.svg'
+import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 import { Link } from 'react-router-dom'
 
 type TasksPageProps = {
   done?: boolean
+  isIos?: boolean
 }
 
-const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
+const TasksPage: React.FC<TasksPageProps> = ({ done, isIos }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showTasksWT, setShowTasksWT] = useLocalStorage('showTasksWT', true)
@@ -61,6 +63,8 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
 
   return (
     <>
+      <ScrollLock isActive={isIos} />
+
       {showWalkthrough && (
         <Walkthrough
           page={Pages.TASKS}
@@ -69,7 +73,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
         />
       )}
 
-      <Styled.PageContainer className="overflow">
+      <Styled.PageContainer className="overflow page-container">
         <div className="page-header-wrapper">
           <Styled.PageTitle>{done && 'Completed'} Tasks</Styled.PageTitle>
 
@@ -144,31 +148,35 @@ const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
           </Styled.PageHeader>
         </div>
 
-        <Styled.PageContent>
-          {error ? (
-            <PageError>
-              We're sorry but it seems there was a problem reaching the server.
-            </PageError>
-          ) : loading ? (
-            <PageLoading />
-          ) : sortedTasks.length ? (
-            (sortedTasks as Task[]).map(task => (
-              <SingleTask
-                key={task.id}
-                id={task.id}
-                title={task.title}
-                date={task.date}
-                done={task.done}
-                category={task.category}
-                disableStatus={done}
-              />
-            ))
-          ) : (
-            <Styled.PageContent__NoData>
-              <NoDataIcon />
-            </Styled.PageContent__NoData>
-          )}
-        </Styled.PageContent>
+        <TouchScrollable>
+          <Styled.PageContent>
+            {error ? (
+              <PageError>
+                We're sorry but it seems there was a problem reaching the
+                server.
+              </PageError>
+            ) : loading ? (
+              <PageLoading />
+            ) : sortedTasks.length ? (
+              (sortedTasks as Task[]).map(task => (
+                <SingleTask
+                  key={task.id}
+                  id={task.id}
+                  title={task.title}
+                  date={task.date}
+                  done={task.done}
+                  category={task.category}
+                  disableStatus={done}
+                />
+              ))
+            ) : (
+              <Styled.PageContent__NoData>
+                <NoDataIcon />
+              </Styled.PageContent__NoData>
+            )}
+          </Styled.PageContent>
+        </TouchScrollable>
+
         <Styled.PageAddItem
           onClick={() => setActiveContent(ModuleTypes.Tasks)}
           data-test-id="add-task"

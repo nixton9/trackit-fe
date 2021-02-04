@@ -12,7 +12,6 @@ import { ThreeDotsMenu } from '../misc/ThreeDotsMenu'
 import { CopyToClipboard } from '../misc/CopyToClipboard'
 import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Page.styles'
-import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 import { pickRandomColor } from '../../utils/globalHelpers'
 import { NoteTag } from '../../utils/ModuleTypes'
 import { SINGLE_NOTE, TAGS } from '../../utils/queries'
@@ -20,6 +19,7 @@ import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { ReactComponent as MinusIcon } from '../../assets/icons/minus.svg'
+import { ReactComponent as CheckIcon } from '../../assets/icons/transpcheck.svg'
 import {
   UPDATE_NOTE,
   ADD_TAG_TO_NOTE,
@@ -27,6 +27,7 @@ import {
   REMOVE_TAG_FROM_NOTE,
   CREATE_TAG
 } from '../../utils/mutations'
+import ScrollLock from 'react-scrolllock'
 import { Link, RouteComponentProps, useHistory } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
@@ -36,9 +37,10 @@ type MatchParams = {
 }
 interface MatchProps extends RouteComponentProps<MatchParams> {
   setWidgets: any
+  isIos?: boolean
 }
 
-const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
+const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets, isIos }) => {
   const [noteTitle, setNoteTitle] = useState('')
   const [noteContent, setNoteContent] = useState('')
   const [parsedContent, setParsedContent] = useState('')
@@ -256,141 +258,142 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
     : null
 
   return (
-    <Styled.PageContainer className="note-detail">
-      <Styled.DetailBack>
-        <Link to="/notes">
-          <ChevronIcon />
-        </Link>
-      </Styled.DetailBack>
+    <>
+      <ScrollLock isActive={isIos} />
+      <Styled.PageContainer className="note-detail">
+        <Styled.DetailBack>
+          <Link to="/notes">
+            <ChevronIcon />
+          </Link>
+        </Styled.DetailBack>
 
-      {errors ? (
-        <PageError>{errors.message}</PageError>
-      ) : isLoading ? (
-        <PageLoading centered />
-      ) : (
-        <>
-          {showDetailNoteWT && (
-            <Walkthrough
-              page={Pages.DETAILNOTE}
-              setShow={setShowDetailNoteWT}
-            />
-          )}
-          <Styled.DetailHeader
-            editorActive={showEditor}
-            className="note-detail-header"
-          >
-            <div className="title-wrapper">
-              <Styled.DetailTitle
-                placeholder="Title for the note"
-                value={noteTitle}
-                onChange={e => setNoteTitle(e.target.value)}
-                className="detail-title"
+        {errors ? (
+          <PageError>{errors.message}</PageError>
+        ) : isLoading ? (
+          <PageLoading centered />
+        ) : (
+          <>
+            {showDetailNoteWT && (
+              <Walkthrough
+                page={Pages.DETAILNOTE}
+                setShow={setShowDetailNoteWT}
               />
-              <Styled.DetailDate>
-                {displayDateString(parseDateInverse(data.singleNote.date))}
-              </Styled.DetailDate>
-            </div>
-
-            <ThreeDotsMenu
-              options={menuOptions}
-              componentItem={
-                <CopyToClipboard onCopy={onCopyNote} text={parsedContent} />
-              }
-            />
-          </Styled.DetailHeader>
-
-          <Styled.DetailTagsContainer className="detail-tags">
-            <Styled.DetailTags>
-              <Styled.DetailTags__Inner>
-                {data.singleNote.tags && data.singleNote.tags.length ? (
-                  data.singleNote.tags.map((tag: NoteTag, i: number) => (
-                    <Tooltip
-                      key={i}
-                      eventOff={'onClick'}
-                      content={'Click to edit tag'}
-                      arrow={false}
-                      direction={'up'}
-                      className="tag-tooltip"
-                    >
-                      <TagChip
-                        key={tag.id}
-                        id={tag.id}
-                        name={tag.name}
-                        color={tag.color}
-                        onClick={() => handleTagClick(tag)}
-                        onDelete={() => handleRemoveTagConfirm(tag.id)}
-                      />
-                    </Tooltip>
-                  ))
-                ) : (
-                  <p>No tags</p>
-                )}
-              </Styled.DetailTags__Inner>
-              <Tooltip
-                eventOff={'onClick'}
-                content={'Add tag'}
-                arrow={false}
-                direction={'up'}
-              >
-                <div
-                  onClick={() => setShowTagsInput(!showTagsInput)}
-                  className="mbl-click"
-                >
-                  {showTagsInput ? <MinusIcon /> : <PlusIcon />}
-                </div>
-              </Tooltip>
-            </Styled.DetailTags>
-
-            {showTagEditor && (
-              <Styled.DetailTagEditor className="editor">
-                <TagEditor
-                  tag={activeTag}
-                  noteId={match.params.id}
-                  closeEditor={() => setShowTagEditor(false)}
-                  refetchQuery={refetchNote}
-                  showClose
-                />
-              </Styled.DetailTagEditor>
             )}
-
-            {showTagsInput && (
-              <Styled.DetailTagEditor>
-                <TagsInput
-                  tags={inputTags}
-                  excludedTags={noteTags.map(tag => tag.id)}
-                  setTags={setInputTags}
+            <Styled.DetailHeader
+              editorActive={showEditor}
+              className="note-detail-header"
+            >
+              <div className="title-wrapper">
+                <Styled.DetailTitle
+                  placeholder="Title for the note"
+                  value={noteTitle}
+                  onChange={e => setNoteTitle(e.target.value)}
+                  className="detail-title"
                 />
-              </Styled.DetailTagEditor>
-            )}
-          </Styled.DetailTagsContainer>
+              </div>
 
-          <Styled.DetailContent>
-            <NoteEditor
-              placeholder="Type here"
-              value={noteContent}
-              setValue={setNoteContent}
-              showEditor={showEditor}
-              readMode
-              editorRef={editorRef}
-            />
-          </Styled.DetailContent>
-          {(noteWasEdited || message) && (
-            <Styled.DetailSave>
-              {message ? (
-                <p>{message}</p>
-              ) : (
+              <ThreeDotsMenu
+                options={menuOptions}
+                componentItem={
+                  <CopyToClipboard onCopy={onCopyNote} text={parsedContent} />
+                }
+              />
+
+              {noteWasEdited && (
                 <Styled.DetailSave__Button
                   onClick={handleSubmit}
                   data-test-id="submit-btn"
                 >
                   Save changes
+                  <CheckIcon />
                 </Styled.DetailSave__Button>
               )}
-            </Styled.DetailSave>
-          )}
-        </>
-      )}
-    </Styled.PageContainer>
+            </Styled.DetailHeader>
+
+            <Styled.DetailTagsContainer className="detail-tags">
+              <Styled.DetailTags>
+                <Styled.DetailTags__Inner>
+                  {data.singleNote.tags && data.singleNote.tags.length ? (
+                    data.singleNote.tags.map((tag: NoteTag, i: number) => (
+                      <Tooltip
+                        key={i}
+                        eventOff={'onClick'}
+                        content={'Click to edit tag'}
+                        arrow={false}
+                        direction={'up'}
+                        className="tag-tooltip"
+                      >
+                        <TagChip
+                          key={tag.id}
+                          id={tag.id}
+                          name={tag.name}
+                          color={tag.color}
+                          onClick={() => handleTagClick(tag)}
+                          onDelete={() => handleRemoveTagConfirm(tag.id)}
+                        />
+                      </Tooltip>
+                    ))
+                  ) : (
+                    <p>No tags</p>
+                  )}
+                </Styled.DetailTags__Inner>
+                <Tooltip
+                  eventOff={'onClick'}
+                  content={'Add tag'}
+                  arrow={false}
+                  direction={'up'}
+                >
+                  <div
+                    onClick={() => setShowTagsInput(!showTagsInput)}
+                    className="mbl-click"
+                  >
+                    {showTagsInput ? <MinusIcon /> : <PlusIcon />}
+                  </div>
+                </Tooltip>
+              </Styled.DetailTags>
+
+              {showTagEditor && (
+                <Styled.DetailTagEditor className="editor">
+                  <TagEditor
+                    tag={activeTag}
+                    noteId={match.params.id}
+                    closeEditor={() => setShowTagEditor(false)}
+                    refetchQuery={refetchNote}
+                    showClose
+                  />
+                </Styled.DetailTagEditor>
+              )}
+
+              {showTagsInput && (
+                <Styled.DetailTagEditor>
+                  <TagsInput
+                    tags={inputTags}
+                    excludedTags={noteTags.map(tag => tag.id)}
+                    setTags={setInputTags}
+                  />
+                </Styled.DetailTagEditor>
+              )}
+            </Styled.DetailTagsContainer>
+
+            <Styled.DetailContent>
+              <NoteEditor
+                placeholder="Type here"
+                value={noteContent}
+                setValue={setNoteContent}
+                showEditor={showEditor}
+                readMode
+                editorRef={editorRef}
+              />
+            </Styled.DetailContent>
+            {message && (
+              <Styled.DetailSave>
+                <p>{message}</p>
+              </Styled.DetailSave>
+            )}
+          </>
+        )}
+      </Styled.PageContainer>
+    </>
   )
 }
 

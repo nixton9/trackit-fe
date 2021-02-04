@@ -5,6 +5,7 @@ import { Habit, DayState } from '../../utils/ModuleTypes'
 import { getDayNextClass } from '../../utils/dateHelpers'
 import { Styled } from '../../styles/Calendar.styles'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
+import { TouchScrollable } from 'react-scrolllock'
 import {
   format,
   addWeeks,
@@ -106,23 +107,25 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
         {daysOfWeek()}
       </div>
 
-      <Styled.CalendarContent>
-        {showAll ? (
-          <CalendarAll
-            habits={sortedHabits}
-            currentDate={currentDate}
-            handleClickDay={handleClickDay}
-          />
-        ) : (
-          currHabit && (
-            <CalendarSingle
+      <TouchScrollable>
+        <Styled.CalendarContent>
+          {showAll ? (
+            <CalendarAll
+              habits={sortedHabits}
               currentDate={currentDate}
-              habit={currHabit}
               handleClickDay={handleClickDay}
             />
-          )
-        )}
-      </Styled.CalendarContent>
+          ) : (
+            currHabit && (
+              <CalendarSingle
+                currentDate={currentDate}
+                habit={currHabit}
+                handleClickDay={handleClickDay}
+              />
+            )
+          )}
+        </Styled.CalendarContent>
+      </TouchScrollable>
     </Styled.CalendarContainer>
   )
 }
