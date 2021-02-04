@@ -35,7 +35,7 @@ export const Notification: React.FC = () => {
             type: NotificationTypes.Null,
             revertFun: () => null
           }),
-        3500
+        2500
       )
 
       return () => clearTimeout(notificationTimer)
