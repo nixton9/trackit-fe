@@ -407,11 +407,33 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
             <Styled.SettingsBlock className="no-grid">
               <p>
-                Having a problem with the app? Or you're wanting to request a
-                new feature? Just send a message{' '}
+                Having a problem with the app? Or you would like to request a
+                new feature? Just shoot me a message{' '}
                 <a href="mailto:eduardojoaoaraujo@gmail.com?subject=TRCKR Support">
                   here
                 </a>
+              </p>
+            </Styled.SettingsBlock>
+
+            <Styled.Settings__Title className="half-margin">
+              Author
+            </Styled.Settings__Title>
+
+            <Styled.SettingsBlock className="no-grid">
+              <p>
+                This app was made with{' '}
+                <span role="img" aria-label="heart">
+                  ❤️
+                </span>{' '}
+                by{' '}
+                <a href="https://www.eduardo-araujo.com/" target="blank">
+                  Eduardo Araújo
+                </a>
+                . Enjoying the app? Consider buying me a cup of coffe{' '}
+                <a href="https://paypal.me/eduardoaraujo9" target="blank">
+                  here
+                </a>
+                !
               </p>
             </Styled.SettingsBlock>
           </Styled.PageContent>

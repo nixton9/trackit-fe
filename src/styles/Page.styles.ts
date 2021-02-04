@@ -658,7 +658,8 @@ const Settings__Title = styled.h3`
   font-weight: ${props => props.theme.fontBold};
   margin-top: ${props => props.theme.spacingXL};
 
-  &:first-of-type {
+  &:first-of-type,
+  &.half-margin {
     margin-top: ${props => props.theme.spacingM};
   }
 `
