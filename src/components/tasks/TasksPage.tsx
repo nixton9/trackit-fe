@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TasksSettings from './TasksSettings'
 import SingleTask from './SingleTask'
 import Tooltip from 'react-tooltip-lite'
@@ -33,6 +33,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done, isIos }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showTasksWT, setShowTasksWT] = useLocalStorage('showTasksWT', true)
+  const [tasksView, setTasksView] = useLocalStorage('tasksView', '')
 
   const { loading, error, data } = useQuery(TASKS, {
     variables: { done: done }
@@ -42,8 +43,10 @@ const TasksPage: React.FC<TasksPageProps> = ({ done, isIos }) => {
   const [view, setView] = useState('all')
   const [sortBy, setSortBy] = useState<SortBySettings>(SortBySettings.DATE)
 
-  const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+  const handleViewChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setView(e.target.value)
+    setTasksView(e.target.value)
+  }
 
   const visibleTasks = data
     ? view === 'all'
@@ -56,6 +59,11 @@ const TasksPage: React.FC<TasksPageProps> = ({ done, isIos }) => {
           (task: Task) => Number(task.category?.id) === Number(view)
         )
     : []
+
+  useEffect(() => {
+    tasksView && setView(tasksView)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const sortedTasks = sortData(visibleTasks, sortBy, true)
 
