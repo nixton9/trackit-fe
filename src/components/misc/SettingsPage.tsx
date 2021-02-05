@@ -232,7 +232,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
           const isBrowserError = res.message.includes("browser doesn't support")
           setNotification({
             text: isBrowserError
-              ? "Unfortunately, it seems like this browser doesn't support notifications."
+              ? "It seems like this browser doesn't support notifications."
               : 'There was a problem enabling notifications, please try again later.',
             type: NotificationTypes.Error
           })
