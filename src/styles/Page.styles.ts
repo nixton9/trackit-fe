@@ -347,29 +347,11 @@ const PageContent__NoData = styled.div`
 
 const PageAddItem = styled.div`
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  width: 7rem;
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.surfacesBlack};
-  border-radius: 50%;
-  box-shadow: 7px 7px 16px 0 rgba(0, 0, 0, 0.07);
-  z-index: 11;
+  top: 2rem;
+  right: 8rem;
+  z-index: 1;
   cursor: pointer;
   transition: all 0.25s ease;
-
-  &:hover {
-    filter: contrast(1.05);
-  }
-
-  &:active {
-    background-color: ${props => props.theme.hoverBlack};
-    box-shadow: 7px 3px 9px 0 rgba(0, 0, 0, 0.07);
-    transform: translateY(2px);
-  }
 
   svg {
     width: 3rem;

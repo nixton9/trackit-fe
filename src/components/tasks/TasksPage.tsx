@@ -186,6 +186,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done, isIos }) => {
         </TouchScrollable>
 
         <Styled.PageAddItem
+          className="mbl-click"
           onClick={() => setActiveContent(ModuleTypes.Tasks)}
           data-test-id="add-task"
         >

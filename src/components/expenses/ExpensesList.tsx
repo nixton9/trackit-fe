@@ -163,6 +163,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
       </TouchScrollable>
 
       <Styled.PageAddItem
+        className="mbl-click"
         onClick={() => setActiveContent(ModuleTypes.Expenses)}
         data-test-id="add-expense"
       >

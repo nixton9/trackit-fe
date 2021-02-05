@@ -134,6 +134,7 @@ const NotesPage: React.FC<{ isIos?: boolean }> = ({ isIos }) => {
         </TouchScrollable>
 
         <Styled.PageAddItem
+          className="mbl-click"
           onClick={() => setActiveContent(ModuleTypes.Notes)}
           data-test-id="add-note"
         >

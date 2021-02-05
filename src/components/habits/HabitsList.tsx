@@ -203,6 +203,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
           </Styled.PageContent__NoData>
         )}
         <Styled.PageAddItem
+          className="mbl-click"
           onClick={() => setActiveContent(ModuleTypes.Habits)}
           data-test-id="add-habit"
         >
