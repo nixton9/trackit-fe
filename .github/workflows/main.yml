@@ -28,9 +28,11 @@ jobs:
 
       - name: Install backend dependencies
         run: npm install
+        working-directory: ./backend
 
       - name: Run backend
         run: node server.js
+        working-directory: ./backend
         
   frontend:
     runs-on: ubuntu-latest
