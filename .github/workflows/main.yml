@@ -23,6 +23,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: nixton9/trackit
+          token: ${{ secrets.REPO_TOKEN }} 
           path: backend
 
       - name: Install backend dependencies
