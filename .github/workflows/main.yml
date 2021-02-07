@@ -42,3 +42,5 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
           config: baseUrl=https://localhost:3000
+        env:
+          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
