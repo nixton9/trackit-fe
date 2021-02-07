@@ -30,7 +30,7 @@ const App: React.FC = () => {
 
   const [token, setToken] = useLocalStorage('token', '')
   const [userInfo, setUserInfo] = useLocalStorage('user', {})
-  const [notToken, setNotToken] = useLocalStorage('notToken', '')
+  const [, setNotToken] = useLocalStorage('notToken', '')
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage('isDarkTheme', true)
 
   const logout = () => {
@@ -108,8 +108,6 @@ const App: React.FC = () => {
                   <SettingsPage
                     user={userInfo}
                     refreshUserInfo={refreshUserInfo}
-                    notToken={notToken}
-                    setNotToken={setNotToken}
                     isDarkTheme={isDarkTheme}
                     setIsDarkTheme={setIsDarkTheme}
                     isIos={isIos()}

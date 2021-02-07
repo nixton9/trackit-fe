@@ -22,8 +22,6 @@ import { LoadingSpinner } from './LoadingSpinner'
 type SettingsProps = {
   user: User
   refreshUserInfo: () => void
-  notToken: string | null
-  setNotToken: (not_token: string | null) => void
   isDarkTheme: boolean
   setIsDarkTheme: (checked: boolean) => void
   isIos?: boolean
@@ -32,8 +30,6 @@ type SettingsProps = {
 const SettingsPage: React.FC<SettingsProps> = ({
   user,
   refreshUserInfo,
-  notToken,
-  setNotToken,
   isDarkTheme,
   setIsDarkTheme,
   isIos
@@ -45,6 +41,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
   const [selectedFile, setSelectedFile] = useState('')
   const [isLoadingProfile, setIsLoadingProfile] = useState(false)
 
+  const [notToken, setNotToken] = useLocalStorage('notToken', '')
   const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', false)
   const [showNotesWT, setShowNotesWT] = useLocalStorage('showNotesWT', false)
   const [showTasksWT, setShowTasksWT] = useLocalStorage('showTasksWT', false)
@@ -188,7 +185,6 @@ const SettingsPage: React.FC<SettingsProps> = ({
   }
 
   const showWalkthrough = (show: boolean) => {
-    console.log(show)
     setShowHomeWT(show)
     setShowNotesWT(show)
     setShowTasksWT(show)

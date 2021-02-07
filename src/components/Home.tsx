@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HomeWidget from './misc/HomeWidget'
 import { LoadingSpinner } from './misc/LoadingSpinner'
 import { PageError } from './misc/PageError'
@@ -6,6 +6,7 @@ import { Walkthrough, Pages } from './misc/Walkthrough/Walkthrough'
 import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
+import { UPDATE_USER_NOT_TOKEN } from '../utils/mutations'
 import { parseDate, isDateToday, parseDateInverse } from '../utils/dateHelpers'
 import { formatUserName } from '../utils/globalHelpers'
 import { useLocalStorage } from '../utils/useLocalStorage'
@@ -13,15 +14,19 @@ import { ReactComponent as NotesIcon } from '../assets/icons/notes.svg'
 import { ReactComponent as TasksIcon } from '../assets/icons/tasks.svg'
 import { ReactComponent as HabitsIcon } from '../assets/icons/habits.svg'
 import { ReactComponent as ExpensesIcon } from '../assets/icons/expenses.svg'
+import { askNotificationPermission } from '../push-notification'
 import ScrollLock from 'react-scrolllock'
-import { useQuery } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 
-const Home: React.FC<{ userName: string; isIos?: boolean }> = ({
-  userName,
-  isIos
-}) => {
+type HomeProps = {
+  userName: string
+  isIos?: boolean
+}
+
+const Home: React.FC<HomeProps> = ({ userName, isIos }) => {
   const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', true)
+  const [notToken, setNotToken] = useLocalStorage('notToken', '')
 
   const { loading: loadingNotes, error: errorNotes, data: notes } = useQuery(
     NOTES
@@ -41,10 +46,27 @@ const Home: React.FC<{ userName: string; isIos?: boolean }> = ({
     HABITS
   )
 
+  const [updateNotificationToken] = useMutation(UPDATE_USER_NOT_TOKEN)
+
   const isLoading =
     loadingNotes || loadingTasks || loadingExpenses || loadingHabits
 
   const hasError = errorNotes || errorTasks || errorExpenses || errorHabits
+
+  useEffect(() => {
+    if (!notToken) {
+      askNotificationPermission().then(res => {
+        if (typeof res === 'string') {
+          updateNotificationToken({
+            variables: { token: res, disable: false }
+          }).then(() => {
+            setNotToken(res)
+          })
+        }
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const currMonthExpensesVal = expenses
     ? expenses.expenses
