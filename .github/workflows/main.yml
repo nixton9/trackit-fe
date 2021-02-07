@@ -15,32 +15,43 @@ on:
 
 
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-   
-    strategy:
-      matrix:
-        node-version: [12.x]  
-
+ 
+  backend:
+    runs-on: ubuntu-latest 
     steps:
-      - name: Checkout repository
+      - name: Checkout backend repo
         uses: actions/checkout@v2
-
-      - name: Set up Nodejs ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          repository: nixton9/trackit-be
+          path: backend
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         run: npm install
-    
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm start
-          wait-on: 'http://localhost:3000'
-          config: baseUrl=https://localhost:3000
-        env:
-          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+
+      - name: Run backend
+        run: node server.js
+        
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Nodejs ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Cypress tests
+      uses: cypress-io/github-action@v2
+      with:
+        start: npm start
+        wait-on: 'http://localhost:3000'
+        config: baseUrl=https://localhost:3000
+      env:
+        REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+
+          
