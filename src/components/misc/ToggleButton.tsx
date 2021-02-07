@@ -36,7 +36,7 @@ const Slider = styled.span`
     width: 1.8rem;
     left: 6px;
     bottom: 5px;
-    background-color: ${props => props.theme.white};
+    background-color: ${props => props.theme.alwaysWhite};
     border-radius: 50%;
     -webkit-transition: 0.4s;
     transition: 0.4s;
