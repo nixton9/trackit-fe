@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 describe('Sign Up', () => {
   it('register fails with used email', () => {
-    cy.visit('http://localhost:3000/signup')
+    cy.visit('/signup')
 
     cy.get('[data-test-id="signup-name"]').type('John Doe')
     cy.get('[data-test-id="signup-email"]').type('edssda@gsdail.com')
@@ -13,7 +13,7 @@ describe('Sign Up', () => {
   })
 
   it('register fails with password with less than 6 chars', () => {
-    cy.visit('http://localhost:3000/signup')
+    cy.visit('/signup')
 
     cy.get('[data-test-id="signup-name"]').type('John Doe')
     cy.get('[data-test-id="signup-email"]').type('edssda@gssdadail.com')

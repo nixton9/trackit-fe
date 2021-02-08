@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 describe('Sign In', () => {
   it('login works with correct info', () => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('/')
     cy.get('[data-test-id="signin-email"]').type('cypress@teste.pt')
 
     cy.get('[data-test-id="signin-pw"]').type('123456')
@@ -12,7 +12,7 @@ describe('Sign In', () => {
   })
 
   it('login fails with incorrect email', () => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('/')
     cy.get('[data-test-id="signin-email"]')
       .type('test@gnaidl.com')
       .should('have.value', 'test@gnaidl.com')

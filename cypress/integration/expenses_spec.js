@@ -3,14 +3,14 @@ import { generateRandomString } from '../../src/utils/globalHelpers'
 
 describe('Expenses', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('/')
     cy.get('[data-test-id="signin-email"]').type('cypress@teste.pt')
 
     cy.get('[data-test-id="signin-pw"]').type('123456')
 
     cy.contains('Login').click()
     cy.contains('Expenses')
-    cy.visit('http://localhost:3000/expenses')
+    cy.visit('/expenses')
     cy.contains('Expenses')
     cy.get('[aria-label="Skip"]').click()
   })

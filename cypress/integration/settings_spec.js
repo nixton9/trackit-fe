@@ -2,14 +2,14 @@
 
 describe('Settings', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('/')
     cy.get('[data-test-id="signin-email"]').type('cypress@teste.pt')
 
     cy.get('[data-test-id="signin-pw"]').type('123456')
 
     cy.contains('Login').click()
     cy.contains('what will you track')
-    cy.visit('http://localhost:3000/settings')
+    cy.visit('/settings')
     cy.contains('Settings')
   })
 
