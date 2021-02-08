@@ -1,0 +1,63 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+ 
+  backend:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout backend repo
+        uses: actions/checkout@v2
+        with:
+          repository: nixton9/trackit
+          token: ${{ secrets.REPO_TOKEN }} 
+          path: backend
+
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: ./backend
+
+      - name: Run backend
+        run: node server.js
+        working-directory: ./backend
+        
+  frontend:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Nodejs ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Cypress tests
+      uses: cypress-io/github-action@v2
+      with:
+        start: npm start
+        wait-on: 'http://localhost:3000'
+        config: baseUrl=https://localhost:3000
+      env:
+        REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+
+          
