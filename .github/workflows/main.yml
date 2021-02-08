@@ -35,6 +35,7 @@ jobs:
         working-directory: ./backend
         
   frontend:
+    needs: backend
     runs-on: ubuntu-latest
 
     steps:
