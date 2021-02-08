@@ -36,6 +36,9 @@ jobs:
         
   frontend:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
