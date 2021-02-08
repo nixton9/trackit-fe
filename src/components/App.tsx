@@ -47,7 +47,9 @@ const App: React.FC = () => {
 
   const client = new ApolloClient({
     uri:
-      !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+      !process.env.NODE_ENV ||
+      process.env.NODE_ENV === 'development' ||
+      process.env.NODE_ENV === 'test'
         ? '/'
         : 'https://trackitbe.herokuapp.com/',
     cache: new InMemoryCache(),
