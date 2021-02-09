@@ -14,7 +14,7 @@ on:
 
 jobs:
         
-  frontend:
+  cypress:
     runs-on: ubuntu-latest
 
     steps:
