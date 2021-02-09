@@ -379,12 +379,19 @@ const PageError = styled.div`
   top: 40%;
   left: 0;
   right: 0;
+  max-width: 90%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${props => props.theme.white};
   font-size: 1.5rem;
   font-weight: ${props => props.theme.fontMedium};
+
+  @media ${device.mobileL} {
+    flex-direction: column;
+    text-align: center;
+  }
 
   svg {
     width: 4rem;

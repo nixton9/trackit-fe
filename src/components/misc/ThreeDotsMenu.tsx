@@ -125,12 +125,18 @@ export const ThreeDotsMenu: React.FC<ThreeDotsMenuProps> = ({
       {/* open && data && data.length > 0 */}
       {open && options && options.length > 0 && (
         <Menu>
-          {options.map(item => (
-            <MenuItem key={item.label} onClick={() => itemClick(item.onClick)}>
+          {options.map((item, i) => (
+            <MenuItem
+              key={item.label}
+              onClick={() => itemClick(item.onClick)}
+              data-test-id={`menu-item-${i + 1}`}
+            >
               {item.label}
             </MenuItem>
           ))}
-          <MenuItem onClick={() => setOpen(false)}>{componentItem}</MenuItem>
+          {componentItem && (
+            <MenuItem onClick={() => setOpen(false)}>{componentItem}</MenuItem>
+          )}
         </Menu>
       )}
       <MenuOverlay open={open} ref={overlayEl} />
