@@ -14,7 +14,7 @@ on:
 
 jobs:
         
-  Cypress tests:
+  cypress:
     runs-on: ubuntu-latest
 
     steps:
