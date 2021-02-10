@@ -18,13 +18,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout backend repo
       uses: actions/checkout@v2
-
+      with:
+        repository: nixton9/trackit
+        token: ${{ secrets.REPO_TOKEN }} 
+        path: backend
+        
     - name: Set up Nodejs ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ matrix.node-version }}  
+
+    - name: Install backend dependencies
+      run: npm install
+      working-directory: ./backend
+
+    - name: Run backend
+      run: node server.js
+      working-directory: ./backend
+        
+    - name: Checkout frontend repository
+      uses: actions/checkout@v2
 
     - name: Install dependencies
       run: npm install
@@ -37,5 +52,6 @@ jobs:
         config: baseUrl=http://localhost:3000
       env:
         REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+        NODE_ENV: test  
 
           
