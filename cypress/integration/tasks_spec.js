@@ -15,7 +15,7 @@ describe('Tasks', () => {
     cy.get('[aria-label="Skip"]').click()
   })
 
-  it('creates categories on settings & displays on view', () => {
+  it('creates categories on settings, displays on view', () => {
     const category = generateRandomString()
     cy.get('[data-test-id="tasks-settings-icon"]').click()
     cy.get('[data-test-id="categories-add-icon"]').click()
@@ -32,12 +32,17 @@ describe('Tasks', () => {
     cy.contains(category)
   })
 
-  it('creates a task & displays on view', () => {
+  it('creates a task, displays on view and deletes it', () => {
     const taskTitle = generateRandomString()
     cy.get('[data-test-id="add-task"]').click()
     cy.get('[data-test-id="add-task-title-input"]').type(taskTitle)
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
     cy.contains(taskTitle)
+    cy.get(`.single-task:contains(${taskTitle})`).click()
+    cy.get('[data-test-id="three-dots-menu"]').click()
+    cy.get('[data-test-id="menu-item-1"]').click()
+    cy.get('.confirm').click()
+    cy.contains(taskTitle).should('not.exist')
   })
 
   it('date input works', () => {

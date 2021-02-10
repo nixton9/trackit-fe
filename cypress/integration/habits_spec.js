@@ -20,14 +20,17 @@ describe('Habits', () => {
     cy.contains('Sort by')
   })
 
-  it('creates an habit & displays on view', () => {
+  it('creates an habit, displays on view & deletes it', () => {
     const habitTitle = generateRandomString()
     cy.get('[data-test-id="add-habit"]').click()
     cy.get('[data-test-id="add-habit-title-input"]').type(habitTitle)
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
     cy.contains(habitTitle)
-    cy.get('[id="habits-view"]').click()
-    cy.contains(habitTitle)
+    cy.get(`.habit-title:contains(${habitTitle})`).click({ force: true })
+    cy.get('[data-test-id="three-dots-menu"]').click()
+    cy.get('[data-test-id="menu-item-1"]').click()
+    cy.get('.confirm').click()
+    cy.contains(habitTitle).should('not.exist')
   })
 
   it('fails to create habit with no title', () => {

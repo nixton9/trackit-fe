@@ -31,7 +31,7 @@ describe('Expenses', () => {
     cy.contains(category)
   })
 
-  it('creates an expense & displays on view', () => {
+  it('creates an expense, displays on view & deletes it', () => {
     const expenseTitle = generateRandomString()
     cy.get('[data-test-id="add-expense"]').click({ force: true })
     cy.get('[data-test-id="fluid-input"]').type(22, { force: true })
@@ -40,6 +40,11 @@ describe('Expenses', () => {
     })
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
     cy.contains(expenseTitle)
+    cy.get(`.single-expense:contains(${expenseTitle})`).click()
+    cy.get('[data-test-id="three-dots-menu"]').click()
+    cy.get('[data-test-id="menu-item-1"]').click()
+    cy.get('.confirm').click()
+    cy.contains(expenseTitle).should('not.exist')
   })
 
   it('fails to create expense with no value', () => {

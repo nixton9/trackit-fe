@@ -30,16 +30,34 @@ describe('Notes', () => {
     cy.contains(tag)
   })
 
-  it('creates a note & displays on view', () => {
+  it('creates a note, displays on view & deletes it', () => {
     const noteTitle = generateRandomString()
     const noteContent = generateRandomString()
     cy.get('[data-test-id="add-note"]').click()
     cy.get('[data-test-id="add-note-title-input"]').type(noteTitle)
-    cy.get('[data-placeholder="Start writing your note here"] p').type(
-      noteContent
-    )
+    cy.get(
+      '[data-placeholder="Start writing your note here"] p'
+    ).type(noteContent, { force: true })
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
-    cy.contains(noteTitle)
+    cy.get(`.single-note:contains(${noteTitle})`).click()
+    cy.get('[data-test-id="three-dots-menu"]').click()
+    cy.get('[data-test-id="menu-item-1"]').click()
+    cy.get('.confirm').click()
+    cy.contains(noteTitle).should('not.exist')
+  })
+
+  it('shows save button when note content is edited', () => {
+    const noteTitle = generateRandomString()
+    const noteContent = generateRandomString()
+    cy.get('[data-test-id="add-note"]').click()
+    cy.get('[data-test-id="add-note-title-input"]').type(noteTitle)
+    cy.get(
+      '[data-placeholder="Start writing your note here"] p'
+    ).type(noteContent, { force: true })
+    cy.get('[data-test-id="submit-btn"]').click({ force: true })
+    cy.get(`.single-note:contains(${noteTitle})`).click()
+    cy.get('.ql-editor').type('random content', { force: true })
+    cy.contains('Save changes')
   })
 
   it('fails to create note with no title', () => {

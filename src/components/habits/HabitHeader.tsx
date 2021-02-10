@@ -22,7 +22,10 @@ export const HabitHeader: React.FC<HabitHeaderProps> = ({ id, title }) => {
   }
 
   return (
-    <Styled.CalendarHabit__Title onClick={handleHabitEdit}>
+    <Styled.CalendarHabit__Title
+      onClick={handleHabitEdit}
+      className="habit-title"
+    >
       {title}
     </Styled.CalendarHabit__Title>
   )
