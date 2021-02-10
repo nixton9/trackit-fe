@@ -403,7 +403,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
             <Styled.SettingsBlock className="no-grid">
               <p>
-                Having a problem with the app? Or you would like to request a
+                Having a problem with the app? Or would you like to request a
                 new feature? Just shoot me a message{' '}
                 <a href="mailto:eduardojoaoaraujo@gmail.com?subject=TRCKR Support">
                   here
