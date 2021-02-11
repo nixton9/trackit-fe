@@ -19,7 +19,7 @@ jobs:
       - name: Checkout backend repo
         uses: actions/checkout@v2
         with:
-          repository: nixton9/trackit
+          repository: nixton9/trackit-be
           token: ${{ secrets.REPO_TOKEN }}
           path: backend
 
@@ -31,6 +31,10 @@ jobs:
       - name: Install backend dependencies
         working-directory: ./backend
         run: npm install
+
+      - name: Run backend
+        working-directory: ./backend
+        run: node server.js &
         env:
           APP_SECRET: ${{ secrets.BE_APP_SECRET }}
           FIREBASE_SERVER_KEY: ${{ secrets.BE_FIREBASE_SERVER_KEY }}
@@ -38,10 +42,6 @@ jobs:
           CLOUDINARY_KEY: ${{ secrets.BE_CLOUDINARY_KEY }}
           NODE_ENV: ${{ secrets.BE_NODE_ENV }}
           DATABASE_URL: ${{ secrets.BE_DATABASE_URL }}
-
-      - name: Run backend
-        working-directory: ./backend
-        run: node server.js &
 
       - name: Checkout frontend repository
         uses: actions/checkout@v2
