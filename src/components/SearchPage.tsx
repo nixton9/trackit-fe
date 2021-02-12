@@ -3,7 +3,6 @@ import { TaskStatus } from './tasks/TaskStatus'
 import { PageLoading } from './misc/PageLoading'
 import { PageError } from './misc/PageError'
 import { Styled } from '../styles/Page.styles'
-import { currencyState } from './expenses/ExpensesSettings'
 import { activeContentState, isEditState } from './misc/Add'
 import { SEARCH } from '../utils/queries'
 import { habitIdState } from '../utils/atoms'
@@ -11,12 +10,13 @@ import { ModuleTypes } from '../utils/ModuleTypes'
 import { taskIdState, expenseIdState } from '../utils/atoms'
 import { showCurrencySym } from '../utils/globalHelpers'
 import { getCurrentStreak } from '../utils/statsHelpers'
+import { useLocalStorage } from '../utils/useLocalStorage'
 import { displayDateString, parseDateInverse } from '../utils/dateHelpers'
 import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import { RouteComponentProps } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
-import { useSetRecoilState, useRecoilValue } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 type MatchParams = {
   query: string
@@ -33,7 +33,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ match, isIos }) => {
   const setExpenseId = useSetRecoilState(expenseIdState)
   const setHabitId = useSetRecoilState(habitIdState)
 
-  const currency = useRecoilValue(currencyState)
+  const [currency] = useLocalStorage('currency', '')
 
   const { loading, error, data } = useQuery(SEARCH, {
     variables: { query: match.params.query }

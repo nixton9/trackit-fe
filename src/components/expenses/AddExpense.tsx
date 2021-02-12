@@ -1,5 +1,4 @@
 import React, { useEffect, useCallback, useRef } from 'react'
-import { currencyState } from './ExpensesSettings'
 import DatePickerInput from '../misc/DatePickerInput'
 import { Styled } from '../../styles/Add.styles'
 import { FluidInput } from '../misc/FluidInput'
@@ -28,8 +27,9 @@ import {
 } from '../../utils/atoms'
 import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 import { showCurrencySym } from '../../utils/globalHelpers'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { useMutation, useQuery, useLazyQuery } from '@apollo/client'
-import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { useHistory } from 'react-router-dom'
 
 const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
@@ -45,7 +45,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const { refetch: refetchExpenses } = useQuery(EXPENSES)
   const { loading: loadingTypes, data: types } = useQuery(TYPES)
 
-  const currency = useRecoilValue(currencyState)
+  const [currency] = useLocalStorage('currency', '')
 
   const [createExpense, { loading }] = useMutation(CREATE_EXPENSE, {
     variables: {

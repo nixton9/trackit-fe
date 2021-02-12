@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
-import { currencyState } from '../expenses/ExpensesSettings'
 import { ModuleTypes } from '../../utils/ModuleTypes'
 import { showCurrencySym } from '../../utils/globalHelpers'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { Styled } from '../../styles/HomeWidget.styles'
 import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
 import { activeContentState } from './Add'
-import { useSetRecoilState, useRecoilValue } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { Link } from 'react-router-dom'
 
 interface HomeWidgetProps {
@@ -22,7 +22,7 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
   icon
 }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
-  const currency = useRecoilValue(currencyState)
+  const [currency] = useLocalStorage('currency', '')
 
   return (
     <Styled.WidgetContainer

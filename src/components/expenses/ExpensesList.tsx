@@ -30,6 +30,7 @@ type ExpensesListProps = {
   totalExpensesVal: string
   visibleExpensesDay: string[]
   currency: Currencies
+  setCurrency: (curr: Currencies) => void
   data: { expenses: Expense[] }
   types: { types: ExpenseType[] }
   error: ApolloError | undefined
@@ -45,6 +46,7 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
   totalExpensesVal,
   visibleExpensesDay,
   currency,
+  setCurrency,
   data,
   types,
   error,
@@ -116,7 +118,11 @@ export const ExpensesList: React.FC<ExpensesListProps> = ({
               className="tooltip"
             >
               <div className="mbl-click tooltip">
-                <ExpensesSettings types={types ? types.types : []} />
+                <ExpensesSettings
+                  types={types ? types.types : []}
+                  currency={currency}
+                  setCurrency={setCurrency}
+                />
               </div>
             </Tooltip>
           </Styled.PageHeader__Settings>

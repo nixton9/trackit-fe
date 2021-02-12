@@ -15,15 +15,9 @@ import {
   Currencies,
   currencyOptions
 } from '../../utils/ModuleTypes'
-import { useLocalStorage } from '../../utils/useLocalStorage'
-import { useSetRecoilState, useRecoilState, atom } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { gql, useMutation, useQuery } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
-
-export const currencyState = atom({
-  key: 'currency',
-  default: Currencies.DOLLAR
-})
 
 const DELETE_TYPE = gql`
   mutation DeleteType($id: ID!) {
@@ -35,14 +29,17 @@ const DELETE_TYPE = gql`
 
 type ExpensesSettingsProps = {
   types: ExpenseType[]
+  currency: Currencies
+  setCurrency: (curr: Currencies) => void
 }
 
-const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
+const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({
+  types,
+  currency,
+  setCurrency
+}) => {
   const [showTypeEditor, setShowTypeEditor] = useState(false)
   const [activeType, setActiveType] = useState<ExpenseType | null>(null)
-
-  const [, setLSCurrency] = useLocalStorage('currency', Currencies.DOLLAR)
-  const [currency, setCurrency] = useRecoilState(currencyState)
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
@@ -62,7 +59,6 @@ const ExpensesSettings: React.FC<ExpensesSettingsProps> = ({ types }) => {
 
   const handleCurrencyChange = (e: any) => {
     setCurrency(e.target.value)
-    setLSCurrency(e.target.value)
   }
 
   const handleTypeClick = (type: ExpenseType) => {

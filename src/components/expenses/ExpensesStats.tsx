@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { currencyState } from './ExpensesSettings'
 import { BarGraph } from '../misc/BarGraph'
 import { PieGraph } from '../misc/PieGraph'
 import { SelectMenu } from '../misc/SelectMenu'
@@ -11,11 +10,11 @@ import { ModuleTypes, Expense, ExpenseType } from '../../utils/ModuleTypes'
 import { showCurrencySym } from '../../utils/globalHelpers'
 import { isSameYear } from '../../utils/dateHelpers'
 import { yearsViewOptions } from '../../utils/selectsOptions'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 import { ReactComponent as ExpensesIcon } from '../../assets/icons/expenses.svg'
 import Tooltip from 'react-tooltip-lite'
 import { TouchScrollable } from 'react-scrolllock'
 import { Link } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 import { ApolloError } from '@apollo/client'
 import { getYear } from 'date-fns'
 import {
@@ -43,7 +42,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
   const [selectedYear, setSelectedYear] = useState(CURRYEAR)
   const [totalExpensesVal, setTotalExpensesVal] = useState<number | null>(null)
 
-  const currency = useRecoilValue(currencyState)
+  const [currency] = useLocalStorage('currency', '')
 
   const yearsWithData = data
     ? Array.from(

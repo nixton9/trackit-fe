@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import { ExpensesList } from './ExpensesList'
 import { ExpensesStats } from './ExpensesStats'
-import { currencyState } from './ExpensesSettings'
 import { activeContentState } from '../misc/Add'
 import { Walkthrough, Pages } from '../misc/Walkthrough/Walkthrough'
 import { Styled } from '../../styles/Page.styles'
-import { Expense } from '../../utils/ModuleTypes'
+import { Expense, Currencies } from '../../utils/ModuleTypes'
 import { EXPENSES, TYPES } from '../../utils/queries'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { parseDate, parseDateInverse } from '../../utils/dateHelpers'
 import ScrollLock from 'react-scrolllock'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 import { useQuery } from '@apollo/client'
-import { useSetRecoilState, useRecoilValue } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 
 type ExpensesPageProps = {
   stats?: boolean
@@ -23,8 +22,7 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats, isIos }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showExpWT, setShowExpWT] = useLocalStorage('showExpWT', true)
-
-  const currency = useRecoilValue(currencyState)
+  const [currency, setCurrency] = useLocalStorage('currency', Currencies.DOLLAR)
 
   const { loading, error, data } = useQuery(EXPENSES)
   const { data: types } = useQuery(TYPES)
@@ -96,6 +94,7 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats, isIos }) => {
               totalExpensesVal={totalExpensesVal}
               visibleExpensesDay={visibleExpensesDay}
               currency={currency}
+              setCurrency={setCurrency}
               data={data}
               types={types}
               error={error}
