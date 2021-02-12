@@ -257,7 +257,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
       <Styled.PageContainer className="overflow page-container">
         <div className="page-header-wrapper">
           <UserHeader user={user} />

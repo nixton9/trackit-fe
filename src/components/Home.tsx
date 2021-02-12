@@ -90,7 +90,7 @@ const Home: React.FC<HomeProps> = ({ userName, isIos }) => {
 
   return (
     <>
-      <ScrollLock isActive={isIos && !showWalkthrough} />
+      <ScrollLock />
 
       {showWalkthrough && (
         <Walkthrough page={Pages.HOME} setShow={setShowHomeWT} />

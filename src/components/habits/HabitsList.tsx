@@ -94,7 +94,7 @@ export const HabitsList: React.FC<HabitsListProps> = ({
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
 
       <Styled.HabitsContainer className="overflow overflow-calendar page-container">
         {showWalkthrough && (

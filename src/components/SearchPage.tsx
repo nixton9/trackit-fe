@@ -92,7 +92,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ match, isIos }) => {
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
 
       <Styled.PageContainer className="search-page page-container">
         <Styled.PageTitle className="search-title smaller">

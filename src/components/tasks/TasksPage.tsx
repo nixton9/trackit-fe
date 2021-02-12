@@ -71,7 +71,7 @@ const TasksPage: React.FC<TasksPageProps> = ({ done, isIos }) => {
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
 
       {showWalkthrough && (
         <Walkthrough

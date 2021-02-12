@@ -67,7 +67,7 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats, isIos }) => {
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
       <Styled.PageContainer className="overflow page-container">
         {stats ? (
           <ExpensesStats

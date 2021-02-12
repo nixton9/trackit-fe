@@ -79,7 +79,7 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
 
       <Styled.PageContainer className="overflow page-container">
         <div className="page-header-wrapper">

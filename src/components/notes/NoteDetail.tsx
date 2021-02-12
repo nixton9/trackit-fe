@@ -259,7 +259,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets, isIos }) => {
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
       <Styled.PageContainer className="note-detail">
         <Styled.DetailBack>
           <Link to="/notes">

@@ -51,7 +51,7 @@ const NotesPage: React.FC<{ isIos?: boolean }> = ({ isIos }) => {
 
   return (
     <>
-      <ScrollLock isActive={isIos} />
+      <ScrollLock />
 
       {showWalkthrough && (
         <Walkthrough
