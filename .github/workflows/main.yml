@@ -42,6 +42,9 @@ jobs:
           CLOUDINARY_KEY: ${{ secrets.BE_CLOUDINARY_KEY }}
           NODE_ENV: ${{ secrets.BE_NODE_ENV }}
           DATABASE_URL: ${{ secrets.BE_DATABASE_URL }}
+          
+      - name: Check if we can access BE
+        run: curl http://localhost:4000
 
       - name: Checkout frontend repository
         uses: actions/checkout@v2
