@@ -56,7 +56,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:3000, http://localhost:4000'
           config: baseUrl=http://localhost:3000
         env:
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
