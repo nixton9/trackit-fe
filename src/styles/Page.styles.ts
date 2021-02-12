@@ -347,14 +347,15 @@ const PageContent__NoData = styled.div`
 
 const PageAddItem = styled.div`
   position: fixed;
-  top: 2rem;
+  top: 1.7rem;
   right: 8rem;
+  padding: 0.5rem;
   z-index: 1;
   cursor: pointer;
   transition: all 0.25s ease;
 
   svg {
-    width: 3rem;
+    width: 2.8rem;
     fill: ${props => props.theme.white};
   }
 `
