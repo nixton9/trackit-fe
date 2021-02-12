@@ -59,7 +59,6 @@ const SignIn: React.FC<SignInSignUpProps> = ({
     e.preventDefault()
     login()
       .then(results => {
-        console.log(results)
         if (results && results.data && results.data.login) {
           setToken(results.data.login.token)
           setUserInfo({
@@ -129,7 +128,11 @@ const SignIn: React.FC<SignInSignUpProps> = ({
         {error && (
           <Styled.SignInSignUpMessage>
             <ErrorIcon />
-            <p>{error.message}</p>
+            <p>
+              {error.message.includes('Unexpected token')
+                ? "We're sorry but it seems there was a problem reaching the server"
+                : error.message}
+            </p>
           </Styled.SignInSignUpMessage>
         )}
       </Styled.SignInSignUpContainer>

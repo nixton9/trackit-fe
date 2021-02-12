@@ -154,7 +154,11 @@ const SignUp: React.FC<SignInSignUpProps> = ({
         {error ? (
           <Styled.SignInSignUpMessage>
             <ErrorIcon />
-            <p>{error.message}</p>
+            <p>
+              {error.message.includes('Unexpected token')
+                ? "We're sorry but it seems there was a problem reaching the server"
+                : error.message}
+            </p>
           </Styled.SignInSignUpMessage>
         ) : (
           formError && (

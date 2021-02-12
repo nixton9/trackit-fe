@@ -8,7 +8,7 @@ describe('Sign In', () => {
 
     cy.contains('Login').click()
 
-    cy.contains('Unexpected')
+    cy.contains('problem reaching the server')
   })
 
   it('login works with correct info', () => {
