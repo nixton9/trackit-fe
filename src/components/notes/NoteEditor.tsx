@@ -17,10 +17,8 @@ const EditorContainer = styled.div<EditorContainerProps>`
     border-radius: ${props => props.theme.smallBorderRadius};
     display: ${props => (props.showEditor ? 'flex' : 'none')};
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
-    width: fit-content;
-    width: -moz-fit-content;
+    width: auto;
     margin: 0 auto;
 
     @media ${device.mobile} {
