@@ -45,6 +45,9 @@ jobs:
 
       - name: Checkout frontend repository
         uses: actions/checkout@v2
+        with:
+          ACTIONS_RUNNER_DEBUG: true
+          ACTIONS_STEP_DEBUG: true
 
       - name: Install dependencies
         run: npm install
