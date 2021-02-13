@@ -425,7 +425,8 @@ const SettingsPage: React.FC<SettingsProps> = ({
                 <a href="https://www.eduardo-araujo.com/" target="blank">
                   Eduardo Araújo
                 </a>
-                . Enjoying the app? Consider buying me a cup of coffe{' '}
+                . Enjoying the app? Small donations are more than welcome and
+                will be used to improve the app. Donate{' '}
                 <a href="https://paypal.me/eduardoaraujo9" target="blank">
                   here
                 </a>
