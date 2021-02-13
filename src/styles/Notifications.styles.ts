@@ -15,9 +15,9 @@ const NotificationContainer = styled.div`
   position: fixed;
   top: 7%;
   left: 50%;
-  width: 75%;
-  min-width: 20rem;
-  max-width: 40rem;
+  width: auto;
+  white-space: nowrap;
+  max-width: 90%;
   padding: 2rem 3rem 2rem 2.5rem;
   background-color: ${props => props.theme.surfacesBlack};
   color: ${props => props.theme.white};
@@ -44,7 +44,6 @@ const Notification = styled.div`
   p {
     font-weight: ${props => props.theme.fontSemiBold};
     font-size: 1.4rem;
-    margin: 0 auto;
 
     &.extra-padding {
       padding: 0.5rem;

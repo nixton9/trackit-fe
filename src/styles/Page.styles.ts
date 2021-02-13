@@ -357,10 +357,6 @@ const PageAddItem = styled.div`
   svg {
     width: 2.8rem;
     fill: ${props => props.theme.white};
-
-    rect {
-      width: 5px;
-    }
   }
 `
 
