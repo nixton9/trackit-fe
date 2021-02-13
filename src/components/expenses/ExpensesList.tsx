@@ -14,7 +14,7 @@ import {
 } from '../../utils/ModuleTypes'
 import { displayDateString, parseDateInverse } from '../../utils/dateHelpers'
 import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg'
-import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg'
+import { ReactComponent as PlusIcon } from '../../assets/icons/add.svg'
 import { ReactComponent as NoDataIcon } from '../../assets/icons/nodata.svg'
 import { ReactComponent as StatsIcon } from '../../assets/icons/stats.svg'
 import Tooltip from 'react-tooltip-lite'
