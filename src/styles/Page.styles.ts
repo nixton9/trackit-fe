@@ -347,8 +347,8 @@ const PageContent__NoData = styled.div`
 
 const PageAddItem = styled.div`
   position: fixed;
-  top: 1.7rem;
-  right: 8rem;
+  top: 1.6rem;
+  right: 7.5rem;
   padding: 0.5rem;
   z-index: 1;
   cursor: pointer;
@@ -357,6 +357,10 @@ const PageAddItem = styled.div`
   svg {
     width: 2.8rem;
     fill: ${props => props.theme.white};
+
+    rect {
+      width: 5px;
+    }
   }
 `
 
