@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { ModuleTypes } from '../../utils/ModuleTypes'
+import { ModuleTypes, Currencies } from '../../utils/ModuleTypes'
 import { showCurrencySym } from '../../utils/globalHelpers'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { Styled } from '../../styles/HomeWidget.styles'
@@ -22,7 +22,7 @@ const HomeWidget: React.FC<HomeWidgetProps> = ({
   icon
 }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
-  const [currency] = useLocalStorage('currency', '')
+  const [currency] = useLocalStorage('currency', Currencies.DOLLAR)
 
   return (
     <Styled.WidgetContainer
