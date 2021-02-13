@@ -401,7 +401,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
 
             <Styled.Settings__Title>Support</Styled.Settings__Title>
 
-            <Styled.SettingsBlock className="no-grid">
+            <Styled.SettingsBlock className="no-grid text-block">
               <p>
                 Having a problem with the app? Or would you like to request a
                 new feature? Just shoot me a message{' '}
@@ -415,7 +415,7 @@ const SettingsPage: React.FC<SettingsProps> = ({
               Author
             </Styled.Settings__Title>
 
-            <Styled.SettingsBlock className="no-grid">
+            <Styled.SettingsBlock className="no-grid text-block">
               <p>
                 This app was made with{' '}
                 <span role="img" aria-label="heart">

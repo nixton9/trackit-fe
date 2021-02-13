@@ -675,6 +675,10 @@ const SettingsBlock = styled.div`
     margin-bottom: ${props => props.theme.spacingS};
   }
 
+  &.text-block {
+    margin-top: ${props => props.theme.spacingXS};
+  }
+
   .loading-spinner {
     position: absolute;
     left: 0;
