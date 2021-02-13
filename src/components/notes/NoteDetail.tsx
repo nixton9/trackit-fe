@@ -261,7 +261,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets, isIos }) => {
     <>
       <ScrollLock />
       <Styled.PageContainer className="note-detail">
-        <Styled.DetailBack>
+        <Styled.DetailBack className="mbl-click">
           <Link to="/notes">
             <ChevronIcon />
           </Link>

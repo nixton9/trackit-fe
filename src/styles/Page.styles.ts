@@ -90,6 +90,10 @@ const PageHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: ${props => props.theme.spacingS};
+
+  .mbl-click:before {
+    z-index: 0 !important;
+  }
 `
 
 const PageHeader__View = styled.div`
@@ -238,6 +242,7 @@ const PageHeader__Settings = styled.div`
   svg {
     width: 3.2rem;
     height: 100%;
+    position: relative;
 
     &.stats-icon {
       width: 2.6rem;

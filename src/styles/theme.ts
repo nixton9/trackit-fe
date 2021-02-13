@@ -72,7 +72,7 @@ export const lightTheme = {
   offWhite: '#444444',
   black: '#111111',
   backgroundBlack: '#ffffff',
-  hoverBlack: '#ebecec',
+  hoverBlack: '#d5d6d6',
   darkenAccent: '#3e2377',
   grey: '#9e9e9e',
   surfacesBlack: '#eaeaea',

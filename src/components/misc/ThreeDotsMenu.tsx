@@ -47,10 +47,11 @@ const Icon = styled.div`
     background-color: ${props => props.theme.activeBackground};
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
-    z-index: -1;
+    z-index: 0;
   }
 
   span {
+    position: relative;
     display: block;
     width: 0.5rem;
     height: 0.5rem;
