@@ -31,14 +31,13 @@ const SearchIcon = styled.div<SearchProps>`
 const SearchInput = styled.input<SearchProps>`
   background-color: ${props => props.theme.surfacesBlack};
   width: 30rem;
-  height: 3.6rem;
   position: absolute;
   right: 0;
   top: 0;
   border-radius: 20px;
   color: ${props => props.theme.white};
   border: none;
-  padding: 0 3.8rem 0 2rem;
+  padding: 1rem 3.8rem 1rem 2rem;
   font-size: 1.15rem;
   font-weight: ${props => props.theme.fontRegular};
   box-shadow: 11px 15px 16px 0 rgba(0, 0, 0, 0.07);
