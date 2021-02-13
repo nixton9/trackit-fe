@@ -607,6 +607,7 @@ const SearchResults__Module__Title = styled.h3`
 const SearchResults__Item = styled.div`
   display: flex;
   align-items: baseline;
+  max-width: 99%;
   padding: 3rem 1rem;
   border-bottom: 1px solid rgb(119, 118, 118, 0.25);
   cursor: pointer;
