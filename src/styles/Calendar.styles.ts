@@ -23,18 +23,11 @@ const CalendarHeader__Title = styled.h2`
 
 const CalendarHeader__Icon = styled.span`
   transform: rotate(90deg);
+  padding: 0.5rem;
   cursor: pointer;
-
-  &:hover svg {
-    transform: translateY(3px);
-  }
 
   &.right {
     transform: rotate(-90deg);
-
-    &:hover svg {
-      transform: translateY(3px);
-    }
   }
   svg {
     width: 1.6rem;

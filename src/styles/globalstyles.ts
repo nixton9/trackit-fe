@@ -65,6 +65,11 @@ export const GlobalStyle = createGlobalStyle`
         z-index: -1;
     }
 
+    .mbl-click-small:active:before {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
     .mbl-click.word:active:before {
         width: 120%;
         height: 120%;

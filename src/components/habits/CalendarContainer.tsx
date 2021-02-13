@@ -93,13 +93,19 @@ const CalendarContainer: React.FC<CalendarContainerProps> = ({
     <Styled.CalendarContainer className="calendar">
       <div className="calendar-header">
         <Styled.CalendarHeader>
-          <Styled.CalendarHeader__Icon onClick={prevMonth}>
+          <Styled.CalendarHeader__Icon
+            onClick={prevMonth}
+            className="mbl-click mbl-click-small"
+          >
             <ChevronIcon />
           </Styled.CalendarHeader__Icon>
           <Styled.CalendarHeader__Title>
             {format(currentDate, dateFormat)}
           </Styled.CalendarHeader__Title>
-          <Styled.CalendarHeader__Icon className="right" onClick={nextMonth}>
+          <Styled.CalendarHeader__Icon
+            className="right mbl-click mbl-click-small"
+            onClick={nextMonth}
+          >
             <ChevronIcon />
           </Styled.CalendarHeader__Icon>
         </Styled.CalendarHeader>
