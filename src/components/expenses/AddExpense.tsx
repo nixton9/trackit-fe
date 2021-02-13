@@ -102,10 +102,18 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const typeOptions = types
     ? [
         { val: '0', label: 'All' },
-        ...(types.types as ExpenseType[]).map(type => ({
-          val: type.id,
-          label: type.name
-        }))
+        ...(types.types as ExpenseType[])
+          .map(type => ({
+            val: type.id,
+            label: type.name
+          }))
+          .sort((a, b) =>
+            a.label.toUpperCase() < b.label.toUpperCase()
+              ? -1
+              : a.label.toUpperCase() > b.label.toUpperCase()
+              ? 1
+              : 0
+          )
       ]
     : [{ val: '0', label: 'All' }]
 
