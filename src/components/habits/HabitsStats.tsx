@@ -27,15 +27,13 @@ type HabitsStatsProps = {
   error: ApolloError | undefined
   loading: boolean
   preSelectedHabit?: string | undefined
-  isIos?: boolean
 }
 
 export const HabitsStats: React.FC<HabitsStatsProps> = ({
   data,
   error,
   loading,
-  preSelectedHabit,
-  isIos
+  preSelectedHabit
 }) => {
   const [selectedHabit, setSelectedHabit] = useState<string>('')
 

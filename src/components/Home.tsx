@@ -21,10 +21,9 @@ import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 
 type HomeProps = {
   userName: string
-  isIos?: boolean
 }
 
-const Home: React.FC<HomeProps> = ({ userName, isIos }) => {
+const Home: React.FC<HomeProps> = ({ userName }) => {
   const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', true)
   const [notToken, setNotToken] = useLocalStorage('notToken', '')
 

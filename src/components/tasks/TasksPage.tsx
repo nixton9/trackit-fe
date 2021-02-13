@@ -26,10 +26,9 @@ import { Link } from 'react-router-dom'
 
 type TasksPageProps = {
   done?: boolean
-  isIos?: boolean
 }
 
-const TasksPage: React.FC<TasksPageProps> = ({ done, isIos }) => {
+const TasksPage: React.FC<TasksPageProps> = ({ done }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showTasksWT, setShowTasksWT] = useLocalStorage('showTasksWT', true)

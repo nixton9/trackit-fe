@@ -13,10 +13,9 @@ type MatchParams = {
 
 interface HabitsPageProps extends RouteComponentProps<MatchParams> {
   stats?: boolean
-  isIos?: boolean
 }
 
-const HabitsPage: React.FC<HabitsPageProps> = ({ stats, match, isIos }) => {
+const HabitsPage: React.FC<HabitsPageProps> = ({ stats, match }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const { loading, error, data } = useQuery(HABITS)
@@ -29,7 +28,6 @@ const HabitsPage: React.FC<HabitsPageProps> = ({ stats, match, isIos }) => {
       error={error}
       loading={loading}
       preSelectedHabit={selectedHabit}
-      isIos={isIos}
     />
   ) : (
     <HabitsList
@@ -37,7 +35,6 @@ const HabitsPage: React.FC<HabitsPageProps> = ({ stats, match, isIos }) => {
       error={error}
       loading={loading}
       setActiveContent={setActiveContent}
-      isIos={isIos}
     />
   )
 }

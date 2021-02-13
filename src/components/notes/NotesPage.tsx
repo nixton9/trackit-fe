@@ -20,7 +20,7 @@ import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import { useQuery } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
 
-const NotesPage: React.FC<{ isIos?: boolean }> = ({ isIos }) => {
+const NotesPage: React.FC = () => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showNotesWT, setShowNotesWT] = useLocalStorage('showNotesWT', true)

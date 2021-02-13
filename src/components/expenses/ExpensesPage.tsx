@@ -15,10 +15,9 @@ import { useSetRecoilState } from 'recoil'
 
 type ExpensesPageProps = {
   stats?: boolean
-  isIos?: boolean
 }
 
-const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats, isIos }) => {
+const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
 
   const [showExpWT, setShowExpWT] = useLocalStorage('showExpWT', true)

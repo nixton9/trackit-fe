@@ -24,15 +24,13 @@ type SettingsProps = {
   refreshUserInfo: () => void
   isDarkTheme: boolean
   setIsDarkTheme: (checked: boolean) => void
-  isIos?: boolean
 }
 
 const SettingsPage: React.FC<SettingsProps> = ({
   user,
   refreshUserInfo,
   isDarkTheme,
-  setIsDarkTheme,
-  isIos
+  setIsDarkTheme
 }) => {
   const [name, setName] = useState(user.name)
   const [image, setImage] = useState(user.image)

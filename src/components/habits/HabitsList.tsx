@@ -28,15 +28,13 @@ type HabitsListProps = {
   error: ApolloError | undefined
   loading: boolean
   setActiveContent: Dispatch<SetStateAction<string>>
-  isIos?: boolean
 }
 
 export const HabitsList: React.FC<HabitsListProps> = ({
   data,
   error,
   loading,
-  setActiveContent,
-  isIos
+  setActiveContent
 }) => {
   const [view, setView] = useState('all')
   const [sortBy, setSortBy] = useState<SortBySettings>(

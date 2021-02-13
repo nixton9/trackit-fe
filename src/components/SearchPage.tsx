@@ -22,11 +22,7 @@ type MatchParams = {
   query: string
 }
 
-interface SearchPageProps extends RouteComponentProps<MatchParams> {
-  isIos?: boolean
-}
-
-const SearchPage: React.FC<SearchPageProps> = ({ match, isIos }) => {
+const SearchPage: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const setActiveContent = useSetRecoilState(activeContentState)
   const setIsEdit = useSetRecoilState(isEditState)
   const setTaskId = useSetRecoilState(taskIdState)

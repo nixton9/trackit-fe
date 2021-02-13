@@ -37,10 +37,9 @@ type MatchParams = {
 }
 interface MatchProps extends RouteComponentProps<MatchParams> {
   setWidgets: any
-  isIos?: boolean
 }
 
-const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets, isIos }) => {
+const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
   const [noteTitle, setNoteTitle] = useState('')
   const [noteContent, setNoteContent] = useState('')
   const [parsedContent, setParsedContent] = useState('')

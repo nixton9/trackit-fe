@@ -90,21 +90,21 @@ const App: React.FC = () => {
             <RecoilRoot>
               <Switch>
                 <Route exact path="/">
-                  <Home userName={userInfo.name} isIos={isIos()} />
+                  <Home userName={userInfo.name} />
                 </Route>
                 <Route exact path="/notes">
-                  <NotesPage isIos={isIos()} />
+                  <NotesPage />
                 </Route>
                 <Route exact path="/tasks">
-                  <TasksPage isIos={isIos()} />
+                  <TasksPage />
                 </Route>
                 <Route exact path="/expenses">
-                  <ExpensesPage isIos={isIos()} />
+                  <ExpensesPage />
                 </Route>
                 <Route
                   exact
                   path="/habits"
-                  render={props => <HabitsPage {...props} isIos={isIos()} />}
+                  render={props => <HabitsPage {...props} />}
                 />
                 <Route exact path="/settings">
                   <SettingsPage
@@ -112,13 +112,12 @@ const App: React.FC = () => {
                     refreshUserInfo={refreshUserInfo}
                     isDarkTheme={isDarkTheme}
                     setIsDarkTheme={setIsDarkTheme}
-                    isIos={isIos()}
                   />
                 </Route>
                 <Route
                   exact
                   path="/search/:query"
-                  render={props => <SearchPage {...props} isIos={isIos()} />}
+                  render={props => <SearchPage {...props} />}
                 />
                 <Route
                   exact
@@ -127,29 +126,22 @@ const App: React.FC = () => {
                     <NoteDetail
                       {...props}
                       setWidgets={(bool: boolean) => setShowWidgets(bool)}
-                      isIos={isIos()}
                     />
                   )}
                 />
                 <Route
                   exact
                   path="/tasks/done"
-                  render={props => (
-                    <TasksPage {...props} isIos={isIos()} done />
-                  )}
+                  render={props => <TasksPage {...props} done />}
                 />
                 <Route
                   exact
                   path="/expenses/stats"
-                  render={props => (
-                    <ExpensesPage {...props} stats isIos={isIos()} />
-                  )}
+                  render={props => <ExpensesPage {...props} stats />}
                 />
                 <Route
                   path="/habits/stats/:habit?"
-                  render={props => (
-                    <HabitsPage {...props} isIos={isIos()} stats />
-                  )}
+                  render={props => <HabitsPage {...props} stats />}
                 />
               </Switch>
               <Notification />
