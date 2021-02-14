@@ -54,6 +54,14 @@ describe('Expenses', () => {
   })
 
   it('shows expenses stats', () => {
+    const expenseTitle = generateRandomString()
+    cy.get('[data-test-id="add-expense"]').click({ force: true })
+    cy.get('[data-test-id="fluid-input"]').type(22, { force: true })
+    cy.get('[data-test-id="add-expense-title-input"]').type(expenseTitle, {
+      force: true
+    })
+    cy.get('[data-test-id="submit-btn"]').click({ force: true })
+    cy.contains(expenseTitle)
     cy.get('[data-test-id="expenses-stats-link"]').click({ force: true })
     cy.url().should('include', '/expenses/stats')
     cy.contains('Expenses Stats')
