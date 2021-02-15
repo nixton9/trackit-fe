@@ -79,7 +79,7 @@ const SingleTask: React.FC<SingleTaskProps> = ({
 
   return (
     <Styled.SingleWrapper className="single-task">
-      <Styled.SingleContainer onClick={handleTaskEdit}>
+      <Styled.SingleContainer onClick={handleTaskEdit} className="task">
         <Styled.SingleFlex>
           <div>
             <Styled.SingleFlex>

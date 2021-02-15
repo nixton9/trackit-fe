@@ -26,6 +26,10 @@ const SingleContainer = styled.article`
   cursor: pointer;
   transition: all 0.1s ease;
 
+  &.task {
+    padding: 3rem 5rem 3rem 1rem;
+  }
+
   &:hover,
   &:active,
   &:focus {
