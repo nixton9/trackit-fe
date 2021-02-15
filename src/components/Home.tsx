@@ -3,6 +3,7 @@ import HomeWidget from './misc/HomeWidget'
 import { LoadingSpinner } from './misc/LoadingSpinner'
 import { PageError } from './misc/PageError'
 import { Walkthrough, Pages } from './misc/Walkthrough/Walkthrough'
+import { alertState } from './misc/Alert'
 import { Styled } from '../styles/Home.styles'
 import { ModuleTypes, Expense, Task } from '../utils/ModuleTypes'
 import { NOTES, TASKS, EXPENSES, HABITS } from '../utils/queries'
@@ -18,14 +19,23 @@ import { askNotificationPermission } from '../push-notification'
 import ScrollLock from 'react-scrolllock'
 import { useQuery, useMutation } from '@apollo/client'
 import { startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
+import { useSetRecoilState } from 'recoil'
 
 type HomeProps = {
   userName: string
+  newVersionAvailable: boolean
+  updateServiceWorker: () => void
 }
 
-const Home: React.FC<HomeProps> = ({ userName }) => {
+const Home: React.FC<HomeProps> = ({
+  userName,
+  newVersionAvailable,
+  updateServiceWorker
+}) => {
   const [showHomeWT, setShowHomeWT] = useLocalStorage('showHomeWT', true)
   const [notToken, setNotToken] = useLocalStorage('notToken', '')
+
+  const setAlert = useSetRecoilState(alertState)
 
   const { loading: loadingNotes, error: errorNotes, data: notes } = useQuery(
     NOTES
@@ -66,6 +76,23 @@ const Home: React.FC<HomeProps> = ({ userName }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if (newVersionAvailable && !showHomeWT && !isLoading && !hasError) {
+      setAlert({
+        text:
+          'A new version of the app is available. Do you wish to update it?',
+        onConfirm: updateServiceWorker
+      })
+    }
+  }, [
+    newVersionAvailable,
+    showHomeWT,
+    isLoading,
+    hasError,
+    setAlert,
+    updateServiceWorker
+  ])
 
   const currMonthExpensesVal = expenses
     ? expenses.expenses
