@@ -410,6 +410,10 @@ const DetailBack = styled.span`
   top: 4rem;
   left: 3rem;
 
+  &.mbl-click:active:before {
+    left: 16px;
+  }
+
   svg {
     transform: rotate(90deg);
     width: 3.2rem;

@@ -292,6 +292,7 @@ const NoteDetail: React.FC<MatchProps> = ({ match, setWidgets }) => {
               </div>
 
               <ThreeDotsMenu
+                className="note-detail-menu"
                 options={menuOptions}
                 componentItem={
                   <CopyToClipboard onCopy={onCopyNote} text={parsedContent} />
