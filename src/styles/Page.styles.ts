@@ -352,7 +352,7 @@ const PageContent__NoData = styled.div`
 
 const PageAddItem = styled.div`
   position: fixed;
-  top: 1.6rem;
+  top: 1.7rem;
   right: 7.5rem;
   padding: 0.5rem;
   z-index: 1;
