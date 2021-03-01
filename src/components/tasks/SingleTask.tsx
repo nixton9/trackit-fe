@@ -54,7 +54,7 @@ const SingleTask: React.FC<SingleTaskProps> = ({
     })
       .then(res => {
         setNotification({
-          text: `Task '${title}' was completed.`,
+          text: `Task '${title.substring(0, 20)}...' was completed.`,
           type: NotificationTypes.Blank,
           revert: () =>
             markAsDone({
