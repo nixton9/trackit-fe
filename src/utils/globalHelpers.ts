@@ -7,14 +7,14 @@ export const sortData = (
   sortBy: SortBySettings,
   invertedDate: boolean = false
 ) => {
+  const distantFuture = new Date(8640000000000000).getTime()
+
   return sortBy === SortBySettings.DATE
-    ? data
-        .slice()
-        .sort((a: Note | Task | Habit, b: Note | Task | Habit) =>
-          invertedDate
-            ? new Date(a.date).getTime() - new Date(b.date).getTime()
-            : new Date(b.date).getTime() - new Date(a.date).getTime()
-        )
+    ? data.slice().sort((a: Note | Task | Habit, b: Note | Task | Habit) => {
+        let dateA = a.date ? new Date(a.date).getTime() : distantFuture
+        let dateB = b.date ? new Date(b.date).getTime() : distantFuture
+        return invertedDate ? dateA - dateB : dateB - dateA
+      })
     : sortBy === SortBySettings.ALPHABETICAL
     ? data
         .slice()
