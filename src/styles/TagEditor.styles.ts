@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
+import { device } from './theme'
 
 export const SlideDown = keyframes`
     0% {
@@ -33,6 +34,42 @@ const TagEditorContainer = styled.div`
   .loading-spinner {
     margin: ${props => props.theme.spacingXXS} auto 0 auto;
   }
+
+  &.is-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 40%;
+    margin: 0 auto;
+    max-width: 90%;
+    width: 45rem;
+    background-color: ${props => props.theme.surfacesBlack};
+    padding: 4rem;
+    border-radius: ${props => props.theme.smallBorderRadius};
+    box-shadow: 0 5px 55px 0 rgba(0, 0, 0, 0.07);
+
+    .close {
+      position: absolute;
+      top: -0.9rem;
+      right: 0;
+      font-size: 2.9rem;
+      color: #fefefe;
+      font-weight: 500;
+      transform: rotate(45deg);
+      padding: 1rem;
+      cursor: pointer;
+    }
+
+    form {
+      justify-content: center;
+    }
+
+    @media ${device.mobileS} {
+      button {
+        margin-left: 2rem;
+      }
+    }
+  }
 `
 
 const TagEditorInput = styled.input`
@@ -49,6 +86,10 @@ const TagEditorInput = styled.input`
 
   ::placeholder {
     color: ${props => props.theme.offWhite};
+  }
+
+  @media ${device.mobileS} {
+    margin-right: 2rem;
   }
 `
 

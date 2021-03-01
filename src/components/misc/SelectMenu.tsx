@@ -19,6 +19,7 @@ export type SelectMenuProps = {
     label: string
     disabled?: boolean
     color?: string
+    onClick?: () => void
   }[]
   id: string
   itemClass?: string
@@ -57,6 +58,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
           value={option.val}
           className={itemClass}
           disabled={option.disabled ? true : false}
+          onClick={option.onClick}
         >
           {isColorPicker ? (
             <>

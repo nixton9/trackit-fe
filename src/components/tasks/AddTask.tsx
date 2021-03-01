@@ -4,6 +4,7 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { Styled } from '../../styles/Add.styles'
 import { TaskStatus } from './TaskStatus'
+import { CategoryEditor } from './CategoryEditor'
 import { SubmitButton } from '../misc/SubmitButton'
 import { CustomAddSelect } from '../misc/CustomAddSelect'
 import { CustomAddDatePicker } from '../misc/CustomAddDatePicker'
@@ -45,8 +46,8 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const [done, setDone] = useRecoilState(taskDoneState)
 
   const [dateSelect, setDateSelect] = useState('1')
-
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
+  const [showCategoryEditor, setShowCategoryEditor] = useState(false)
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
@@ -85,7 +86,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const titleRef: React.RefObject<HTMLInputElement> = useRef(null)
   const history = useHistory()
 
-  const categoryOptions = categories
+  const inboxOptions = categories
     ? [
         { val: '0', label: 'Inbox' },
         ...(categories.categories as TaskCategory[])
@@ -99,9 +100,21 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               : a.label.toUpperCase() > b.label.toUpperCase()
               ? 1
               : 0
-          )
+          ),
+        {
+          val: '-1',
+          label: 'Create new',
+          onClick: () => setShowCategoryEditor(true)
+        }
       ]
-    : [{ val: '0', label: 'Inbox' }]
+    : [
+        { val: '0', label: 'Inbox' },
+        {
+          val: '-1',
+          label: 'Create new',
+          onClick: () => setShowCategoryEditor(true)
+        }
+      ]
 
   const handleDateSelectChange = (e: any) => {
     setDateSelect(e.target.value)
@@ -276,8 +289,15 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     </Styled.AddLoading>
   ) : (
     <>
+      {showCategoryEditor && (
+        <CategoryEditor
+          closeEditor={() => setShowCategoryEditor(false)}
+          onCreateCallback={id => setCategory(id)}
+          removeSelection={() => setCategory('0')}
+          isModal
+        />
+      )}
       <ThreeDotsMenu options={menuOptions} />
-
       <form onSubmit={handleSubmit}>
         <Styled.AddInputWrapper>
           <Styled.AddInput__Label>Title</Styled.AddInput__Label>
@@ -328,10 +348,10 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
           <Styled.AddWidget>
             <CustomAddSelect
-              id="add-category"
+              id="add-inbox"
               value={category}
               onChange={handleCategoryChange}
-              options={categoryOptions}
+              options={inboxOptions}
               icon={<CategoriesIcon />}
             />
           </Styled.AddWidget>

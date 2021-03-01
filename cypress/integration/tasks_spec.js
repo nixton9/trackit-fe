@@ -45,6 +45,23 @@ describe('Tasks', () => {
     cy.contains(taskTitle).should('not.exist')
   })
 
+  it('creates a task after creating a new inbox', () => {
+    const taskTitle = generateRandomString()
+    const inboxTitle = generateRandomString()
+    cy.get('[data-test-id="add-task"]').click({ force: true })
+    cy.get('[data-test-id="add-task-title-input"]').type(taskTitle)
+    cy.get('#add-inbox').click()
+    cy.get('li').contains('Create new').click()
+    cy.get('[data-test-id="categories-name-input"]').type(inboxTitle, {
+      force: true
+    })
+    cy.get('[data-test-id="submit-btn"]').first().click({ force: true })
+    cy.contains(inboxTitle)
+    cy.get('[data-test-id="submit-btn"]').click({ force: true })
+    cy.contains(taskTitle)
+    cy.contains(inboxTitle)
+  })
+
   it('date input works', () => {
     cy.get('[data-test-id="add-task"]').click()
     cy.get('[data-test-id="add-task-date-input"]').click()

@@ -1,5 +1,6 @@
-import React, { useEffect, useCallback, useRef } from 'react'
+import React, { useEffect, useCallback, useRef, useState } from 'react'
 import DatePickerInput from '../misc/DatePickerInput'
+import { TypeEditor } from './TypeEditor'
 import { Styled } from '../../styles/Add.styles'
 import { FluidInput } from '../misc/FluidInput'
 import { SubmitButton } from '../misc/SubmitButton'
@@ -41,6 +42,8 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
 
   const setNotification = useSetRecoilState(notificationState)
   const setAlert = useSetRecoilState(alertState)
+
+  const [showTypeEditor, setShowTypeEditor] = useState(false)
 
   const { refetch: refetchExpenses } = useQuery(EXPENSES)
   const { loading: loadingTypes, data: types } = useQuery(TYPES)
@@ -113,9 +116,21 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               : a.label.toUpperCase() > b.label.toUpperCase()
               ? 1
               : 0
-          )
+          ),
+        {
+          val: '-1',
+          label: 'Create new',
+          onClick: () => setShowTypeEditor(true)
+        }
       ]
-    : [{ val: '0', label: 'All' }]
+    : [
+        { val: '0', label: 'All' },
+        {
+          val: '-1',
+          label: 'Create new',
+          onClick: () => setShowTypeEditor(true)
+        }
+      ]
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value)
@@ -253,6 +268,15 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     </Styled.AddLoading>
   ) : (
     <>
+      {showTypeEditor && (
+        <TypeEditor
+          closeEditor={() => setShowTypeEditor(false)}
+          onCreateCallback={id => setType(id)}
+          removeSelection={() => setType('0')}
+          isModal
+        />
+      )}
+
       <ThreeDotsMenu options={menuOptions} />
 
       <form onSubmit={handleSubmit}>

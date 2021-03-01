@@ -47,6 +47,26 @@ describe('Expenses', () => {
     cy.contains(expenseTitle).should('not.exist')
   })
 
+  it('creates an expense after creating a new category', () => {
+    const expenseTitle = generateRandomString()
+    const typeTitle = generateRandomString()
+    cy.get('[data-test-id="add-expense"]').click({ force: true })
+    cy.get('[data-test-id="fluid-input"]').type(22, { force: true })
+    cy.get('[data-test-id="add-expense-title-input"]').type(expenseTitle, {
+      force: true
+    })
+    cy.get('#add-category').click()
+    cy.get('li').contains('Create new').click()
+    cy.get('[data-test-id="categories-name-input"]').type(typeTitle, {
+      force: true
+    })
+    cy.get('[data-test-id="submit-btn"]').first().click({ force: true })
+    cy.contains(typeTitle)
+    cy.get('[data-test-id="submit-btn"]').click({ force: true })
+    cy.contains(expenseTitle)
+    cy.contains(typeTitle)
+  })
+
   it('fails to create expense with no value', () => {
     cy.get('[data-test-id="add-expense"]').click({ force: true })
     cy.get('[data-test-id="submit-btn"]').click({ force: true })

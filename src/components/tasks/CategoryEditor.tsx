@@ -32,13 +32,19 @@ const UPDATE_CATEGORY = gql`
 `
 
 type CategoryEditorProps = {
-  category: TaskCategory | null
+  category?: TaskCategory | null
   closeEditor: () => void
+  onCreateCallback?: (id: string) => void
+  removeSelection?: () => void
+  isModal?: boolean
 }
 
 export const CategoryEditor: React.FC<CategoryEditorProps> = ({
   category,
-  closeEditor
+  isModal,
+  closeEditor,
+  removeSelection,
+  onCreateCallback
 }) => {
   const [name, setName] = useState('')
   const [color, setColor] = useState(theme.categories.blue)
@@ -99,6 +105,8 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
               text: `New category created '${name}'`,
               type: NotificationTypes.Success
             })
+            onCreateCallback &&
+              onCreateCallback(res.data.createCategory.id_category)
             refetchCategories()
             cleanData()
           })
@@ -135,6 +143,11 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
     ...colorOptions
   ]
 
+  const closeModalEditor = () => {
+    closeEditor()
+    removeSelection && removeSelection()
+  }
+
   useEffect(() => {
     if (category) {
       setName(category.name)
@@ -149,28 +162,37 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
 
   const isLoading = loading || loadingUpdate
 
-  return isLoading ? (
-    <LoadingSpinner />
-  ) : (
-    <Styled.TagEditorContainer>
-      <form onSubmit={handleSubmit}>
-        <Styled.TagEditorInput
-          value={name}
-          placeholder={'Inbox name'}
-          onChange={e => setName(e.target.value)}
-          data-test-id="categories-name-input"
-        />
-        <Styled.TagEditorSelect>
-          <SelectMenu
-            id="cat-color"
-            value={color}
-            onChange={handleColorChange}
-            options={selectOptions}
-            isColorPicker
-          />
-        </Styled.TagEditorSelect>
-        <SubmitButton icon={IconType.CHECK} />
-      </form>
+  return (
+    <Styled.TagEditorContainer className={isModal ? 'is-modal' : ''}>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          {isModal && (
+            <span className="close mbl-click" onClick={closeModalEditor}>
+              +
+            </span>
+          )}
+          <form onSubmit={handleSubmit}>
+            <Styled.TagEditorInput
+              value={name}
+              placeholder={'Inbox name'}
+              onChange={e => setName(e.target.value)}
+              data-test-id="categories-name-input"
+            />
+            <Styled.TagEditorSelect>
+              <SelectMenu
+                id="cat-color"
+                value={color}
+                onChange={handleColorChange}
+                options={selectOptions}
+                isColorPicker
+              />
+            </Styled.TagEditorSelect>
+            <SubmitButton icon={IconType.CHECK} />
+          </form>
+        </>
+      )}
     </Styled.TagEditorContainer>
   )
 }
