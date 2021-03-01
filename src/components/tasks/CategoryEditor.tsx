@@ -19,8 +19,13 @@ const CREATE_CATEGORY = gql`
 `
 
 const UPDATE_CATEGORY = gql`
-  mutation UpdateCategory($id: ID!, $name: String, $color: String) {
-    updateCategory(id: $id, name: $name, color: $color) {
+  mutation UpdateCategory(
+    $id: ID!
+    $name: String
+    $color: String
+    $onlyColor: Boolean
+  ) {
+    updateCategory(id: $id, name: $name, color: $color, onlyColor: $onlyColor) {
       id_category
     }
   }
@@ -46,7 +51,12 @@ export const CategoryEditor: React.FC<CategoryEditorProps> = ({
   const [updateCategory, { loading: loadingUpdate }] = useMutation(
     UPDATE_CATEGORY,
     {
-      variables: { id: category?.id, name: name, color: color }
+      variables: {
+        id: category?.id,
+        name: name,
+        color: color,
+        onlyColor: name === category?.name
+      }
     }
   )
 

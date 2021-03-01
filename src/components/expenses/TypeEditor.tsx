@@ -19,8 +19,13 @@ const CREATE_TYPE = gql`
 `
 
 const UPDATE_TYPE = gql`
-  mutation UpdateType($id: ID!, $name: String, $color: String) {
-    updateType(id: $id, name: $name, color: $color) {
+  mutation UpdateType(
+    $id: ID!
+    $name: String
+    $color: String
+    $onlyColor: Boolean
+  ) {
+    updateType(id: $id, name: $name, color: $color, onlyColor: $onlyColor) {
       id_type
     }
   }
@@ -44,7 +49,12 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
     variables: { name: name, color: color }
   })
   const [updateType, { loading: loadingUpdate }] = useMutation(UPDATE_TYPE, {
-    variables: { id: type?.id, name: name, color: color }
+    variables: {
+      id: type?.id,
+      name: name,
+      color: color,
+      onlyColor: name === type?.name
+    }
   })
 
   const setNotification = useSetRecoilState(notificationState)
