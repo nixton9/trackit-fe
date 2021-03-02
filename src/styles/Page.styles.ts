@@ -855,6 +855,14 @@ const SettingsButton = styled.button`
   }
 `
 
+const SettingsFooter = styled.footer`
+  color: ${props => props.theme.offWhite};
+  margin-top: ${props => props.theme.spacingM};
+  padding: ${props => props.theme.spacingXS};
+  font-size: 1.3rem;
+  font-weight: ${props => props.theme.fontSemiBold};
+`
+
 const SingleChart = styled.div<SingleChartProps>`
   margin-top: 0;
   padding: ${props => props.theme.spacingS};
@@ -1027,6 +1035,26 @@ const SingleChart__Stat = styled.li`
   }
 `
 
+const PrivacyTitle = styled.h3`
+  color: ${props => props.theme.white};
+  font-size: 2rem;
+  margin: ${props => props.theme.spacingM} 0 ${props => props.theme.spacingXS} 0;
+`
+
+const PrivacyText = styled.p`
+  color: ${props => props.theme.offWhite};
+  font-size: 1.4rem;
+  line-height: 2.9rem;
+
+  a {
+    color: ${props => props.theme.accent};
+  }
+
+  &:last-child {
+    margin-bottom: ${props => props.theme.spacingM};
+  }
+`
+
 export const Styled = {
   PageContainer,
   HabitsContainer,
@@ -1065,6 +1093,7 @@ export const Styled = {
   Settings__Title,
   SettingsBlock,
   SettingsButton,
+  SettingsFooter,
   SingleChart,
   SingleChart__Title,
   SingleChart__Flex,
@@ -1072,5 +1101,7 @@ export const Styled = {
   SingleChart__Category,
   SingleChart__TopExpenses,
   SingleChart__Expense,
-  SingleChart__Stat
+  SingleChart__Stat,
+  PrivacyTitle,
+  PrivacyText
 }

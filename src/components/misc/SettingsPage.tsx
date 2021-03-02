@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { UserHeader } from './UserHeader'
+import { LoadingSpinner } from './LoadingSpinner'
 import { NotificationTypes, notificationState } from './Notification'
 import { alertState } from './Alert'
 import { ToggleButton } from './ToggleButton'
@@ -17,7 +18,7 @@ import { askNotificationPermission } from '../../push-notification'
 import ScrollLock, { TouchScrollable } from 'react-scrolllock'
 import { useMutation } from '@apollo/client'
 import { useSetRecoilState } from 'recoil'
-import { LoadingSpinner } from './LoadingSpinner'
+import { NavLink } from 'react-router-dom'
 
 type SettingsProps = {
   user: User
@@ -431,6 +432,10 @@ const SettingsPage: React.FC<SettingsProps> = ({
                 !
               </p>
             </Styled.SettingsBlock>
+
+            <Styled.SettingsFooter>
+              <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+            </Styled.SettingsFooter>
           </Styled.PageContent>
         </TouchScrollable>
       </Styled.PageContainer>

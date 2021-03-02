@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Home from './Home'
 import SearchPage from './SearchPage'
+import PrivacyPolicyPage from './PrivacyPolicyPage'
 import NotesPage from './notes/NotesPage'
 import NoteDetail from './notes/NoteDetail'
 import TasksPage from './tasks/TasksPage'
@@ -165,6 +166,16 @@ const App: React.FC = () => {
                 <Route
                   path="/habits/stats/:habit?"
                   render={props => <HabitsPage {...props} stats />}
+                />
+                <Route
+                  exact
+                  path="/privacy-policy"
+                  render={props => (
+                    <PrivacyPolicyPage
+                      {...props}
+                      setWidgets={(bool: boolean) => setShowWidgets(bool)}
+                    />
+                  )}
                 />
               </Switch>
               <Notification />
