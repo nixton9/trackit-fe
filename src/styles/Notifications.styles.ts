@@ -2,11 +2,11 @@ import styled, { keyframes } from 'styled-components/macro'
 
 const SlideDown = keyframes`
     0% {
-        transform: translate(-50%, -6rem);
+        transform: translate(calc(50vw - 50%), -6rem);
         opacity: 0;
     }
     100% {
-        transform: translate(-50%, 0);
+        transform: translate(calc(50vw - 50%), 0);
         opacity: 1;
     }
 `
@@ -14,9 +14,7 @@ const SlideDown = keyframes`
 const NotificationContainer = styled.div`
   position: fixed;
   top: 7%;
-  left: 50%;
-  width: auto;
-  white-space: nowrap;
+  left: 0;
   max-width: 90%;
   padding: 2rem 3rem 2rem 2.5rem;
   background-color: ${props => props.theme.surfacesBlack};
