@@ -11,7 +11,7 @@ import { LoadingSpinner } from '../misc/LoadingSpinner'
 import { NotificationTypes, notificationState } from '../misc/Notification'
 import { alertState } from '../misc/Alert'
 import { ReactComponent as CategoriesIcon } from '../../assets/icons/categories.svg'
-import { ExpenseType } from '../../utils/ModuleTypes'
+import { ExpenseType, Currencies } from '../../utils/ModuleTypes'
 import { DrawerAddModuleProps } from '../misc/Add'
 import { EXPENSES, TYPES, SINGLE_EXPENSE } from '../../utils/queries'
 import {
@@ -48,7 +48,7 @@ const AddExpense: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
   const { refetch: refetchExpenses } = useQuery(EXPENSES)
   const { loading: loadingTypes, data: types } = useQuery(TYPES)
 
-  const [currency] = useLocalStorage('currency', '')
+  const [currency] = useLocalStorage('currency', Currencies.DOLLAR)
 
   const [createExpense, { loading }] = useMutation(CREATE_EXPENSE, {
     variables: {

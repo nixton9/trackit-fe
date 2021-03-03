@@ -6,7 +6,7 @@ import { Styled } from '../styles/Page.styles'
 import { activeContentState, isEditState } from './misc/Add'
 import { SEARCH } from '../utils/queries'
 import { habitIdState } from '../utils/atoms'
-import { ModuleTypes } from '../utils/ModuleTypes'
+import { ModuleTypes, Currencies } from '../utils/ModuleTypes'
 import { taskIdState, expenseIdState } from '../utils/atoms'
 import { showCurrencySym } from '../utils/globalHelpers'
 import { getCurrentStreak } from '../utils/statsHelpers'
@@ -29,7 +29,7 @@ const SearchPage: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const setExpenseId = useSetRecoilState(expenseIdState)
   const setHabitId = useSetRecoilState(habitIdState)
 
-  const [currency] = useLocalStorage('currency', '')
+  const [currency] = useLocalStorage('currency', Currencies.DOLLAR)
 
   const { loading, error, data } = useQuery(SEARCH, {
     variables: { query: match.params.query }

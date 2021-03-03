@@ -6,7 +6,12 @@ import { PageLoading } from '../misc/PageLoading'
 import { PageError } from '../misc/PageError'
 import { Styled } from '../../styles/Page.styles'
 import { theme } from '../../styles/theme'
-import { ModuleTypes, Expense, ExpenseType } from '../../utils/ModuleTypes'
+import {
+  ModuleTypes,
+  Expense,
+  ExpenseType,
+  Currencies
+} from '../../utils/ModuleTypes'
 import { showCurrencySym } from '../../utils/globalHelpers'
 import { isSameYear } from '../../utils/dateHelpers'
 import { yearsViewOptions } from '../../utils/selectsOptions'
@@ -42,7 +47,7 @@ export const ExpensesStats: React.FC<ExpensesStatsProps> = ({
   const [selectedYear, setSelectedYear] = useState(CURRYEAR)
   const [totalExpensesVal, setTotalExpensesVal] = useState<number | null>(null)
 
-  const [currency] = useLocalStorage('currency', '')
+  const [currency] = useLocalStorage('currency', Currencies.DOLLAR)
 
   const yearsWithData = data
     ? Array.from(
