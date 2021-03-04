@@ -98,10 +98,21 @@ const Alert__Buttons = styled.div`
     font-weight: ${props => props.theme.fontBold};
     padding: 0.6rem 2rem;
     min-width: 8rem;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:active {
+      background-color: ${props => props.theme.activeBackground};
+    }
 
     &.confirm {
       background-color: ${props => props.theme.accent};
       color: ${props => props.theme.alwaysWhite};
+
+      &:hover,
+      &:active {
+        background-color: ${props => props.theme.darkenAccent};
+      }
     }
   }
 `
