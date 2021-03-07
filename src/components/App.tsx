@@ -1,4 +1,20 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
+import Home from './Home'
+import SignIn from './auth/SignIn'
+import SignUp from './auth/SignUp'
+import Sidebar from './misc/Sidebar'
+import Search from './misc/Search'
+import Add from './misc/Add'
+import SearchPage from './SearchPage'
+import PrivacyPolicyPage from './PrivacyPolicyPage'
+import NotesPage from './notes/NotesPage'
+import NoteDetail from './notes/NoteDetail'
+import TasksPage from './tasks/TasksPage'
+import ExpensesPage from './expenses/ExpensesPage'
+import HabitsPage from './habits/HabitsPage'
+import SettingsPage from './misc/SettingsPage'
+import ForgotPassword from './auth/ForgotPassword'
+import ResetPassword from './auth/ResetPassword'
 import { Notification } from './misc/Notification'
 import { Alert } from './misc/Alert'
 import { LoadingSpinner } from './misc/LoadingSpinner'
@@ -68,23 +84,6 @@ const App: React.FC = () => {
     return false
   }
 
-  const Home = lazy(() => import('./Home'))
-  const SignIn = lazy(() => import('./auth/SignIn'))
-  const SignUp = lazy(() => import('./auth/SignUp'))
-  const Sidebar = lazy(() => import('./misc/Sidebar'))
-  const Search = lazy(() => import('./misc/Search'))
-  const Add = lazy(() => import('./misc/Add'))
-  const SearchPage = lazy(() => import('./SearchPage'))
-  const PrivacyPolicyPage = lazy(() => import('./PrivacyPolicyPage'))
-  const NotesPage = lazy(() => import('./notes/NotesPage'))
-  const NoteDetail = lazy(() => import('./notes/NoteDetail'))
-  const TasksPage = lazy(() => import('./tasks/TasksPage'))
-  const ExpensesPage = lazy(() => import('./expenses/ExpensesPage'))
-  const HabitsPage = lazy(() => import('./habits/HabitsPage'))
-  const SettingsPage = lazy(() => import('./misc/SettingsPage'))
-  const ForgotPassword = lazy(() => import('./auth/ForgotPassword'))
-  const ResetPassword = lazy(() => import('./auth/ResetPassword'))
-
   useEffect(() => {
     // Register serviceWorker and pass a function to create notification when new version available
     serviceWorker.register({ onUpdate: onServiceWorkerUpdate })
@@ -151,8 +150,8 @@ const App: React.FC = () => {
                     path="/notes/:id"
                     render={props => (
                       <NoteDetail
-                        {...props}
                         setWidgets={(bool: boolean) => setShowWidgets(bool)}
+                        {...props}
                       />
                     )}
                   />
