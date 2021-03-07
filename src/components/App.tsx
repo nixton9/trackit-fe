@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import Home from './Home'
-import SearchPage from './SearchPage'
-import PrivacyPolicyPage from './PrivacyPolicyPage'
-import NotesPage from './notes/NotesPage'
-import NoteDetail from './notes/NoteDetail'
-import TasksPage from './tasks/TasksPage'
-import ExpensesPage from './expenses/ExpensesPage'
-import HabitsPage from './habits/HabitsPage'
-import SignIn from './auth/SignIn'
-import SignUp from './auth/SignUp'
-import ForgotPassword from './auth/ForgotPassword'
-import ResetPassword from './auth/ResetPassword'
-import Sidebar from './misc/Sidebar'
-import Search from './misc/Search'
-import Add from './misc/Add'
-import SettingsPage from './misc/SettingsPage'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
 import { Notification } from './misc/Notification'
 import { Alert } from './misc/Alert'
+import { LoadingSpinner } from './misc/LoadingSpinner'
 import { GlobalStyle } from '../styles/globalstyles'
 import * as serviceWorker from '../serviceWorker'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -83,6 +68,23 @@ const App: React.FC = () => {
     return false
   }
 
+  const Home = lazy(() => import('./Home'))
+  const SignIn = lazy(() => import('./auth/SignIn'))
+  const SignUp = lazy(() => import('./auth/SignUp'))
+  const Sidebar = lazy(() => import('./misc/Sidebar'))
+  const Search = lazy(() => import('./misc/Search'))
+  const Add = lazy(() => import('./misc/Add'))
+  const SearchPage = lazy(() => import('./SearchPage'))
+  const PrivacyPolicyPage = lazy(() => import('./PrivacyPolicyPage'))
+  const NotesPage = lazy(() => import('./notes/NotesPage'))
+  const NoteDetail = lazy(() => import('./notes/NoteDetail'))
+  const TasksPage = lazy(() => import('./tasks/TasksPage'))
+  const ExpensesPage = lazy(() => import('./expenses/ExpensesPage'))
+  const HabitsPage = lazy(() => import('./habits/HabitsPage'))
+  const SettingsPage = lazy(() => import('./misc/SettingsPage'))
+  const ForgotPassword = lazy(() => import('./auth/ForgotPassword'))
+  const ResetPassword = lazy(() => import('./auth/ResetPassword'))
+
   useEffect(() => {
     // Register serviceWorker and pass a function to create notification when new version available
     serviceWorker.register({ onUpdate: onServiceWorkerUpdate })
@@ -104,117 +106,119 @@ const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-          <GlobalStyle />
-          {loggedIn ? (
-            <RecoilRoot>
+        <Suspense fallback={<LoadingSpinner />}>
+          <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+            <GlobalStyle />
+            {loggedIn ? (
+              <RecoilRoot>
+                <Switch>
+                  <Route exact path="/">
+                    <Home
+                      userName={userInfo.name}
+                      newVersionAvailable={newVersionAvailable}
+                      updateServiceWorker={updateServiceWorker}
+                    />
+                  </Route>
+                  <Route exact path="/notes">
+                    <NotesPage />
+                  </Route>
+                  <Route exact path="/tasks">
+                    <TasksPage />
+                  </Route>
+                  <Route exact path="/expenses">
+                    <ExpensesPage />
+                  </Route>
+                  <Route
+                    exact
+                    path="/habits"
+                    render={props => <HabitsPage {...props} />}
+                  />
+                  <Route exact path="/settings">
+                    <SettingsPage
+                      user={userInfo}
+                      refreshUserInfo={refreshUserInfo}
+                      isDarkTheme={isDarkTheme}
+                      setIsDarkTheme={setIsDarkTheme}
+                    />
+                  </Route>
+                  <Route
+                    exact
+                    path="/search/:query"
+                    render={props => <SearchPage {...props} />}
+                  />
+                  <Route
+                    exact
+                    path="/notes/:id"
+                    render={props => (
+                      <NoteDetail
+                        {...props}
+                        setWidgets={(bool: boolean) => setShowWidgets(bool)}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/tasks/done"
+                    render={props => <TasksPage {...props} done />}
+                  />
+                  <Route
+                    exact
+                    path="/expenses/stats"
+                    render={props => <ExpensesPage {...props} stats />}
+                  />
+                  <Route
+                    path="/habits/stats/:habit?"
+                    render={props => <HabitsPage {...props} stats />}
+                  />
+                  <Route
+                    exact
+                    path="/privacy-policy"
+                    render={props => (
+                      <PrivacyPolicyPage
+                        {...props}
+                        setWidgets={(bool: boolean) => setShowWidgets(bool)}
+                      />
+                    )}
+                  />
+                </Switch>
+                <Notification />
+                <Alert />
+                {showWidgets && (
+                  <>
+                    <Sidebar user={userInfo} logout={logout} />
+                    <Search />
+                    <Add />
+                  </>
+                )}
+              </RecoilRoot>
+            ) : (
               <Switch>
                 <Route exact path="/">
-                  <Home
-                    userName={userInfo.name}
-                    newVersionAvailable={newVersionAvailable}
-                    updateServiceWorker={updateServiceWorker}
+                  <SignIn
+                    setToken={setToken}
+                    setUserInfo={setUserInfo}
+                    setNotToken={setNotToken}
                   />
                 </Route>
-                <Route exact path="/notes">
-                  <NotesPage />
-                </Route>
-                <Route exact path="/tasks">
-                  <TasksPage />
-                </Route>
-                <Route exact path="/expenses">
-                  <ExpensesPage />
-                </Route>
-                <Route
-                  exact
-                  path="/habits"
-                  render={props => <HabitsPage {...props} />}
-                />
-                <Route exact path="/settings">
-                  <SettingsPage
-                    user={userInfo}
-                    refreshUserInfo={refreshUserInfo}
-                    isDarkTheme={isDarkTheme}
-                    setIsDarkTheme={setIsDarkTheme}
+                <Route exact path="/signup">
+                  <SignUp
+                    setToken={setToken}
+                    setUserInfo={setUserInfo}
+                    setNotToken={setNotToken}
                   />
                 </Route>
+                <Route exact path="/forgot">
+                  <ForgotPassword />
+                </Route>
                 <Route
                   exact
-                  path="/search/:query"
-                  render={props => <SearchPage {...props} />}
-                />
-                <Route
-                  exact
-                  path="/notes/:id"
-                  render={props => (
-                    <NoteDetail
-                      {...props}
-                      setWidgets={(bool: boolean) => setShowWidgets(bool)}
-                    />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/tasks/done"
-                  render={props => <TasksPage {...props} done />}
-                />
-                <Route
-                  exact
-                  path="/expenses/stats"
-                  render={props => <ExpensesPage {...props} stats />}
-                />
-                <Route
-                  path="/habits/stats/:habit?"
-                  render={props => <HabitsPage {...props} stats />}
-                />
-                <Route
-                  exact
-                  path="/privacy-policy"
-                  render={props => (
-                    <PrivacyPolicyPage
-                      {...props}
-                      setWidgets={(bool: boolean) => setShowWidgets(bool)}
-                    />
-                  )}
+                  path="/reset/:email/:token"
+                  component={ResetPassword}
                 />
               </Switch>
-              <Notification />
-              <Alert />
-              {showWidgets && (
-                <>
-                  <Sidebar user={userInfo} logout={logout} />
-                  <Search />
-                  <Add />
-                </>
-              )}
-            </RecoilRoot>
-          ) : (
-            <Switch>
-              <Route exact path="/">
-                <SignIn
-                  setToken={setToken}
-                  setUserInfo={setUserInfo}
-                  setNotToken={setNotToken}
-                />
-              </Route>
-              <Route exact path="/signup">
-                <SignUp
-                  setToken={setToken}
-                  setUserInfo={setUserInfo}
-                  setNotToken={setNotToken}
-                />
-              </Route>
-              <Route exact path="/forgot">
-                <ForgotPassword />
-              </Route>
-              <Route
-                exact
-                path="/reset/:email/:token"
-                component={ResetPassword}
-              />
-            </Switch>
-          )}
-        </ThemeProvider>
+            )}
+          </ThemeProvider>
+        </Suspense>
       </Router>
     </ApolloProvider>
   )

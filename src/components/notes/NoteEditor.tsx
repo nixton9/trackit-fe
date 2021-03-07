@@ -74,6 +74,10 @@ const EditorContainer = styled.div<EditorContainerProps>`
     max-height: 40vh;
   }
 
+  .ql-container.ql-snow {
+    border: none;
+  }
+
   .ql-editor {
     padding: ${props => props.theme.spacingXS};
   }
