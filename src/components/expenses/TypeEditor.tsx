@@ -102,7 +102,6 @@ export const TypeEditor: React.FC<TypeEditorProps> = ({
               text: `New category created '${name}'`,
               type: NotificationTypes.Success
             })
-            console.log(res.data)
             onCreateCallback && onCreateCallback(res.data.createType.id_type)
             refetchTypes()
             cleanData()

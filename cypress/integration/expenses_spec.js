@@ -16,10 +16,10 @@ describe('Expenses', () => {
   it('creates categories on settings & displays on category input', () => {
     const category = generateRandomString()
     cy.get('[data-test-id="expenses-settings-icon"]').click()
-    cy.get('[data-test-id="expenses-add-icon"]').click()
+    cy.get('[data-test-id="expenses-add-icon"]').click({ force: true })
     cy.get('[data-test-id="categories-name-input"]')
       .scrollIntoView()
-      .type(category)
+      .type(category, { force: true })
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
     cy.contains(category)
     cy.get('[data-test-id="drawer-overlay"]').click({
