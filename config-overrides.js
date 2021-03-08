@@ -1,4 +1,5 @@
 const CompressionPlugin = require('compression-webpack-plugin')
+const BrotliPlugin = require('brotli-webpack-plugin')
 
 module.exports = function override(config, env) {
   config.plugins.push(
@@ -7,6 +8,12 @@ module.exports = function override(config, env) {
       algorithm: 'gzip',
       test: /\.(js|css|html|svg)$/,
       threshold: 8192,
+      minRatio: 0.8
+    }),
+    new BrotliPlugin({
+      asset: '[path].br[query]',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
       minRatio: 0.8
     })
   )

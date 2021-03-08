@@ -61,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "brotli-webpack-plugin": "^1.1.0",
     "compression-webpack-plugin": "^6.0.5",
     "cypress": "^6.0.1",
     "eslint-plugin-cypress": "^2.11.2",
