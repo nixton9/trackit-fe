@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.trckrapp.twa",
+    "sha256_cert_fingerprints": [
+      "33:87:14:63:81:09:7B:84:0A:54:04:56:FA:AC:7A:D7:E7:47:50:AB:4F:C7:25:38:58:70:E2:76:83:A3:CA:B3"
+    ]
+  }
+}]
