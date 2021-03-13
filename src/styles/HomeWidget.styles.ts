@@ -183,8 +183,9 @@ const WidgetInfo_Label = styled.p`
 
 const WidgetPlus = styled.span`
   position: absolute;
-  right: 1.4rem;
-  bottom: 1rem;
+  padding: 1.5rem;
+  right: 0rem;
+  bottom: -0.2rem;
   cursor: pointer;
 
   svg {
@@ -198,8 +199,6 @@ const WidgetPlus = styled.span`
   }
 
   @media ${device.tabletXL} {
-    right: 1.1rem;
-
     svg {
       width: 2.4rem;
     }

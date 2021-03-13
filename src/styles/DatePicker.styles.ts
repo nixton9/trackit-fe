@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from './theme'
 
 const chevronUrl = process.env.PUBLIC_URL + '/chevron.svg'
 
@@ -37,8 +38,8 @@ const DatePickerContainer = styled.div`
   .react-datepicker__day-name,
   .react-datepicker__day,
   .react-datepicker__time-name {
-    width: 4rem;
-    line-height: 4rem;
+    width: 4rem !important;
+    line-height: 4rem !important;
     font-size: 1.6rem;
     border-radius: 50%;
     color: ${props => props.theme.offWhite};
@@ -48,14 +49,7 @@ const DatePickerContainer = styled.div`
     width: 15px;
     height: 15px;
     border: none;
-    background-image: url(${chevronUrl});
-    background-repeat: no-repeat;
-    transform: rotate(90deg);
-    background-size: 15px;
     top: 1.7rem;
-  }
-  .react-datepicker__navigation--next {
-    transform: rotate(-90deg);
   }
   .react-datepicker__current-month {
     color: ${props => props.theme.white};
@@ -94,6 +88,15 @@ const DatePickerContainer = styled.div`
   }
   .react-datepicker__day--keyboard-selected {
     background-color: transparent;
+  }
+
+  @media ${device.mobileXS} {
+    .react-datepicker__day-name,
+    .react-datepicker__day,
+    .react-datepicker__time-name {
+      width: 3rem !important;
+      line-height: 3rem !important;
+    }
   }
 `
 

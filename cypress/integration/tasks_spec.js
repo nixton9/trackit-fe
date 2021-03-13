@@ -21,7 +21,7 @@ describe('Tasks', () => {
     cy.get('[data-test-id="categories-add-icon"]').click()
     cy.get('[data-test-id="categories-name-input"]')
       .scrollIntoView()
-      .type(category)
+      .type(category, { force: true })
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
     cy.contains(category)
     cy.get('[data-test-id="drawer-overlay"]').click({
@@ -67,7 +67,7 @@ describe('Tasks', () => {
     cy.get('[data-test-id="add-task-date-input"]').click()
     cy.contains('Today')
     cy.contains('Tomorrow')
-    cy.contains('Custom Date')
+    cy.contains('Select Date')
     cy.contains('No Date')
   })
 

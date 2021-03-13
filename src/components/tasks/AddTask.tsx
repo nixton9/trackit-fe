@@ -330,7 +330,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
               <MenuItem value={'2'}>Tomorrow</MenuItem>
               <MenuItem value={'3'} onClick={() => setIsDatePickerOpen(true)}>
                 {dueDate === NOW
-                  ? 'Custom Date'
+                  ? 'Select Date'
                   : displayDate(parseDateInverse(dueDate))}
               </MenuItem>
               <MenuItem value={'4'}>No Date</MenuItem>
