@@ -18,7 +18,7 @@ describe('Tasks', () => {
   it('creates categories on settings, displays on view', () => {
     const category = generateRandomString()
     cy.get('[data-test-id="tasks-settings-icon"]').click()
-    cy.get('[data-test-id="categories-add-icon"]').click()
+    cy.get('[data-test-id="categories-add-icon"]').click({ force: true })
     cy.get('[data-test-id="categories-name-input"]')
       .scrollIntoView()
       .type(category, { force: true })

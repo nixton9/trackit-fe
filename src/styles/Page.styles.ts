@@ -876,6 +876,7 @@ const SingleChart = styled.div<SingleChartProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+    grid-column: span 2;
 
     p {
       color: ${props => props.theme.white};

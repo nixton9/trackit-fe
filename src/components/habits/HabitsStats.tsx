@@ -125,9 +125,9 @@ export const HabitsStats: React.FC<HabitsStatsProps> = ({
               <Styled.SingleChart className="no-data">
                 <p>There aren't any habits to analyse.</p>
               </Styled.SingleChart>
-            ) : !currHabit?.days.length ? (
+            ) : !currHabit?.days.length || !totalDays ? (
               <Styled.SingleChart className="no-data">
-                <p>You haven't started tracking this habit yet.</p>
+                <p>You haven't started tracking this habit up to this day.</p>
               </Styled.SingleChart>
             ) : (
               <>
