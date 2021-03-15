@@ -59,7 +59,7 @@ const ExpensesPage: React.FC<ExpensesPageProps> = ({ stats }) => {
           visibleExpensesDay.includes(parseDateInverse(expense.date))
         )
         .reduce((acc: number, obj: Expense) => acc + obj.value, 0)
-        .toFixed(2)
+        .toFixed(0)
     : 0
 
   const showWalkthrough = showExpWT && !error && !loading

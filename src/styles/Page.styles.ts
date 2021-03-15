@@ -56,6 +56,10 @@ const PageContainer = styled.div`
     height: unset;
     overflow: unset;
   }
+
+  @media ${device.mobile} {
+    padding: 9rem 3rem 4rem;
+  }
 `
 
 const HabitsContainer = styled.div`
