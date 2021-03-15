@@ -24,6 +24,21 @@
       "purpose": "any maskable"
     }
   ],
+  "shortcuts": [
+    {
+      "name": "Notes",
+      "description": "Check your notes",
+      "url": "/notes",
+      "icons": [
+        {
+          "src": "notes.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any"
+        }
+      ]
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1F2128",

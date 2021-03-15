@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { device } from './theme'
 
-const chevronUrl = process.env.PUBLIC_URL + '/chevron.svg'
-
 const DatePickerContainer = styled.div`
   display: inline-block;
 
