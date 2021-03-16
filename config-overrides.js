@@ -4,7 +4,7 @@ const BrotliPlugin = require('brotli-webpack-plugin')
 module.exports = function override(config, env) {
   config.plugins.push(
     new CompressionPlugin({
-      filename: '[path].gz[query]',
+      filename: '[path][name].gz[query]',
       algorithm: 'gzip',
       test: /\.(js|css|html|svg)$/,
       threshold: 8192,

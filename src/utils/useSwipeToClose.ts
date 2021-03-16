@@ -7,8 +7,12 @@ export const useSwipeToClose = (
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
 
+  const canUseSwipe = (e: any) =>
+    e.target.tagName.toLowerCase() !== 'p' &&
+    e.target.tagName.toLowerCase() !== 'li'
+
   const handleTouchStart = (e: any) => {
-    if (e.target.tagName.toLowerCase() !== 'p') {
+    if (canUseSwipe(e)) {
       setTouchStart(
         isTopToBottom ? e.targetTouches[0].clientY : e.targetTouches[0].clientX
       )
@@ -16,7 +20,7 @@ export const useSwipeToClose = (
   }
 
   const handleTouchMove = (e: any) => {
-    if (e.target.tagName.toLowerCase() !== 'p') {
+    if (canUseSwipe(e)) {
       setTouchEnd(
         isTopToBottom ? e.targetTouches[0].clientY : e.targetTouches[0].clientX
       )
@@ -24,7 +28,7 @@ export const useSwipeToClose = (
   }
 
   const handleTouchEnd = (e: any) => {
-    if (e.target.tagName.toLowerCase() !== 'p') {
+    if (canUseSwipe(e)) {
       if (isTopToBottom) {
         if (touchStart - touchEnd < -70) {
           setOpen(false)

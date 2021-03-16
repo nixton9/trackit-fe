@@ -19,7 +19,9 @@ describe('Notes', () => {
     const tag = generateRandomString()
     cy.get('[data-test-id="notes-settings-icon"]').click()
     cy.get('[data-test-id="tags-add-icon"]').click()
-    cy.get('[data-test-id="tags-name-input"]').scrollIntoView().type(tag)
+    cy.get('[data-test-id="tags-name-input"]')
+      .scrollIntoView()
+      .type(tag, { force: true })
     cy.get('[data-test-id="submit-btn"]').click({ force: true })
     cy.contains(tag)
     cy.get('[data-test-id="drawer-overlay"]').click({
