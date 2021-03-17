@@ -865,6 +865,16 @@ const SettingsFooter = styled.footer`
   padding: ${props => props.theme.spacingXS};
   font-size: 1.3rem;
   font-weight: ${props => props.theme.fontSemiBold};
+
+  .author {
+    margin-top: ${props => props.theme.spacingS};
+    font-weight: ${props => props.theme.fontRegular};
+
+    a {
+      color: ${props => props.theme.accent};
+      font-weight: ${props => props.theme.fontSemiBold};
+    }
+  }
 `
 
 const SingleChart = styled.div<SingleChartProps>`

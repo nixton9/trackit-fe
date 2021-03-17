@@ -410,31 +410,14 @@ const SettingsPage: React.FC<SettingsProps> = ({
               </p>
             </Styled.SettingsBlock>
 
-            <Styled.Settings__Title className="half-margin">
-              Author
-            </Styled.Settings__Title>
-
-            <Styled.SettingsBlock className="no-grid text-block">
-              <p>
-                This app was made with{' '}
-                <span role="img" aria-label="heart">
-                  ❤️
-                </span>{' '}
-                by{' '}
+            <Styled.SettingsFooter>
+              <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+              <div className="author">
+                App made by{' '}
                 <a href="https://www.eduardo-araujo.com/" target="blank">
                   Eduardo Araújo
                 </a>
-                . Enjoying the app? Small donations are welcome and will be used
-                to improve the app. Donate{' '}
-                <a href="https://paypal.me/eduardoaraujo9" target="blank">
-                  here
-                </a>
-                !
-              </p>
-            </Styled.SettingsBlock>
-
-            <Styled.SettingsFooter>
-              <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+              </div>
             </Styled.SettingsFooter>
           </Styled.PageContent>
         </TouchScrollable>
