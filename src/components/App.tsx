@@ -1,4 +1,9 @@
 import React, { useState, useEffect, Suspense, lazy, useMemo } from 'react'
+import NotesPage from './notes/NotesPage'
+import ExpensesPage from './expenses/ExpensesPage'
+import TasksPage from './tasks/TasksPage'
+import HabitsPage from './habits/HabitsPage'
+import SettingsPage from './misc/SettingsPage'
 import { Notification } from './misc/Notification'
 import { Alert } from './misc/Alert'
 import { LoadingSpinner } from './misc/LoadingSpinner'
@@ -76,11 +81,6 @@ const App: React.FC = () => {
   const Add = lazy(() => import('./misc/Add'))
   const SearchPage = lazy(() => import('./SearchPage'))
   const PrivacyPolicyPage = lazy(() => import('./PrivacyPolicyPage'))
-  const NotesPage = lazy(() => import('./notes/NotesPage'))
-  const TasksPage = lazy(() => import('./tasks/TasksPage'))
-  const ExpensesPage = lazy(() => import('./expenses/ExpensesPage'))
-  const HabitsPage = lazy(() => import('./habits/HabitsPage'))
-  const SettingsPage = lazy(() => import('./misc/SettingsPage'))
   const ForgotPassword = lazy(() => import('./auth/ForgotPassword'))
   const ResetPassword = lazy(() => import('./auth/ResetPassword'))
   const NoteDetail = useMemo(() => lazy(() => import('./notes/NoteDetail')), [])
