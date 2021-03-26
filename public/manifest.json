@@ -81,5 +81,13 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1F2128",
-  "background_color": "#1F2128"
+  "background_color": "#1F2128",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.trckrapp.twa",
+      "id": "com.trckrapp.twa"
+    }
+  ]
 }
