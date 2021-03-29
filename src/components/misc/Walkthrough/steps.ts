@@ -5,41 +5,11 @@ export const pagesSteps: { [key: string]: any } = {
       placement: 'center' as 'center',
       title: 'Welcome to TRCKR!',
       content:
-        "Seems like it’s your first time here. Follow this quick walkthrough to learn all the basic features so you can start tracking everything in your life like a pro! Smartphone users can install TRCKR on their homescreen through the browser's settings. ",
-      disableBeacon: true
-    },
-    {
-      target: '.widget-notes',
-      content:
-        'Create all sorts of notes you want. On each note you can add tags, so you can easily organize them.',
-      disableBeacon: true
-    },
-    {
-      target: '.widget-tasks',
-      content:
-        'Your advanced To-do list for all your tasks. Create inboxes so you can keep everything in place.',
-      disableBeacon: true
-    },
-    {
-      target: '.widget-habits',
-      content:
-        'Track all of your habits in a really simple way and check your progress.',
-      disableBeacon: true
-    },
-    {
-      target: '.widget-expenses',
-      content:
-        'Control all of your expenses. Know exactly on what you are spending and how you are spending.',
+        "Seems like it’s your first time here. Follow the walkthrough on each page to learn all the basic features, so you can start tracking everything in your life like a pro! Smartphone users can install TRCKR on their homescreen through the browser's settings. ",
       disableBeacon: true
     }
   ],
   NOTES: [
-    {
-      target: '.single-note:first-child',
-      content:
-        'This is an awesome note. You can tap on it to view and edit it or, if you’re done with it, delete it.',
-      disableBeacon: true
-    },
     {
       target: '.add-note-icon',
       content:
@@ -121,18 +91,6 @@ export const pagesSteps: { [key: string]: any } = {
     }
   ],
   HABITS: [
-    {
-      target: '.calendar-header',
-      content:
-        'Use the calendar header to navigate between dates by tapping the arrows.',
-      disableBeacon: true
-    },
-    {
-      target: '.single-habit',
-      content:
-        'When tracking an habit, tap once on the days you were successful and double tap on the ones that you weren’t.',
-      disableBeacon: true
-    },
     {
       target: '.add-habit-icon',
       content: "Add a new habit. Just give it a title and you're done!",
