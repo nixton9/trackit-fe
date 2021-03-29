@@ -18,7 +18,7 @@ describe('Notes', () => {
   it('creates tags on settings & displays on view', () => {
     const tag = generateRandomString()
     cy.get('[data-test-id="notes-settings-icon"]').click()
-    cy.get('[data-test-id="tags-add-icon"]').click()
+    cy.get('[data-test-id="tags-add-icon"]').click({ force: true })
     cy.get('[data-test-id="tags-name-input"]')
       .scrollIntoView()
       .type(tag, { force: true })

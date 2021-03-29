@@ -5,7 +5,7 @@ describe('Home', () => {
     cy.get('[data-test-id="signin-email"]').type('cypress@teste.pt')
     cy.get('[data-test-id="signin-pw"]').type('123456')
     cy.contains('Login').click()
-    cy.get('[aria-label="Skip"]').click()
+    cy.get('[aria-label="Last"]').click()
   })
 
   it('shows welcome message and all the widgets', () => {
