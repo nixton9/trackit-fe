@@ -46,7 +46,6 @@ const DatePickerContainer = styled.div`
   .react-datepicker__navigation {
     width: 15px;
     height: 15px;
-    border: none;
     top: 1.7rem;
   }
   .react-datepicker__current-month {
