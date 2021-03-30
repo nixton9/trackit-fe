@@ -63,15 +63,7 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     }
   })
 
-  const [updateTask, { loading: loadingEdit }] = useMutation(UPDATE_TASK, {
-    variables: {
-      id: taskId,
-      title: title,
-      date: dueDate,
-      done: done,
-      category: category
-    }
-  })
+  const [updateTask, { loading: loadingEdit }] = useMutation(UPDATE_TASK)
 
   const [getTask, { loading: loadingGet, data: dataTask }] = useLazyQuery(
     SINGLE_TASK,
@@ -136,7 +128,15 @@ const AddTask: React.FC<DrawerAddModuleProps> = ({ closeModal, isEdit }) => {
     e.preventDefault()
     if (title) {
       if (isEdit) {
-        updateTask()
+        updateTask({
+          variables: {
+            id: taskId,
+            title: title,
+            date: dateSelect === '4' ? null : dueDate,
+            done: done,
+            category: category
+          }
+        })
           .then(res => {
             setNotification({
               text: `Task was successfully updated`,
