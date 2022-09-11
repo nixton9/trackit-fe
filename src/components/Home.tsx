@@ -194,7 +194,7 @@ const Home: React.FC<HomeProps> = ({
           <Styled.HomeGrid>
             <HomeWidget
               type={ModuleTypes.Notes}
-              value={notes.notes.length}
+              value={notes?.notes?.length || 0}
               label="created"
               icon={<NotesIcon />}
             />
@@ -206,7 +206,7 @@ const Home: React.FC<HomeProps> = ({
             />
             <HomeWidget
               type={ModuleTypes.Habits}
-              value={habits.habits.length}
+              value={habits?.habits?.length || 0}
               label="active"
               icon={<HabitsIcon />}
             />
