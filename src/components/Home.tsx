@@ -135,10 +135,16 @@ const Home: React.FC<HomeProps> = ({
     }
   }, [expensesData]);
 
-  const notes = shouldUseLocalStorageData ? data["notes"] : notesData;
-  const tasks = shouldUseLocalStorageData ? data["tasks"] : tasksData;
-  const habits = shouldUseLocalStorageData ? data["habits"] : habitsData;
-  const expenses = shouldUseLocalStorageData ? data["expenses"] : expensesData;
+  const notes =
+    shouldUseLocalStorageData && data["notes"] ? data["notes"] : notesData;
+  const tasks =
+    shouldUseLocalStorageData && data["tasks"] ? data["tasks"] : tasksData;
+  const habits =
+    shouldUseLocalStorageData && data["habits"] ? data["habits"] : habitsData;
+  const expenses =
+    shouldUseLocalStorageData && data["expenses"]
+      ? data["expenses"]
+      : expensesData;
 
   const currMonthExpensesVal = expenses
     ? expenses.expenses
