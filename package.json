@@ -36,7 +36,8 @@
     "recharts": "^1.8.5",
     "recoil": "0.0.13",
     "styled-components": "^5.1.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "react-app-rewired": "^2.1.8"
   },
   "scripts": {
     "start": "react-app-rewired start",
