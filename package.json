@@ -43,8 +43,8 @@
     "react-app-rewired": "^2.1.8"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
