@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import HomeWidget from "./misc/HomeWidget";
 import { LoadingSpinner } from "./misc/LoadingSpinner";
 import { PageError } from "./misc/PageError";
