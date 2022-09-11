@@ -44,7 +44,7 @@
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
-  "proxy": "http://localhost:4000/",
+  "proxy": "http://localhost:8080/",
   "eslintConfig": {
     "extends": "react-app"
   },
